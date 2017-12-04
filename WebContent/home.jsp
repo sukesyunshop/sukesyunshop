@@ -4,8 +4,9 @@
 <!DOCTYPE html >
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Home</title>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<meta http-equiv="refresh" content="0;URL=<s:url action='GoHomeAction'/>">
 </head>
 <body>
 <h1>☆すけしゅんショップ☆ฅ(´-ω-`)ฅ</h1>
