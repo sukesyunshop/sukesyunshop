@@ -1,3 +1,1 @@
 # sukesyunshop
-
-hoge
