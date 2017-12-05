@@ -17,7 +17,7 @@
 	<div id="main">
 		<div id="top"></div>
 		宛先を選択してください。
-		<s:form  method="post" action="BuyItemCompleteAction">
+		<s:form method="post" action="BuyItemCompleteAction">
 			<table>
 				<tbody>
 					<tr>
@@ -36,7 +36,26 @@
 					</tr>
 				</tbody>
 			</table>
+
+			<p>以下の情報で購入しますか？</p>
+			<table>
+				<tbody>
+					<tr>
+						<td><label></label></td>
+
+						<td><label></label></td>
+
+						<td><label></label></td>
+
+						<td><label></label></td>
+
+						<td><label></label></td>
+					</tr>
+				</tbody>
+			</table>
 		</s:form>
+
+		<br> カート一覧に戻るには<a href='<s:url action="CartAction"/>'>Cartへ</a>
 
 	</div>
 
