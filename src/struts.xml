@@ -8,9 +8,94 @@
 	<constant name="struts.devMode" value="true" />
 	<package name="com.internousdev.ecsite.action" extends="struts-default">
 
+		<!-- 担当：山口 -->
 		<!-- GoHomeAction -->
 		<action name="GoHomeAction" class="com.internousdev.sukesyunshop.action.GoHomeAction" method="execute">
 			<result name="success">home.jsp</result>
+			<result name="login">login.jsp</result>
+			<result name="error">error.jsp</result>
 		</action>
-		</package>
-		</struts>
+		<!-- LoginAction -->
+		<action name="LoginAction" class="com.internousdev.sukesyunshop.action.LoginAction" method="execute">
+			<result type="chain" name="success">GoHomeAction</result>
+			<result name="back">login.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<!-- 担当：金子 -->
+		<!-- GoMyPageAction -->
+		<action name="GoMyPageAction" class="com.internousdev.sukesyunshop.action.GoMyPageAction" method="execute">
+			<result name="success">myPage.jsp</result>
+			<result name="login">login.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!--  ItemHistoryAction -->
+		<action name="ItemHistoryAction" class="com.internousdev.sukesyunshop.action.ItemHistoryAction" method="execute">
+			<result name="success">itemHistory.jsp</result>
+			<result name="login">login.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<!-- 担当：百瀬 -->
+		<!-- CartAction -->
+		<action name="CartAction" class="com.internousdev.sukesyunshop.action.CartAction" method="execute">
+			<result name="success">cart.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- ProductListAction -->
+		<action name="ProductListAction" class="com.internousdev.sukesyunshop.action.ProductListAction" method="execute">
+			<result name="success">productList.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- ProductDetailAction -->
+		<action name="ProductDetailAction" class="com.internousdev.sukesyunshop.action.ProductDetailAction" method="execute">
+			<result name="success">productDetail.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<!-- 担当：梅田 -->
+		<!-- ResetPasswordAction -->
+		<action name="ResetPasswordAction" class="com.internousdev.sukesyunshop.action.ResetPasswordAction" method="execute">
+			<result name="success">resetPassword.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- ConfirmPasswordAction -->
+		<action name="ConfirmPasswordAction" class="com.internousdev.sukesyunshop.action.ConfirmPasswordAction" method="execute">
+			<result name="success">confirmPassword.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- CompletePasswordAction -->
+		<action name="CompletePasswordAction" class="com.internousdev.sukesyunshop.action.CompletePasswordAction" method="execute">
+			<result name="success">completePassword.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<!-- 担当：山崎 -->
+		<!-- BuyItemConfirmAction -->
+		<action name="BuyItemConfirmAction" class="com.internousdev.sukesyunshop.action.BuyItemConfirmAction" method="execute">
+			<result name="success">buyItemConfirm.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- BuyItemCompleteAction -->
+		<action name="BuyItemCompleteAction" class="com.internousdev.sukesyunshop.action.BuyItemCompleteAction" method="execute">
+			<result name="success">buyItemComplete.jsp</result>
+			<result type="chain" name="lack">InputDestAction</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- InputDestAction -->
+		<action name="InputDestAction" class="com.internousdev.sukesyunshop.action.InputDestAction" method="execute">
+			<result name="success">inputDest.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- ConfirmDestAction -->
+		<action name="ConfirmDestAction" class="com.internousdev.sukesyunshop.action.ConfirmDestAction" method="execute">
+			<result name="success">confirmDest.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<!-- CompleteDestAction -->
+		<action name="CompleteDestAction" class="com.internousdev.sukesyunshop.action.CompleteDestAction" method="execute">
+			<result name="success">completeDest.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+	</package>
+</struts>
