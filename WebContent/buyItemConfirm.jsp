@@ -17,7 +17,7 @@
 	<div id="main">
 		<div id="top"></div>
 		宛先を選択してください。
-		<s:form name="RadioForm" method="post" action="BuyItemCompleteAction">
+		<s:form  method="post" action="BuyItemCompleteAction">
 			<table>
 				<tbody>
 					<tr>
@@ -29,18 +29,16 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td><span><a href='<s:url action="InputDestAction"/>'>宛先を追加する</a></span></td>
-						</tr>
+						<td><span>宛先が未入力の場合は<a href="inputDest.jsp">宛先を追加へ</a></span></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="購入"></td>
+					</tr>
 				</tbody>
 			</table>
-
-
 		</s:form>
 
 	</div>
-
-
-
 
 </body>
 </html>
