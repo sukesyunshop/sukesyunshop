@@ -24,10 +24,6 @@ public class BuyItemDTO {
 
 	private int status;
 
-	private String insertDate;
-
-	private String updateDate;
-
 	public int getItemId() {
 
 		return itemId;
@@ -154,7 +150,5 @@ public class BuyItemDTO {
 		this.status = status;
 
 	}
-
-
 
 }
