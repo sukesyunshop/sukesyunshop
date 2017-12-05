@@ -23,7 +23,7 @@
 <s:submit value="カート画面"/>
 </s:form>
 
-<s:form action="ItemListAction">
+<s:form action="CatalogAction">
 <s:submit value="商品一覧画面"/>
 </s:form>
 
