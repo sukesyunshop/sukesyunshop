@@ -9,5 +9,10 @@
 </head>
 <body>
 
+	<s:form action="LoginAction" theme="simple">
+		<input type="text" name="userId">
+		<input type="password" name="password">
+	</s:form>
+
 </body>
 </html>

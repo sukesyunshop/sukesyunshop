@@ -62,6 +62,7 @@
 		<!-- ConfirmPasswordAction -->
 		<action name="ConfirmPasswordAction" class="com.internousdev.sukesyunshop.action.ConfirmPasswordAction" method="execute">
 			<result name="success">confirmPassword.jsp</result>
+			<result name="back">resetPassword.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<!-- CompletePasswordAction -->
