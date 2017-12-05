@@ -1,9 +1,12 @@
 package com.internousdev.sukesyunshop.action;
 
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.sukesyunshop.dao.LoginDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware {
@@ -23,23 +26,45 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		if(validation(userId, password) != null){
 			message = validation(userId, password);
-			return "";
+			return "back";
 		}
-		
+
+		LoginDAO loginDAO = new LoginDAO();
+		try{
+			if(loginDAO.login(userId, password)){
+				return SUCCESS;
+			}else{
+				message = "入力されたパスワードが異なります。";
+				return "back";
+			}
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
 
 		return ERROR;
 	}
 
 	private String validation(String userId, String password){
 
+		Pattern p = Pattern.compile("^[0-9]*$");
+		Matcher userIdM = p.matcher(userId);
+		Matcher passM = p.matcher(password);
+
 		if(userId == null || userId.equals("")){
 			return NAME_USER_ID+NOT;
 		}else if(password == null || password.equals("")){
 			return NAME_PASSWORD+NOT;
 		}else if(userId.length() < 1 || userId.length() > 8){
-			return userId+"は1文字以上8文字以下で入力してください。";
+			return overUnder(userId, 1, 8);
 		}else if (password.length() < 1 || password.length() >16){
-			return password+"は1文字以上16文字以下で入力してください。";
+			return overUnder(password, 1 ,16);
+		}else if (userIdM.find()){
+			return "ログインIDは半角英数で入力してください";
+		}else if (passM.find()){
+			return "パスワードは半角英数で入力してください";
+
 		}
 
 		return null;

@@ -9,6 +9,8 @@
 </head>
 <body>
 
+	<p><s:property value="message" /></p>
+
 	<s:form action="LoginAction" theme="simple">
 		<input type="text" name="userId">
 		<input type="password" name="password">
