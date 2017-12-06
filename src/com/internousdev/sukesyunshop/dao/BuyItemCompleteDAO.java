@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.internousdev.sukesyunshop.dto.BuyItemDTO;
 import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.internousdev.sukesyunshop.util.DBConnector;
 import com.internousdev.sukesyunshop.util.DateUtil;
@@ -16,22 +17,32 @@ public class BuyItemCompleteDAO {
 	private DBConnector db = new DBConnector();
 	private Connection con = db.getConnection();
 	private DateUtil dateUtil = new DateUtil();
-	private String sql = "SELECT user_id, product_id FROM cart_info";
+	private String sql = "SELECT * FROM"
+	                  + " cart_info INNER JOIN product_info"
+			          + " ON product_info.product_id=cart_info.product_id"
+	                  + " WHERE product_id=?";
 
-	public List<CatalogDTO> catalogDTOList = new ArrayList<CatalogDTO>();
+	public List<BuyItemDTO> buyItemDTOList = new ArrayList<BuyItemDTO>();
 
-	public List<CatalogDTO> select() {
+	public List<BuyItemDTO> select() {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				CatalogDTO dto = new CatalogDTO();
-				dto.setId(rs.getInt("user_id"));
-				dto.setProductName(rs.getString("product_name"));
-				dto.setProductNameKana(rs.getString("product_name_kana"));
+				BuyItemDTO dto = new BuyItemDTO();
+				dto.setItemId(rs.getInt("productId"));
+				dto.setItemName(rs.getString("product_name"));
+				dto.setItemNameKana(rs.getString("product_name_kana"));
+				dto.setItemDescription(rs.getString("prodcut_description"));
+				dto.setCategoryId(rs.getInt("category_id"));
 				dto.setPrice(rs.getInt("price"));
-				catalogDTOList.add(dto);
+				dto.setImageFilePath(rs.getString("image_file_path"));
+				dto.setImageFileName(rs.getString("image_file_name"));
+				dto.setReleaseDate(rs.getString("release_date")); // データ型が？
+				dto.setReleaseCompany(rs.getString("release_company"));
+				dto.setStatus(rs.getInt("status"));
+				buyItemDTOList.add(dto);
 			}
 
 		} catch (SQLException e) {
@@ -44,10 +55,10 @@ public class BuyItemCompleteDAO {
 			e.printStackTrace();
 		}
 
-		return catalogDTOList;
+		return buyItemDTOList;
 	}
 
-	public int insert(String userId, int productId) {
+	public int insert(BuyItemDTO dto) {
 		int ret = 0;
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -97,6 +108,7 @@ public class BuyItemCompleteDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		//上と同じく書き方が分からない。
 		return;
 	}
 
