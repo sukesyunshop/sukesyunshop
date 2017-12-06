@@ -28,12 +28,13 @@ public class ConfirmPasswordDAO  {
 		preparedStatement.setString(1, loginId);
 
 		ResultSet resultSet=preparedStatement.executeQuery();
+
 		return resultSet.next();
-		
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
+
 		return false;
 		}
 	public ConfirmPasswordDTO getConfirmPasswordDTO() {
