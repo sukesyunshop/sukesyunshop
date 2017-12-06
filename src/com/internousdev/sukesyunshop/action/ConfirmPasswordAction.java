@@ -6,6 +6,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.ConfirmPasswordDAO;
 import com.internousdev.sukesyunshop.dto.ConfirmPasswordDTO;
+import com.internousdev.sukesyunshop.util.Validation;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ConfirmPasswordAction extends ActionSupport implements SessionAware {
@@ -20,18 +21,20 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 
 	private String errorMessage;
 
+	public Validation validation = new Validation();
+
 	public ConfirmPasswordDAO confirmPasswordDAO=new ConfirmPasswordDAO();
 
 	public ConfirmPasswordDTO confirmPasswordDTO=new ConfirmPasswordDTO();
 
 	public String execute(){
 		if(!confirmPasswordDAO.getLoginId(loginId)){
-			errorMessage="存在しませんでした";
+			errorMessage="IDが存在しませんでした";
 			return ERROR;
 		}
-
-
-
+		if(validation.emptyValid(loginPassword)){
+			errorMessage="";
+		}
 
 		if(loginPassword.equals(confirmPassword)){
 			session.put("loginPassword", loginPassword) ;
