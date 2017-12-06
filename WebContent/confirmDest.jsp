@@ -45,5 +45,6 @@
 				</tbody>
 			</table>
 		</s:form>
+	</div>
 </body>
 </html>
