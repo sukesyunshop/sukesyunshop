@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.internousdev.sukesyunshop.dto.BuyItemDTO;
-import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.internousdev.sukesyunshop.util.DBConnector;
 import com.internousdev.sukesyunshop.util.DateUtil;
 
@@ -16,6 +15,8 @@ public class BuyItemCompleteDAO {
 
 	private DBConnector db = new DBConnector();
 	private Connection con = db.getConnection();
+
+	//入れ所が分からないです。
 	private DateUtil dateUtil = new DateUtil();
 
 
@@ -61,8 +62,9 @@ public class BuyItemCompleteDAO {
 		return buyItemDTOList;
 	}
 
-	public int insert(BuyItemDTO dto) {
-		int ret = 0;
+	public void insert(BuyItemDTO dto) throws SQLException {
+
+
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
@@ -78,11 +80,15 @@ public class BuyItemCompleteDAO {
 			ps.setString(4, dto.getItemDescription());
 			ps.setInt(5, dto.getCategoryId());
 			ps.setInt(6, dto.getPrice());
-			int i = ps.executeUpdate();
-			if (i > 0) {
-				System.out.println(i + "商品履歴に登録されました。");
-				ret = i;
-			}
+			ps.setString(7, dto.getImageFilePath());
+			ps.setString(8, dto.getImageFileName());
+			ps.setString(9, dto.getReleaseDate());  //データ型が？
+			ps.setString(10, dto.getReleaseCompany());
+			ps.setInt(11, dto.getStatus());
+
+			ps.executeUpdate();
+
+
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -92,33 +98,23 @@ public class BuyItemCompleteDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return ret;
+
+
 	}
 
-	public int delete() {
+	public void delete(int itemId) throws SQLException {
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
-		String sql = "DELETE FROM cart_info WHERE user_id=? AND product_id=?";
+		String sql = "DELETE FROM cart_info WHERE item_id";
 
-		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			//書き方がわかりません。
 
+			ps.setInt(1, itemId);
 
-			 = ps.executeUpdate();
+			 ps.executeUpdate();
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//上と同じく書き方が分からない。
-		return;
 	}
 
 }
