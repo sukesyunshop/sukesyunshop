@@ -8,15 +8,12 @@ public class SessionName {
 	 *  private final static String EXAMPLE_STRING = "sessionで使う値";
 	 */
 
-	/*
-	 * ログイン中ならnull,ログインしてないならfalseを入れてください。
-	 */
+	//ログイン中ならnull,ログインしてないならnullを入れてください。
 	private final static String LOGIN_FLAG = "loginFlag";
-	/*
-	 * ログイン中ならuser_idを入れてください。
-	 * ログインしてないならnullにしてください
-	 */
+	//ログイン中ならuser_idを入れてください。ログインしてないならnullにしてください
 	private final static String USER_ID = "userId";
+	//ログイン時にUserInfoDTOを入れてます。
+	private final static String LOGIN_USER_DTO = "loginUserDto";
 
 	/*
 	 *以下にゲッターセッターをshift+alt+sからゲッターセッター入力的なので入れてください。
@@ -27,6 +24,9 @@ public class SessionName {
 	}
 	public static String getUserId() {
 		return USER_ID;
+	}
+	public static String getLoginUserDto() {
+		return LOGIN_USER_DTO;
 	}
 
 }
