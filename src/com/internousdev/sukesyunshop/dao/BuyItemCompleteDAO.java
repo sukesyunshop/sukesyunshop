@@ -108,9 +108,7 @@ public class BuyItemCompleteDAO {
 		Connection con = db.getConnection();
 
 		String sql = "DELETE FROM cart_info WHERE item_id=?";
-
 			PreparedStatement ps = con.prepareStatement(sql);
-
 			ps.setInt(1, itemId);
 
 			 ps.executeUpdate();
