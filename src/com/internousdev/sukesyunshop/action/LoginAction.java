@@ -6,7 +6,8 @@ import java.util.regex.Pattern;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.sukesyunshop.dao.LoginDAO;
+import com.internousdev.sukesyunshop.dao.LoginAuthDAO;
+import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware {
@@ -29,9 +30,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			return "back";
 		}
 
-		LoginDAO loginDAO = new LoginDAO();
+		LoginAuthDAO loginDAO = new LoginAuthDAO();
 		try{
 			if(loginDAO.login(userId, password)){
+				session.put(SessionName.getLoginUserDto(),loginDAO.getUserInfo(userId, password));
 				return SUCCESS;
 			}else{
 				message = "入力されたパスワードが異なります。";
