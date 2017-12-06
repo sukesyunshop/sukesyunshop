@@ -46,6 +46,7 @@ public class BuyItemCompleteDAO {
 				dto.setReleaseDate(rs.getString("release_date")); // データ型が？
 				dto.setReleaseCompany(rs.getString("release_company"));
 				dto.setStatus(rs.getInt("status"));
+
 				buyItemDTOList.add(dto);
 			}
 
@@ -85,6 +86,7 @@ public class BuyItemCompleteDAO {
 			ps.setString(9, dto.getReleaseDate());  //データ型が？
 			ps.setString(10, dto.getReleaseCompany());
 			ps.setInt(11, dto.getStatus());
+
 
 			ps.executeUpdate();
 
