@@ -1,13 +1,12 @@
 package com.internousdev.sukesyunshop.action;
 
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.LoginAuthDAO;
 import com.internousdev.sukesyunshop.util.SessionName;
+import com.internousdev.sukesyunshop.util.Validation;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware {
@@ -16,27 +15,29 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private String password;
 
 	private Map<String, Object> session;
-	private String message;
+	private String userIdMessage;
+	private String passwordMessage;
 
 	private final String NAME_USER_ID ="ユーザーID";
 	private final String NAME_PASSWORD ="パスワード";
-	private final String NOT = "を入力してください";
 
+
+	Validation valid = new Validation();
 
 	public String execute(){
+		userIdMessage = validation(userId, NAME_USER_ID, 1, 8);
+		passwordMessage = validation(password, NAME_PASSWORD, 1, 16);
 
-		if(validation(userId, password) != null){
-			message = validation(userId, password);
-			return "back";
-		}
-
+		if(!userIdMessage.equals("") || !passwordMessage.equals("")) return "back";
 		LoginAuthDAO loginDAO = new LoginAuthDAO();
 		try{
 			if(loginDAO.login(userId, password)){
+				session.put(SessionName.getUserId(), userId);
 				session.put(SessionName.getLoginUserDto(),loginDAO.getUserInfo(userId, password));
+				session.put(SessionName.getLoginFlag(), "true");
 				return SUCCESS;
 			}else{
-				message = "入力されたパスワードが異なります。";
+				passwordMessage = "入力されたパスワードが異なります。";
 				return "back";
 			}
 
@@ -48,32 +49,17 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		return ERROR;
 	}
 
-	private String validation(String userId, String password){
+	private String validation(String target, String targetName, int min, int max){
 
-		Pattern p = Pattern.compile("^[0-9]*$");
-		Matcher userIdM = p.matcher(userId);
-		Matcher passM = p.matcher(password);
-
-		if(userId == null || userId.equals("")){
-			return NAME_USER_ID+NOT;
-		}else if(password == null || password.equals("")){
-			return NAME_PASSWORD+NOT;
-		}else if(userId.length() < 1 || userId.length() > 8){
-			return overUnder(userId, 1, 8);
-		}else if (password.length() < 1 || password.length() >16){
-			return overUnder(password, 1 ,16);
-		}else if (userIdM.find()){
-			return "ログインIDは半角英数で入力してください";
-		}else if (passM.find()){
-			return "パスワードは半角英数で入力してください";
-
+		if(valid.emptyValid(target)){
+			return targetName+"を入力してください";
+		}else if(valid.overUnderValid(target, min, max)){
+			return targetName+"は"+min+"文字以上"+max+"文字以下で入力してください。";
+		}else if (valid.harfEngNumValied(target)){
+			return targetName+"は半角英数で入力してください";
 		}
 
-		return null;
-	}
-
-	private String overUnder(String target, int min, int max){
-		return target+"は"+min+"文字以上"+max+"文字以下で入力してください。";
+		return "";
 	}
 
 	public String getUserId() {
@@ -92,12 +78,21 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.password = password;
 	}
 
-	public String getMessage() {
-		return message;
+
+	public String getUserIdMessage() {
+		return userIdMessage;
 	}
 
-	public void setMessage(String messsage) {
-		this.message = messsage;
+	public void setUserIdMessage(String userIdMessage) {
+		this.userIdMessage = userIdMessage;
+	}
+
+	public String getPasswordMessage() {
+		return passwordMessage;
+	}
+
+	public void setPasswordMessage(String passwordMessage) {
+		this.passwordMessage = passwordMessage;
 	}
 
 	public Map<String, Object> getSession() {

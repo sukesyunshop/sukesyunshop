@@ -4,23 +4,19 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.sukesyunshop.dao.LoginAuthDAO;
-import com.internousdev.sukesyunshop.dto.UserInfoDTO;
+import com.internousdev.sukesyunshop.util.RandomID;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LogoutAction extends ActionSupport implements SessionAware {
+public class IndexAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
 
 	public String execute(){
-		LoginAuthDAO dao = new LoginAuthDAO();
-		UserInfoDTO dto = (UserInfoDTO) session.get(SessionName.getLoginUserDto());
-		dao.logout(dto.getUserId(), dto.getPassword());
-
-		session.clear();
-
-		return ERROR;
+		RandomID randomId = new RandomID();
+		session.put(SessionName.getUserId(), randomId.getTempId());
+		session.put(SessionName.getLoginFlag(), "false");
+		return SUCCESS;
 	}
 
 	public Map<String, Object> getSession() {
@@ -30,7 +26,6 @@ public class LogoutAction extends ActionSupport implements SessionAware {
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-
 	}
 
 }

@@ -8,7 +8,7 @@ public class SessionName {
 	 *  private final static String EXAMPLE_STRING = "sessionで使う値";
 	 */
 
-	//ログイン中ならnull,ログインしてないならnullを入れてください。
+	//ログイン中ならnull,ログインしてないならfalseを入れてください。
 	private final static String LOGIN_FLAG = "loginFlag";
 	//ログイン中ならuser_idを入れてください。ログインしてないならnullにしてください
 	private final static String USER_ID = "userId";

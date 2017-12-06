@@ -12,8 +12,17 @@
 	<p><s:property value="message" /></p>
 
 	<s:form action="LoginAction" theme="simple">
-		<input type="text" name="userId">
-		<input type="password" name="password">
+		<p><s:property value="userIdMessage" /></p>
+		<label>
+			ログインID：
+			<input type="text" name="userId">
+		</label><br>
+		<p><s:property value="passwordMessage" /></p>
+		<label>
+			パスワード：
+			<input type="password" name="password">
+		</label>
+		<s:submit value="ログイン"/>
 	</s:form>
 
 </body>

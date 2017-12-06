@@ -10,11 +10,13 @@
 <body>
 	<h1>☆すけしゅんショップ☆ฅ(´-ω-`)ฅ</h1>
 
-	<s:if test="session.loginFlag.equals('true')">
-		<a href="<s:url value='LogoutAction'/>">ログアウト</a>
+	<p>aa<s:property value="#session.userId"/>zz</p>
+
+	<s:if test="#session.loginFlag == 'true'">
+		<a href="<s:url action='LogoutAction' />">ログアウト</a>
 	</s:if>
 	<s:else>
-		<a href="<s:url value='LoginAction'/>">ログイン</a>
+		<a href="./login.jsp">ログイン</a>
 	</s:else>
 
 	<s:form action="MyAction">
