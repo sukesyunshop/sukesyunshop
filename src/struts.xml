@@ -50,58 +50,59 @@
 			<result name="success">cart.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<!-- CatalogAction->
+
+		<!-- CatalogAction-->
 		<action name="CatalogAction" class="com.internousdev.sukesyunshop.action.CatalogAction" method="execute">
 			<result name="success">catalog.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<!-- ProductDetailAction->
+		<!-- ProductDetailAction-->
 		<action name="ProductDetailAction" class="com.internousdev.sukesyunshop.action.ProductDetailAction" method="execute">
 			<result name="success">productDetail.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 
-		<!-- 担当：梅田->
-		<!-- ResetPasswordAction->
+		<!-- 担当：梅田-->
+		<!-- ResetPasswordAction-->
 		<action name="ResetPasswordAction" class="com.internousdev.sukesyunshop.action.ResetPasswordAction" method="execute">
 			<result name="success">resetPassword.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<!-- ConfirmPasswordAction->
+		<!-- ConfirmPasswordAction-->
 		<action name="ConfirmPasswordAction" class="com.internousdev.sukesyunshop.action.ConfirmPasswordAction" method="execute">
 			<result name="success">confirmPassword.jsp</result>
 			<result name="back">resetPassword.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<!-- CompletePasswordAction->
+		<!-- CompletePasswordAction-->
 		<action name="CompletePasswordAction" class="com.internousdev.sukesyunshop.action.CompletePasswordAction" method="execute">
 			<result name="success">completePassword.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 
-		<!-- 担当：山崎->
-		<!-- BuyItemConfirmAction->
+		<!-- 担当：山崎-->
+		<!-- BuyItemConfirmAction-->
 		<action name="BuyItemConfirmAction" class="com.internousdev.sukesyunshop.action.BuyItemConfirmAction" method="execute">
 			<result name="success">buyItemConfirm.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<!-- BuyItemCompleteAction->
+		<!-- BuyItemCompleteAction-->
 		<action name="BuyItemCompleteAction" class="com.internousdev.sukesyunshop.action.BuyItemCompleteAction" method="execute">
 			<result name="success">buyItemComplete.jsp</result>
 			<result type="chain" name="lack">InputDestAction</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<!-- InputDestAction->
+		<!-- InputDestAction-->
 		<action name="InputDestAction" class="com.internousdev.sukesyunshop.action.InputDestAction" method="execute">
 			<result name="success">inputDest.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<!-- ConfirmDestAction->
+		<!-- ConfirmDestAction-->
 		<action name="ConfirmDestAction" class="com.internousdev.sukesyunshop.action.ConfirmDestAction" method="execute">
 			<result name="success">confirmDest.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<!-- CompleteDestAction->
+		<!-- CompleteDestAction-->
 		<action name="CompleteDestAction" class="com.internousdev.sukesyunshop.action.CompleteDestAction" method="execute">
 			<result name="success">completeDest.jsp</result>
 			<result name="error">error.jsp</result>

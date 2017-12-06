@@ -17,15 +17,18 @@ public class BuyItemCompleteDAO {
 	private DBConnector db = new DBConnector();
 	private Connection con = db.getConnection();
 	private DateUtil dateUtil = new DateUtil();
-	private String sql = "SELECT * FROM"
-	                  + " cart_info INNER JOIN product_info"
-			          + " ON product_info.product_id=cart_info.product_id"
-	                  + " WHERE product_id=?";
+
 
 	public List<BuyItemDTO> buyItemDTOList = new ArrayList<BuyItemDTO>();
 
 	public List<BuyItemDTO> select() {
 		try {
+
+			String sql = "SELECT * FROM"
+	                  + " cart_info INNER JOIN product_info"
+			          + " ON product_info.product_id=cart_info.product_id"
+	                  + " WHERE product_id=?";
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
@@ -63,12 +66,18 @@ public class BuyItemCompleteDAO {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
-		String sql = "INSERT INTO purchase_history_info(user_id, product_id) VALUES(?,?)";
+		String sql = "INSERT INTO purchase_history_info(product_id , product_name , product_name_kana ,"
+				+ " product_description , category_id, price , image_file_path , image_file_name , release_date ,"
+				+ " release_company , status) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userId);
-			ps.setInt(2, productId);
+			ps.setInt(1, dto.getItemId());
+			ps.setString(2, dto.getItemName());
+			ps.setString(3, dto.getItemNameKana());
+			ps.setString(4, dto.getItemDescription());
+			ps.setInt(5, dto.getCategoryId());
+			ps.setInt(6, dto.getPrice());
 			int i = ps.executeUpdate();
 			if (i > 0) {
 				System.out.println(i + "商品履歴に登録されました。");
