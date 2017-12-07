@@ -25,7 +25,7 @@
 		<s:submit value="ログイン"/>
 	</s:form>
 
-	<a href="./confirmPassword.jsp">パスワードを忘れた方はこちら</a>
+	<a href="./resetPassword.jsp">パスワードを忘れた方はこちら</a>
 
 </body>
 </html>

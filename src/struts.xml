@@ -63,11 +63,6 @@
 		</action>
 
 		<!-- 担当：梅田-->
-		<!-- ResetPasswordAction-->
-		<action name="ResetPasswordAction" class="com.internousdev.sukesyunshop.action.ResetPasswordAction" method="execute">
-			<result name="success">resetPassword.jsp</result>
-			<result name="error">error.jsp</result>
-		</action>
 		<!-- ConfirmPasswordAction-->
 		<action name="ConfirmPasswordAction" class="com.internousdev.sukesyunshop.action.ConfirmPasswordAction" method="execute">
 			<result name="success">confirmPassword.jsp</result>
