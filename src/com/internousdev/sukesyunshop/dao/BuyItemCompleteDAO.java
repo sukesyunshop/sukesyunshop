@@ -19,15 +19,15 @@ public class BuyItemCompleteDAO {
 	//入れ所が分からないです。
 	private DateUtil dateUtil = new DateUtil();
 
-
+	//アイテム情報のDTO
 	public List<BuyItemDTO> buyItemDTOList = new ArrayList<BuyItemDTO>();
 
-	public List<BuyItemDTO> select() {
+	public List<BuyItemDTO> ItemSelect() {
 		try {
 
 			String sql = "SELECT * FROM"
 	                  + " cart_info INNER JOIN product_info"
-			          + " ON product_info.product_id=cart_info.product_id"
+			          + " ON cart_info.product_id = product_info.product_id"
 	                  + " WHERE product_id=?";
 
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -63,7 +63,7 @@ public class BuyItemCompleteDAO {
 		return buyItemDTOList;
 	}
 
-	public void insert(BuyItemDTO dto) throws SQLException {
+	public void Iteminsert(BuyItemDTO dto) throws SQLException {
 
 
 		DBConnector db = new DBConnector();
@@ -87,10 +87,7 @@ public class BuyItemCompleteDAO {
 			ps.setString(10, dto.getReleaseCompany());
 			ps.setInt(11, dto.getStatus());
 
-
 			ps.executeUpdate();
-
-
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -101,10 +98,9 @@ public class BuyItemCompleteDAO {
 			e.printStackTrace();
 		}
 
-
 	}
 
-	public void delete(int itemId) throws SQLException {
+	public void Itemdelete(int itemId) throws SQLException {
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
