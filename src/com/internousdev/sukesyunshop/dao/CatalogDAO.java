@@ -1,12 +1,9 @@
 package com.internousdev.sukesyunshop.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-
-import com.internousdev.play.dto.CatalogDTO;
-import com.internousdev.play.util.DBConnector;
+import com.internousdev.sukesyunshop.dto.CatalogDTO;
+import com.internousdev.sukesyunshop.util.DBConnector;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
 public class CatalogDAO {
 

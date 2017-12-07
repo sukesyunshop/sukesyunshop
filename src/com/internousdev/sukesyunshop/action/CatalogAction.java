@@ -1,12 +1,9 @@
 package com.internousdev.sukesyunshop.action;
 
-import java.util.ArrayList;
-import java.util.Map;
-
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.play.dao.CatalogDAO;
-import com.internousdev.play.dto.CatalogDTO;
+import com.internousdev.sukesyunshop.dao.CatalogDAO;
+import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 
