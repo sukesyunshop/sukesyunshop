@@ -43,7 +43,7 @@ public class BuyItemCompleteDAO {
 				dto.setPrice(rs.getInt("price"));
 				dto.setImageFilePath(rs.getString("image_file_path"));
 				dto.setImageFileName(rs.getString("image_file_name"));
-				dto.setReleaseDate(rs.getString("release_date")); // データ型が？
+				dto.setReleaseDate(rs.getString("release_date"));
 				dto.setReleaseCompany(rs.getString("release_company"));
 				dto.setStatus(rs.getInt("status"));
 
@@ -70,24 +70,15 @@ public class BuyItemCompleteDAO {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
-		String sql = "INSERT INTO purchase_history_info(product_id , product_name , product_name_kana ,"
-				+ " product_description , category_id, price , image_file_path , image_file_name , release_date ,"
-				+ " release_company , status) VALUES(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO purchase_history_info(user_id , product_id , insert_date , update_date)"
+				+ " VALUES(?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, dto.getItemId());
-			ps.setString(2, dto.getItemName());
-			ps.setString(3, dto.getItemNameKana());
-			ps.setString(4, dto.getItemDescription());
-			ps.setInt(5, dto.getCategoryId());
-			ps.setInt(6, dto.getPrice());
-			ps.setString(7, dto.getImageFilePath());
-			ps.setString(8, dto.getImageFileName());
-			ps.setString(9, dto.getReleaseDate());  //データ型が？
-			ps.setString(10, dto.getReleaseCompany());
-			ps.setInt(11, dto.getStatus());
-			ps.setString(12,dateUtil.getDate());
+			ps.setString(1, dto.getUserId());
+			ps.setInt(2, dto.getItemId());
+			ps.setString(3,dateUtil.getDate());
+			ps.setString(4,dateUtil.getDate());
 
 			ps.executeUpdate();
 
@@ -103,7 +94,7 @@ public class BuyItemCompleteDAO {
 	}
 
     //カート情報を削除
-	public List<BuyItemDTO> itemDelete(int itemId) {
+	public void itemDelete(int itemId) {
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -124,7 +115,7 @@ public class BuyItemCompleteDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return buyItemDTOList;
+		return ;
 
 	}
 

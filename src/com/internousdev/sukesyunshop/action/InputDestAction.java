@@ -20,12 +20,14 @@ public class InputDestAction extends ActionSupport implements SessionAware{
 
 	private Map<String, Object> session;
 
-
 	/*
-	 * 宛先情報を更新するメゾット
+	 * 宛先情報を登録する画面へ遷移
 	 */
 
 	public String execute(){
+
+
+		return SUCCESS;
 
 
 	}

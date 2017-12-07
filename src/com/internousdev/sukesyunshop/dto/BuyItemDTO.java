@@ -1,6 +1,6 @@
 package com.internousdev.sukesyunshop.dto;
 
-public class BuyItemDTO {
+public class BuyItemDTO extends UserInfoDTO {
 
 	private int itemId;
 

@@ -16,7 +16,6 @@ public class DestinationDAO {
 	private DBConnector db = new DBConnector();
 	private Connection con = db.getConnection();
 
-	// 入れ所が分からないです。
 	private DateUtil dateUtil = new DateUtil();
 
 	// 宛先のDTO
@@ -64,7 +63,7 @@ public class DestinationDAO {
 
 		String sql = "INSERT INTO destintion_info(user_id,family_name, "
 				+ "first_name, family_name_kana, first_name_kana,"
-				+ "email,tel_number,user_address) VALUES(?,?,?,?,?,?,?,?)";
+				+ "email,tel_number,user_address , insert_date , update_date) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -77,6 +76,8 @@ public class DestinationDAO {
 			ps.setString(6, dto.getEmail());
 			ps.setString(7, dto.getTelNumber());
 			ps.setString(8,dto.getUserAddress());
+			ps.setString(9,dateUtil.getDate());
+			ps.setString(10, dateUtil.getDate());
 
 			ps.executeUpdate();
 

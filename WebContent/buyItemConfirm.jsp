@@ -29,7 +29,8 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td><span>宛先が未入力の場合は<a href="inputDest.jsp">宛先を追加へ</a></span></td>
+						<td><span>宛先が未作成の場合は<a
+								href='<s:url action="InputDestAction"/>'>新規宛先作成へ</a></span></td>
 					</tr>
 					<tr>
 						<td><input type="submit" value="購入"></td>
