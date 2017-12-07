@@ -24,6 +24,7 @@ public class BuyItemDTO {
 
 	private int status;
 
+
 	public int getItemId() {
 
 		return itemId;

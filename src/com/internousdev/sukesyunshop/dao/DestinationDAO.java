@@ -16,24 +16,23 @@ public class DestinationDAO {
 	private DBConnector db = new DBConnector();
 	private Connection con = db.getConnection();
 
-	//入れ所が分からないです。
+	// 入れ所が分からないです。
 	private DateUtil dateUtil = new DateUtil();
 
-
-	//宛先のDTO
+	// 宛先のDTO
 	public List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
 
-	public List<DestinationDTO> DestinationSelect(){
+//宛先の情報を参照メゾット
+	public List<DestinationDTO> destSelect(String userId) {
 
-		try{
-			String sql = "SELECT * FROM"
-					+ "destination_info WHERE user_id=?";
+		try {
+			String sql = "SELECT * FROM destination_info WHERE user_id=?";
 
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
 			ResultSet rs = ps.executeQuery();
 
-
-			while(rs.next()){
+			while (rs.next()) {
 				DestinationDTO dto = new DestinationDTO();
 				dto.setUserId(rs.getString("user_id"));
 				dto.setFamilyName(rs.getString("family_name"));
@@ -42,11 +41,45 @@ public class DestinationDAO {
 				dto.setFirstNameKana(rs.getString("first_name_kana"));
 				dto.setEmail(rs.getString("email"));
 				dto.setTelNumber(rs.getString("tel_number"));
-
-
+				dto.setUserAddress(rs.getString("user_address"));
 
 				destDTOList.add(dto);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return destDTOList;
+	}
+
+	/*
+	 * 宛先情報をDestintionTABLEに更新
+	 */
+
+	public void destInsert(DestinationDTO dto)throws SQLException {
+
+		String sql = "INSERT INTO destintion_info(user_id,family_name, "
+				+ "first_name, family_name_kana, first_name_kana,"
+				+ "email,tel_number,user_address) VALUES(?,?,?,?,?,?,?,?)";
+
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setString(1, dto.getUserId());
+			ps.setString(2, dto.getFamilyName());
+			ps.setString(3, dto.getFirstName());
+			ps.setString(4, dto.getFamilyNameKana());
+			ps.setString(5, dto.getFirstNameKana());
+			ps.setString(6, dto.getEmail());
+			ps.setString(7, dto.getTelNumber());
+			ps.setString(8,dto.getUserAddress());
+
+			ps.executeUpdate();
+
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -55,7 +88,7 @@ public class DestinationDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return destDTOList;
+
 	}
 
 }

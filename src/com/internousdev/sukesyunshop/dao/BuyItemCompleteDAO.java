@@ -16,13 +16,13 @@ public class BuyItemCompleteDAO {
 	private DBConnector db = new DBConnector();
 	private Connection con = db.getConnection();
 
-	//入れ所が分からないです。
 	private DateUtil dateUtil = new DateUtil();
 
 	//アイテム情報のDTO
 	public List<BuyItemDTO> buyItemDTOList = new ArrayList<BuyItemDTO>();
 
-	public List<BuyItemDTO> ItemSelect() {
+	//カート情報を参照
+	public List<BuyItemDTO> itemSelect() {
 		try {
 
 			String sql = "SELECT * FROM"
@@ -63,7 +63,8 @@ public class BuyItemCompleteDAO {
 		return buyItemDTOList;
 	}
 
-	public void Iteminsert(BuyItemDTO dto) throws SQLException {
+	//カート情報を購入履歴に追加
+	public void itemInsert(BuyItemDTO dto) throws SQLException {
 
 
 		DBConnector db = new DBConnector();
@@ -86,6 +87,7 @@ public class BuyItemCompleteDAO {
 			ps.setString(9, dto.getReleaseDate());  //データ型が？
 			ps.setString(10, dto.getReleaseCompany());
 			ps.setInt(11, dto.getStatus());
+			ps.setString(12,dateUtil.getDate());
 
 			ps.executeUpdate();
 
@@ -100,7 +102,8 @@ public class BuyItemCompleteDAO {
 
 	}
 
-	public void Itemdelete(int itemId) throws SQLException {
+    //カート情報を削除
+	public List<BuyItemDTO> itemDelete(int itemId) throws SQLException {
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -108,6 +111,7 @@ public class BuyItemCompleteDAO {
 		String sql = "DELETE FROM cart_info WHERE item_id=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, itemId);
+
 
 			 ps.executeUpdate();
 

@@ -9,6 +9,7 @@ public class DestinationDTO {
 	private String firstNameKana;
 	private String email;
 	private String telNumber;
+	private String userAddress;
 
 
 	public String getUserId(){
@@ -67,6 +68,13 @@ public class DestinationDTO {
 		this.telNumber = telNumber;
 	}
 
+	public String getUserAddress(){
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress){
+		this.userAddress = userAddress;
+	}
 
 
 }
