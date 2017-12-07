@@ -103,17 +103,28 @@ public class BuyItemCompleteDAO {
 	}
 
     //カート情報を削除
-	public List<BuyItemDTO> itemDelete(int itemId) throws SQLException {
+	public List<BuyItemDTO> itemDelete(int itemId) {
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
 		String sql = "DELETE FROM cart_info WHERE item_id=?";
+
+		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, itemId);
 
-
 			 ps.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+
+		try{
+			con.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return buyItemDTOList;
 
 	}
 
