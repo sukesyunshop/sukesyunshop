@@ -1,6 +1,5 @@
 package com.internousdev.sukesyunshop.util;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validation {
@@ -24,36 +23,31 @@ public class Validation {
 
 	//半角英数字でなかった場合true
 	public boolean harfEngNumValied(String target){
-		Pattern p = Pattern.compile("^[a-zA-Z0-9]*$");
-		Matcher m = p.matcher(target);
-		return !m.find();
+		return !Pattern.matches("^[a-zA-Z0-9]*$", target);
 	}
 
 	//半角英数でなかった場合true
 	public boolean harfEnglishValied(String target){
-		Pattern p = Pattern.compile("^[a-zA-Z]*$");
-		Matcher m = p.matcher(target);
-		return !m.find();
+		return !Pattern.matches("^[a-zA-Z]*$", target);
+	}
+
+	//半角記号でなかった場合true
+	public boolean harfMarkValied(String target){
+		return !Pattern.matches("^[\\p{Punct}]*$", target);
 	}
 
 	//漢字でなかった場合true
 	public boolean kanjiValid(String target){
-		Pattern p = Pattern.compile("^[亜-龠]*$");
-		Matcher m = p.matcher(target);
-		return !m.find();
+		return !Pattern.matches("^[亜-龠]*$", target);
 	}
 
 	//ひらがなでなかった場合true
 	public boolean hiraganaValid(String target){
-		Pattern p = Pattern.compile("^[あ-んが-ぼぁ-ょゎっー]*$");
-		Matcher m = p.matcher(target);
-		return !m.find();
+		return !Pattern.matches("^[あ-んが-ぼぁ-ょゎっー]*$", target);
 	}
 
 	//カタカナでなかった場合true
 	public boolean katakanaValid(String target){
-		Pattern p = Pattern.compile("^[ア-ンガ-ボァ-ョヮッー]*$");
-		Matcher m = p.matcher(target);
-		return !m.find();
+		return !Pattern.matches("^[ア-ンガ-ボァ-ョヮッー]*$", target);
 	}
 }

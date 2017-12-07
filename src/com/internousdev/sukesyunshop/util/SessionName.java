@@ -10,7 +10,7 @@ public class SessionName {
 
 	//ログイン中ならnull,ログインしてないならfalseを入れてください。
 	private final static String LOGIN_FLAG = "loginFlag";
-	//ログイン中ならuser_idを入れてください。ログインしてないならnullにしてください
+	//ログイン中ならuser_idを入れてください。ログインしてないならランダムなIDがはいっています。
 	private final static String USER_ID = "userId";
 	//ログイン時にUserInfoDTOを入れてます。
 	private final static String LOGIN_USER_DTO = "loginUserDto";
