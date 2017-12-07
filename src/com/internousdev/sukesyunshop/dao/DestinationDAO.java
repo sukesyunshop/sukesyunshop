@@ -27,9 +27,7 @@ public class DestinationDAO {
 
 		try{
 			String sql = "SELECT * FROM"
-					+ "destination_info INNER JOIN user_info"
-					+ "ON destination_info.user_id = user_info.user_id"
-					+ "WHERE user_id=?";
+					+ "destination_info WHERE user_id=?";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
