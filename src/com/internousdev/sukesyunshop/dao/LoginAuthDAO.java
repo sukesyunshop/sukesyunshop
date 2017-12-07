@@ -55,7 +55,7 @@ public class LoginAuthDAO {
 
 		String sql = ""
 				+ "SELECT * "
-				+ "INTO user_info "
+				+ "FROM user_info "
 				+ "WHERE user_id = ? "
 				+ "AND password = ? ";
 

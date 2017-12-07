@@ -20,7 +20,7 @@ public class LogoutAction extends ActionSupport implements SessionAware {
 
 		session.clear();
 
-		return ERROR;
+		return SUCCESS;
 	}
 
 	public Map<String, Object> getSession() {
