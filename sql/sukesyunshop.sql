@@ -6,12 +6,12 @@ use sukesyunshopdb;
 
 CREATE TABLE user_info(
 id int not null primary key auto_increment,
-user_id varchar(128) unique,
+user_id varchar(16) unique,
 password varchar(16),
-family_name varchar(16),
-first_name varchar(16),
-family_name_kana varchar(16),
-first_name_kana varchar(16),
+family_name varchar(32),
+first_name varchar(32),
+family_name_kana varchar(32),
+first_name_kana varchar(32),
 sex tinyint(1),
 email varchar(32),
 status tinyint(1) default 1,
@@ -53,7 +53,8 @@ comment='商品情報テーブル';
 
 CREATE TABLE cart_info(
 id int primary key auto_increment,
-user_id varchar(128),
+user_id varchar(16),
+temp_user_id varchar(128),
 product_id int,
 insert_date datetime default NOW(),
 update_date datetime,
@@ -66,7 +67,7 @@ comment='カート情報テーブル';
 
 CREATE TABLE purchase_history_info(
 id int primary key auto_increment,
-user_id varchar(128),
+user_id varchar(16),
 product_id int,
 insert_date datetime default NOW(),
 update_date datetime,
@@ -79,11 +80,11 @@ comment='購入履歴情報テーブル';
 
 CREATE TABLE destination_info(
 id int primary key auto_increment,
-user_id varchar(128),
-family_name varchar(16),
-first_name varchar(16),
-family_name_kana varchar(16),
-first_name_kana varchar(16),
+user_id varchar(16),
+family_name varchar(32),
+first_name varchar(32),
+family_name_kana varchar(32),
+first_name_kana varchar(32),
 sex tinyint(1),
 email varchar(32),
 tel_number varchar(13),

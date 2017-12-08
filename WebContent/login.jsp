@@ -8,7 +8,7 @@
 	<title>Insert title here</title>
 </head>
 <body>
-
+--+5
 	<p><s:property value="message" /></p>
 
 	<s:form action="LoginAction" theme="simple">
