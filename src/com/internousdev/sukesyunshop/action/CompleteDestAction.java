@@ -1,6 +1,8 @@
 package com.internousdev.sukesyunshop.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -23,12 +25,12 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 
 	/*----必要な機能をインスタンス化-----*/
 	DestinationDAO destDAO = new DestinationDAO();
-	DestinationDTO destDTO = new DestinationDTO();
+	List <DestinationDTO> destDTOList = new ArrayList <DestinationDTO>();
 
 	/*-----------実行メソッド-----------*/
 	public String execute() throws SQLException {
 
-		destDAO.destInsert();
+		destDTOList = destDAO.destInsert(destDTOList.get(0));
 
 		String result = SUCCESS;
 
