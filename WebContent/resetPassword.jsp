@@ -16,26 +16,25 @@
 <style type="text/css">
 
 /*=============レイアウト===========*//
+
 </style>
 </head>
 <body>
 		<table>
 			<s:form action="ConfirmPasswordAction">
-
 				<label>ログインID:
-					<s:textfield name="loginId" value=""/>
+					<input type="text" name="loginId" value="">
 				</label><br>
-					<p><s:property value="userIdMessage" /></p>
+					<p><span style="color:#FF0000"><s:property value="userIdMessage" /></span></p>
 
 				<label>新しいパスワード:
-					<s:password class="password" name="loginPassword" value=""/>
+					<input type="text" name="loginPassword" value="">
 				</label><br>
-					<p><s:property value="passwordMessage"/></p>
 
 				<label>再確認用パスワード:
-					<s:password class="password" name="confirmPassword" value=""/>
+					<input type="password" name="confirmPassword" value="">
 				</label><br>
-					<p><s:property value="passwordMessage"/></p>
+						<p><span style="color:#FF0000"><s:property value="passwordMessage"/></span></p>
 				<s:submit value="登録"/>
 			</s:form>
 		</table>

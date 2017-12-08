@@ -1,9 +1,11 @@
 package com.internousdev.sukesyunshop.action;
+
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.ResetPasswordDAO;
+import com.internousdev.sukesyunshop.dto.ConfirmPasswordDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CompletePasswordAction extends ActionSupport implements SessionAware {
@@ -21,54 +23,65 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 
 		private ResetPasswordDAO resetPasswordDAO = new ResetPasswordDAO();
 
+		private ConfirmPasswordDTO confirmPasswordDTO = new ConfirmPasswordDTO();
+
 
 		/*------実行メソッド-----*/
 		public String execute(){
 
-			/*ログインIDをDBから特定*/
+		/*ログインIDをDBから特定*/
 			if(!resetPasswordDAO.getLoginId(loginId)){
 				setUserIdMessage("ログインIDが存在しません");
 				return "back";
 			}
 
-			/*ユーザーIDを元にして新しいパスワードをDBにセットするメソッド*/
+
+		/*ユーザーIDを元にして新しいパスワードをDBにセットするメソッド*/
 			if(resetPasswordDAO.updatePassword(loginPassword,loginId)){
 				return SUCCESS;
 			}
 				return ERROR;
-		}
+			}
 
 		/*新規パスワードのゲッターセッター*/
 		public String getLoginPassword(){
-			return loginPassword;
-		}
+				return loginPassword;
+			}
 		public void setLoginPassword(String loginPassword) {
-			this.loginPassword = loginPassword;
-		}
+				this.loginPassword = loginPassword;
+			}
 
 		/*セッション*/
 		public Map<String, Object> getSession() {
-			return session;
-		}
+				return session;
+			}
 		@Override
 		public void setSession(Map<String, Object> session) {
-			this.session = session;
-		}
+				this.session = session;
+			}
 
 		/*ログインIDのゲッターセッター*/
 		public String getLoginId() {
-			return loginId;
-		}
+				return loginId;
+			}
 		public void setLoginId(String loginId) {
-			this.loginId = loginId;
-		}
+				this.loginId = loginId;
+			}
 
 		/*ログインID入力失敗のエラーメッセージ*/
 		public String getUserIdMessage() {
-			return userIdMessage;
-		}
+				return userIdMessage;
+			}
 
 		public void setUserIdMessage(String userIdMessage) {
-			this.userIdMessage = userIdMessage;
+				this.userIdMessage = userIdMessage;
+			}
+
+		public ConfirmPasswordDTO getConfirmPasswordDTO() {
+			return confirmPasswordDTO;
 		}
-}
+
+		public void setConfirmPasswordDTO(ConfirmPasswordDTO confirmPasswordDTO) {
+			this.confirmPasswordDTO = confirmPasswordDTO;
+		}
+	}

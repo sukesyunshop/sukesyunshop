@@ -20,8 +20,9 @@
 	<h3>登録する内容は以下でよろしいですか。</h3>
 
 	<s:form action="CompletePasswordAction" >
-		<label>再設定されるパスワード:</label>
-			<p><s:property value="loginPassword"/></p>
+		<label>再設定されるパスワード:
+			<s:property value="loginPassword"/>
+		</label>
 				<s:submit class="button"  value="完了" />
 	</s:form>
 	<span>前画面に戻る場合は</span><a href="./resetPassword.jsp">こちら</a>
