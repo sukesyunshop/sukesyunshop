@@ -15,7 +15,12 @@
 		<p><s:property value="userIdMessage" /></p>
 		<label>
 			ログインID：
-			<input type="text" name="userId">
+			<s:if test="#session.userId == ''">
+				<input type="text" name="userId" value="">
+			</s:if>
+			<s:else>
+				<input type="text" name="userId" value="<s:property value="#session.userId" />">
+			</s:else>
 		</label><br>
 		<p><s:property value="passwordMessage" /></p>
 		<label>
@@ -23,6 +28,9 @@
 			<input type="password" name="password">
 		</label>
 		<s:submit value="ログイン"/>
+		<label>
+			<input type="checkbox" name="saveId" value="true">
+		</label>
 	</s:form>
 
 	<a href="./resetPassword.jsp">パスワードを忘れた方はこちら</a>

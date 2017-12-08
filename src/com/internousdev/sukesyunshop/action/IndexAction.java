@@ -14,8 +14,8 @@ public class IndexAction extends ActionSupport implements SessionAware {
 
 	public String execute(){
 		RandomID randomId = new RandomID();
-		session.put(SessionName.getUserId(), randomId.getTempId());
-		session.put(SessionName.getLoginFlag(), "false");
+		session.put(SessionName.getTempUserId(), randomId.getTempId());
+		session.put(SessionName.getLoginFlag(), SessionName.getFalse());
 		return SUCCESS;
 	}
 

@@ -16,10 +16,13 @@ public class LogoutAction extends ActionSupport implements SessionAware {
 		LoginAuthDAO dao = new LoginAuthDAO();
 		String userId = session.get(SessionName.getUserId()).toString();
 		String password = session.get(SessionName.getUserPassword()).toString();
+		boolean saveId = session.get(SessionName.getSaveId()).equals(SessionName.getTrue());
 		dao.logout(userId, password);
 
 		session.clear();
-
+		if(saveId){
+			session.put(SessionName.getUserId(), userId);
+		}
 		return SUCCESS;
 	}
 

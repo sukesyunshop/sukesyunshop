@@ -13,6 +13,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	private String userId;
 	private String password;
+	private String saveId="";
 
 	private Map<String, Object> session;
 	private String userIdMessage;
@@ -34,8 +35,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		try{
 			if(loginDAO.login(userId, password)){
 				session.put(SessionName.getUserId(), userId);
+				session.put(SessionName.getTempUserId(), "");
 				session.put(SessionName.getUserPassword(), password);
-				session.put(SessionName.getLoginFlag(), "true");
+				session.put(SessionName.getLoginFlag(), SessionName.getTrue());
+				if(saveId.equals("true")){
+					session.put(SessionName.getSaveId(), SessionName.getTrue());
+				}else{
+					session.put(SessionName.getSaveId(), SessionName.getFalse());
+				}
 				return SUCCESS;
 			}else{
 				passwordMessage = "入力されたパスワードが異なります。";
@@ -79,6 +86,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.password = password;
 	}
 
+
+	public String getSaveId() {
+		return saveId;
+	}
+
+	public void setSaveId(String saveId) {
+		this.saveId = saveId;
+	}
 
 	public String getUserIdMessage() {
 		return userIdMessage;

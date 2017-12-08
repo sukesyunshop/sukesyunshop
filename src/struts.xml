@@ -6,7 +6,7 @@
 
 <struts>
 	<constant name="struts.devMode" value="true" />
-	<package name="com.internousdev.ecsite.action" extends="struts-default">
+	<package name="com.internousdev.sukesyunshop.action" extends="struts-default">
 
 		<!-- 担当：山口 -->
 		<!-- IndexAction -->
