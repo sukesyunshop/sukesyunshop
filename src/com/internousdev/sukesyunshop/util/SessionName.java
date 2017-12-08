@@ -12,11 +12,11 @@ public class SessionName {
 	private final static String LOGIN_FLAG = "loginFlag";
 	//ログイン中ならuser_idを入れてください。ログインしてないならランダムなIDがはいっています。
 	private final static String USER_ID = "userId";
-	//ログイン時にUserInfoDTOを入れてます。
-	private final static String LOGIN_USER_DTO = "loginUserDto";
+	//ログイン中ならuser_idを入れてください。ログインしてないならnullがはいっています。
+	private final static String USER_PASSWORD = "userPassword";
 
 	/*
-	 *以下にゲッターセッターをshift+alt+sからゲッターセッター入力的なので入れてください。
+	 *以下にゲッターセッターをshift+alt+sからゲッターセッター入力みたいな項目から入れてください。
 	 *なるべく変数順で。
 	 */
 	public static String getLoginFlag() {
@@ -25,8 +25,8 @@ public class SessionName {
 	public static String getUserId() {
 		return USER_ID;
 	}
-	public static String getLoginUserDto() {
-		return LOGIN_USER_DTO;
+	public static String getUserPassword() {
+		return USER_PASSWORD;
 	}
 
 }

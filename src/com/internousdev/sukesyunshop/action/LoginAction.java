@@ -23,6 +23,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 
 	Validation valid = new Validation();
+	//TODO 梅田さんにpassword更新時セッション情報を変更してもらう。
 
 	public String execute(){
 		userIdMessage = validation(userId, NAME_USER_ID, 1, 8);
@@ -33,7 +34,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		try{
 			if(loginDAO.login(userId, password)){
 				session.put(SessionName.getUserId(), userId);
-				session.put(SessionName.getLoginUserDto(),loginDAO.getUserInfo(userId, password));
+				session.put(SessionName.getUserPassword(), password);
 				session.put(SessionName.getLoginFlag(), "true");
 				return SUCCESS;
 			}else{

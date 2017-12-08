@@ -5,7 +5,6 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.LoginAuthDAO;
-import com.internousdev.sukesyunshop.dto.UserInfoDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -15,8 +14,9 @@ public class LogoutAction extends ActionSupport implements SessionAware {
 
 	public String execute(){
 		LoginAuthDAO dao = new LoginAuthDAO();
-		UserInfoDTO dto = (UserInfoDTO) session.get(SessionName.getLoginUserDto());
-		dao.logout(dto.getUserId(), dto.getPassword());
+		String userId = session.get(SessionName.getUserId()).toString();
+		String password = session.get(SessionName.getUserPassword()).toString();
+		dao.logout(userId, password);
 
 		session.clear();
 
