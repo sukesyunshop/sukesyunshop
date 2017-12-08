@@ -3,17 +3,27 @@ package com.internousdev.sukesyunshop.dto;
 public class CatalogDTO {
 
 	private int id;
+	private int productId;
 	private String productName;
 	private String productNameKana;
 	private int price;
-	private int release_date;
-	private String release_company;
+	private String imageFilePath;
+	private String imageFileName;
+	private int categoryId;
+	private String releaseDate;
+	private String releaseCompany;
 
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 	public String getProductName() {
 		return productName;
@@ -33,19 +43,35 @@ public class CatalogDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getRelease_date() {
-		return release_date;
+	public String getImageFilePath() {
+		return imageFilePath;
 	}
-	public void setRelease_date(int release_date) {
-		this.release_date = release_date;
+	public void setImageFilePath(String imageFilePath) {
+		this.imageFilePath = imageFilePath;
 	}
-	public String getRelease_company() {
-		return release_company;
+	public String getImageFileName() {
+		return imageFileName;
 	}
-	public void setRelease_company(String release_company) {
-		this.release_company = release_company;
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
 	}
-
-
+	public String getReleaseDate() {
+		return releaseDate;
+	}
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+	public String getReleaseCompany() {
+		return releaseCompany;
+	}
+	public void setReleaseCompany(String releaseCompany) {
+		this.releaseCompany = releaseCompany;
+	}
+	public int getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
 
 }

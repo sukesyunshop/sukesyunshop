@@ -22,7 +22,7 @@
 				<span>値段</span>
 				<s:property value="getPrice()" />
 				<span>円</span>
-				<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getId()"/></s:url>">商品詳細</a>
+				<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">商品詳細</a>
 		</li>
 	</s:iterator>
 </ul>

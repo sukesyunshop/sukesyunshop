@@ -1,5 +1,7 @@
 package com.internousdev.sukesyunshop.action;
 
+import java.util.Map;
+
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.CatalogDAO;
@@ -9,19 +11,16 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ProductDetailAction extends ActionSupport implements SessionAware {
 
 	public int productId;
-
 	public CatalogDTO dto;
-
-	private CatalogDAO dao = new CatalogDAO();
-
 	public Map<String, Object> session;
 
 	public String execute(){
-
+		System.out.println("hoge");
 		String result = ERROR;
+		CatalogDAO dao = new CatalogDAO();
 		try{
+			System.out.println(productId);
 			dto=dao.getItem(productId);
-
 			result=SUCCESS;
 		}catch(NumberFormatException e){
 			e.printStackTrace();

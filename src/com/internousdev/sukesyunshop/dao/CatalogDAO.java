@@ -1,9 +1,13 @@
 package com.internousdev.sukesyunshop.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.internousdev.sukesyunshop.util.DBConnector;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
 
 public class CatalogDAO {
 
@@ -13,7 +17,7 @@ public class CatalogDAO {
 	public CatalogDTO getItem(int productId){
 		CatalogDTO getItem=new CatalogDTO();
 		String sql=""
-				+ "SELECT  id, product_name,product_name_kana, price,release_date datetime,release_company "
+				+ "SELECT  id, category_id,product_id, product_name,product_name_kana,image_file_path,image_file_name, price,release_date,release_company "
 				+ " FROM product_info "
 				+ "where product_id=?";
 
@@ -24,11 +28,15 @@ public class CatalogDAO {
 
 				if(resultSet.next()){
 					getItem.setId(resultSet.getInt("id"));
+					getItem.setCategoryId(resultSet.getInt("category_id"));
+					getItem.setProductId(resultSet.getInt("product_id"));
 					getItem.setProductName(resultSet.getString("product_name"));
 					getItem.setProductNameKana(resultSet.getString("product_name_kana"));
+					getItem.setImageFilePath(resultSet.getString("image_file_path"));
+					getItem.setImageFileName(resultSet.getString("image_file_name"));
 					getItem.setPrice(resultSet.getInt("price"));
-					getItem.setRelease_date (resultSet.getInt("release_date"));
-					getItem.setRelease_company(resultSet.getString("release_company"));
+					getItem.setReleaseDate (resultSet.getString("release_date"));
+					getItem.setReleaseCompany(resultSet.getString("release_company"));
 					System.out.println(getItem.getProductName());
 				}
 			} catch(Exception e){
@@ -37,25 +45,24 @@ public class CatalogDAO {
 			return getItem;
 		}
 
-	public ArrayList<CatalogDTO> getCatalogList(){
+	public ArrayList<CatalogDTO> getCatalogList() throws SQLException{
 		ArrayList<CatalogDTO> list = new ArrayList<CatalogDTO>();
-		String sql = "SELECT  id, product_name,product_name_kana, price FROM product_info ";
+		String sql = "SELECT  id, category_id,product_id, product_name,product_name_kana, image_file_path,image_file_name,price FROM product_info ";
 
-		try{
-			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			ResultSet resultSet = preparedStatement.executeQuery();
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		ResultSet resultSet = preparedStatement.executeQuery();
 
-			while(resultSet.next()){
-				CatalogDTO catalogdto = new CatalogDTO();
-				catalogdto.setId(resultSet.getInt("id"));
-				catalogdto.setProductName(resultSet.getString("product_name"));
-				System.out.println(catalogdto.getProductName());
-				catalogdto.setProductNameKana(resultSet.getString("product_name_kana"));
-				catalogdto.setPrice(resultSet.getInt("price"));
-				list.add(catalogdto);
-			}
-		} catch(Exception e){
-			e.printStackTrace();
+		while(resultSet.next()){
+			CatalogDTO catalogdto = new CatalogDTO();
+			catalogdto.setId(resultSet.getInt("id"));
+			catalogdto.setCategoryId(resultSet.getInt("category_id"));
+			catalogdto.setProductId(resultSet.getInt("product_id"));
+			catalogdto.setProductName(resultSet.getString("product_name"));
+			catalogdto.setProductNameKana(resultSet.getString("product_name_kana"));
+			catalogdto.setImageFilePath(resultSet.getString("image_file_path"));
+			catalogdto.setImageFileName(resultSet.getString("image_file_name"));
+			catalogdto.setPrice(resultSet.getInt("price"));
+			list.add(catalogdto);
 		}
 		return list;
 	}
