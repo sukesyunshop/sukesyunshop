@@ -4,6 +4,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.ResetPasswordDAO;
+import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CompletePasswordAction extends ActionSupport implements SessionAware {
@@ -22,6 +23,7 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 		/*------実行メソッド-----*/
 		public String execute(){
 			if(resetPasswordDAO.updatePassword(loginPassword,loginId)){
+				session.put(SessionName.getUserPassword(), loginPassword);
 				return SUCCESS;
 			}
 				return ERROR;

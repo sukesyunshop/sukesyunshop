@@ -21,7 +21,7 @@ public class ConfirmPasswordDAO  {
 
 
 
-	String sql="SELECT * FROM user_info where login_id=?";
+	String sql="SELECT * FROM user_info where user_id=?";
 
 	try{
 		PreparedStatement preparedStatement=connection.prepareStatement(sql);
