@@ -42,12 +42,8 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 *
 	 * 購入完了画面へ遷移する時にカート情報を削除する処理
 	 *
-	 *
-	 */
+	 *------------ 実行メソッド------------*/
 	public String execute() {
-		/**
-		 * 登録されている宛先情報を参照する 宛先が登録されていない場合はRETURNの値は"lack"へ遷移
-		 */
 		userId = session.get(SessionName.getUserId()).toString();
 		String result = ERROR;
 		destDTOList = destDAO.destSelect(userId);

@@ -9,5 +9,4 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware 
 
 
 
-
 }

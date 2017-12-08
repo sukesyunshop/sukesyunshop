@@ -54,18 +54,17 @@ public class DestinationDAO {
 		}
 		return destDTOList;
 	}
-
 	/*
 	 * 宛先情報をDestintionTABLEに更新
 	 */
 
-	public void destInsert(DestinationDTO dto)throws SQLException {
+	public void destInsert(DestinationDTO dto) throws SQLException {
 
 		String sql = "INSERT INTO destintion_info(user_id,family_name, "
 				+ "first_name, family_name_kana, first_name_kana,"
 				+ "email,tel_number,user_address , insert_date , update_date) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
-		try{
+		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, dto.getUserId());
@@ -75,21 +74,21 @@ public class DestinationDAO {
 			ps.setString(5, dto.getFirstNameKana());
 			ps.setString(6, dto.getEmail());
 			ps.setString(7, dto.getTelNumber());
-			ps.setString(8,dto.getUserAddress());
-			ps.setString(9,dateUtil.getDate());
+			ps.setString(8, dto.getUserAddress());
+			ps.setString(9, dateUtil.getDate());
 			ps.setString(10, dateUtil.getDate());
 
 			ps.executeUpdate();
 
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		try{
+		try {
 			con.close();
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-}
+	}
