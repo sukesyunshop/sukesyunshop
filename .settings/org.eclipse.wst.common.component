@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="">
+    <wb-module deploy-name="sukesyunshop">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="java-output-path" value="/sukesyunshop/build/classes"/>
+        <property name="context-root" value="sukesyunshop"/>
+    </wb-module>
+</project-modules>
