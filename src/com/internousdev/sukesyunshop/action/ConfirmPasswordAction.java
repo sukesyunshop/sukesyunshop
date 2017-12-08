@@ -90,6 +90,14 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 			this.loginId = loginId;
 		}
 
+		/*確認用パスワードのゲッターセッター*/
+		public String getConfirmPassword(){
+			return confirmPassword;
+		}
+		public void setConfirmPassword(String confirmPassword){
+			this.confirmPassword=confirmPassword;
+		}
+
 		/*パスワード入力エラーメッセージのゲッターセッター*/
 		public String getPasswordMessage() {
 			return passwordMessage;
