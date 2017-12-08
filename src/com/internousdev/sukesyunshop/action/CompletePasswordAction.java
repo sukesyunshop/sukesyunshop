@@ -4,7 +4,6 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.ResetPasswordDAO;
-import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CompletePasswordAction extends ActionSupport implements SessionAware {
@@ -15,6 +14,9 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 		/*ログインID*/
 		private String loginId;
 
+		/*ログインID失敗のエラーメッセージ*/
+		private String userIdMessage;
+
 		public Map<String,Object> session;
 
 		private ResetPasswordDAO resetPasswordDAO = new ResetPasswordDAO();
@@ -22,8 +24,15 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 
 		/*------実行メソッド-----*/
 		public String execute(){
+
+			/*ログインIDをDBから特定*/
+			if(!resetPasswordDAO.getLoginId(loginId)){
+				setUserIdMessage("ログインIDが存在しません");
+				return "back";
+			}
+
+			/*ユーザーIDを元にして新しいパスワードをDBにセットするメソッド*/
 			if(resetPasswordDAO.updatePassword(loginPassword,loginId)){
-				session.put(SessionName.getUserPassword(), loginPassword);
 				return SUCCESS;
 			}
 				return ERROR;
@@ -52,5 +61,14 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 		}
 		public void setLoginId(String loginId) {
 			this.loginId = loginId;
+		}
+
+		/*ログインID入力失敗のエラーメッセージ*/
+		public String getUserIdMessage() {
+			return userIdMessage;
+		}
+
+		public void setUserIdMessage(String userIdMessage) {
+			this.userIdMessage = userIdMessage;
 		}
 }

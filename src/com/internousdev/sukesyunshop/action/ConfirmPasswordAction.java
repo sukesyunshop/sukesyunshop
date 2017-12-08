@@ -23,9 +23,6 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 	/*ログインIDと新規パスワードを格納*/
 	public Map<String,Object> session;
 
-	/*ログインID入力についてのエラーメッセージ*/
-	private String userIdMessage;
-
 	/*新規パスワード入力についてのエラーメッセージ*/
 	private String passwordMessage;
 
@@ -39,11 +36,6 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 
 	/*---------実行メソッド-----------*/
 	public String execute(){
-		/*ログインIDをDBから特定*/
-		if(!resetPasswordDAO.getLoginId(loginId)){
-			setUserIdMessage("ログインIDが存在しません");
-			return ERROR;
-		}
 
 		/*パスワードが未入力*/
 		if(validation.emptyValid(loginPassword)){
@@ -106,13 +98,6 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 			this.passwordMessage = passwordMessage;
 		}
 
-		/*ログインID入力のエラーメッセージのゲッターセッター*/
-		public String getUserIdMessage() {
-			return userIdMessage;
-		}
-		public void setUserIdMessage(String userIdMessage) {
-			this.userIdMessage = userIdMessage;
-		}
 
 		/*セッション*/
 		public Map<String, Object> getSession() {
