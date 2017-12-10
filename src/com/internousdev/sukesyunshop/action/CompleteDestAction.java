@@ -13,7 +13,6 @@ import com.opensymphony.xwork2.ActionSupport;
 public class CompleteDestAction extends ActionSupport implements SessionAware {
 
 	// 宛先情報変数
-	private String userId;
 	private String familyName;
 	private String firstName;
 	private String familyNameKana;
@@ -26,12 +25,14 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 	/*----必要な機能をインスタンス化-----*/
 	DestinationDAO destDAO = new DestinationDAO();
 	List <DestinationDTO> destDTOList = new ArrayList <DestinationDTO>();
-
+	DestinationDTO destDTO = new DestinationDTO();
 	/*-----------実行メソッド-----------*/
 	public String execute() {
 		/*-----分からない-----*/
-		destDAO.destInsert();
-		String result = SUCCESS;
+			destDAO.destInsert(destDTO.setFamilyName(familyName));
+			String result = SUCCESS;
+
+
 
 
 

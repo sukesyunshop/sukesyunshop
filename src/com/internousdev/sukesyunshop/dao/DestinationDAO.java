@@ -58,11 +58,12 @@ public class DestinationDAO {
 	 * 宛先情報をDestintionTABLEに更新
 	 */
 
-	public  void destInsert(DestinationDTO dto) throws SQLException {
+	public void destInsert(DestinationDTO dto) throws SQLException {
 
 		String sql = "INSERT INTO destintion_info(user_id,family_name, "
 				+ "first_name, family_name_kana, first_name_kana,"
-				+ "email,tel_number,user_address , insert_date , update_date) VALUES(?,?,?,?,?,?,?,?,?,?)";
+				+ "email,tel_number,user_address , insert_date , update_date) "
+				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
