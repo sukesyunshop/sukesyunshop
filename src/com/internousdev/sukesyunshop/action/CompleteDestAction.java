@@ -1,6 +1,5 @@
 package com.internousdev.sukesyunshop.action;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class CompleteDestAction extends ActionSupport implements SessionAware {
 
 	// 宛先情報変数
+	private String userId;
 	private String familyName;
 	private String firstName;
 	private String familyNameKana;
@@ -28,13 +28,12 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 	List <DestinationDTO> destDTOList = new ArrayList <DestinationDTO>();
 
 	/*-----------実行メソッド-----------*/
-	public String execute() throws SQLException {
-
-		destDTOList = destDAO.destInsert(destDTOList.get(0));
-
+	public String execute() {
+		/*-----分からない-----*/
+		destDAO.destInsert();
 		String result = SUCCESS;
 
-		return result;
+
 
 	}
 

@@ -58,7 +58,7 @@ public class DestinationDAO {
 	 * 宛先情報をDestintionTABLEに更新
 	 */
 
-	public void destInsert(DestinationDTO dto) throws SQLException {
+	public  void destInsert(DestinationDTO dto) throws SQLException {
 
 		String sql = "INSERT INTO destintion_info(user_id,family_name, "
 				+ "first_name, family_name_kana, first_name_kana,"

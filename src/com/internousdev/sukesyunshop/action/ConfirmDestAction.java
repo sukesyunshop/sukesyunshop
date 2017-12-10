@@ -45,6 +45,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 
 	/*------実行メソッド-------*/
 	public String execute() {
+
 		/*------- 姓のエラー処理 ------*/
 		if (validation.emptyValid(familyName)) {
 			familyMessage = "姓が未入力です";

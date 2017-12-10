@@ -20,7 +20,7 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	public Map<String, Object> session;
 
 	/**
-	 * 商品情報DTO＆宛先情報DTOをインスタンス化
+	 * 宛先情報DTOをインスタンス化
 	 */
 	private List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
 
