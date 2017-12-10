@@ -5,7 +5,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.ResetPasswordDAO;
-import com.internousdev.sukesyunshop.dto.ConfirmPasswordDTO;
+import com.internousdev.sukesyunshop.dto.ResetPasswordDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CompletePasswordAction extends ActionSupport implements SessionAware {
@@ -23,12 +23,13 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 
 		private ResetPasswordDAO resetPasswordDAO = new ResetPasswordDAO();
 
-		private ConfirmPasswordDTO confirmPasswordDTO = new ConfirmPasswordDTO();
+		private ResetPasswordDTO resetPasswordDTO = new ResetPasswordDTO();
+
 
 
 		/*------実行メソッド-----*/
 		public String execute(){
-
+			session.get("loginId");
 		/*ログインIDをDBから特定*/
 			if(!resetPasswordDAO.getLoginId(loginId)){
 				setUserIdMessage("ログインIDが存在しません");
@@ -77,11 +78,11 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 				this.userIdMessage = userIdMessage;
 			}
 
-		public ConfirmPasswordDTO getConfirmPasswordDTO() {
-			return confirmPasswordDTO;
+		public ResetPasswordDTO getResetPasswordDTO() {
+			return resetPasswordDTO;
 		}
 
-		public void setConfirmPasswordDTO(ConfirmPasswordDTO confirmPasswordDTO) {
-			this.confirmPasswordDTO = confirmPasswordDTO;
+		public void setResetPasswordDTO(ResetPasswordDTO resetPasswordDTO) {
+			this.resetPasswordDTO = resetPasswordDTO;
 		}
 	}

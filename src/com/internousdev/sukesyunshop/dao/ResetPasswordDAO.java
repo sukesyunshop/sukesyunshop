@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.internousdev.sukesyunshop.dto.ConfirmPasswordDTO;
+import com.internousdev.sukesyunshop.dto.ResetPasswordDTO;
 import com.internousdev.sukesyunshop.util.DBConnector;
 
 public class ResetPasswordDAO {
@@ -13,7 +13,7 @@ public class ResetPasswordDAO {
 	private DBConnector dbConnector = new DBConnector();
 	private Connection connection = dbConnector.getConnection();
 
-	private ConfirmPasswordDTO confirmPasswordDTO=new ConfirmPasswordDTO();
+	private ResetPasswordDTO resetPasswordDTO=new ResetPasswordDTO();
 
 
 	/*ログインIDをDBから探すメソッド*/
@@ -54,8 +54,8 @@ public class ResetPasswordDAO {
 		}
 	}
 
-	public ConfirmPasswordDTO getConfirmPasswordDTO() {
-		return confirmPasswordDTO;
+	public ResetPasswordDTO getResetPasswordDTO() {
+		return resetPasswordDTO;
 		}
 	}
 

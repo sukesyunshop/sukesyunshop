@@ -22,18 +22,31 @@
 <body>
 		<table>
 			<s:form action="ConfirmPasswordAction">
-				<label>ログインID:
-					<input type="text" name="loginId" value="">
-				</label><br>
-					<p><span style="color:#FF0000"><s:property value="userIdMessage" /></span></p>
-
-				<label>新しいパスワード:
-					<input type="text" name="loginPassword" value="">
-				</label><br>
-
-				<label>再確認用パスワード:
-					<input type="password" name="confirmPassword" value="">
-				</label><br>
+				<tr>
+					<td>
+						<label>ログインID:</label>
+					</td>
+					<td>
+						<input type="text" name="loginId" value="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>新しいパスワード:</label>
+					</td>
+					<td>
+						<input type="text" name="loginPassword" value="">
+					</td>
+					</tr>
+				<tr>
+					<td>
+						<label>再確認用パスワード:</label>
+					</td>
+					<td>
+						<input type="password" name="confirmPassword" value="">
+					</td>
+				</tr>
+						<p><span style="color:#FF0000"><s:property value="userIdMessage" /></span></p>
 						<p><span style="color:#FF0000"><s:property value="passwordMessage"/></span></p>
 				<s:submit value="登録"/>
 			</s:form>

@@ -5,7 +5,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.ResetPasswordDAO;
-import com.internousdev.sukesyunshop.dto.ConfirmPasswordDTO;
+import com.internousdev.sukesyunshop.dto.ResetPasswordDTO;
 import com.internousdev.sukesyunshop.util.Validation;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -31,11 +31,13 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 
 	public ResetPasswordDAO resetPasswordDAO=new ResetPasswordDAO();
 
-	public ConfirmPasswordDTO confirmPasswordDTO=new ConfirmPasswordDTO();
+	public ResetPasswordDTO resetPasswordDTO=new ResetPasswordDTO();
 
 
 	/*---------実行メソッド-----------*/
 	public String execute(){
+
+
 
 		/*パスワードが未入力*/
 		if(validation.emptyValid(loginPassword)){
@@ -57,6 +59,8 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 
 		/*新規パスワードと確認パスワードを比べる*/
 		if(loginPassword.equals(confirmPassword)){
+			session.put("loginId",loginId);
+			session.put("loginPassword", loginPassword);
 			return SUCCESS;
 		}else{
 			passwordMessage="入力されたパスワードが異なります。";
