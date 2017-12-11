@@ -96,7 +96,6 @@ public class CartDAO {
 						+ "?,?)";
 		}
 		try {
-			System.out.println("kkkkk");
 			PreparedStatement preparedStatement = con.prepareStatement(sql);
 			preparedStatement.setString(1,userId);
 			preparedStatement.setInt(2,productId);
@@ -127,6 +126,7 @@ public class CartDAO {
 				preparedStatement.setInt(2,productId);
 				preparedStatement.executeUpdate();
 				return true;
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 				return false;
@@ -134,3 +134,4 @@ public class CartDAO {
 		 }
 
 }
+

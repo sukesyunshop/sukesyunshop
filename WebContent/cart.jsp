@@ -30,7 +30,7 @@
 				<s:property value="getReleaseDate()"/>
 				<span>発売年月日</span>
 				<s:property value="getReleaseCompany()" />
-				<a href="<s:url action="CartDeleteAction"></s:url>">削除</a>
+				<a href="<s:url action="CartDeleteAction"><s:param name="productId" value="productId" /></s:url>">削除</a>
 
   		</li>
 	</s:iterator>
