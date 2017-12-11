@@ -39,7 +39,7 @@
 	<input type="text" name="userAddress" value="">
 
 			<br />
-			<input type="submit" value="確認画面へ">
+			<s:submit class ="button"  value="確認画面へ"/>
 		</s:form>
 
 		MyPageへ戻るには<a href="myPage.jsp">MyPageへ</a>

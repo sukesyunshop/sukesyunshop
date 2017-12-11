@@ -44,7 +44,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 	/*------実行メソッド-------*/
 	public String execute() {
 
-		String result = ERROR;
+		String result = SUCCESS;
 
 		/*------- 姓のエラー処理 ------*/
 		if (validation.emptyValid(familyName)) {
