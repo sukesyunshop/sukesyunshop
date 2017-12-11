@@ -13,6 +13,8 @@
 <div id="main">
 	<p>商品一覧</p>
 </div>
+
+<p><s:property value="emptyMessage"/></p>
 <ul>
 	<s:iterator value="list">
 		<li>

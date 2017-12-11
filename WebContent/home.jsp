@@ -33,7 +33,7 @@
 
 	<s:form action="SearchAction">
 	<s:select list="cateList" listKey="categoryId" listValue="categoryName" name="categoryId" />
-	<input type="search" name="searchText">
+	<input type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
 	<s:submit value="検索"/>
 	</s:form>
 

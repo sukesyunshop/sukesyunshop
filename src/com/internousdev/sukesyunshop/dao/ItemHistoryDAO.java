@@ -53,17 +53,23 @@ public class ItemHistoryDAO {
 
 		ArrayList <ItemHistoryDTO> itemHistoryList =new ArrayList<ItemHistoryDTO>();
 
-		String sql = "SELECT * FROM purchase_history_info"
-				    +"INNER JOIN product_info"
-				    +"ON purchase_history_info.product_id =product_info.product_id "
-				    + "WHERE user_id=?";
+		String sql = ""
+				+ "SELECT * FROM purchase_history_info "
+				+ "INNER JOIN product_info "
+				+ "ON purchase_history_info.product_id = product_info.product_id "
+				+ "WHERE user_id = ?";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1,userId);
 
-		ResultSet rs= statement.executeQuery(sql);
+		System.out.println("kkkkk");
+
+		ResultSet rs= statement.executeQuery();
+
+		System.out.println("kkkss");
 		while(rs.next()){
 			ItemHistoryDTO dto = new ItemHistoryDTO();
 			dto.setUserId(rs.getString("user_id"));
+			System.out.println(rs.getString("user_id")+"ooo");
 			dto.setProductId(rs.getInt("product_id"));
 			dto.setProductName(rs.getString("product_name"));
 			dto.setProductNameKana(rs.getString("product_name_kana"));
@@ -73,16 +79,8 @@ public class ItemHistoryDAO {
 			dto.setReleaseDate(rs.getString("release_date"));
 
 			itemHistoryList.add(dto);
-//				ArrayList<ItemHistoryDTO> asas=<ItemHistoryDTO>;
+
 		}
-
-
 		return itemHistoryList;
-
-
 	}
-
-
-	}
-
-
+}
