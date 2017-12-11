@@ -31,7 +31,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 	private String addressMessage;
 
 	// 宛先情報を格納
-	private Map<String, Object> session;
+	public Map<String, Object> session;
 
 	// 各機能が外部クラスに存在しているのでインスタンス化
 
@@ -43,6 +43,8 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 
 	/*------実行メソッド-------*/
 	public String execute() {
+
+		String result = ERROR;
 
 		/*------- 姓のエラー処理 ------*/
 		if (validation.emptyValid(familyName)) {
@@ -137,7 +139,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		else {
 			return SUCCESS;
 		}
-		return SUCCESS;
+		return result;
 	}
 
 	/*------ 宛先情報のゲッターセッター ------*/
@@ -254,10 +256,8 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		this.addressMessage = addressMessage;
 	}
 
-	/* セッションのゲッターセッター */
-	public Map<String , Object>getSession(){
-			return session;
-		}
+	/* セッションのセッター */
+
 	@Override
 	public void setSession(Map<String , Object> session){
 			this.session = session;

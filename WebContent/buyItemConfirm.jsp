@@ -22,10 +22,10 @@
 				<tbody>
 					<tr>
 						<td><span>宛先を選択してください。</span></td>
-						<td><input type="radio" name="" value=""> <span>宛先1</span>
+						<td><input type="radio" name="宛先１" value=""> <span>宛先1</span>
 						</td>
 						<td></td>
-						<td><input type="radio" name="" value=""> <span>宛先2</span></td>
+						<td><input type="radio" name="宛先２" value=""> <span>宛先2</span></td>
 						<td></td>
 					</tr>
 					<tr>
@@ -39,19 +39,45 @@
 			</table>
 
 			<p>以下の情報で購入しますか？</p>
+
 			<table>
 				<tbody>
+					<s:iterator value="cartList">
+						<tr>
+							<td><label><span>商品名：</span></label></td>
+
+							<td><label><s:property value="getProductNameKana()" /></label></td>
+							<td><label><s:property value="getProductName()" /><br></label></td>
+							<td><label><s:property value="getImageFilePath()" /></label></td>
+							<td><label><s:property value="getImageFileName()" /></label></td>
+							<td><label><span>値段</span></label></td>
+							<td><label><s:property value="getPrice()" /></label></td>
+							<td><label><span>円</span></label></td>
+							<td><label><span>発売会社名</span></label></td>
+							<td><label><s:property value="getReleaseDate()" /></label></td>
+							<td><label><span>発売年月日</span></label></td>
+							<td><label><s:property value="getReleaseCompany()" /></label></td>
+						</tr>
+					</s:iterator>
 					<tr>
-						<td><label></label></td>
+						<s:iterator  value="destDTOList">
+							<td><label><span>宛先情報：</span></label></td>
 
-						<td><label></label></td>
+							<td><label><s:property value="getFamilyName()"/></label></td>
 
-						<td><label></label></td>
+							<td><label><s:property value="getFamilyNameKana()"/></label></td>
 
-						<td><label></label></td>
+							<td><label><s:property value="getFirstName()"/></label></td>
 
-						<td><label></label></td>
+							<td><label><s:property value="getFirstNameKana()"/></label></td>
+
+							<td><label><s:property value="getEmail()"/></label></td>
+
+							<td><label><s:property value="getTelNumber()"/></label></td>
+
+							<td><label><s:property value="UserAddress()"/></label></td>
 					</tr>
+					</s:iterator>
 				</tbody>
 			</table>
 		</s:form>
