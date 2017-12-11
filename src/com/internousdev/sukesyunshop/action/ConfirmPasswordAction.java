@@ -37,8 +37,6 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 	/*---------実行メソッド-----------*/
 	public String execute(){
 
-
-
 		/*パスワードが未入力*/
 		if(validation.emptyValid(loginPassword)){
 			passwordMessage="パスワードを入力してください。";

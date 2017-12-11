@@ -27,11 +27,14 @@ public class ResetPasswordDAO {
 
 			ResultSet resultSet=preparedStatement.executeQuery();
 
-			return resultSet.next();
+		if(resultSet.next()){//元々は return resultSet.next();
+			resetPasswordDTO.setLoginId(resultSet.getString("user_id"));
+			return true;
+		}
 
 		}catch(Exception e){
 			e.printStackTrace();
-			}
+		}
 			return false;
 		}
 
@@ -57,5 +60,5 @@ public class ResetPasswordDAO {
 	public ResetPasswordDTO getResetPasswordDTO() {
 		return resetPasswordDTO;
 		}
-	}
+}
 

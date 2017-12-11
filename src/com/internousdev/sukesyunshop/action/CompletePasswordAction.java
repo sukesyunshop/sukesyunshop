@@ -16,7 +16,7 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 		/*ログインID*/
 		private String loginId;
 
-		/*ログインID失敗のエラーメッセージ*/
+		/*ログインID入力エラーメッセージ*/
 		private String userIdMessage;
 
 		public Map<String,Object> session;
@@ -29,7 +29,8 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 
 		/*------実行メソッド-----*/
 		public String execute(){
-			session.get("loginId");
+			loginPassword=session.get("loginPassword").toString();
+			loginId=session.get("loginId").toString();//書き足し(必要ない可能性あり)
 		/*ログインIDをDBから特定*/
 			if(!resetPasswordDAO.getLoginId(loginId)){
 				setUserIdMessage("ログインIDが存在しません");
@@ -39,10 +40,12 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 
 		/*ユーザーIDを元にして新しいパスワードをDBにセットするメソッド*/
 			if(resetPasswordDAO.updatePassword(loginPassword,loginId)){
+
 				return SUCCESS;
 			}
 				return ERROR;
 			}
+
 
 		/*新規パスワードのゲッターセッター*/
 		public String getLoginPassword(){
@@ -52,6 +55,14 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 				this.loginPassword = loginPassword;
 			}
 
+		/*ログインIDのゲッターセッター*/
+		public String getLoginId() {
+				return loginId;
+			}
+		public void setLoginId(String loginId) {
+				this.loginId = loginId;
+			}
+
 		/*セッション*/
 		public Map<String, Object> getSession() {
 				return session;
@@ -59,14 +70,6 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 		@Override
 		public void setSession(Map<String, Object> session) {
 				this.session = session;
-			}
-
-		/*ログインIDのゲッターセッター*/
-		public String getLoginId() {
-				return loginId;
-			}
-		public void setLoginId(String loginId) {
-				this.loginId = loginId;
 			}
 
 		/*ログインID入力失敗のエラーメッセージ*/
