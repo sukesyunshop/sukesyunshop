@@ -11,22 +11,24 @@
 
 <h1>☆すけしゅんショップ☆ฅ(´-ω-`)ฅ<br>
 	マイページ</h1>
-<s:property value="#session.loginDTOList.get(0).username"/>さん、ようこそ！
+	<s:property value="dto.getFamilyName()" /><s:property value="dto.getFirstName()" />
+<s:property value="dto.getUsername"/>さん、ようこそ！<br>
                         <tr>
                         <td>姓：</td>
-						<td><td><s:property value="session.familyName" /></td></td><br>
+						<td><td><s:property value="dto.getFamilyName" /></td></td><br>
 						<td>名：</td>
-						<td><s:property value="session.firstName" /></td><br>
+						<td><s:property value="dto.getFirstName" /></td><br>
 						<td>ふりがな：</td>
-						<td><s:property value="session.familyNameKana session.firstNameKana" /></td><br>
+						<td><s:property value="dto.getFamilyNameKana"/><s:property value= "dto.getFirstNameKana" /></td><br>
 						<td>性別：</td>
-						<td><s:property value="session.sex" /></td><br>
+						<td><s:property value="dto.getSex" /></td><br>
 						<td>メールアドレス：</td>
-                        <td><s:property value="session.address" /></td>
+                        <td><s:property value="dto.getEmail" /></td><br>
                         </tr>
 
-<a href="<s:url action="GoHomeAction" />">HOMEへ</a>
+<a href="<s:url action="GoHomeAction" />">HOMEへ</a><br>
 <a href="<s:url action="ItemHistoryAction" />">購入履歴へ</a>
+
 
 </body>
 </html>
