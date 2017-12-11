@@ -9,7 +9,7 @@ firstName varchar(255),
 familyNameKana varchar(255),
 firstNameKana varchar(255),
 sex varchar(255),
-address varchar (255)
+email varchar (255)
 );
 
 insert into test_table values("taro","123","山田","太郎","やまだ","たろう","男","aassddss@sss.co.jp");

@@ -18,6 +18,8 @@ public class GoMyPageAction extends ActionSupport implements SessionAware{
 public String execute(){
 	dto =new UserInfoDTO();
 	String userId =(String) session.get(SessionName.getUserId());
+
+	System.out.println(dto.getUserId());
 	try{
 		GoMyPageDAO dao =new GoMyPageDAO();
 		dto=dao.GoMyPageList(userId);
