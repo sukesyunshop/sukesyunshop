@@ -59,25 +59,37 @@
 							<td><label><s:property value="getReleaseCompany()" /></label></td>
 						</tr>
 					</s:iterator>
+				</tbody>
+			</table>
+			<table>
+				<tbody>
 					<tr>
-						<s:iterator  value="destDTOList">
-							<td><label><span>宛先情報：</span></label></td>
+						<td><label><span>宛先情報：</span></label></td>
 
-							<td><label><s:property value="getFamilyName()"/></label></td>
+						<td><label><s:property value="getFamilyName()"
+									escape="false" /></label></td>
 
-							<td><label><s:property value="getFamilyNameKana()"/></label></td>
+						<td><label><s:property value="getFamilyNameKana()"
+									escape="false" /></label></td>
 
-							<td><label><s:property value="getFirstName()"/></label></td>
+						<td><label><s:property value="getFirstName()"
+									escape="false" /></label></td>
 
-							<td><label><s:property value="getFirstNameKana()"/></label></td>
+						<td><label><s:property value="getFirstNameKana()"
+									escape="false" /></label></td>
 
-							<td><label><s:property value="getEmail()"/></label></td>
+						<td><label><s:property value="getEmail()"
+									escape="false" /></label></td>
 
-							<td><label><s:property value="getTelNumber()"/></label></td>
+						<td><label><s:property value="getTelNumber()"
+									escape="false" /></label></td>
 
-							<td><label><s:property value="UserAddress()"/></label></td>
+						<td><label><s:property value="UserAddress()"
+									escape="false" /></label></td>
 					</tr>
-					</s:iterator>
+
+
+
 				</tbody>
 			</table>
 		</s:form>
