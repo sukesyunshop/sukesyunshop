@@ -15,7 +15,7 @@ public class TempBuyItemConfirmDAPO {
 		String sql = ""
 				+ "UPDATE cart_info "
 				+ "SET user_id = ? "
-				+ "WHERE temp_id = ? ";
+				+ "WHERE temp_user_id = ? ";
 
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, userId);

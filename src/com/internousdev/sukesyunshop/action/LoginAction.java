@@ -37,12 +37,18 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				session.put(SessionName.getUserId(), userId);
 				session.put(SessionName.getUserPassword(), password);
 				session.put(SessionName.getLoginFlag(), SessionName.getTrue());
+
 				if(saveId.equals("true")){
 					session.put(SessionName.getSaveId(), SessionName.getTrue());
 				}else{
 					session.put(SessionName.getSaveId(), SessionName.getFalse());
 				}
-				return SUCCESS;
+
+				if(session.get(SessionName.getBuying()) == null){
+					return SUCCESS;
+				}else{
+					return "buy";
+				}
 			}else{
 				passwordMessage = "入力されたパスワードが異なります。";
 				return "back";
