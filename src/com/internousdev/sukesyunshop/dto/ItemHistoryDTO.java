@@ -4,82 +4,93 @@ public class ItemHistoryDTO {
 
 	private String userId;
 
+	private int productId;
+
 	private String password;
 
-	private String product_Name;
+	private String productName;
 
-	private String product_Name_kana;
+	private String productNameKana;
 
-	private String image_file_path;
+	private String imageFilePath;
 
 	private int price;
 
-	private String release_company ;
+	private String releaseCompany ;
 
-	private String  release_date;
+	private String  releaseDate;
 
-	public String getUserId(){
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId){
-		this.userId=userId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getPassword(){
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int i) {
+		this.productId = i;
+	}
+
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password){
-	    this.password=password;
-    }
-
-	public String getProduct_Name(){
-		return product_Name;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public void setProduct_Name(String product_Name){
-		this.product_Name=product_Name;
+	public String getProductName() {
+		return productName;
 	}
 
-	public String getProduct_Name_kana(){
-		return product_Name_kana;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
-	public void setProduct_Name_kana(String product_Name_kana){
-		this.product_Name_kana=product_Name_kana;
+	public String getProductNameKana() {
+		return productNameKana;
 	}
 
-	public String getImage_file_path(){
-		return image_file_path;
+	public void setProductNameKana(String productNameKana) {
+		this.productNameKana = productNameKana;
 	}
 
-	public void setImage_file_path(String image_file_path){
-		this.image_file_path=image_file_path;
+	public String getImageFilePath() {
+		return imageFilePath;
 	}
 
-	public int getPrice(){
+	public void setImageFilePath(String imageFilePath) {
+		this.imageFilePath = imageFilePath;
+	}
+
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price){
-		this.price=price;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
-	public String getRelease_company(){
-		return release_company;
+	public String getReleaseCompany() {
+		return releaseCompany;
 	}
 
-	public void setRelease_company(String release_company){
-		this.release_company=release_company;
+	public void setReleaseCompany(String releaseCompany) {
+		this.releaseCompany = releaseCompany;
 	}
 
-	public String getRelease_date(){
-		return release_date;
+	public String getReleaseDate() {
+		return releaseDate;
 	}
 
-	public void setRelease_date(String release_date){
-		this.release_date=release_date;
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
 	}
+
 
 }
