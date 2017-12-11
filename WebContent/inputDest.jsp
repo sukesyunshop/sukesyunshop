@@ -17,26 +17,26 @@
 		<div id="top"></div>
 		<h3>宛先を入力してください。</h3>
 		<s:form action="ConfirmDestAction">
-姓：
-<input type="text" name="familyName" value="">
+	姓：
+	<input type="text" name="familyName" value="">
 			<br />
-名：
-<input type="text" name="firstName" value="">
+	名：
+	<input type="text" name="firstName" value="">
 			<br />
-姓かな：
-<input type="text" name="familyNameKana" value="">
+	姓かな：
+	<input type="text" name="familyNameKana" value="">
 			<br />
-名かな：
-<input type="text" name="firstNameKana" value="">
+	名かな：
+	<input type="text" name="firstNameKana" value="">
 			<br />
-メールアドレス：
-<input type="text" name="email" value="">
+	メールアドレス：
+	<input type="text" name="email" value="">
 			<br />
-電話番号：
-<input type="text" name="telNumber" value="">
+	電話番号：
+	<input type="text" name="telNumber" value="">
 			<br />
-住所：
-<input type="text" name="userAddress" value="">
+	住所：
+	<input type="text" name="userAddress" value="">
 
 			<br />
 			<input type="submit" value="確認画面へ">

@@ -22,10 +22,10 @@
 				<tbody>
 					<tr>
 						<td><span>宛先を選択してください。</span></td>
-						<td><input type="radio" name="宛先１" value=""> <span>宛先1</span>
+						<td><input type="radio" name="#session.userId"  value="" checked = "checked"> <span>宛先1</span>
 						</td>
 						<td></td>
-						<td><input type="radio" name="宛先２" value=""> <span>宛先2</span></td>
+						<td><input type="radio" name="#session.userId" value=""> <span>宛先2</span></td>
 						<td></td>
 					</tr>
 					<tr>
@@ -66,25 +66,25 @@
 					<tr>
 						<td><label><span>宛先情報：</span></label></td>
 
-						<td><label><s:property value="getFamilyName()"
+						<td><label><s:property value="#session.familyName"
 									escape="false" /></label></td>
 
-						<td><label><s:property value="getFamilyNameKana()"
+						<td><label><s:property value="#session.familyNameKana"
 									escape="false" /></label></td>
 
-						<td><label><s:property value="getFirstName()"
+						<td><label><s:property value="#session.firstName"
 									escape="false" /></label></td>
 
-						<td><label><s:property value="getFirstNameKana()"
+						<td><label><s:property value="#session.firstNameKana"
 									escape="false" /></label></td>
 
-						<td><label><s:property value="getEmail()"
+						<td><label><s:property value="#session.email"
 									escape="false" /></label></td>
 
-						<td><label><s:property value="getTelNumber()"
+						<td><label><s:property value="#session.telNumber()"
 									escape="false" /></label></td>
 
-						<td><label><s:property value="UserAddress()"
+						<td><label><s:property value="#session.userAddress()"
 									escape="false" /></label></td>
 					</tr>
 
