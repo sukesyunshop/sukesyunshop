@@ -3,11 +3,13 @@ package com.internousdev.sukesyunshop.action;
 import java.sql.SQLException;
 import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.internousdev.sukesyunshop.dao.TempBuyItemConfirmDAPO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BuyItemConfirmAction extends ActionSupport {
+public class BuyItemConfirmAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
 
@@ -22,20 +24,21 @@ public class BuyItemConfirmAction extends ActionSupport {
 			try {
 				dao.convertId(userId, tempUserId);
 			} catch (SQLException e) {
+				e.printStackTrace();
 				return ERROR;
 			}
 			return SUCCESS;
 		}
 
+		session.put(SessionName.getBuying(), SessionName.getTrue());
 		return "login";
 	}
 
 	public Map<String, Object> getSession() {
-		return session;
-	}
-
+			return session;
+		}
+	@Override
 	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
-
+			this.session = session;
+		}
 }

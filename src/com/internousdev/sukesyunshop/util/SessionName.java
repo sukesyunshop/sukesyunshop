@@ -10,12 +10,16 @@ public class SessionName {
 
 	//ログイン中ならnull,ログインしてないならfalseを入れてください。
 	private final static String LOGIN_FLAG = "loginFlag";
-	//ログイン中ならuser_idを入れてください。ログインしてないならランダムなIDがはいっています。
+	//ログイン中ならuser_idを入れてください。ログインしてないならnull,空文字がはいっています。
 	private final static String USER_ID = "userId";
+	//ログイン中ならuser_idを入れてください。ログインしてないならnull,空文字がはいっています。
 	private final static String TEMP_USER_ID = "tempUserId";
+	//ログイン時保存するにcheckした場合trueが、してないならfalseが入ってます。
 	private final static String SAVE_ID = "saveId";
 	//ログイン中ならuser_idを入れてください。ログインしてないならnullがはいっています。
 	private final static String USER_PASSWORD = "userPassword";
+
+	private final static String Buying = "buying";
 
 	private final static String TRUE = "true";
 	private final static String FALSE = "false";
@@ -41,6 +45,9 @@ public class SessionName {
 	}
 
 
+	public static String getBuying() {
+		return Buying;
+	}
 	public static String getTrue() {
 		return TRUE;
 	}

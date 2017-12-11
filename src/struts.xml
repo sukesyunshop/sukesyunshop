@@ -23,6 +23,7 @@
 		<action name="LoginAction" class="com.internousdev.sukesyunshop.action.LoginAction" method="execute">
 			<result type="chain" name="success">GoHomeAction</result>
 			<result name="back">login.jsp</result>
+			<result type="chain" name="buy">BuyItemConfirmAction</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<!-- LogoutAction -->
