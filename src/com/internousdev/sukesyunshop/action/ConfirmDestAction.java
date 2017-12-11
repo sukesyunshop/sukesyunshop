@@ -44,102 +44,135 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 	/*------実行メソッド-------*/
 	public String execute() {
 
-		String result = SUCCESS;
-
 		/*------- 姓のエラー処理 ------*/
 		if (validation.emptyValid(familyName)) {
+			System.out.println(familyName + "1");
 			familyMessage = "姓が未入力です";
 			return ERROR;
-		} else if (validation.overUnderValid(familyName, 1, 16)) {
+		}
+		if (validation.overUnderValid(familyName, 1, 16)) {
+			System.out.println(familyName + "2");
 			familyMessage = "姓は1文字以上16文字以下で入力してください。";
 			return ERROR;
-		} else if (validation.harfMarkValied(familyName) && validation.katakanaValid(familyName)
-				&& validation.harfEnglishValied(familyName)) {
+		}
+		if (validation.hiraganaValid(familyName) && validation.harfEnglishValied(familyName)
+				&& validation.kanjiValid(familyName)) {
+			System.out.println(familyName + "3");
 			familyMessage = "姓は半角英語or漢字orひらがなで入力してください";
 			return ERROR;
 		}
 
 		/*------- 名のエラー処理 ------*/
-		else if (validation.emptyValid(firstName)) {
+		if (validation.emptyValid(firstName)) {
+			System.out.println(firstName + "4");
 			firstMessage = "名が未入力です";
 			return ERROR;
-		} else if (validation.overUnderValid(firstName, 1, 16)) {
+		}
+		if (validation.overUnderValid(firstName, 1, 16)) {
+			System.out.println(firstName + "5");
 			firstMessage = "名は1文字以上16文字以下で入力してください。";
-		} else if (validation.harfMarkValied(firstName) && validation.katakanaValid(firstName)
-				&& validation.harfEnglishValied(firstName)) {
+		}
+		if (validation.harfEnglishValied(firstName) && validation.kanjiValid(firstName)
+				&& validation.hiraganaValid(firstName)) {
+			System.out.println(firstName + "6");
 			firstMessage = "名は半角英語or漢字orひらがなで入力してください";
 			return ERROR;
 		}
 
 		/*------- 姓ふりがなのエラー処理 ------*/
-		else if (validation.emptyValid(familyNameKana)) {
+		if (validation.emptyValid(familyNameKana)) {
+			System.out.println(familyNameKana + "7");
 			familyKanaMessage = "姓ふりがなが未入力です";
 			return ERROR;
-		} else if (validation.overUnderValid(familyNameKana, 1, 16)) {
+		}
+		if (validation.overUnderValid(familyNameKana, 1, 16)) {
+			System.out.println(familyNameKana + "8");
 			familyKanaMessage = "姓ふりがなは1文字以上16文字以下で入力してください。";
 			return ERROR;
-		} else if (validation.harfEngNumValied(familyNameKana) && validation.harfMarkValied(familyNameKana)
-				&& validation.katakanaValid(familyNameKana) && validation.kanjiValid(familyNameKana)
-				&& validation.harfEnglishValied(familyNameKana)) {
+		}
+		if (validation.hiraganaValid(familyNameKana)) {
+			System.out.println(familyNameKana + "9");
 			familyKanaMessage = "姓ふりがなはひらがなで入力してください";
 			return ERROR;
 
 		}
 
 		/*------- 名ふりがなのエラー処理 ------*/
-		else if (validation.emptyValid(firstNameKana)) {
+		if (validation.emptyValid(firstNameKana)) {
+			System.out.println(firstNameKana + "10");
 			firstKanaMessage = "姓ふりがなが未入力です";
 			return ERROR;
-		} else if (validation.overUnderValid(firstNameKana, 1, 16)) {
+		}
+		if (validation.overUnderValid(firstNameKana, 1, 16)) {
+			System.out.println(firstNameKana + "11");
 			firstKanaMessage = "姓ふりがなは1文字以上16文字以下で入力してください。";
 			return ERROR;
-		} else if (validation.harfEngNumValied(firstNameKana) && validation.harfMarkValied(firstNameKana)
-				&& validation.katakanaValid(firstNameKana) && validation.kanjiValid(firstNameKana)
-				&& validation.harfEnglishValied(firstNameKana)) {
+		}
+		if (validation.hiraganaValid(firstNameKana)) {
+			System.out.println(firstNameKana + "12");
 			firstKanaMessage = "姓ふりがなはひらがなで入力してください";
 			return ERROR;
 		}
 
 		/*------- 住所のエラー処理 ------*/
-		else if (validation.emptyValid(userAddress)) {
+		if (validation.emptyValid(userAddress)) {
+			System.out.println(userAddress + "13");
 			addressMessage = "住所が未入力です";
 			return ERROR;
-		} else if (validation.overUnderValid(userAddress, 15, 50)) {
+		}
+		if (validation.overUnderValid(userAddress, 15, 50)) {
+			System.out.println(userAddress + "14");
 			addressMessage = "住所は15文字以上50文字以下で入力してください。";
 			return ERROR;
-		} else if (validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress)) {
-			addressMessage = "住所はひらがなで入力してください";
+		}
+		if (validation.harfEngNumValied(userAddress) && validation.kanjiValid(userAddress)
+				 && validation.harfMarkValied(userAddress) && validation.katakanaValid(userAddress)) {
+			System.out.println(userAddress + "15");
+			addressMessage = "住所は半角英数字or漢字and全角カタカナand半角記号で入力してください";
 			return ERROR;
 		}
 
 		/*------- 電話番号のエラー処理 ------*/
-		else if (validation.emptyValid(telNumber)) {
-			addressMessage = "電話番号が未入力です";
+		if (validation.emptyValid(telNumber)) {
+			System.out.println(telNumber + "16");
+			telNumberMessage = "電話番号が未入力です";
 			return ERROR;
-		} else if (validation.overUnderValid(telNumber, 11, 13)) {
-			addressMessage = "電話番号は11文字以上13文字以下で入力してください。";
+		}
+		if (validation.overUnderValid(telNumber, 11, 13)) {
+			System.out.println(telNumber + "17");
+
+			telNumberMessage = "電話番号は11文字以上13文字以下で入力してください。";
 			return ERROR;
-		} else if (validation.harfEnglishValied(telNumber) && validation.hiraganaValid(telNumber)) {
-			addressMessage = "住所はひらがなで入力してください";
+		}
+		if (validation.harfEngNumValied(telNumber)) {
+			System.out.println(telNumber + "18");
+
+			telNumberMessage = "電話番号は半角数字で入力してください";
 			return ERROR;
 		}
 
 		/*------- メールアドレスのエラー処理 ------*/
-		else if (validation.emptyValid(email)) {
-			addressMessage = "電話番号が未入力です";
+		if (validation.emptyValid(email)) {
+			System.out.println(email + "19");
+
+			emailMessage = "メールアドレスが未入力です";
 			return ERROR;
-		} else if (validation.overUnderValid(email, 18, 32)) {
-			addressMessage = "電話番号は18文字以上32文字以下で入力してください。";
+		}
+		if (validation.overUnderValid(email, 18, 32)) {
+			System.out.println(email + "20");
+
+			emailMessage = "電話番号は18文字以上32文字以下で入力してください。";
 			return ERROR;
-		} else if (validation.harfEnglishValied(email) && validation.hiraganaValid(email)) {
-			addressMessage = "住所はひらがなで入力してください";
+		}
+		if (validation.harfEngNumValied(email) && validation.harfMarkValied(email)) {
+			System.out.println(email + "21");
+
+			emailMessage = "メールアドレスは半角英数字and半角記号で入力してください";
 			return ERROR;
 		}
 		/*-------成功処理 処理 ------*/
-		else {
-			return SUCCESS;
-		}
-		return result;
+		return SUCCESS;
+
 	}
 
 	/*------ 宛先情報のゲッターセッター ------*/
@@ -160,11 +193,11 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 	}
 
 	public String getFamilyNameKana() {
-		return familyName;
+		return familyNameKana;
 	}
 
 	public void setFamilyNameKana(String familyNameKana) {
-		this.familyName = familyNameKana;
+		this.familyNameKana = familyNameKana;
 	}
 
 	public String getFirstNamKana() {
@@ -259,9 +292,8 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 	/* セッションのセッター */
 
 	@Override
-	public void setSession(Map<String , Object> session){
-			this.session = session;
-		}
-
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
 
 }
