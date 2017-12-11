@@ -35,7 +35,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		try{
 			if(loginDAO.login(userId, password)){
 				session.put(SessionName.getUserId(), userId);
-				session.put(SessionName.getTempUserId(), "");
 				session.put(SessionName.getUserPassword(), password);
 				session.put(SessionName.getLoginFlag(), SessionName.getTrue());
 				if(saveId.equals("true")){
