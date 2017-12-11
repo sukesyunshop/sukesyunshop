@@ -19,7 +19,7 @@
 		<a href="./login.jsp">ログイン</a>
 	</s:else>
 
-	<s:form action="GoMyAction">
+	<s:form action="GoMyPageAction">
 	<s:submit value="マイページ"/>
 	</s:form>
 

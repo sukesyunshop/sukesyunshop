@@ -24,8 +24,9 @@
 						<td>メールアドレス：</td>
                         <td><s:property value="session.address" /></td>
                         </tr>
-<a href ="<s;url value ='home.jsp'/>">ホームへ</a>
-<a href ="<s:url value ='itemhistory.jsp'/>">購入履歴一覧へ</a>
+
+<a href="<s:url action="GoHomeAction" />">HOMEへ</a>
+<a href="<s:url action="ItemHistoryAction" />">購入履歴へ</a>
 
 </body>
 </html>
