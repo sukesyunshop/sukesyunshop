@@ -58,7 +58,9 @@ public class DestinationDAO {
 	 * 宛先情報をDestintionTABLEに更新
 	 */
 
-	public void destInsert(DestinationDTO dto) throws SQLException {
+	public int destInsert(DestinationDTO dto) throws SQLException {
+
+		int insertCount = 0;
 
 		String sql = "INSERT INTO destintion_info(user_id,family_name, "
 				+ "first_name, family_name_kana, first_name_kana,"
@@ -79,7 +81,7 @@ public class DestinationDAO {
 			ps.setString(9, dateUtil.getDate());
 			ps.setString(10, dateUtil.getDate());
 
-			ps.executeUpdate();
+			insertCount = ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -90,6 +92,7 @@ public class DestinationDAO {
 			e.printStackTrace();
 		}
 
+		return insertCount;
 	}
 
 	}

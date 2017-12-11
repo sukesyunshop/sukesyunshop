@@ -1,7 +1,5 @@
 package com.internousdev.sukesyunshop.action;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -41,7 +39,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 
 	public DestinationDAO destDAO = new DestinationDAO();
 
-	public List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
+	public DestinationDTO destDTO = new DestinationDTO();
 
 	/*------実行メソッド-------*/
 	public String execute() {
@@ -139,8 +137,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		else {
 			return SUCCESS;
 		}
-		/*-----returnがわかりません。-----*/
-		return null;
+		return SUCCESS;
 	}
 
 	/*------ 宛先情報のゲッターセッター ------*/
