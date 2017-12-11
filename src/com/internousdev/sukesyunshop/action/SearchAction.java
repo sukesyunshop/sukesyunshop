@@ -16,15 +16,17 @@ public class SearchAction extends ActionSupport implements SessionAware {
 	private int categoryId;
 
 	private ArrayList<CatalogDTO> list;
+	private String emptyMessage;
 
 	private Map<String, Object> session;
 
 	public String execute(){
-
 		SearchDAO searchDAO = new SearchDAO();
 		try {
 			list = searchDAO.searchCatalog(categoryId, searchText);
-			System.out.println(list);
+			if(list.size() == 0){
+				emptyMessage = "検索結果がありません";
+			}
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,6 +56,14 @@ public class SearchAction extends ActionSupport implements SessionAware {
 
 	public void setList(ArrayList<CatalogDTO> list) {
 		this.list = list;
+	}
+
+	public String getEmptyMessage() {
+		return emptyMessage;
+	}
+
+	public void setEmptyMessage(String emptyMessage) {
+		this.emptyMessage = emptyMessage;
 	}
 
 	@Override
