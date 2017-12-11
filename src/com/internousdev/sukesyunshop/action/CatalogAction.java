@@ -15,17 +15,22 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 	private CatalogDAO catalogDAO = new CatalogDAO();
 	private ArrayList<CatalogDTO> list;
+
 	private String result = ERROR;
+
 
 	public String execute(){
 		try{
 			list=catalogDAO.getCatalogList();
+
+
 			result = SUCCESS;
 		} catch (Exception e){
 			e.printStackTrace();
 		}
 		return result;
 	}
+
 
 	public Map<String, Object> getSession() {
 		return session;
@@ -42,5 +47,6 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 	public void setList(ArrayList<CatalogDTO> list) {
 		this.list = list;
 	}
+
 
 }

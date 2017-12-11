@@ -1,5 +1,7 @@
 package com.internousdev.sukesyunshop.action;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -13,16 +15,19 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 	public int productId;
 	public CatalogDTO dto;
 	public Map<String, Object> session;
+	public ArrayList<CatalogDTO> miniList;
+	public CatalogDAO catalogdao = new CatalogDAO();
 
+	private String result = ERROR;
 	public String execute(){
-		System.out.println("hoge");
-		String result = ERROR;
-		CatalogDAO dao = new CatalogDAO();
+
+
 		try{
-			System.out.println(productId);
-			dto=dao.getItem(productId);
+			dto=catalogdao.getItem(productId);
+			miniList=catalogdao.miniList(dto.getCategoryId());
+
 			result=SUCCESS;
-		}catch(NumberFormatException e){
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 		return result;

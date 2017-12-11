@@ -16,6 +16,9 @@
 <ul>
 	<s:iterator value="list">
 		<li>
+				<span>カテゴリー</span>
+				<s:property value="getCategoryId()" /><br>
+				<img src="<s:property value="getImageFilePath()" />">
 				<span>商品名</span>
 				<s:property value="getProductNameKana()" /><br>
 				<s:property value="getProductName()"/>
@@ -26,6 +29,8 @@
 		</li>
 	</s:iterator>
 </ul>
+
+
 
 </body>
 </html>

@@ -47,7 +47,9 @@ public class CatalogDAO {
 
 	public ArrayList<CatalogDTO> getCatalogList() throws SQLException{
 		ArrayList<CatalogDTO> list = new ArrayList<CatalogDTO>();
-		String sql = "SELECT  id, category_id,product_id, product_name,product_name_kana, image_file_path,image_file_name,price FROM product_info ";
+		String sql = ""
+				+"SELECT  id, category_id,product_id, product_name,product_name_kana, image_file_path,image_file_name,price "
+				+"FROM product_info  ";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		ResultSet resultSet = preparedStatement.executeQuery();
@@ -67,7 +69,31 @@ public class CatalogDAO {
 		return list;
 	}
 
+	public ArrayList<CatalogDTO> miniList(int categoryId) throws SQLException{
+		ArrayList<CatalogDTO> miniList = new ArrayList<CatalogDTO>();
+		String sql = ""
+				+ "SELECT id, category_id, product_id, product_name, product_name_kana, image_file_path "
+				+ "FROM product_info "
+				+ "WHERE category_id=? "
+				+ "LIMIT 4";
 
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, categoryId);
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		while(resultSet.next()){
+			CatalogDTO sub = new CatalogDTO();
+			sub.setId(resultSet.getInt("id"));
+			sub.setCategoryId(resultSet.getInt("category_id"));
+			sub.setProductId(resultSet.getInt("product_id"));
+			sub.setProductName(resultSet.getString("product_name"));
+			sub.setProductNameKana(resultSet.getString("product_name_kana"));
+			sub.setImageFilePath(resultSet.getString("image_file_path"));
+
+			miniList.add(sub);
+		}
+		return miniList;
+	}
 
 }
 
