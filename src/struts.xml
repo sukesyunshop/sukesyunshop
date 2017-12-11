@@ -31,6 +31,10 @@
 			<result type="chain" name="success">IndexAction</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<action name="SearchAction" class="com.internousdev.sukesyunshop.action.SearchAction" method="execute">
+			<result name="success">catalog.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 		<!-- 担当：金子 -->
 		<!-- GoMyPageAction -->
 		<action name="GoMyPageAction" class="com.internousdev.sukesyunshop.action.GoMyPageAction" method="execute">
