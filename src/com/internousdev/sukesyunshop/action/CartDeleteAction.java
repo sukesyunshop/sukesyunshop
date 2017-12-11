@@ -14,15 +14,17 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	public Map<String, Object> session;
 	private int productId;
 
+
 	public String result = ERROR;
 	public String execute(){
 		cartDAO = new CartDAO();
-		System.out.println("ooooooooo");
+
+
 
 		String userId;
 		boolean loginFlag = session.get(SessionName.getLoginFlag()).equals(SessionName.getTrue());
 		if(loginFlag){
-			userId	 = session.get(SessionName.getUserId()).toString();
+			userId = session.get(SessionName.getUserId()).toString();
 		}else{
 			userId = session.get(SessionName.getTempUserId()).toString();
 		}
@@ -32,7 +34,6 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		}catch(NumberFormatException e){
 			e.printStackTrace();
 		}
-		productId = 0;
 		return result;
 	}
 
