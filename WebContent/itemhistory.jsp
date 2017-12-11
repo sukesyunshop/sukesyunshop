@@ -107,7 +107,7 @@
 
 
 				<tr>
-					<td><input type="button" value="ホームへ戻る" onclick="submitAction('HomeAction')" /></td><br>
+					<td><input type="button" value="ホームへ戻る" onclick="submitAction('GoHomeAction')" /></td><br>
 					<td><input type="button" value="購入履歴削除" onclick="submitAction('ItemHistoryAction')" /></td>
 				</tr>
 			</s:form>
