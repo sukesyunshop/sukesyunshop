@@ -14,16 +14,35 @@
 	</div>
 	<div>
 		<span>商品名</span>
-		<s:property value="dto.getProductNameKana()" /><br>
-		<s:property value="dto.getProductName()"/>
+			<s:property value="dto.getProductNameKana()" /><br>
+			<s:property value="dto.getProductName()"/>
+			<img src="<s:property value="dto.getImageFilePath()"/>">
+
 		<span>値段</span>
-		<s:property value="dto.getPrice()" />
+			<s:property value="dto.getPrice()" />
 		<span>円</span><br>
+
 		<span>発売会社名</span>
-		<s:property value="dto.getReleaseDate()"/>
+			<s:property value="dto.getReleaseDate()"/>
+
 		<span>発売年月日</span>
-		<s:property value="dto.getReleaseCompany()" />
+			<s:property value="dto.getReleaseCompany()" />
+
 		<a href="<s:url action="CartAction"><s:param name="productId" value="dto.getProductId()"/></s:url>">カートへ</a>
+		<a href="<s:url action="CatalogAction" /> ">戻る</a>
+
 	</div>
+	<ul>
+		<s:iterator value="miniList">
+			<li>
+				<span>カテゴリ</span>
+  				<s:property value="getCategoryId()"/><br>
+  				<span>商品名</span>
+				<s:property value="getProductNameKana()" /><br>
+				<s:property value="getProductName()"/><br>
+				<img src="<s:property value="getImageFilePath()"/>">
+			</li>
+		</s:iterator>
+	</ul>
 </body>
 </html>

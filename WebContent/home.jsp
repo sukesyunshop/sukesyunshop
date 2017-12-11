@@ -31,5 +31,11 @@
 	<s:submit value="商品一覧画面"/>
 	</s:form>
 
+	<s:form action="SearchAction">
+	<s:select list="cateList" listKey="categoryId" listValue="categoryName" name="categoryId" />
+	<input type="search" name="searchText">
+	<s:submit value="検索"/>
+	</s:form>
+
 </body>
 </html>

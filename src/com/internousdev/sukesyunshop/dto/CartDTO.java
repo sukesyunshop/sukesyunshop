@@ -3,16 +3,16 @@ package com.internousdev.sukesyunshop.dto;
 public class CartDTO extends CatalogDTO{
 
 	private int id;
-	private int userId;
+	private String userId;
 	private int productId;
 
 	public int getId() {
 		return id;
 	}
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public int getProductId() {

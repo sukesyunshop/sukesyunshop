@@ -61,7 +61,7 @@ public class CartDAO {
 			while(resultSet.next()){
 				CartDTO cartdto = new CartDTO();
 				cartdto.setId(resultSet.getInt("id"));
-				cartdto.setUserId(resultSet.getInt("user_id"));
+				cartdto.setUserId(resultSet.getString("user_id"));
 				cartdto.setProductId(resultSet.getInt("product_info.product_id"));
 				cartdto.setProductNameKana(resultSet.getString("product_info.product_name_kana"));
 				cartdto.setProductName(resultSet.getString("product_info.product_name"));
