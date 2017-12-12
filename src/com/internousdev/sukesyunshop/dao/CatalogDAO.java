@@ -75,7 +75,7 @@ public class CatalogDAO {
 				+ "SELECT id, category_id, product_id, product_name, product_name_kana, image_file_path "
 				+ "FROM product_info "
 				+ "WHERE category_id=? "
-				+ "LIMIT 4";
+				+ "LIMIT 4 ";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, categoryId);

@@ -211,8 +211,7 @@ product_id, product_name, product_name_kana, product_description, category_id, p
 50 , "ゲーミングマウス","げーみんぐまうす","精密な動作を約束します。",2003,20000,".public/50.jpg","50.jpg",NOW(),"良い会社"
 ),(
 51 , "Lightningケーブル","らいとにんぐけーぶる","iPhoneに繋いで充電できます。",2004,1500,".public/51.jpg","51.jpg",NOW(),"良い会社"
-),(
-52 , "")
+);
 
 
 ;

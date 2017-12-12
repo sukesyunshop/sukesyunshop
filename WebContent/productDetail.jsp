@@ -12,6 +12,9 @@
 	<div id="main">
 		<p>商品詳細</p>
 	</div>
+
+
+
 	<div>
 		<span>商品名</span>
 			<s:property value="dto.getProductNameKana()" /><br>
@@ -30,19 +33,22 @@
 
 		<a href="<s:url action="CartAction"><s:param name="productId" value="dto.getProductId()"/></s:url>">カートへ</a>
 		<a href="<s:url action="CatalogAction" /> ">戻る</a>
-
 	</div>
+
 	<ul>
 		<s:iterator value="miniList">
 			<li>
-				<span>カテゴリ</span>
+				<span>同じカテゴリの商品</span>
   				<s:property value="getCategoryId()"/><br>
   				<span>商品名</span>
 				<s:property value="getProductNameKana()" /><br>
 				<s:property value="getProductName()"/><br>
 				<img src="<s:property value="getImageFilePath()"/>">
+			
+				<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">商品詳細</a>
 			</li>
 		</s:iterator>
 	</ul>
+
 </body>
 </html>

@@ -15,17 +15,21 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 	private CatalogDAO catalogDAO = new CatalogDAO();
 	private ArrayList<CatalogDTO> list;
-
 	private String emptyMessage;
-
 	private String result = ERROR;
 
 
+
 	public String execute(){
+
+
 		try{
+
 			list=catalogDAO.getCatalogList();
 			if(list.size() == 0){
 				emptyMessage = "検索結果がありません";
+
+
 			}
 			result = SUCCESS;
 		} catch (Exception e){
@@ -33,6 +37,9 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 		}
 		return result;
 	}
+
+
+
 
 
 	public Map<String, Object> getSession() {
@@ -60,6 +67,8 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 	public void setEmptyMessage(String emptyMessage) {
 		this.emptyMessage = emptyMessage;
 	}
+
+
 
 
 }
