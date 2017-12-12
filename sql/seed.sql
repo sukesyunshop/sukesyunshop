@@ -10,7 +10,7 @@ user_id, password, family_name, first_name, family_name_kana, first_name_kana, s
 ),(
 "hanako" , "123", "山野", "花子", "やまの", "はなこ", 1, "hanako@gmail.com"
 ),(
-"hoge" , "hoge", "ほげ山", "ほげ男", "ほげやま", "ほげお", 0, "hoge@gmail.com"
+"hoge" , "hoge", "ほげ山", "ほげ男", "ほげやま", "ほげお",0, "hoge@gmail.com"
 ),(
 "john" , "1john", "john", "smith", "じょん", "すみす", 1, "john@gmail.com"
 );
