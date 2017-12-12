@@ -163,10 +163,10 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 			emailMessage = "メールアドレスは18文字以上32文字以下で入力してください。";
 			return ERROR;
 		}
-		if (validation.harfEngNumValied(email) && validation.harfMarkValied(email)) {
+		if (validation.emailAddressValid(email)) {
 			System.out.println(email + "21");
 
-			emailMessage = "メールアドレスは半角英数字and半角記号で入力してください";
+			emailMessage = "メールアドレスは半角英数字・半角記号で入力してください";
 			return ERROR;
 		}
 		/*-------成功処理 処理 ------*/
