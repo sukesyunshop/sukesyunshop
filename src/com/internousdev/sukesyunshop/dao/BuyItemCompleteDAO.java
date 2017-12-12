@@ -64,8 +64,9 @@ public class BuyItemCompleteDAO {
 	}
 
 	//カート情報を購入履歴に追加
-	public void itemInsert(BuyItemDTO dto) throws SQLException {
+	public int itemInsert(BuyItemDTO dto) throws SQLException {
 
+		int insertCount = 0;
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -80,7 +81,7 @@ public class BuyItemCompleteDAO {
 			ps.setString(3,dateUtil.getDate());
 			ps.setString(4,dateUtil.getDate());
 
-			ps.executeUpdate();
+			insertCount = ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -90,6 +91,7 @@ public class BuyItemCompleteDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return insertCount;
 
 	}
 

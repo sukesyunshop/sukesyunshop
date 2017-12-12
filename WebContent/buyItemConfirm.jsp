@@ -22,10 +22,10 @@
 				<tbody>
 					<tr>
 						<td><span>宛先を選択してください。</span></td>
-						<td><input type="radio" name="#session.userId"  value="" checked = "checked"> <span>宛先1</span>
+						<td><input type="radio" name="dto.getUserId()"  value="1" checked = "checked"> <span>宛先1</span>
 						</td>
 						<td></td>
-						<td><input type="radio" name="#session.userId" value=""> <span>宛先2</span></td>
+						<td><input type="radio" name="dto.getUserId()" value="2"> <span>宛先2</span></td>
 						<td></td>
 					</tr>
 					<tr>

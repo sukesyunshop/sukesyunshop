@@ -28,7 +28,6 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 
 	/*-----------実行メソッド-----------*/
 	public String execute() throws SQLException {
-		/*-----分からない-----*/
 
 		// HTML側から送られてきた入力値を登録用のDTOへまとめます。
 		destDTO = setPrameters(destDTO);

@@ -1,13 +1,13 @@
 package com.internousdev.sukesyunshop.action;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.BuyItemCompleteDAO;
 import com.internousdev.sukesyunshop.dao.DestinationDAO;
+import com.internousdev.sukesyunshop.dto.BuyItemDTO;
 import com.internousdev.sukesyunshop.dto.DestinationDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
@@ -20,16 +20,18 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	public Map<String, Object> session;
 
 	/**
-	 * 宛先情報DTOをインスタンス化
+	 * 宛先情報DAO&宛先情報DTOをインスタンス化
 	 */
-	private List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
+	private DestinationDAO destDAO = new DestinationDAO();
+	private DestinationDTO destDTO = new DestinationDTO();
 
 	/**
-	 * 商品情報DAO＆宛先情報DAOをインスタンス化
+	 * 商品購入完了DAO＆商品情報DTOをインスタンス化
 	 *
 	 */
 	private BuyItemCompleteDAO buyItemDAO = new BuyItemCompleteDAO();
-	private DestinationDAO destDAO = new DestinationDAO();
+	private BuyItemDTO buyItemDTO = new BuyItemDTO();
+
 
 	/**
 	 * 登録されている宛先情報を参照する 宛先が登録されていない場合はRETURNの値は"lack"へ
@@ -43,17 +45,31 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 * 購入完了画面へ遷移する時にカート情報を削除する処理
 	 *
 	 *------------ 実行メソッド------------*/
-	public String execute() {
+	public String execute() throws SQLException {
 		userId = session.get(SessionName.getUserId()).toString();
 		String result = ERROR;
-		destDTOList = destDAO.destSelect(userId);
+		 destDAO.destSelect(userId);
 
-		if (this.userId.equals(destDTOList.get(0).getUserId())) {
-			destDTOList = destDAO.destSelect(userId);
+		if (this.userId.equals(destDTO.getUserId())) {
+			 destDAO.destSelect(userId);
 
-			buyItemDAO.itemDelete(itemId);
+			 //HTML側から送られてきた商品情報を登録用のDTOへまとめます。
+			buyItemDTO = setItemPrameters(buyItemDTO);
 
-			result = SUCCESS;
+
+			//登録処理
+			int insertCount = buyItemDAO.itemInsert(buyItemDTO);
+
+			//登録判定
+			//0==>登録失敗
+			//1==>登録成功
+
+			if(insertCount !=0){
+				result = SUCCESS;
+				buyItemDAO.itemDelete(itemId);
+			}else{
+				result = ERROR;
+			}
 		} else {
 			result = "lack";
 		}
@@ -61,6 +77,13 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 		return result;
 
 	}
+
+	private BuyItemDTO setItemPrameters(BuyItemDTO buyItemDTO){
+		buyItemDTO.setUserId(userId);
+		buyItemDTO.setItemId(itemId);
+		return buyItemDTO;
+	}
+
 
 	public String getUserId() {
 		return userId;
