@@ -50,4 +50,9 @@ public class Validation {
 	public boolean katakanaValid(String target){
 		return !Pattern.matches("^[ア-ンガ-ボァ-ョヮッー]*$", target);
 	}
+
+	//正しいメールアドレスかどうか
+	public boolean emailAddressValid(String target){
+		return !Pattern.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$", target);
+	}
 }
