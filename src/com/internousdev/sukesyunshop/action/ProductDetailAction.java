@@ -18,19 +18,20 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 	public ArrayList<CatalogDTO> miniList;
 	public CatalogDAO catalogdao = new CatalogDAO();
 
+
 	private String result = ERROR;
 	public String execute(){
-
 
 		try{
 			dto=catalogdao.getItem(productId);
 			miniList=catalogdao.miniList(dto.getCategoryId());
 
 			result=SUCCESS;
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-		return result;
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			return result;
+
 		}
 
 
@@ -44,10 +45,10 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 		public Map<String,Object> getSession () {
 			return session;
 		}
-
 		public void setSession(Map<String, Object> arg0) {
 				this.session = arg0;
 		}
+
 }
 
 

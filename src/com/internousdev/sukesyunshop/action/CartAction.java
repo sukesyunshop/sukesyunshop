@@ -7,7 +7,6 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.CartDAO;
 import com.internousdev.sukesyunshop.dto.CartDTO;
-import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,10 +16,9 @@ public class CartAction extends ActionSupport implements SessionAware{
 	public Map<String, Object> session;
 	private CartDAO cartDAO;
 	private ArrayList<CartDTO> cartList;
-	//追加
-	private ArrayList<CategoryDTO> cateList;
 
-	private String result = ERROR;
+
+private String result = ERROR;
 	public String execute(){
 
 		cartDAO = new CartDAO();
@@ -43,60 +41,37 @@ public class CartAction extends ActionSupport implements SessionAware{
 			e.printStackTrace();
 		}
 		return result;
-	}
+		}
 
 
 
+		public int getProductId() {
+			return productId;
+		}
+		public void setProductId(int productId) {
+			this.productId = productId;
+		}
 
+		public Map<String, Object> getSession() {
+			return session;
+		}
+		public void setSession(Map<String, Object> session) {
+			this.session = session;
+		}
 
-	public int getProductId() {
-		return productId;
-	}
+		public CartDAO getCartDAO() {
+			return cartDAO;
+		}
+		public void setCartDAO(CartDAO cartDAO) {
+			this.cartDAO = cartDAO;
+		}
 
-
-
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
-
-
-
-	public Map<String, Object> getSession() {
-		return session;
-	}
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
-
-	public CartDAO getCartDAO() {
-		return cartDAO;
-	}
-	public void setCartDAO(CartDAO cartDAO) {
-		this.cartDAO = cartDAO;
-	}
-
-	public ArrayList<CartDTO> getCartList() {
-		return cartList;
-	}
-	public void setCartList(ArrayList<CartDTO> cartList) {
-		this.cartList = cartList;
-	}
-
-
-
-
-
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
-	}
-
-
-
-
-
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
-	}
+		public ArrayList<CartDTO> getCartList() {
+			return cartList;
+		}
+		public void setCartList(ArrayList<CartDTO> cartList) {
+			this.cartList = cartList;
+		}
 
 
 }

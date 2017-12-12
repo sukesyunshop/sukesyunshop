@@ -14,6 +14,8 @@ public class CartDAO {
 	private DBConnector db =  new DBConnector();
 	private Connection con = db.getConnection();
 
+
+//productdetailにcatalogで指定した値を送る
 	public CartDTO getId(int productId){
 		CartDTO getId=new CartDTO();
 		String sql=""
@@ -29,12 +31,14 @@ public class CartDAO {
 			if(resultSet.next()){
 				getId.setId(resultSet.getInt("id"));
 			}
-		} catch(Exception e){
-			e.printStackTrace();
-		}
-		return getId;
+			} catch(Exception e){
+				e.printStackTrace();
+			}
+			return getId;
 	}
 
+
+//カートの中身を指定
 	public ArrayList<CartDTO> getCartList(String userId, boolean loginFlag){
 		ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
 		String sql;
@@ -71,7 +75,6 @@ public class CartDAO {
 				cartdto.setImageFileName(resultSet.getString("product_info.image_file_name"));
 				cartdto.setReleaseDate(resultSet.getString("product_info.release_date")); // データ型が？
 				cartdto.setReleaseCompany(resultSet.getString("product_info.release_company"));
-				System.out.println("aaa"+cartdto.getProductName());
 				cartList.add(cartdto);
 			}
 		}catch(Exception e){
@@ -80,6 +83,8 @@ public class CartDAO {
 		return cartList;
 	}
 
+
+//ログイン状態と仮ログイン状態の処理
 	 public boolean addCart(String userId, int productId, boolean loginFlag){
 		 String sql;
 		if(loginFlag){
@@ -106,6 +111,9 @@ public class CartDAO {
 			return false;
 		}
 	 }
+
+
+//CartDeleteAction  カートの中身を削除
 	 public boolean deleteCart(String userId, int productId, boolean loginFlag){
 		 String sql;
 		if(loginFlag){

@@ -28,14 +28,18 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		}else{
 			userId = session.get(SessionName.getTempUserId()).toString();
 		}
-		try{
-			cartDAO.deleteCart(userId, productId, loginFlag);
-			result = SUCCESS;
-		}catch(NumberFormatException e){
-			e.printStackTrace();
-		}
-		return result;
+
+			try{
+				cartDAO.deleteCart(userId, productId, loginFlag);
+				result = SUCCESS;
+			}catch(NumberFormatException e){
+				e.printStackTrace();
+			}
+			return result;
+
 	}
+
+
 
 	public CartDAO getCartDAO() {
 		return cartDAO;
@@ -43,18 +47,21 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	public void setCartDAO(CartDAO cartDAO) {
 		this.cartDAO = cartDAO;
 	}
+
 	public Map<String, Object> getSession() {
 		return session;
 	}
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+
 	public int getProductId() {
 		return productId;
 	}
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+
 	public String getResult() {
 		return result;
 	}
@@ -62,7 +69,6 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 		this.result = result;
 	}
 
-
-	}
+}
 
 

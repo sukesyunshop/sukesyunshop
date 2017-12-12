@@ -14,6 +14,8 @@ public class CatalogDAO {
 	private DBConnector dbConnector = new DBConnector();
 	private  Connection connection = dbConnector.getConnection();
 
+
+
 	public CatalogDTO getItem(int productId){
 		CatalogDTO getItem=new CatalogDTO();
 		String sql=""
@@ -42,9 +44,11 @@ public class CatalogDAO {
 			} catch(Exception e){
 				e.printStackTrace();
 			}
-			return getItem;
-		}
+				return getItem;
+	}
 
+
+//商品一覧の中身,productail,cart,seachに値を渡している
 	public ArrayList<CatalogDTO> getCatalogList() throws SQLException{
 		ArrayList<CatalogDTO> list = new ArrayList<CatalogDTO>();
 		String sql = ""
@@ -69,6 +73,8 @@ public class CatalogDAO {
 		return list;
 	}
 
+
+//商品詳細にて同じカテゴリーのアイテム表示
 	public ArrayList<CatalogDTO> miniList(int categoryId) throws SQLException{
 		ArrayList<CatalogDTO> miniList = new ArrayList<CatalogDTO>();
 		String sql = ""
@@ -94,6 +100,7 @@ public class CatalogDAO {
 		}
 		return miniList;
 	}
+
 
 }
 
