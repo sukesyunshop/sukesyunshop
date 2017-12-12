@@ -125,10 +125,9 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 			addressMessage = "住所は15文字以上50文字以下で入力してください。";
 			return ERROR;
 		}
-		if (validation.harfEngNumValied(userAddress) && validation.kanjiValid(userAddress)
-				 && validation.harfMarkValied(userAddress) && validation.katakanaValid(userAddress)) {
+		if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))){
 			System.out.println(userAddress + "15");
-			addressMessage = "住所は半角英数字or漢字and全角カタカナand半角記号で入力してください";
+			addressMessage = "住所は半角英数字and漢字and半角記号or全角カタカナで入力してください";
 			return ERROR;
 		}
 
@@ -161,7 +160,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		if (validation.overUnderValid(email, 18, 32)) {
 			System.out.println(email + "20");
 
-			emailMessage = "電話番号は18文字以上32文字以下で入力してください。";
+			emailMessage = "メールアドレスは18文字以上32文字以下で入力してください。";
 			return ERROR;
 		}
 		if (validation.harfEngNumValied(email) && validation.harfMarkValied(email)) {

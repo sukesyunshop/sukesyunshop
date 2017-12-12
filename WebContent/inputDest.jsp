@@ -18,28 +18,54 @@
 		<h3>宛先を入力してください。</h3>
 		<s:form action="ConfirmDestAction">
 	姓：
-	<input type="text" name="familyName" value="">
+	<p>
+				<span style="color: #FF0000"><s:property
+						value="familyMessage" /></span>
+			</p>
+			<input type="text" name="familyName" value="">
 			<br />
 	名：
-	<input type="text" name="firstName" value="">
+	<p>
+				<span style="color: #FF0000"><s:property value="firstMessage" /></span>
+			</p>
+			<input type="text" name="firstName" value="">
 			<br />
 	姓かな：
-	<input type="text" name="familyNameKana" value="">
+	<p>
+				<span style="color: #FF0000"><s:property
+						value="familyKanaMessage" /></span>
+			</p>
+			<input type="text" name="familyNameKana" value="">
 			<br />
 	名かな：
-	<input type="text" name="firstNameKana" value="">
+	<p>
+				<span style="color: #FF0000"><s:property
+						value="firstKanaMessage" /></span>
+			</p>
+			<input type="text" name="firstNameKana" value="">
 			<br />
 	メールアドレス：
-	<input type="text" name="email" value="">
+	<p>
+				<span style="color: #FF0000"><s:property value="emailMessage" /></span>
+			</p>
+			<input type="text" name="email" value="">
 			<br />
 	電話番号：
-	<input type="text" name="telNumber" value="">
+	<p>
+				<span style="color: #FF0000"><s:property
+						value="telNumberMessage" /></span>
+			</p>
+			<input type="text" name="telNumber" value="">
 			<br />
 	住所：
-	<input type="text" name="userAddress" value="">
+	<p>
+				<span style="color: #FF0000"><s:property
+						value="addressMessage" /></span>
+			</p>
+			<input type="text" name="userAddress" value="">
 
 			<br />
-			<s:submit class ="button"  value="確認画面へ"/>
+			<s:submit class="button" value="確認画面へ" />
 		</s:form>
 
 		MyPageへ戻るには<a href="myPage.jsp">MyPageへ</a>

@@ -22,19 +22,19 @@
 				<tbody>
 					<tr>
 						<td><label>姓：</label></td>
-						<td><s:property value="familyName" /></td>
+						<td><s:property value="dto.FamilyName()" /></td>
 						<td><label>名：</label></td>
-						<td><s:property value="firstName" /></td>
+						<td><s:property value="dto.FirstName()" /></td>
 						<td><label>姓かな：</label></td>
-						<td><s:property value="familyNameKana" /></td>
+						<td><s:property value="dto.getFamilyNameKana()" /></td>
 						<td><label>名かな：</label></td>
-						<td><s:property value="firstNameKana" /></td>
+						<td><s:property value="dto.getFirstNameKana()" /></td>
 						<td><label>メールアドレス：</label></td>
-						<td><s:property value="email" /></td>
+						<td><s:property value="dto.getEmail()" /></td>
 						<td><label>電話番号：</label></td>
-						<td><s:property value="telNumber" /></td>
+						<td><s:property value="dto.getTelNumber()" /></td>
 						<td><label>住所：</label></td>
-						<td><s:property value="userAddress" /></td>
+						<td><s:property value="dto.getUserAddress()" /></td>
 					</tr>
 					<tr>
 						<td></td>
