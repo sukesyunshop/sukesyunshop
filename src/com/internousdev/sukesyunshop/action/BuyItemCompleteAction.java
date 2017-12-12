@@ -1,13 +1,16 @@
 package com.internousdev.sukesyunshop.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.BuyItemCompleteDAO;
+import com.internousdev.sukesyunshop.dao.CartDAO;
 import com.internousdev.sukesyunshop.dao.DestinationDAO;
 import com.internousdev.sukesyunshop.dto.BuyItemDTO;
+import com.internousdev.sukesyunshop.dto.CartDTO;
 import com.internousdev.sukesyunshop.dto.DestinationDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
@@ -53,25 +56,28 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 		if (this.userId.equals(destDTO.getUserId())) {
 			 destDAO.destSelect(userId);
 
-			 //HTML側から送られてきた商品情報を登録用のDTOへまとめます。
-			buyItemDTO = setItemPrameters(buyItemDTO);
 
-
-			//登録処理
-			int insertCount = buyItemDAO.itemInsert(buyItemDTO);
-
-			//登録判定
-			//0==>登録失敗
-			//1==>登録成功
-
-			if(insertCount !=0){
-				result = SUCCESS;
-				buyItemDAO.itemDelete(itemId);
-			}else{
-				result = ERROR;
-			}
 		} else {
 			result = "lack";
+		}
+		 //HTML側から送られてきた商品情報を登録用のDTOへまとめます。
+		buyItemDTO = setItemPrameters(buyItemDTO);
+
+		CartDAO cartDao = new CartDAO();
+		ArrayList<CartDTO> cartList = cartDao.getCartList(userId, true);
+
+		//登録処理
+		int insertCount = buyItemDAO.itemInsert(buyItemDTO);
+
+		//登録判定
+		//0==>登録失敗
+		//1==>登録成功
+
+		if(insertCount !=0){
+			result = SUCCESS;
+			buyItemDAO.itemDelete(itemId);
+		}else{
+			result = ERROR;
 		}
 
 		return result;
