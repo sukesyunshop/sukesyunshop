@@ -26,7 +26,7 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 	/*新規パスワード入力についてのエラーメッセージ*/
 	private String passwordMessage;
 
-
+	/*Validationクラスをインスタンス化*/
 	public Validation validation = new Validation();
 
 	public ResetPasswordDAO resetPasswordDAO=new ResetPasswordDAO();

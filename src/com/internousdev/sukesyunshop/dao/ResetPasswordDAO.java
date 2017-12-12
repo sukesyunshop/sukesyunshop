@@ -27,7 +27,7 @@ public class ResetPasswordDAO {
 
 			ResultSet resultSet=preparedStatement.executeQuery();
 
-		if(resultSet.next()){//元々は return resultSet.next();
+		if(resultSet.next()){//元々は return resultSet.next();どっちがいいかは謎
 			resetPasswordDTO.setLoginId(resultSet.getString("user_id"));
 			return true;
 		}

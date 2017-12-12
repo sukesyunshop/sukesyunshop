@@ -30,7 +30,8 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 		/*------実行メソッド-----*/
 		public String execute(){
 			loginPassword=session.get("loginPassword").toString();
-			loginId=session.get("loginId").toString();//書き足し(必要ない可能性あり)
+			loginId=session.get("loginId").toString();
+
 		/*ログインIDをDBから特定*/
 			if(!resetPasswordDAO.getLoginId(loginId)){
 				setUserIdMessage("ログインIDが存在しません");
