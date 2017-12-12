@@ -14,7 +14,7 @@ public class ItemHistoryDTO {
 
 	private String imageFilePath;
 
-	private int price;
+	private int Price;
 
 	private String releaseCompany ;
 
@@ -69,11 +69,11 @@ public class ItemHistoryDTO {
 	}
 
 	public int getPrice() {
-		return price;
+		return Price;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setPrice(int Price) {
+		this.Price = Price;
 	}
 
 	public String getReleaseCompany() {
