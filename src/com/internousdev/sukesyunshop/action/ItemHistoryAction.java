@@ -26,10 +26,11 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 	 */
 	public String execute() {
 		ItemHistoryDAO dao =new ItemHistoryDAO ();
-		String userId = (String)session.get(SessionName.getUserId());
+		String userId = session.get(SessionName.getUserId()).toString();
 
 		try {
 			list =dao.getItemHistoryList(userId);
+			System.out.println(list);
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
