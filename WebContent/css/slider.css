@@ -1,0 +1,27 @@
+
+
+
+.item{
+    margin: 10px auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+.bx-wrapper {
+    position: relative;
+	margin: 72px 600px 70px;
+    padding: 0;
+    *zoom: 1;
+}
+
+.bx-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.bx-wrapper .bx-pager {
+    position: absolute;
+    bottom: -30px;
+    width: 480px;
+}
