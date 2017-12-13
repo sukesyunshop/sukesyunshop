@@ -21,6 +21,8 @@ public class SessionName {
 
 	private final static String Buying = "buying";
 
+	private final static String CATEGORY_LIST = "categoryList";
+
 	private final static String TRUE = "true";
 	private final static String FALSE = "false";
 
@@ -47,6 +49,9 @@ public class SessionName {
 
 	public static String getBuying() {
 		return Buying;
+	}
+	public static String getCategoryList() {
+		return CATEGORY_LIST;
 	}
 	public static String getTrue() {
 		return TRUE;

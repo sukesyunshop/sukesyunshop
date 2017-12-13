@@ -18,7 +18,7 @@
 <body>
 	<h3>パスワードの再設定が完了致しました。</h3>
 		<div>
-			<span>Login画面へ</span><a href="./login.jsp">戻る</a>
+			<span>Login画面へ</span><a href="<s:url action='MoveLoginAction'/>">戻る</a>
 		</div>
 </body>
 </html>

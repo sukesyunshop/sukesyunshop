@@ -11,14 +11,13 @@ import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class GoHomeAction extends ActionSupport implements SessionAware {
+public class EmptyAction extends ActionSupport implements SessionAware {
 
 	private ArrayList<CategoryDTO> cateList;
-	public Map<String, Object> session;
+	private Map<String, Object> session;
 
-	public String execute() {
 
-		// TODO今後ホームに何を表示するかによって取得する値を変更します
+	public String execute(){
 
 		SearchDAO searchDAO = new SearchDAO();
 		try {
@@ -29,15 +28,7 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 		}
 
 		return SUCCESS;
-	}
 
-	public Map<String, Object> getSession() {
-		return this.session;
-	}
-
-	@Override
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
 	}
 
 	public ArrayList<CategoryDTO> getCateList() {
@@ -47,4 +38,14 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 	public void setCateList(ArrayList<CategoryDTO> cateList) {
 		this.cateList = cateList;
 	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
 }

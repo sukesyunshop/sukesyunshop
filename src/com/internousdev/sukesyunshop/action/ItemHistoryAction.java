@@ -7,6 +7,8 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.ItemHistoryDAO;
+import com.internousdev.sukesyunshop.dao.SearchDAO;
+import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.dto.ItemHistoryDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,6 +18,7 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 	public Map<String,Object> session;
 
 	public ArrayList<ItemHistoryDTO>  list ;
+	private ArrayList<CategoryDTO> cateList;
 
 
 
@@ -30,7 +33,11 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 
 		try {
 			list =dao.getItemHistoryList(userId);
-			System.out.println(list);
+
+			SearchDAO searchDAO = new SearchDAO();
+			setCateList(searchDAO.getCategory());
+			session.put(SessionName.getCategoryList(), getCateList());
+
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -55,5 +62,13 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public ArrayList<CategoryDTO> getCateList() {
+		return cateList;
+	}
+
+	public void setCateList(ArrayList<CategoryDTO> cateList) {
+		this.cateList = cateList;
 	}
 }

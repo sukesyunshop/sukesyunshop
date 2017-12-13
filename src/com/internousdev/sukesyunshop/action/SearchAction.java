@@ -8,6 +8,8 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.SearchDAO;
 import com.internousdev.sukesyunshop.dto.CatalogDTO;
+import com.internousdev.sukesyunshop.dto.CategoryDTO;
+import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SearchAction extends ActionSupport implements SessionAware {
@@ -16,6 +18,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
 	private int categoryId;
 
 	private ArrayList<CatalogDTO> list;
+	private ArrayList<CategoryDTO> cateList;
 	private String emptyMessage;
 
 	private Map<String, Object> session;
@@ -27,6 +30,10 @@ public class SearchAction extends ActionSupport implements SessionAware {
 			if(list.size() == 0){
 				emptyMessage = "検索結果がありません";
 			}
+
+			setCateList(searchDAO.getCategory());
+			session.put(SessionName.getCategoryList(), getCateList());
+
 			return SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,6 +63,14 @@ public class SearchAction extends ActionSupport implements SessionAware {
 
 	public void setList(ArrayList<CatalogDTO> list) {
 		this.list = list;
+	}
+
+	public ArrayList<CategoryDTO> getCateList() {
+		return cateList;
+	}
+
+	public void setCateList(ArrayList<CategoryDTO> cateList) {
+		this.cateList = cateList;
 	}
 
 	public String getEmptyMessage() {

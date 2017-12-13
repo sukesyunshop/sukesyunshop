@@ -16,7 +16,7 @@
 		<a href="<s:url action='LogoutAction' />">ログアウト</a>
 	</s:if>
 	<s:else>
-		<a href="./login.jsp">ログイン</a>
+		<a href="<s:url action='MoveLoginAction'/>">ログイン</a>
 	</s:else>
 
 	<s:form action="GoMyPageAction">

@@ -33,7 +33,7 @@
 		</label>
 	</s:form>
 
-	<a href="./resetPassword.jsp">パスワードを忘れた方はこちら</a>
+	<a href="<s:url action='MoveResetPasswordAction'/>">パスワードを忘れた方はこちら</a>
 
 </body>
 </html>

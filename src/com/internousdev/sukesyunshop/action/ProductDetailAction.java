@@ -7,7 +7,10 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.CatalogDAO;
+import com.internousdev.sukesyunshop.dao.SearchDAO;
 import com.internousdev.sukesyunshop.dto.CatalogDTO;
+import com.internousdev.sukesyunshop.dto.CategoryDTO;
+import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ProductDetailAction extends ActionSupport implements SessionAware {
@@ -16,6 +19,7 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 	public CatalogDTO dto;
 	public Map<String, Object> session;
 	public ArrayList<CatalogDTO> miniList;
+	private ArrayList<CategoryDTO> cateList;
 	public CatalogDAO catalogdao = new CatalogDAO();
 
 
@@ -25,6 +29,10 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 		try{
 			dto=catalogdao.getItem(productId);
 			miniList=catalogdao.miniList(dto.getCategoryId());
+
+			SearchDAO searchDAO = new SearchDAO();
+			setCateList(searchDAO.getCategory());
+			session.put(SessionName.getCategoryList(), getCateList());
 
 			result=SUCCESS;
 			}catch(SQLException e){
@@ -47,6 +55,26 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 		}
 		public void setSession(Map<String, Object> arg0) {
 				this.session = arg0;
+		}
+
+
+		public ArrayList<CatalogDTO> getMiniList() {
+			return miniList;
+		}
+
+
+		public void setMiniList(ArrayList<CatalogDTO> miniList) {
+			this.miniList = miniList;
+		}
+
+
+		public ArrayList<CategoryDTO> getCateList() {
+			return cateList;
+		}
+
+
+		public void setCateList(ArrayList<CategoryDTO> cateList) {
+			this.cateList = cateList;
 		}
 
 }
