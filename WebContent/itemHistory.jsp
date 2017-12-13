@@ -40,41 +40,32 @@
 	</div>
 </div>
 
-     <p>購入履歴一覧</p>
+<p>☆すけしゅんショップ☆ฅ(´-ω-`)ฅ<br>
+     購入履歴一覧</p>
 			<s:form>
 				<tr>
 					<td>商品名:</td>
-					<td><s:property value="session.productName" /></td>
+					<td><s:property value="list.getProductName()" /></td>
 				</tr>
 
 				<tr>
 					<td>値段:</td>
-					<td><s:property value="session.Price" /></td>
+					<td><s:property value="list.getPrice()" /></td>
 				</tr>
 				<tr>
 					<td>発売会社名:</td>
-					<td><s:property value="session.companyName" /></td>
+					<td><s:property value="list.getCompanyName()" /></td>
 				</tr>
 				<tr>
 					<td>発売年月日:</td>
-					<td><s:property value="session.releaseDate" /></td>
-				</tr>
-				<tr>
-					<td>
-						<br>
-					</td>
+					<td><s:property value="list.getReleaseDate()" /></td>
 				</tr>
 
-				<a href=img src=""></a>
 
+				<button type="button" onclick="location.href='GoHomeAction'"value="jump">ホームに戻る</button><br>
 
+				<button type="button" onclick="location.href='ItemHistoryAction'"value="jump">購入履歴一覧削除</button>
 
-				<tr>
-					<td><input type="button" value="ホームへ戻る" onclick="submitAction('GoHomeAction')" /></td>
-				</tr>
-				<tr>
-					<td><input type="button" value="購入履歴削除" onclick="submitAction('ItemHistoryAction')" /></td>
-				</tr>
 			</s:form>
 </body>
 </html>
