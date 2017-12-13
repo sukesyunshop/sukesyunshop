@@ -2,9 +2,9 @@ package com.internousdev.sukesyunshop.dto;
 
 public class CategoryDTO {
 
-	public int categoryId;
-	public String categoryName;
-	public String categoryDescription;
+	private int categoryId;
+	private String categoryName;
+	private String categoryDescription;
 
 	public int getCategoryId() {
 		return categoryId;

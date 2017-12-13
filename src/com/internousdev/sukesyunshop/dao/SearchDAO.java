@@ -35,7 +35,7 @@ public class SearchDAO {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, wc+searchText+wc);
 			statement.setString(2, wc+searchText+wc);
-		}else if(searchText.equals("")){
+		}else if(searchText == null || searchText.equals("")){
 			sql = ""
 					+ "SELECT * "
 					+ "FROM product_info "

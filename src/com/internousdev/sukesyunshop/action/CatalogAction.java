@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.CatalogDAO;
-import com.internousdev.sukesyunshop.dao.SearchDAO;
 import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
@@ -23,6 +22,8 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 
 
 	private String result = ERROR;
+
+	@SuppressWarnings("unchecked")
 	public String execute(){
 
 		try{
@@ -30,9 +31,7 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 				if(list.size() == 0){
 				emptyMessage = "検索結果がありません";
 
-				SearchDAO searchDAO = new SearchDAO();
-				setCateList(searchDAO.getCategory());
-				session.put(SessionName.getCategoryList(), getCateList());
+				setCateList((ArrayList<CategoryDTO>)session.get(SessionName.getCategoryList()));
 			}
 			result = SUCCESS;
 			} catch (Exception e){

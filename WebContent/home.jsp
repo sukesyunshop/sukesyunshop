@@ -10,6 +10,18 @@
 <body>
 	<h1>☆すけしゅんショップ☆ฅ(´-ω-`)ฅ</h1>
 
+	<s:form action="SearchAction">
+	<input type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+	<s:submit value="検索"/>
+	</s:form>
+
+	<ul>
+		<s:iterator value="cateList">
+			<li><a href="<s:url action='SearchAction'><s:param name="categoryId" value="getCategoryId()"/></s:url>"><s:property value="getCategoryName()" /></a></li>
+		</s:iterator>
+	</ul>
+
+
 	<p>aa<s:property value="#session.userId"/>zz</p>
 
 	<s:if test="#session.loginFlag == 'true'">
@@ -29,12 +41,6 @@
 
 	<s:form action="CatalogAction">
 	<s:submit value="商品一覧画面"/>
-	</s:form>
-
-	<s:form action="SearchAction">
-	<s:select list="cateList" listKey="categoryId" listValue="categoryName" name="categoryId" />
-	<input type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-	<s:submit value="検索"/>
 	</s:form>
 
 </body>
