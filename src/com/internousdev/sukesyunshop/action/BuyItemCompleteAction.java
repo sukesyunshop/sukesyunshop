@@ -2,6 +2,7 @@ package com.internousdev.sukesyunshop.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -18,7 +19,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class BuyItemCompleteAction extends ActionSupport implements SessionAware {
 
 	private String userId;
-	private int itemId;
+	private int productId;
 
 	public Map<String, Object> session;
 
@@ -32,9 +33,9 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 * 商品購入完了DAO＆商品情報DTOをインスタンス化
 	 *
 	 */
+	public List<BuyItemDTO> buyItemDTOList = new ArrayList<BuyItemDTO>();
 	private BuyItemCompleteDAO buyItemDAO = new BuyItemCompleteDAO();
-	private BuyItemDTO buyItemDTO = new BuyItemDTO();
-
+	public ArrayList<CartDTO> cartDTO;
 
 	/**
 	 * 登録されている宛先情報を参照する 宛先が登録されていない場合はRETURNの値は"lack"へ
@@ -47,49 +48,48 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 *
 	 * 購入完了画面へ遷移する時にカート情報を削除する処理
 	 *
-	 *------------ 実行メソッド------------*/
+	 * ------------ 実行メソッド------------
+	 */
 	public String execute() throws SQLException {
+
+		// 宛先情報の参照
 		userId = session.get(SessionName.getUserId()).toString();
 		String result = ERROR;
-		 destDAO.destSelect(userId);
+		destDAO.destSelect(userId);
 
 		if (this.userId.equals(destDTO.getUserId())) {
-			 destDAO.destSelect(userId);
-
+			destDAO.destSelect(userId);
 
 		} else {
 			result = "lack";
 		}
-		 //HTML側から送られてきた商品情報を登録用のDTOへまとめます。
-		buyItemDTO = setItemPrameters(buyItemDTO);
 
-		CartDAO cartDao = new CartDAO();
-		ArrayList<CartDTO> cartList = cartDao.getCartList(userId, true);
-
-		//登録処理
-		int insertCount = buyItemDAO.itemInsert(buyItemDTO);
-
-		//登録判定
-		//0==>登録失敗
-		//1==>登録成功
-
-		if(insertCount !=0){
-			result = SUCCESS;
-			buyItemDAO.itemDelete(itemId);
-		}else{
-			result = ERROR;
+		// HTML側から送られてきた商品情報を登録用のDTO(List)へまとめたいです
+		CartDAO cartDAO = new CartDAO();
+		ArrayList<CartDTO> cartList = cartDAO.getCartList(userId, true);
+		int count = cartList.size();
+		List<Integer> productIdList = new ArrayList<>();
+		for (int i = 0; count > i; i++) {
+			productIdList.add(cartList.get(i).getProductId());
 		}
+		buyItemDAO.itemInsert(productIdList, userId);
 
+		// カート情報を購入履歴に登録したい処理&登録した後カート情報を削除
+		//削除
+		cartDAO.deleteCart(userId, productId, true);
 		return result;
 
 	}
 
-	private BuyItemDTO setItemPrameters(BuyItemDTO buyItemDTO){
-		buyItemDTO.setUserId(userId);
-		buyItemDTO.setItemId(itemId);
-		return buyItemDTO;
+	// JSPから送られてきたカート情報をDTOに設定したいです。
+
+	public ArrayList<CartDTO> getCartList() {
+		return cartDTO;
 	}
 
+	public void setCartList(ArrayList<CartDTO> cartList) {
+		this.cartDTO = cartList;
+	}
 
 	public String getUserId() {
 		return userId;
@@ -99,12 +99,12 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 		this.userId = userId;
 	}
 
-	public int getItemId() {
-		return itemId;
+	public int getProductId() {
+		return productId;
 	}
 
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 
 	public Map<String, Object> getSession() {

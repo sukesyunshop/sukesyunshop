@@ -22,7 +22,7 @@ public class DestinationDAO {
 	public List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
 
 //宛先の情報を参照メゾット
-	public List<DestinationDTO> destSelect(String userId) {
+	public List<DestinationDTO> destSelect(String userId) throws SQLException {
 
 		try {
 			String sql = "SELECT * FROM destination_info WHERE user_id=?";

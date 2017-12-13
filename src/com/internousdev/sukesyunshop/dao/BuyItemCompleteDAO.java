@@ -22,7 +22,7 @@ public class BuyItemCompleteDAO {
 	public List<BuyItemDTO> buyItemDTOList = new ArrayList<BuyItemDTO>();
 
 	//カート情報を参照
-	public List<BuyItemDTO> itemSelect() {
+	public List<BuyItemDTO> itemSelect() throws SQLException {
 		try {
 
 			String sql = "SELECT * FROM"
@@ -64,7 +64,7 @@ public class BuyItemCompleteDAO {
 	}
 
 	//カート情報を購入履歴に追加
-	public int itemInsert(BuyItemDTO dto) throws SQLException {
+	public int itemInsert(List<Integer> list, String userId) throws SQLException {
 
 		int insertCount = 0;
 
@@ -75,13 +75,15 @@ public class BuyItemCompleteDAO {
 				+ " VALUES(?,?,?,?)";
 
 		try {
+			for(int i =0 ; list.size() > i ; i++ ){
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, dto.getUserId());
-			ps.setInt(2, dto.getItemId());
+			ps.setString(1, userId);
+			ps.setInt(2, list.get(i));
 			ps.setString(3,dateUtil.getDate());
 			ps.setString(4,dateUtil.getDate());
 
 			insertCount = ps.executeUpdate();
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -96,7 +98,7 @@ public class BuyItemCompleteDAO {
 	}
 
     //カート情報を削除
-	public void itemDelete(int itemId) {
+	public void itemDelete(int itemId) throws SQLException {
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
