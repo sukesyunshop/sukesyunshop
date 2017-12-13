@@ -49,13 +49,16 @@ public class CatalogDAO {
 
 
 //商品一覧の中身,productail,cart,seachに値を渡している
-	public ArrayList<CatalogDTO> getCatalogList() throws SQLException{
+	public ArrayList<CatalogDTO> getCatalogList(int page) throws SQLException{
 		ArrayList<CatalogDTO> list = new ArrayList<CatalogDTO>();
 		String sql = ""
-				+"SELECT  id, category_id,product_id, product_name,product_name_kana, image_file_path,image_file_name,price "
-				+"FROM product_info  ";
+				+ "SELECT  id, category_id,product_id, product_name,product_name_kana, image_file_path,image_file_name,price "
+				+ "FROM product_info "
+				+ "LIMIT ?, ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, (page-1)*9);
+		preparedStatement.setInt(2, 9);
 		ResultSet resultSet = preparedStatement.executeQuery();
 
 		while(resultSet.next()){
@@ -99,6 +102,19 @@ public class CatalogDAO {
 			miniList.add(sub);
 		}
 		return miniList;
+	}
+
+	public int getCatalogCount() throws SQLException{
+		String sql = ""
+				+ "SELECT count(*) "
+				+ "FROM product_info ";
+
+		PreparedStatement statement = connection.prepareStatement(sql);
+		ResultSet resultSet = statement.executeQuery();
+		if(resultSet.next()){
+			return resultSet.getInt("count(*)");
+		}
+		return 0;
 	}
 
 

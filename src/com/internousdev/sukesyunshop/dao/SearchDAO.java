@@ -15,17 +15,90 @@ public class SearchDAO {
 	private DBConnector connector = new DBConnector();
 	private Connection connection = connector.getConnection();
 
-	public ArrayList<CatalogDTO> searchCatalog(int category, String searchText) throws SQLException{
+	public ArrayList<CatalogDTO> searchCatalog(int category, String searchText, int page) throws SQLException{
 		ArrayList<CatalogDTO> list = new ArrayList<>();
 
 		String sql;
 		PreparedStatement statement = null;
 		String wc = "%";
 
-		if(category == 0 && searchText == null){
+		if(category == 0 && (searchText == null || searchText.equals(""))){
+			sql = ""
+				+ "SELECT * "
+				+ "FROM product_info "
+				+ "LIMIT ?, ?";
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, (page-1)*9);
+			statement.setInt(2, 9);
+			System.out.println(page+"foo");
+		}else if(category == 0){
+			sql = ""
+					+ "SELECT * "
+					+ "FROM product_info "
+					+ "WHERE ( product_name LIKE ? "
+					+ "OR product_name_kana LIKE ? ) "
+					+ "LIMIT ?, ?";
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, wc+searchText+wc);
+			statement.setString(2, wc+searchText+wc);
+			statement.setInt(3, (page-1)*9);
+			statement.setInt(4, 9);
+		}else if(searchText == null || searchText.equals("")){
+			sql = ""
+					+ "SELECT * "
+					+ "FROM product_info "
+					+ "WHERE category_id = ? "
+					+ "LIMIT ?, ?";
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, category);
+			statement.setInt(2, (page-1)*9);
+			statement.setInt(3, 9);
+		}else{
+			sql = ""
+					+ "SELECT * "
+					+ "FROM product_info "
+					+ "WHERE category_id = ? "
+					+ "AND ( product_name LIKE ? "
+					+ "OR product_name_kana LIKE ? ) "
+					+ "LIMIT ?, ?";
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, category);
+			statement.setString(2, wc+searchText+wc);
+			statement.setString(3, wc+searchText+wc);
+			statement.setInt(4, (page-1)*9);
+			statement.setInt(5, 9);
+		}
+
+		ResultSet resultSet = statement.executeQuery();
+
+		while(resultSet.next()){
+			CatalogDTO dto = new CatalogDTO();
+			dto.setId(resultSet.getInt("id"));
+			dto.setCategoryId(resultSet.getInt("category_id"));
+			dto.setProductId(resultSet.getInt("product_id"));
+			dto.setProductName(resultSet.getString("product_name"));
+			dto.setProductNameKana(resultSet.getString("product_name_kana"));
+			dto.setImageFilePath(resultSet.getString("image_file_path"));
+			dto.setImageFileName(resultSet.getString("image_file_name"));
+			dto.setPrice(resultSet.getInt("price"));
+			dto.setReleaseDate (resultSet.getString("release_date"));
+			dto.setReleaseCompany(resultSet.getString("release_company"));
+			list.add(dto);
+		}
+
+		return list;
+
+	}
+
+	public int getCatalogCount(int category, String searchText, int page) throws SQLException{
+		String sql;
+		PreparedStatement statement = null;
+		String wc = "%";
+		if(category == 0 && (searchText == null || searchText.equals(""))){
 			sql = ""
 				+ "SELECT * "
 				+ "FROM product_info ";
+			statement = connection.prepareStatement(sql);
 		}else if(category == 0){
 			sql = ""
 					+ "SELECT * "
@@ -53,29 +126,16 @@ public class SearchDAO {
 			statement.setInt(1, category);
 			statement.setString(2, wc+searchText+wc);
 			statement.setString(3, wc+searchText+wc);
-		}
+		};
 
+		statement = connection.prepareStatement(sql);
 		ResultSet resultSet = statement.executeQuery();
-
+		int counter=0;
 		while(resultSet.next()){
-			CatalogDTO dto = new CatalogDTO();
-			dto.setId(resultSet.getInt("id"));
-			dto.setCategoryId(resultSet.getInt("category_id"));
-			dto.setProductId(resultSet.getInt("product_id"));
-			dto.setProductName(resultSet.getString("product_name"));
-			dto.setProductNameKana(resultSet.getString("product_name_kana"));
-			dto.setImageFilePath(resultSet.getString("image_file_path"));
-			dto.setImageFileName(resultSet.getString("image_file_name"));
-			dto.setPrice(resultSet.getInt("price"));
-			dto.setReleaseDate (resultSet.getString("release_date"));
-			dto.setReleaseCompany(resultSet.getString("release_company"));
-			list.add(dto);
+			counter++;
 		}
-
-		return list;
-
+		return counter;
 	}
-
 
 	public ArrayList<CategoryDTO> getCategory() throws SQLException{
 		ArrayList<CategoryDTO> list = new ArrayList<>();

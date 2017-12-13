@@ -18,6 +18,8 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 	private CatalogDAO catalogDAO = new CatalogDAO();
 	private ArrayList<CategoryDTO> cateList;
 	private ArrayList<CatalogDTO> list;
+	private int listSize;
+	private int page=1;
 	private String emptyMessage;
 
 
@@ -25,17 +27,19 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 	public String execute(){
 
 		try{
-			list=catalogDAO.getCatalogList();
+			list=catalogDAO.getCatalogList(page);
 				if(list.size() == 0){
-				emptyMessage = "検索結果がありません";
+					emptyMessage = "検索結果がありません";
 				}
-				SearchDAO searchDAO = new SearchDAO();
-				setCateList(searchDAO.getCategory());
+			listSize = catalogDAO.getCatalogCount()/9;
+			System.out.println(listSize);
+			SearchDAO searchDAO = new SearchDAO();
+			setCateList(searchDAO.getCategory());
 			result = SUCCESS;
-			} catch (Exception e){
-				e.printStackTrace();
-			}
-			return result;
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return result;
 
 	}
 
@@ -66,6 +70,30 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 	public void setList(ArrayList<CatalogDTO> list) {
 		this.list = list;
 	}
+
+	public int getListSize() {
+		return listSize;
+	}
+
+
+
+	public void setListSize(int listSize) {
+		this.listSize = listSize;
+	}
+
+
+
+	public int getPage() {
+		return page;
+	}
+
+
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+
 
 	public String getEmptyMessage() {
 		return emptyMessage;

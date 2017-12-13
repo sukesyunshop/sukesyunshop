@@ -18,18 +18,21 @@ public class SearchAction extends ActionSupport implements SessionAware {
 
 	private ArrayList<CatalogDTO> list;
 	private ArrayList<CategoryDTO> cateList;
+	private int listSize;
+	private int page;
 	private String emptyMessage;
 
 	private Map<String, Object> session;
 
 	public String execute(){
 		SearchDAO searchDAO = new SearchDAO();
+		if(page==0) page=1;
 		try {
-			list = searchDAO.searchCatalog(categoryId, searchText);
+			list = searchDAO.searchCatalog(categoryId, searchText, page);
+			listSize = searchDAO.getCatalogCount(categoryId, searchText, page)/9+1;
 			if(list.size() == 0){
 				emptyMessage = "検索結果がありません";
 			}
-
 			setCateList(searchDAO.getCategory());
 
 			return SUCCESS;
@@ -69,6 +72,22 @@ public class SearchAction extends ActionSupport implements SessionAware {
 
 	public void setCateList(ArrayList<CategoryDTO> cateList) {
 		this.cateList = cateList;
+	}
+
+	public int getListSize() {
+		return listSize;
+	}
+
+	public void setListSize(int listSize) {
+		this.listSize = listSize;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public String getEmptyMessage() {
