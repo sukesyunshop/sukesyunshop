@@ -42,7 +42,6 @@ private String result = ERROR;
 
 			SearchDAO searchDAO = new SearchDAO();
 			setCateList(searchDAO.getCategory());
-			session.put(SessionName.getCategoryList(), getCateList());
 
 			result = SUCCESS;
 		}catch(SQLException e){

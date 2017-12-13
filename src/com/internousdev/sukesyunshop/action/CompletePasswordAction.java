@@ -10,7 +10,6 @@ import com.internousdev.sukesyunshop.dao.ResetPasswordDAO;
 import com.internousdev.sukesyunshop.dao.SearchDAO;
 import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.dto.ResetPasswordDTO;
-import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CompletePasswordAction extends ActionSupport implements SessionAware {
@@ -41,7 +40,6 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 			try{
 				SearchDAO searchDAO = new SearchDAO();
 				setCateList(searchDAO.getCategory());
-				session.put(SessionName.getCategoryList(), getCateList());
 			}catch(SQLException e){
 				e.printStackTrace();
 			}

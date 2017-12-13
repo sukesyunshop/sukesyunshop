@@ -9,7 +9,6 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.sukesyunshop.dao.SearchDAO;
 import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.internousdev.sukesyunshop.dto.CategoryDTO;
-import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SearchAction extends ActionSupport implements SessionAware {
@@ -32,7 +31,6 @@ public class SearchAction extends ActionSupport implements SessionAware {
 			}
 
 			setCateList(searchDAO.getCategory());
-			session.put(SessionName.getCategoryList(), getCateList());
 
 			return SUCCESS;
 		} catch (SQLException e) {

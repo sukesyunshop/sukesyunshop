@@ -34,7 +34,6 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 			cartDAO.deleteCart(userId, productId, loginFlag);
 			SearchDAO searchDAO = new SearchDAO();
 			setCateList(searchDAO.getCategory());
-			session.put(SessionName.getCategoryList(), getCateList());
 			result = SUCCESS;
 		}catch(SQLException e){
 			e.printStackTrace();

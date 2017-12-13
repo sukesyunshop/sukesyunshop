@@ -8,7 +8,6 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.SearchDAO;
 import com.internousdev.sukesyunshop.dto.CategoryDTO;
-import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class GoHomeAction extends ActionSupport implements SessionAware {
@@ -23,7 +22,6 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 		SearchDAO searchDAO = new SearchDAO();
 		try {
 			setCateList(searchDAO.getCategory());
-			session.put(SessionName.getCategoryList(), getCateList());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

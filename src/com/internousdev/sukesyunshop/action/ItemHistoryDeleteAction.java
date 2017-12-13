@@ -25,7 +25,6 @@ public class ItemHistoryDeleteAction extends ActionSupport implements SessionAwa
 
 			SearchDAO searchDAO = new SearchDAO();
 			setCateList(searchDAO.getCategory());
-			session.put(SessionName.getCategoryList(), getCateList());
 
 			return SUCCESS;
 		} catch (SQLException e) {

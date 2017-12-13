@@ -12,6 +12,12 @@
 <div id="main">
 	<p>商品一覧</p>
 </div>
+	<ul>
+		<s:iterator value="cateList">
+			<li><a href="<s:url action='SearchAction'><s:param name="categoryId" value="getCategoryId()"/></s:url>"><s:property value="getCategoryName()" /></a></li>
+		</s:iterator>
+	</ul>
+
 
 <p><s:property value="emptyMessage"/></p>
 <ul>

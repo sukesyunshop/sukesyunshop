@@ -29,7 +29,6 @@ public class GoMyPageAction extends ActionSupport implements SessionAware{
 
 			SearchDAO searchDAO = new SearchDAO();
 			setCateList(searchDAO.getCategory());
-			session.put(SessionName.getCategoryList(), getCateList());
 
 			return SUCCESS;
 		}catch (SQLException e){

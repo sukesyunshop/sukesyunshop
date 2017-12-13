@@ -22,7 +22,7 @@ public class SearchDAO {
 		PreparedStatement statement = null;
 		String wc = "%";
 
-		if(category == 0 && searchText.equals("")){
+		if(category == 0 && searchText == null){
 			sql = ""
 				+ "SELECT * "
 				+ "FROM product_info ";
