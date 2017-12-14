@@ -33,7 +33,7 @@
 <body>
 
 <!---------------ヘッダー -------------->
-<div id="header">
+<header>
 	<div id="logo">すけしゅんショップ</div>
 
 	<!-- メニューリスト -->
@@ -51,19 +51,17 @@
 			<a href="CartAction"> <img src="./public/cart.jpg" alt="cart" border="0" class="template"></a>
 		</li>
 	</ul>
-
+</header>
 	<!-- 検索バー -->
-
-	<table>
-
+	<div class="bar">
 		<s:form action="SearchAction">
-			<tr>
-				<td><input  type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16"></td>
-				<td><s:submit value="検索"/></td>
-			</tr>
+				<input class="input"  type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+				<s:submit class="submit" value="検索"/>
 		</s:form>
+	</div>
 
-	</table>
+
+
 
 
 <!-- カテゴリーリスト -->
@@ -73,7 +71,7 @@
 				<li><a href="<s:url action='SearchAction'><s:param name="categoryId" value="getCategoryId()"/></s:url>"><s:property value="getCategoryName()" /></a></li>
 			</s:iterator>
 		</ul>
-</div>
+
 <!------------ヘッダーここまで ------------>
 
 

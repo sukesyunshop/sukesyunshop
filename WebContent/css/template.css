@@ -7,9 +7,10 @@ body{
 	background-color:#ffffe0;
 	font-size:12px;
 	font-family:'Impact';
+
 }
 
-#header{
+header{
 	position:absolute;
 	top:0px;
 	left:0px;
@@ -42,28 +43,45 @@ body{
 
 
 .template{
-	width:40px;
-	height:40px;
+	width:50px;
+	height:50px;
 }
 
-table{
-	margin-top:40px;
-	margin-left:800px;
+.bar{
+	width:100%;
+	margin-top:100px;
+	margin-left:650px;
+
+}
+.bar input{
+
+	float:left;
+	clear:both;
+}
+.bar submit{
+
+}
+form{
+	display:inline;
+
+
 }
 
 
 .category{
-	float:left;
-	font-size:15px;
+	width:100%;
+	font-size:12px;
 	text-align: center;
 
 }
 
 .category li{
-	float:right;
+	display: inline-block;
+	float:left;
 	list-style:none;
 	border:solid  1px #000;
-	width:300px;
+	width:250px;
+	background-color:#dcdcdc;
 }
 .main{
 	crear:both;
