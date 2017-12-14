@@ -52,7 +52,8 @@
 		</li>
 	</ul>
 </header>
-	<!-- 検索バー -->
+
+	<!------ 検索バー ----->
 	<div class="bar">
 		<s:form action="SearchAction">
 				<input class="input"  type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
@@ -73,7 +74,8 @@
 		</ul>
 
 <!------------ヘッダーここまで ------------>
-
+<main>
+</main>
 
 <!--
 <div class="item">
@@ -81,8 +83,8 @@
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/2.jpg"></a></div>
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/3.jpg"></a></div>
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/4.jpg"></a></div>
-
-</div>-->
+</div>
+-->
 		<div id="footer">
 	</div>
 </body>

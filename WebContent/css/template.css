@@ -14,7 +14,7 @@ header{
 	position:absolute;
 	top:0px;
 	left:0px;
-	background-color:#e62f8b;
+	background-color:#ffffff;
 	width:100%;
 	height:80px;
 }
@@ -51,26 +51,21 @@ header{
 	width:100%;
 	margin-top:100px;
 	margin-left:650px;
-
 }
-.bar input{
 
+.bar input{
 	float:left;
 	clear:both;
 }
 .bar submit{
 
 }
-form{
-	display:inline;
 
-
-}
 
 
 .category{
 	width:100%;
-	font-size:12px;
+	font-size:15px;
 	text-align: center;
 
 }
@@ -89,13 +84,11 @@ form{
 	height:500px;
 }
 
-
-
 #footer{
 	position:absolute;
 	bottom:0px;
 	left:0px;
-	background-color:#e62f8b;
+	background-color:#ffffff;
 	width:100%;
 	height:80px;
 }
