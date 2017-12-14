@@ -23,6 +23,10 @@
     	  speed: 500,
     	  pause:  5500,
     	  controls: true,
+    	  infiniteLoop:true,
+    	  pager:boolean,
+
+
 
 
       });
@@ -62,6 +66,7 @@
 		<div><img src="./img/img2.jpg"></div>
 		<div><img src="./img/img4.jpg"></div>
 		<div><img src="./img/img7.jpg"></div>
+		<div><img src="./img/img8.jpg"></div>
 
 
 </div>

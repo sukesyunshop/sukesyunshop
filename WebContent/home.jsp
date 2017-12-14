@@ -6,14 +6,15 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./css/template.css">
-	<title>Home</title>
-	<!-- <link rel="stylesheet" href="${pageContext.request.contextPath}./css/slider.css">
+
+	<link rel="stylesheet" type="text/css" href="./css/slider.css">
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 	<title>Home</title>
 
-<!--
+
   <script>
     $(document).ready(function(){
       $('.item').bxSlider({
@@ -23,11 +24,10 @@
     	  pause:  5500,
     	  controls: true,
 
-
       });
     });
   </script>
- -->
+
 
 </head>
 <body>
@@ -77,14 +77,14 @@
 <!------------ヘッダーここまで ------------>
 
 
-<!--
+
 <div class="item">
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/1.jpg"></a></div>
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/2.jpg"></a></div>
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/3.jpg"></a></div>
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/4.jpg"></a></div>
 
-</div>-->
+</div>
 		<div id="footer">
 	</div>
 </body>
