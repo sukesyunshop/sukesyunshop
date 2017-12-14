@@ -14,8 +14,9 @@
 </div>
 
 	<s:form action="SearchAction">
-	<input type="search" name="searchText" value="<s:property value="searchText"/>" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-	<s:submit value="検索"/>
+		<input type="search" name="searchText" value="<s:property value="searchText"/>" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+		<input type="hidden" name="categoryId" value="<s:property value="categoryId"/>">
+		<s:submit value="検索"/>
 	</s:form>
 
 	<ul>
@@ -45,7 +46,16 @@
 
 <ul>
 	<s:iterator begin="1" end="listSize" status="i">
-		<li><a href="<s:url action="SearchAction"><s:param name='page' value="#i.count" /></s:url>"><s:property value="#i.count" /></a></li>
+		<li>
+			<a href="
+				<s:url action="SearchAction">
+					<s:param name='page' value="#i.count" />
+					<s:param name='categoryId' value="categoryId" />
+				</s:url>
+			">
+				<s:property value="#i.count" />
+			</a>
+		</li>
 	</s:iterator>
 </ul>
 
