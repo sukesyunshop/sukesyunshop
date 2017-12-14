@@ -6,14 +6,15 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./css/template.css">
-	<title>Home</title>
-	<!-- <link rel="stylesheet" href="${pageContext.request.contextPath}./css/slider.css">
+
+	<link rel="stylesheet" type="text/css" href="./css/slider.css">
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 	<title>Home</title>
 
-<!--
+
   <script>
     $(document).ready(function(){
       $('.item').bxSlider({
@@ -23,17 +24,16 @@
     	  pause:  5500,
     	  controls: true,
 
-
       });
     });
   </script>
- -->
+
 
 </head>
 <body>
 
 <!---------------ヘッダー -------------->
-<header>
+<div id="header">
 	<div id="logo">すけしゅんショップ</div>
 
 	<!-- メニューリスト -->
@@ -51,18 +51,19 @@
 			<a href="CartAction"> <img src="./public/cart.jpg" alt="cart" border="0" class="template"></a>
 		</li>
 	</ul>
-</header>
 
-	<!------ 検索バー ----->
-	<div class="bar">
+	<!-- 検索バー -->
+
+	<table>
+
 		<s:form action="SearchAction">
-				<input class="input"  type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-				<s:submit class="submit" value="検索"/>
+			<tr>
+				<td><input  type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16"></td>
+				<td><s:submit value="検索"/></td>
+			</tr>
 		</s:form>
-	</div>
 
-
-
+	</table>
 
 
 <!-- カテゴリーリスト -->
@@ -72,19 +73,18 @@
 				<li><a href="<s:url action='SearchAction'><s:param name="categoryId" value="getCategoryId()"/></s:url>"><s:property value="getCategoryName()" /></a></li>
 			</s:iterator>
 		</ul>
-
+</div>
 <!------------ヘッダーここまで ------------>
-<main>
-</main>
 
-<!--
+
+
 <div class="item">
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/1.jpg"></a></div>
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/2.jpg"></a></div>
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/3.jpg"></a></div>
 		<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/4.jpg"></a></div>
+
 </div>
--->
 		<div id="footer">
 	</div>
 </body>
