@@ -96,8 +96,8 @@ public class SearchDAO {
 		String wc = "%";
 		if(category == 0 && (searchText == null || searchText.equals(""))){
 			sql = ""
-				+ "SELECT * "
-				+ "FROM product_info ";
+					+ "SELECT * "
+					+ "FROM product_info ";
 			statement = connection.prepareStatement(sql);
 		}else if(category == 0){
 			sql = ""
@@ -128,7 +128,6 @@ public class SearchDAO {
 			statement.setString(3, wc+searchText+wc);
 		};
 
-		statement = connection.prepareStatement(sql);
 		ResultSet resultSet = statement.executeQuery();
 		int counter=0;
 		while(resultSet.next()){
