@@ -64,7 +64,7 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 			result = "lack";
 		}
 
-		// HTML側から送られてきた商品情報を登録用のDTO(List)へまとめたいです
+		// HTML側から送られてきた商品情報を登録用のDTO(List)へまとめ購入履歴テーブルへ情報を登録する処理
 		CartDAO cartDAO = new CartDAO();
 		ArrayList<CartDTO> cartList = cartDAO.getCartList(userId, true);
 		int count = cartList.size();
@@ -74,14 +74,13 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 		}
 		buyItemDAO.itemInsert(productIdList, userId);
 
-		// カート情報を購入履歴に登録したい処理&登録した後カート情報を削除
+		// カート情報を登録した後カート情報を削除
 		//削除
 		cartDAO.deleteCart(userId, productId, true);
 		return result;
 
 	}
 
-	// JSPから送られてきたカート情報をDTOに設定したいです。
 
 	public ArrayList<CartDTO> getCartList() {
 		return cartDTO;
