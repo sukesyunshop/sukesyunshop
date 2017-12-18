@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+
+#form{
+	padding: 0.5em 1em;
+    margin: 2em 0;
+    border-top: solid 20px #7fbfff;
+    background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#dbedff 3px, #dbedff 7px);
+    background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#dbedff 3px, #dbedff 7px);
+	width:425px;
+	height:325px;
+	padding:70px 0px 20px 90px;
+	margin-top:250px;
+	margin-left:650px;
+	font-size:18px;
+}
+
+#loginArea{
+	width:200px;
+}
+#login{
+
+}
+#password{
+
+}
+#passwordArea{
+	width:200px;
+}
+
+#submit{
+
+	padding:20px 0px 20px 100px;
+}
+
+#forgotPass{
+	font-size:14px;
+	margin-left:100px;
+}

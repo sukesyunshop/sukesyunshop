@@ -10,6 +10,8 @@
 <meta http-equiv="imagetoolbar" content="no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
+<link rel="stylesheet" type="text/css" href="./css/template.css">
+<link rel="stylesheet" type="text/css" href="./css/resetPassword.css">
 <title>パスワードの再設定</title>
 
 
@@ -18,12 +20,9 @@
 
 <div id="header">
 
-	<div id="logo">
-	<h1>☆すけしゅんショップ☆ฅ(´-ω-`)ฅ</h1>
-	</div>
+	<h1><span>す</span>け<span>し</span>ゅん<span>S</span>H<span>O</span>P</h1>
 
-
-	<ul>
+	<ul id="menu">
 		<li>
 			<s:if test="#session.loginFlag == 'true'">
 				<a href="<s:url action='LogoutAction' />">ログアウト</a>
@@ -38,47 +37,43 @@
 		</li>
 	</ul>
 
-	<div class=bar>
+	<div class="bar">
 		<s:form action="SearchAction">
-			<input type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-			<s:submit value="検索"/>
+			<input class="input" type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+			<s:submit class="submit" value="検索"/>
 		</s:form>
 	</div>
 </div>
 
-		<table>
+	<div id="form">
 			<s:form action="ConfirmPasswordAction">
-				<tr>
-					<td>
-						<label>ログインID:</label>
-					</td>
-					<td>
-						<input type="text" name="loginId" value="">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>新しいパスワード:</label>
-					</td>
-					<td>
-						<input type="text" name="loginPassword" value="">
-					</td>
-					</tr>
-				<tr>
-					<td>
-						<label>再確認用パスワード:</label>
-					</td>
-					<td>
-						<input type="password" name="confirmPassword" value="">
-					</td>
-				</tr>
+				<div id="login">
+						<label>
+							ログインID:
+								<input id="loginArea" type="text" name="loginId" value="">
+						</label>
+				</div>
+				<div id="password">
+						<label>
+							新しいパスワード:
+								<input id="passwordArea" type="text" name="loginPassword" value="">
+						</label>
+				</div>
+				<div id="confirmPassword">
+						<label>
+							再確認用パスワード:
+								<input id="confirmArea" type="password" name="confirmPassword" value="">
+						</label>
+				</div>
 						<p><span style="color:#FF0000"><s:property value="userIdMessage" /></span></p>
 						<p><span style="color:#FF0000"><s:property value="passwordMessage"/></span></p>
 				<s:submit value="登録"/>
 			</s:form>
-		</table>
+	</div>
 <div>
-	<span>Login画面に戻る場合は</span><a href="./login.jsp">こちら</a>
+	<div id="goHome">
+		<span>Login画面に戻る場合は</span><a href="./login.jsp">こちら</a>
+	</div>
 </div>
 </body>
 </html>

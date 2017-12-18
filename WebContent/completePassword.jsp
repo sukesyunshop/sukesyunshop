@@ -10,19 +10,19 @@
 <meta http-equiv="imagetoolbar" content="no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
+<link rel="stylesheet" type="text/css" href="./css/template.css">
+<link rel="stylesheet" type="text/css" href="./css/completePassword.css">
 <title>パスワード再設定完了画面</title>
 
 </head>
 <body>
 
-<div id="header">
+	<div id="header">
 
-	<div id="logo">
-	<h1>☆すけしゅんショップ☆ฅ(´-ω-`)ฅ</h1>
-	</div>
+	<h1><span>す</span>け<span>し</span>ゅん<span>S</span>H<span>O</span>P</h1>
 
 
-	<ul>
+	<ul id="menu">
 		<li>
 			<s:if test="#session.loginFlag == 'true'">
 				<a href="<s:url action='LogoutAction' />">ログアウト</a>
@@ -37,18 +37,19 @@
 		</li>
 	</ul>
 
-	<div class=bar>
+	<div class="bar">
 		<s:form action="SearchAction">
-			<input type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-			<s:submit value="検索"/>
+			<input class="input" type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+			<s:submit class="submit" value="検索"/>
 		</s:form>
 	</div>
 </div>
 
-
+<div class="content">
 	<h3>パスワードの再設定が完了致しました。</h3>
 		<div>
 			<span>Login画面へ</span><a href="<s:url action='MoveLoginAction'/>">戻る</a>
 		</div>
+	</div>
 </body>
 </html>

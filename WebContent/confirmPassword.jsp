@@ -10,6 +10,8 @@
 <meta http-equiv="imagetoolbar" content="no" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
+<link rel="stylesheet" type="text/css" href="./css/template.css">
+<link rel="stylesheet" type="text/css" href="./css/confirmPassword.css">
 <title>パスワード再設定確認画面</title>
 
 </head>
@@ -17,12 +19,10 @@
 
 <div id="header">
 
-	<div id="logo">
-	<h1>☆すけしゅんショップ☆ฅ(´-ω-`)ฅ</h1>
-	</div>
+	<h1><span>す</span>け<span>し</span>ゅん<span>S</span>H<span>O</span>P</h1>
 
 
-	<ul>
+	<ul id="menu">
 		<li>
 			<s:if test="#session.loginFlag == 'true'">
 				<a href="<s:url action='LogoutAction' />">ログアウト</a>
@@ -37,15 +37,16 @@
 		</li>
 	</ul>
 
-	<div class=bar>
+	<div class="bar">
 		<s:form action="SearchAction">
-			<input type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-			<s:submit value="検索"/>
+			<input class="input" type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+			<s:submit class="submit" value="検索"/>
 		</s:form>
 	</div>
 </div>
 
-	<h3>登録する内容は以下でよろしいですか。</h3>
+<div class="content">
+	<h2>登録する内容は以下でよろしいですか。</h2>
 
 	<s:form action="CompletePasswordAction" >
 		<label>再設定されるパスワード:
@@ -54,5 +55,6 @@
 				<s:submit class="button"  value="完了" />
 	</s:form>
 	<span>前画面に戻る場合は</span><a href="./resetPassword.jsp">こちら</a>
+</div>
 </body>
 </html>
