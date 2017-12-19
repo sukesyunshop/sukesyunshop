@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/template.css">
+<link rel="stylesheet" type="text/css" href="./css/catalog.css">
 <title>商品一覧画面</title>
 </head>
 <body>
@@ -57,12 +58,14 @@
 
 
 <p><s:property value="emptyMessage"/></p>
-<ul>
+
+
+<ul class="menu">
 	<s:iterator value="list">
 		<li>
+				<img src="<s:property value="getImageFilePath()" />" class="itemImage" ><br>
 				<span>カテゴリー</span>
 					<s:property value="getCategoryId()" /><br>
-					<img src="<s:property value="getImageFilePath()" />">
 				<span>商品名</span>
 					<s:property value="getProductNameKana()" /><br>
 					<s:property value="getProductName()"/>
@@ -74,7 +77,9 @@
 	</s:iterator>
 </ul>
 
-<ul>
+
+
+<ul class="br">
 	<s:iterator begin="1" end="listSize" status="i">
 		<li>
 			<a href="

@@ -1,0 +1,23 @@
+.menu {
+  -webkit-align-content: stretch;
+  align-content:  space-around;
+  justify-content: space-around;
+  display:flex;
+  flex-flow: row wrap;
+}
+
+.itemImage{
+	width:300px;
+	height:300px;
+}
+
+.br{
+	display:flex;
+	 flex-flow: row wrap;
+	 justify-content: center;
+}
+
+.br li{
+	padding: 30px;
+	margin:Å@0px;
+}
