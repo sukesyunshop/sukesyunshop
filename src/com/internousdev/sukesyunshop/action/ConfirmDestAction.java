@@ -16,6 +16,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 	private String firstName;
 	private String familyNameKana;
 	private String firstNameKana;
+	private int sex;
 	private String email;
 	private String telNumber;
 	private String userAddress;
@@ -112,6 +113,17 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 			System.out.println(firstNameKana + "12");
 			firstKanaMessage = "姓ふりがなはひらがなで入力してください";
 			return ERROR;
+		}
+
+		/*------- 性別選択 -------*/
+		if(sex == 0) {
+			System.out.println("akasatana");
+			//返り値＝＝男
+		}
+
+		if(sex == 1) {
+			System.out.println("aiueo");
+			//返り値＝＝オンナ
 		}
 
 		/*------- 住所のエラー処理 ------*/

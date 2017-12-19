@@ -46,13 +46,20 @@
 		<div id="top"></div>
 		以下の情報を登録してよろしいですか？
 		<s:form action="CompleteDestAction">
-			<input name="familyName" type="hidden" value="<s:property value='familyName' />" />
-			<input name="firstName" type="hidden" value="<s:property value='firstName' />" />
-			<input name="familyNameKana" type="hidden" value="<s:property value='familyNameKana' />" />
-			<input name="firstNameKana" type="hidden" value="<s:property value='firstNameKana' />" />
-			<input name="email" type="hidden" value="<s:property value='email' />" />
-			<input name="telNumber" type="hidden" value="<s:property value='telNumber' />" />
-			<input name="userAddress" type="hidden" value="<s:property value='userAddress' />" />
+			<input name="familyName" type="hidden"
+				value="<s:property value='familyName' />" />
+			<input name="firstName" type="hidden"
+				value="<s:property value='firstName' />" />
+			<input name="familyNameKana" type="hidden"
+				value="<s:property value='familyNameKana' />" />
+			<input name="firstNameKana" type="hidden"
+				value="<s:property value='firstNameKana' />" />
+			<input name="email" type="hidden"
+				value="<s:property value='email' />" />
+			<input name="telNumber" type="hidden"
+				value="<s:property value='telNumber' />" />
+			<input name="userAddress" type="hidden"
+				value="<s:property value='userAddress' />" />
 
 			<table>
 				<tbody>

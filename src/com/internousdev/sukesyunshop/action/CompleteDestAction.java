@@ -69,6 +69,7 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 		destinationDTO.setFirstName(firstName);
 		destinationDTO.setFirstNameKana(firstNameKana);
 		destinationDTO.setFamilyNameKana(familyNameKana);
+		destinationDTO.setSex(sex);
 		destinationDTO.setEmail(email);
 		destinationDTO.setTelNumber(telNumber);
 		destinationDTO.setUserAddress(userAddress);

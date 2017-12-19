@@ -47,52 +47,42 @@
 		<div id="top"></div>
 		<h3>宛先を入力してください。</h3>
 		<s:form action="ConfirmDestAction">
-	姓：
-	<p>
-				<span style="color: #FF0000"><s:property
-						value="familyMessage" /></span>
-			</p>
-			<input type="text" name="familyName" value="">
+
+	<!-- 宛先情報入力フォーム -->
+
+			<span style="color: #FF0000"><s:property value="familyMessage" /></span>
+			姓：<input type="text" name="familyName" value="">
 			<br />
-	名：
-	<p>
-				<span style="color: #FF0000"><s:property value="firstMessage" /></span>
-			</p>
-			<input type="text" name="firstName" value="">
+
+			<span style="color: #FF0000"><s:property value="firstMessage" /></span>
+			名：<input type="text" name="firstName" value="">
 			<br />
-	姓かな：
-	<p>
-				<span style="color: #FF0000"><s:property
-						value="familyKanaMessage" /></span>
-			</p>
-			<input type="text" name="familyNameKana" value="">
+
+			<span style="color: #FF0000"><s:property
+					value="familyKanaMessage" /></span>
+			姓かな：<input type="text" name="familyNameKana" value="">
 			<br />
-	名かな：
-	<p>
-				<span style="color: #FF0000"><s:property
-						value="firstKanaMessage" /></span>
-			</p>
-			<input type="text" name="firstNameKana" value="">
+
+			<span style="color: #FF0000"><s:property
+					value="firstKanaMessage" /></span>
+			名かな：<input type="text" name="firstNameKana" value="">
 			<br />
-	メールアドレス：
-	<p>
-				<span style="color: #FF0000"><s:property value="emailMessage" /></span>
-			</p>
-			<input type="text" name="email" value="">
+			<!-- 性別ラジオボタン -->
+			性別：<input type="radio" name="sex" value="0" checked="checked"><span>男性</span>
+				<input type="radio" name="sex" value="1" ><span>女性</span>
+
+			<span style="color: #FF0000"><s:property value="emailMessage" /></span>
+			メールアドレス：<input type="text" name="email" value="">
 			<br />
-	電話番号：
-	<p>
-				<span style="color: #FF0000"><s:property
-						value="telNumberMessage" /></span>
-			</p>
-			<input type="text" name="telNumber" value="">
+
+			<span style="color: #FF0000"><s:property
+					value="telNumberMessage" /></span>
+			電話番号：<input type="text" name="telNumber" value="">
 			<br />
-	住所：
-	<p>
-				<span style="color: #FF0000"><s:property
-						value="addressMessage" /></span>
-			</p>
-			<input type="text" name="userAddress" value="">
+
+			<span style="color: #FF0000"><s:property
+					value="addressMessage" /></span>
+			住所：<input type="text" name="userAddress" value="">
 
 			<br />
 			<s:submit class="button" value="確認画面へ" />
