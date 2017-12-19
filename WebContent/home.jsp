@@ -95,7 +95,8 @@
 <!--------メインコンテンツ--------->
 	<div id="main">
 
-
+<!-- slider -->
+<!-- pickup -->
 	<div id="pickup-wrap">
 		<div id="pickup-wrap-inner">
 			<ul class="pickup">
@@ -116,24 +117,24 @@
 			</ul>
 		</div>
 	</div>
-
+<!-- sale -->
 	<div id="sale-wrap">
 		<div id="sale-wrap-inner">
 			<ul class="sale">
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/1.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/2.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/3.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/4.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/5.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/6.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/7.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/8.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/9.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/10.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/11.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/12.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/13.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/20.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/23.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/22.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/21.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/14.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/15.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/16.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/17.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/18.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/19.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/24.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/25.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/26.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/27.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/28.jpg"></a></li>
 			</ul>
 		</div>
 	</div>
