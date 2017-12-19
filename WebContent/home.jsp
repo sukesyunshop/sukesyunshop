@@ -100,20 +100,9 @@
 	<div id="pickup-wrap">
 		<div id="pickup-wrap-inner">
 			<ul class="pickup">
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/1.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/2.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/3.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/4.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/5.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/6.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/7.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/8.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/9.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/10.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/11.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/12.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/13.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/20.jpg"></a></li>
+				<s:iterator value="randomList">
+					<li><a href="<s:url action="ProductDetailAction" />"><img src="<s:property value="getImageFilePath()"/>"></a></li>
+				</s:iterator>
 			</ul>
 		</div>
 	</div>

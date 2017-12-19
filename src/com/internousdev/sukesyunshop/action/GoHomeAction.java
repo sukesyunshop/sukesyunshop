@@ -6,22 +6,27 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.sukesyunshop.dao.CatalogDAO;
 import com.internousdev.sukesyunshop.dao.SearchDAO;
+import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class GoHomeAction extends ActionSupport implements SessionAware {
 
 	private ArrayList<CategoryDTO> cateList;
+	private ArrayList<CatalogDTO> randomList;
 	public Map<String, Object> session;
 
 	public String execute() {
 
-		// TODO今後ホームに何を表示するかによって取得する値を変更します
+		// TODO 今後ホームに何を表示するかによって取得する値を変更します
 
 		SearchDAO searchDAO = new SearchDAO();
+		CatalogDAO catalogDAO = new CatalogDAO();
 		try {
 			setCateList(searchDAO.getCategory());
+			setRandomList(catalogDAO.getRandomItem());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -44,5 +49,13 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 
 	public void setCateList(ArrayList<CategoryDTO> cateList) {
 		this.cateList = cateList;
+	}
+
+	public ArrayList<CatalogDTO> getRandomList() {
+		return randomList;
+	}
+
+	public void setRandomList(ArrayList<CatalogDTO> randomList) {
+		this.randomList = randomList;
 	}
 }

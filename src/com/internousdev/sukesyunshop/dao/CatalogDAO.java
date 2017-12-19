@@ -117,6 +117,35 @@ public class CatalogDAO {
 		return 0;
 	}
 
+	public ArrayList<CatalogDTO> getRandomItem() throws SQLException{
+		ArrayList<CatalogDTO> list = new ArrayList<>();
+		String sql = ""
+				+ "SELECT * "
+				+ "FROM product_info "
+				+ "ORDER BY RAND() "
+				+ "LIMIT 10 ";
+
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		while(resultSet.next()){
+			CatalogDTO dto = new CatalogDTO();
+			dto.setId(resultSet.getInt("id"));
+			dto.setProductId(resultSet.getInt("product_id"));
+			dto.setProductId(resultSet.getInt("product_id"));
+			dto.setProductName(resultSet.getString("product_name"));
+			dto.setProductNameKana(resultSet.getString("product_name_kana"));
+			dto.setImageFilePath(resultSet.getString("image_file_path"));
+			dto.setImageFileName(resultSet.getString("image_file_name"));
+			dto.setPrice(resultSet.getInt("price"));
+			dto.setReleaseDate (resultSet.getString("release_date"));
+			dto.setReleaseCompany(resultSet.getString("release_company"));
+			list.add(dto);
+		}
+
+		return list;
+	}
+
 
 }
 
