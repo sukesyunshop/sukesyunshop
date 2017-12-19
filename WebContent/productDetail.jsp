@@ -5,19 +5,17 @@
 <html>
 <head>
 <meta  charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./css/template.css">
 <title>商品詳細</title>
 </head>
 <body>
 
 
 <div id="header">
+	<h1><span>す</span>け<span>し</span>ゅん<span>S</span>H<span>O</span>P</h1>
 
-	<div id="logo">
-	<h1>☆すけしゅんショップ☆ฅ(´-ω-`)ฅ</h1>
-	</div>
-
-
-	<ul>
+<!-- メニューリスト-->
+	<ul id="menu">
 		<li>
 			<s:if test="#session.loginFlag == 'true'">
 				<a href="<s:url action='LogoutAction' />">ログアウト</a>
@@ -28,14 +26,18 @@
 			</s:else>
 		</li>
 		<li>
-			<a href="CartAction"><img src="./public/cart.jpg" alt="cart" border="0" class="template"></a>
+			<a href="CartAction"> <img src="./public/cart.jpg" alt="cart" border="0" class="template"></a>
 		</li>
 	</ul>
 
-	<div class=bar>
+	<!-- 検索バー -->
+
+	<div class="bar">
 		<s:form action="SearchAction">
-			<input type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-			<s:submit value="検索"/>
+				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+
+				<s:submit class="submit" value="検索"/>
+
 		</s:form>
 	</div>
 </div>

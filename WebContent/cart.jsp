@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Cart</title>
 <link rel="stylesheet" type="text/css" href="./css/template.css">
+<title>Cart</title>
+
 </head>
 <body>
 
