@@ -78,19 +78,22 @@ public class CatalogDAO {
 
 
 //商品詳細にて同じカテゴリーのアイテム表示
-	public ArrayList<CatalogDTO> miniList(int categoryId) throws SQLException{
+	public ArrayList<CatalogDTO> miniList(int categoryId, int removeId) throws SQLException{
 		ArrayList<CatalogDTO> miniList = new ArrayList<CatalogDTO>();
 		String sql = ""
 				+ "SELECT id, category_id, product_id, product_name, product_name_kana, image_file_path "
 				+ "FROM product_info "
 				+ "WHERE category_id=? "
+				+ "AND id != ? "
 				+ "LIMIT 4 ";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, categoryId);
+		preparedStatement.setInt(2, removeId);
 		ResultSet resultSet = preparedStatement.executeQuery();
 
 		while(resultSet.next()){
+
 			CatalogDTO sub = new CatalogDTO();
 			sub.setId(resultSet.getInt("id"));
 			sub.setCategoryId(resultSet.getInt("category_id"));

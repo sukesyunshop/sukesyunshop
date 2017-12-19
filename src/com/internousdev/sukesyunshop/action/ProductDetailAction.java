@@ -27,7 +27,7 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 
 		try{
 			dto=catalogdao.getItem(productId);
-			miniList=catalogdao.miniList(dto.getCategoryId());
+			miniList=catalogdao.miniList(dto.getCategoryId(), dto.getId());
 
 			SearchDAO searchDAO = new SearchDAO();
 			setCateList(searchDAO.getCategory());
