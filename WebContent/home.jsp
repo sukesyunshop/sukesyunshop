@@ -101,7 +101,7 @@
 		<div id="pickup-wrap-inner">
 			<ul class="pickup">
 				<s:iterator value="randomList">
-					<li><a href="<s:url action="ProductDetailAction" />"><img src="<s:property value="getImageFilePath()"/>"></a></li>
+					<li><a href="<s:url action="ProductDetailAction" ><s:param name="productId" value="getProductId()" /></s:url>"><img src="<s:property value="getImageFilePath()"/>"></a></li>
 				</s:iterator>
 			</ul>
 		</div>
