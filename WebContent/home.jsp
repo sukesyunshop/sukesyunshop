@@ -54,6 +54,13 @@
 <!---------------ヘッダー -------------->
 <div id="header">
 	<h1><span>す</span>け<span>し</span>ゅん<span>S</span>H<span>O</span>P</h1>
+	<!-- 検索バー -->
+	<div class="bar">
+		<s:form action="SearchAction" theme="simple">
+				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+				<s:submit class="submit" value="検索"/>
+		</s:form>
+	</div>
 	<!-- メニューリスト-->
 	<ul id="menu">
 		<li>
@@ -70,19 +77,8 @@
 		</li>
 	</ul>
 
+</div>
 <!------------ヘッダーここまで ------------>
-
-
-	<!-- 検索バー -->
-	<div class="bar">
-		<s:form action="SearchAction">
-				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-				<s:submit class="submit" value="検索"/>
-		</s:form>
-	</div>
-	</div>
-
-
 
 <!--------- カテゴリーリスト --------->
 		<ul id="category">
