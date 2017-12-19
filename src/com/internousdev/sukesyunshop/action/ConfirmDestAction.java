@@ -199,7 +199,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		this.familyNameKana = familyNameKana;
 	}
 
-	public String getFirstNamKana() {
+	public String getFirstNameKana() {
 		return firstNameKana;
 	}
 

@@ -63,7 +63,7 @@ public class DestinationDAO {
 		int insertCount = 0;
 
 		String sql = "INSERT INTO destination_info(user_id,family_name, "
-				+ "first_name, family_name_kana, first_name_kana,"
+				+ "first_name, family_name_kana, first_name_kana, sex,"
 				+ "email,tel_number,user_address , insert_date , update_date) "
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 
@@ -75,11 +75,12 @@ public class DestinationDAO {
 			ps.setString(3, dto.getFirstName());
 			ps.setString(4, dto.getFamilyNameKana());
 			ps.setString(5, dto.getFirstNameKana());
-			ps.setString(6, dto.getEmail());
-			ps.setString(7, dto.getTelNumber());
-			ps.setString(8, dto.getUserAddress());
-			ps.setString(9, dateUtil.getDate());
+			ps.setInt(6, dto.getSex());
+			ps.setString(7, dto.getEmail());
+			ps.setString(8, dto.getTelNumber());
+			ps.setString(9, dto.getUserAddress());
 			ps.setString(10, dateUtil.getDate());
+			ps.setString(11, dateUtil.getDate());
 
 			insertCount = ps.executeUpdate();
 

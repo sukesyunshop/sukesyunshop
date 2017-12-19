@@ -7,6 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.DestinationDAO;
 import com.internousdev.sukesyunshop.dto.DestinationDTO;
+import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CompleteDestAction extends ActionSupport implements SessionAware {
@@ -17,6 +18,7 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 	private String firstName;
 	private String familyNameKana;
 	private String firstNameKana;
+	private int sex;
 	private String email;
 	private String telNumber;
 	private String userAddress;
@@ -29,7 +31,12 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 	/*-----------実行メソッド-----------*/
 	public String execute() throws SQLException {
 
+		userId = session.get(SessionName.getUserId()).toString();
+
+		System.out.println("yamazaki" + familyName);
+
 		// HTML側から送られてきた入力値を登録用のDTOへまとめます。
+
 		destDTO = setPrameters(destDTO);
 
 		// 登録処理
@@ -102,12 +109,20 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 		this.familyNameKana = familyNameKana;
 	}
 
-	public String getFirstNamKana() {
+	public String getFirstNameKana() {
 		return firstNameKana;
 	}
 
 	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
+	}
+
+	public int getSex() {
+		return sex;
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
 	}
 
 	public String getEmail() {

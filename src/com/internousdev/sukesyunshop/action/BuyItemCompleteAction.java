@@ -50,18 +50,22 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 *
 	 * ------------ 実行メソッド------------
 	 */
-	public String execute() throws SQLException {
+	public String execute() {
 
 		// 宛先情報の参照
 		userId = session.get(SessionName.getUserId()).toString();
-		String result = ERROR;
-		destDAO.destSelect(userId);
 
-		if (this.userId.equals(destDTO.getUserId())) {
+		try {
 			destDAO.destSelect(userId);
+			if (this.userId.equals(destDTO.getUserId())) {
+				destDAO.destSelect(userId);
 
-		} else {
-			result = "lack";
+			} else {
+				return "lack";
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return ERROR;
 		}
 
 		// HTML側から送られてきた商品情報を登録用のDTO(List)へまとめ購入履歴テーブルへ情報を登録する処理
@@ -72,15 +76,18 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 		for (int i = 0; count > i; i++) {
 			productIdList.add(cartList.get(i).getProductId());
 		}
-		buyItemDAO.itemInsert(productIdList, userId);
+		try {
+			buyItemDAO.itemInsert(productIdList, userId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		// カート情報を登録した後カート情報を削除
-		//削除
+		// 削除
 		cartDAO.deleteCart(userId, productId, true);
-		return result;
+		return SUCCESS;
 
 	}
-
 
 	public ArrayList<CartDTO> getCartList() {
 		return cartDTO;
@@ -106,9 +113,7 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 		this.productId = productId;
 	}
 
-	public Map<String, Object> getSession() {
-		return session;
-	}
+
 
 	@Override
 	public void setSession(Map<String, Object> session) {

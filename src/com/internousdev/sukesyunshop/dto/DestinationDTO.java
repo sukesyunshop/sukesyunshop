@@ -10,71 +10,78 @@ public class DestinationDTO {
 	private String email;
 	private String telNumber;
 	private String userAddress;
+	private int sex;
 
-
-	public String getUserId(){
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId){
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public String getFamilyName(){
+	public String getFamilyName() {
 		return familyName;
 	}
 
-	public void setFamilyName(String familyName){
+	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
 	}
 
-	public String getFirstName(){
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName){
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	public String getFamilyNameKana(){
+	public String getFamilyNameKana() {
 		return familyNameKana;
 	}
 
-	public void setFamilyNameKana(String familyNameKana){
+	public void setFamilyNameKana(String familyNameKana) {
 		this.familyNameKana = familyNameKana;
 	}
 
-	public String getFirstNameKana(){
+	public String getFirstNameKana() {
 		return firstNameKana;
 	}
 
-	public void setFirstNameKana(String firstNameKana){
+	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
 	}
 
-	public String getEmail(){
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email){
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getTelNumber(){
+	public String getTelNumber() {
 		return telNumber;
 	}
 
-	public void setTelNumber(String telNumber){
+	public void setTelNumber(String telNumber) {
 		this.telNumber = telNumber;
 	}
 
-	public String getUserAddress(){
+	public String getUserAddress() {
 		return userAddress;
 	}
 
-	public void setUserAddress(String userAddress){
+	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
 
+	public int getSex() {
+		return sex;
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
 
 }
