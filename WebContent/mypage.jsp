@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/template.css">
+<link rel="stylesheet" type="text/css" href="./css/myPage.css">
 <title>マイページ画面</title>
 </head>
 <body>
@@ -43,34 +44,23 @@
 
 
 
-	<h1>マイページ</h1>
-	<s:property value="dto.getFamilyName()" />
+	<p>☆マイページฅ(´-ω-`)ฅ☆</p><br>
+	<p1><s:property value="dto.getFamilyName()" />
 	<s:property value="dto.getFirstName()" />
 	<s:property value="dto.getUsername" />
-	さん、ようこそ！
-	<br>
-	<tr>
-		<td>姓：</td>
-		<td><s:property value="dto.getFamilyName()" /></td>
-		<br>
-		<td>名：</td>
-		<td><s:property value="dto.getFirstName()" /></td>
-		<br>
-		<td>ふりがな：</td>
-		<td><s:property value="dto.getFamilyNameKana()" />
-			<s:property value="dto.getFirstNameKana()" /></td>
-		<br>
-		<td>性別：</td>
-		<td><s:property value="dto.getSex()" /></td>
-		<br>
-		<td>メールアドレス：</td>
-		<td><s:property value="dto.getEmail()" /></td>
-		<br>
-	</tr>
+	さん、ようこそ！</p1><br>
 
-	<a href="<s:url action="GoHomeAction" />">HOMEへ</a>
+		<p2>姓：<s:property value="dto.getFamilyName()" /></p2><br>
+		<p3>名：<s:property value="dto.getFirstName()" /></p3><br>
+		<p4>ふりがな：<s:property value="dto.getFamilyNameKana()" />
+			<s:property value="dto.getFirstNameKana()" /></p4><br>
+		<p5>性別：<s:property value="dto.getSex()" /></p5><br>
+		<p6>メールアドレス：<s:property value="dto.getEmail()" /></p6><br>
+
+
+	<div id="HOME"><a href="<s:url action="GoHomeAction" />">HOMEへ</a>
 	<br>
-	<a href="<s:url action="ItemHistoryAction" />">購入履歴へ</a>
+	<a href="<s:url action="ItemHistoryAction" />">購入履歴へ</a></div>
 
 
 </body>

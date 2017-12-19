@@ -7,6 +7,7 @@
 <head>
 <meta  charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/template.css">
+<link rel="stylesheet" type="text/css" href="./css/itemHistory.css">
 <title>購入履歴一覧画面</title>
 </head>
 <body>
@@ -41,33 +42,17 @@
 		</s:form>
 	</div>
 </div>
+<div>
+<p>☆購入履歴一覧ฅ(´-ω-`)ฅ☆</p></div>
+			<p1>商品名:<s:property value="list.getProductName()" /></p1><br>
+				<p2>値段:<s:property value="list.getPrice()" /></p2><br>
+				<p3>発売会社名:<s:property value="list.getCompanyName()" /></p3><br>
+				<p4>発売年月日:<s:property value="list.getReleaseDate()" /></p4><br>
 
-<p>☆すけしゅんショップ☆ฅ(´-ω-`)ฅ<br>
-     購入履歴一覧</p>
-			<s:form>
-				<tr>
-					<td>商品名:</td>
-					<td><s:property value="list.getProductName()" /></td>
-				</tr>
+			<div id="KH">	<button type="button" onclick="location.href='GoHomeAction'"value="jump">ホームに戻る</button><br>
 
-				<tr>
-					<td>値段:</td>
-					<td><s:property value="list.getPrice()" /></td>
-				</tr>
-				<tr>
-					<td>発売会社名:</td>
-					<td><s:property value="list.getCompanyName()" /></td>
-				</tr>
-				<tr>
-					<td>発売年月日:</td>
-					<td><s:property value="list.getReleaseDate()" /></td>
-				</tr>
+				<button type="button" onclick="location.href='ItemHistoryAction'"value="jump">購入履歴一覧削除</button></div >
 
 
-				<button type="button" onclick="location.href='GoHomeAction'"value="jump">ホームに戻る</button><br>
-
-				<button type="button" onclick="location.href='ItemHistoryAction'"value="jump">購入履歴一覧削除</button>
-
-			</s:form>
 </body>
 </html>
