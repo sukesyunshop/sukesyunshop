@@ -11,22 +11,25 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 	<title>Home</title>
-
-
+	<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/slider.css"> --%>
   <script>
     $(document).ready(function(){
-      $('.item').bxSlider({
+      $('.band').bxSlider({
     	  auto: true,
     	  mode: 'fade',
     	  speed: 500,
     	  pause:  5500,
     	  controls: true,
+    	  infiniteLoop:true,
+    	  pager:boolean,
+
+
+
 
       });
     });
   </script>
-
-
 </head>
 <body>
 

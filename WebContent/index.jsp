@@ -6,33 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>INDEX</title>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/slider.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
-
-
-  <script>
-    $(document).ready(function(){
-      $('.band').bxSlider({
-    	  auto: true,
-    	  mode: 'fade',
-    	  speed: 500,
-    	  pause:  5500,
-    	  controls: true,
-    	  infiniteLoop:true,
-    	  pager:boolean,
-
-
-
-
-      });
-    });
-  </script>
+<meta http-equiv="refresh" content="0;URL=<s:url action='IndexAction'/>">
 
 
 </head>
