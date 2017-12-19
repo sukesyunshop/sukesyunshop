@@ -118,9 +118,6 @@ clear{
 
 
 #footer{
-	position:absolute;
-	bottom:0px;
-	left:0px;
 	background: -moz-linear-gradient(#ff69b4, #ffc6e2);
     background: -webkit-linear-gradient(#ff69b4,#ffc6e2);
     background: linear-gradient(to right,#ff69b4, #ffc6e2);
