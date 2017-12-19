@@ -46,15 +46,19 @@
 </div>
 
 <div class="content">
-	<h2>登録する内容は以下でよろしいですか。</h2>
+	<h3>登録する内容は以下でよろしいですか。</h3>
 
 	<s:form action="CompletePasswordAction" >
-		<label>再設定されるパスワード:
-			<s:property value="loginPassword"/>
-		</label>
+		<div class="confirmPassword">
+			再設定されるパスワード:
+			<s:property value="loginPassword" />
+		</div>
+
 				<s:submit class="button"  value="完了" />
 	</s:form>
-	<span>前画面に戻る場合は</span><a href="./resetPassword.jsp">こちら</a>
+		<div id="back">
+			<span>前画面に戻る場合は</span><a href="./resetPassword.jsp">こちら</a>
+		</div>
 </div>
 </body>
 </html>

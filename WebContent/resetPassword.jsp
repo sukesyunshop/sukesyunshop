@@ -49,25 +49,22 @@
 			<s:form action="ConfirmPasswordAction">
 				<div id="login">
 						<label>
-							ログインID:
-								<input id="loginArea" type="text" name="loginId" value="">
+								<input id="loginArea" type="text" name="loginId" value="" placeholder="ログインID">
 						</label>
 				</div>
 				<div id="password">
 						<label>
-							新しいパスワード:
-								<input id="passwordArea" type="text" name="loginPassword" value="">
+								<input id="passwordArea" type="text" name="loginPassword" value="" placeholder="新しいパスワード">
 						</label>
 				</div>
 				<div id="confirmPassword">
 						<label>
-							再確認用パスワード:
-								<input id="confirmArea" type="password" name="confirmPassword" value="">
+								<input id="confirmArea" type="password" name="confirmPassword" value="" placeholder="確認用パスワード">
 						</label>
 				</div>
 						<p><span style="color:#FF0000"><s:property value="userIdMessage" /></span></p>
 						<p><span style="color:#FF0000"><s:property value="passwordMessage"/></span></p>
-				<s:submit value="登録"/>
+				<s:submit value="登録" id="submitArea"/>
 			</s:form>
 	</div>
 <div>

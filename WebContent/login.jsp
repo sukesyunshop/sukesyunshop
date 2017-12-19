@@ -50,31 +50,32 @@
 				<p><span style="color:#FF0000"><s:property value="userIdMessage" /></span></p>
 					<div id="login">
 						<label>
-							ログインID：
+
 								<s:if test="#session.userId == ''">
-									<input type="text" name="userId" value="" id="loginArea">
+									<input type="text" name="userId" value="" id="loginArea" placeholder="ログインID">
 								</s:if>
 								<s:else>
-									<input type="text" name="userId" id="loginArea" value="<s:property value="#session.userId" />">
+									<input type="text" name="userId" id="loginArea" placeholder="ログインID" value="<s:property value="#session.userId" />">
 								</s:else>
 						</label>
 					</div>
 
-<div id="password">
-		<p><span style="color:#FF0000"><s:property value="passwordMessage" /></span></p>
-			<label>
-				パスワード：
-				<input type="password" name="password" id="passwordArea" >
-			</label>
-		</div>
+				<div id="password">
+						<p><span style="color:#FF0000"><s:property value="passwordMessage" /></span></p>
+							<label>
 
-		<div id="submit">
-			<s:submit value="ログイン"/>
-			<label>
-				<input type="checkbox" name="saveId" value="true">
-			</label>
-		</div>
-	</s:form>
+								<input type="password" name="password" id="passwordArea" placeholder="パスワード" >
+							</label>
+				</div>
+
+				<div id="submit">
+					<s:submit value="ログイン" id="submitArea" />
+					<label>
+						<input type="checkbox" name="saveId" value="true">
+					</label>
+				</div>
+			</s:form>
+
 		<div id="forgotPass">
 			<a href="<s:url action='MoveResetPasswordAction'/>">パスワードを忘れた方はこちら</a>
 		</div>

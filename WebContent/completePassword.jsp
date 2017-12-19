@@ -46,8 +46,9 @@
 </div>
 
 <div class="content">
-	<h3>パスワードの再設定が完了致しました。</h3>
-		<div>
+	<h2>おめでとうございます！</h2>
+	<h3>パスワードの再設定が完了致しましたよ！</h3>
+		<div id="back">
 			<span>Login画面へ</span><a href="<s:url action='MoveLoginAction'/>">戻る</a>
 		</div>
 	</div>
