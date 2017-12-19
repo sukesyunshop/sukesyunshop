@@ -6,27 +6,28 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./css/template.css">
+
 	<link rel="stylesheet" type="text/css" href="./css/slider.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 	<title>Home</title>
-	<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/slider.css"> --%>
+
   <script>
     $(document).ready(function(){
-      $('.band').bxSlider({
+      $('.pickup').bxSlider({
     	  auto: true,
-    	  mode: 'fade',
     	  speed: 500,
-    	  pause:  5500,
+    	  pause:  3000,
+    	  pager: true,
     	  controls: true,
-    	  infiniteLoop:true,
-    	  pager:boolean,
-
-
-
-
+    	  minSlides: 7,
+    	  maxSlides: 7,
+    	  slideWidth: 800,
+    	  slideMargin: 15,
+    	  moveSlides: 1,
+    	  startSlide: 0,
+    	  autoHover: false,
       });
     });
   </script>
@@ -76,15 +77,34 @@
 
 <!--------メインコンテンツ--------->
 	<div id="main">
-		<div class="item">
-			<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/1.jpg"></a></div>
-			<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/2.jpg"></a></div>
-			<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/3.jpg"></a></div>
-			<div><a href="<s:url action="ProductDetailAction" />"><img src="./public/4.jpg"></a></div>
+
+
+	<div id="pickup-wrap">
+		<div id="pickup-wrap-inner">
+			<ul class="pickup">
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/1.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/2.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/3.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/4.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/5.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/6.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/7.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/8.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/9.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/10.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/11.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/12.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/13.jpg"></a></li>
+			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/20.jpg"></a></li>
+			</ul>
 		</div>
+	</div>
+
+
 
 
 	</div>
+
 
 	<div id="footer">
 	</div>
