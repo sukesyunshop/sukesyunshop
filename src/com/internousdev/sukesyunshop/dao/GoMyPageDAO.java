@@ -11,9 +11,10 @@ import com.internousdev.sukesyunshop.dto.UserInfoDTO;
 import com.internousdev.sukesyunshop.util.DBConnector;
 
 public class GoMyPageDAO {
-	private DBConnector dbConnector = new DBConnector();
 
+	private DBConnector dbConnector = new DBConnector();
 	private Connection connection = dbConnector.getConnection();
+
 	public UserInfoDTO GoMyPageList(String userId) throws SQLException{
 	//	DBConnector db = new DBConnector();
 	//	Connection connection = db.getConnection();

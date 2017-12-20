@@ -42,8 +42,6 @@
 	</div>
 </div>
 
-
-
 	<p>☆マイページฅ(´-ω-`)ฅ☆</p><br>
 	<div id="div1"><s:property value="dto.getFamilyName()" />
 	<s:property value="dto.getFirstName()" />
@@ -54,7 +52,15 @@
 	<div id="div3">名：<s:property value="dto.getFirstName()" /><br></div>
 	<div id="div4">ふりがな：<s:property value="dto.getFamilyNameKana()" />
 			<s:property value="dto.getFirstNameKana()" /><br></div>
-	<div id="div5">性別：<s:property value="dto.getSex()" /><br></div>
+	<div id="div5">性別：
+		<s:if test="dto.getSex() == 0">
+			男性
+		</s:if>
+		<s:else>
+			女性
+		</s:else>
+		<br>
+	</div>
 	<div id="div6">メールアドレス：<s:property value="dto.getEmail()" /><br></div>
 
 

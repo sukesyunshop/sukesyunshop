@@ -3,21 +3,13 @@ package com.internousdev.sukesyunshop.dto;
 public class ItemHistoryDTO {
 
 	private String userId;
-
 	private int productId;
-
 	private String password;
-
 	private String productName;
-
 	private String productNameKana;
-
 	private String imageFilePath;
-
 	private int Price;
-
 	private String releaseCompany ;
-
 	private String  releaseDate;
 
 	public String getUserId() {

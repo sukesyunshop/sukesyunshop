@@ -28,7 +28,6 @@ public class ItemHistoryDeleteAction extends ActionSupport implements SessionAwa
 
 			return SUCCESS;
 		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 			return ERROR;
 		}
