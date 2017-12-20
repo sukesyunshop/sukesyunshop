@@ -163,7 +163,7 @@ public class SearchDAO {
 		String sql = ""
 				+ "SELECT * "
 				+ "FROM product_info "
-				+ "WHERE product_id = 0 "
+				+ "WHERE false "
 				+ sqlPiece.toString();
 
 		PreparedStatement statement = connection.prepareStatement(sql);
