@@ -1,0 +1,14 @@
+
+
+.logo{
+     width: 100px;
+     height:80px;
+     position:relative;
+     animation:myfirst 5s;
+	}
+.cart{
+	font-color:pink;
+	font-size:70px;
+	margin:5px;
+	line-height:5px;
+}

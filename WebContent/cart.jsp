@@ -6,7 +6,42 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/template.css">
+<!--  <link rel="stylesheet" type="text/css" href="./css/cart.css">-->
 <title>Cart</title>
+<style type="text/css">
+.logo
+{
+width:100px;
+height:100px;
+background:red;
+position:relative;
+animation:myfirst 5s;
+-webkit-animation:myfirst 5s; /*Safari and Chrome */
+}
+
+.logo p{
+	color:red;
+
+}
+
+@keyframes myfirst
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+75%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+
+@-webkit-keyframes myfirst /*Safari and Chrome */
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+75%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+</style>
 
 </head>
 <body>
@@ -44,12 +79,12 @@
 </div>
 
 
- <div id="main">
-  	<p>カート</p>
- </div>
+<div class="logo">
+<p>CART</p>
+</div>
 
  <s:if test="cartList.size() != 0">
- <ul>
+ <ul class="menu">
   	<s:iterator value="cartList">
   		<li>
   				<span>カテゴリ</span>
