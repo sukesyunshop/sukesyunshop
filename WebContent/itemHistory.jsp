@@ -42,16 +42,27 @@
 		</s:form>
 	</div>
 </div>
-<div>
-<p>☆購入履歴一覧ฅ(´-ω-`)ฅ☆</p></div>
-			<p1>商品名:<s:property value="list.getProductName()" /></p1><br>
-				<p2>値段:<s:property value="list.getPrice()" /></p2><br>
-				<p3>発売会社名:<s:property value="list.getCompanyName()" /></p3><br>
-				<p4>発売年月日:<s:property value="list.getReleaseDate()" /></p4><br>
 
-			<div id="KH">	<button type="button" onclick="location.href='GoHomeAction'"value="jump">ホームに戻る</button><br>
+<!-- 購入履歴情報がなしの時の表示 -->
+<s:if test="#session.loginId =='null'">
 
-				<button type="button" onclick="location.href='ItemHistoryAction'"value="jump">購入履歴一覧削除</button></div >
+</s:if>
+<s:else>
+
+</s:else>
+
+
+<p>☆購入履歴一覧ฅ(´-ω-`)ฅ☆</p>
+			<div id="div1">商品名:<s:property value="list.getProductName()" /><br></div>
+			<div id="div2">	値段:<s:property value="list.getPrice()" /><br></div>
+			<div id="div3">	発売会社名:<s:property value="list.getCompanyName()" /><br></div>
+			<div id="div4">	発売年月日:<s:property value="list.getReleaseDate()" /><br></div>
+			<div id="div5">	商品画像<br>
+			<s:property value="list.getImageFilePath()" /></div>
+
+			<div id="div6"><button type="button" onclick="location.href='GoHomeAction'"value="jump">ホームに戻る</button><br></div>
+
+			<div id="div7">	<button type="button" onclick="location.href='ItemHistoryAction'"value="jump">購入履歴一覧削除</button></div>
 
 
 </body>
