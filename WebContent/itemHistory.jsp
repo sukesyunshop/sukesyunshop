@@ -53,17 +53,18 @@
 
 
 <p>☆購入履歴一覧ฅ(´-ω-`)ฅ☆</p>
-			<div id="div1">商品名:<s:property value="list.getProductName()" /><br></div>
-			<div id="div2">	値段:<s:property value="list.getPrice()" /><br></div>
-			<div id="div3">	発売会社名:<s:property value="list.getCompanyName()" /><br></div>
-			<div id="div4">	発売年月日:<s:property value="list.getReleaseDate()" /><br></div>
-			<div id="div5">	商品画像<br>
-			<s:property value="list.getImageFilePath()" /></div>
+	<ul>
+		<s:iterator value="list">
+			<li>商品名:<s:property value="getProductName()" /></li>
+			<li>値段:<s:property value="getPrice()" /></li>
+			<li>発売会社名:<s:property value="getCompanyName()" /></li>
+			<li>発売年月日:<s:property value="getReleaseDate()" /></li>
+			<li>商品画像<br><img src="<s:property value="getImageFilePath()" />"></li>
+		</s:iterator>
+	</ul>
 
-			<div id="div6"><button type="button" onclick="location.href='GoHomeAction'"value="jump">ホームに戻る</button><br></div>
-
-			<div id="div7">	<button type="button" onclick="location.href='ItemHistoryAction'"value="jump">購入履歴一覧削除</button></div>
-
+	<a href="<s:url action="GoHomeAction"/>">ホームに戻る</a>
+	<a href="<s:url action="ItemHistoryDeleteAction"/>">購入履歴一覧削除</a>
 
 </body>
 </html>
