@@ -27,6 +27,7 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 * 宛先情報DAO&宛先情報DTOをインスタンス化
 	 */
 	private DestinationDAO destDAO = new DestinationDAO();
+	private List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
 
 	/**
 	 * 商品購入完了DAO＆商品情報DTOをインスタンス化
@@ -35,6 +36,7 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	public List<BuyItemDTO> buyItemDTOList = new ArrayList<BuyItemDTO>();
 	private BuyItemCompleteDAO buyItemDAO = new BuyItemCompleteDAO();
 	public ArrayList<CartDTO> cartDTO;
+	private CartDAO cartDAO = new CartDAO();
 
 	/**
 	 * 登録されている宛先情報を参照する 宛先が登録されていない場合はRETURNの値は"lack"へ
@@ -50,10 +52,10 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 * ------------ 実行メソッド------------
 	 */
 	public String execute() {
-		List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
 
 		// 宛先情報の参照
 		userId = session.get(SessionName.getUserId()).toString();
+		ArrayList<CartDTO> cartList = cartDAO.getCartList(userId, true);
 
 		try {
 			destDTOList = destDAO.destSelect(userId);
@@ -66,22 +68,26 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 		}
 
 		// HTML側から送られてきた商品情報を登録用のDTO(List)へまとめ購入履歴テーブルへ情報を登録する処理
-		CartDAO cartDAO = new CartDAO();
-		ArrayList<CartDTO> cartList = cartDAO.getCartList(userId, true);
 		int count = cartList.size();
 		List<Integer> productIdList = new ArrayList<>();
 		for (int i = 0; count > i; i++) {
 			productIdList.add(cartList.get(i).getProductId());
 		}
 		try {
-			buyItemDAO.itemInsert(productIdList, userId);
+			System.out.println("aaaaaaaaaaa");
+			int cc = buyItemDAO.itemInsert(productIdList, userId);
+			System.out.println(cc);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		// カート情報の削除ができないです。
+		try {
+			buyItemDAO.itemDelete(userId);
+		} catch (SQLException e) {
 
-		// カート情報を登録した後カート情報を削除
-		// 削除
-		cartDAO.deleteCart(userId, productId, true);
+			e.printStackTrace();
+		}
+
 		return SUCCESS;
 
 	}
@@ -92,6 +98,10 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 
 	public void setCartList(ArrayList<CartDTO> cartList) {
 		this.cartDTO = cartList;
+	}
+
+	public List<DestinationDTO> getDestDTOList() {
+		return destDTOList;
 	}
 
 	public String getUserId() {
