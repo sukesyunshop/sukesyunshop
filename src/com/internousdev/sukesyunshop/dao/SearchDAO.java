@@ -157,7 +157,8 @@ public class SearchDAO {
 	public ArrayList<CatalogDTO> getSaleCatalogList(int[] saleId) throws SQLException{
 		ArrayList<CatalogDTO> list = new ArrayList<CatalogDTO>();
 		StringBuilder sqlPiece = new StringBuilder();
-		for(int i=1; i < saleId.length; i++){
+		if(saleId == null) return list;
+		for(int i=1; i <= saleId.length; i++){
 			sqlPiece.append("OR product_id = ? ");
 		}
 		String sql = ""
@@ -167,7 +168,7 @@ public class SearchDAO {
 				+ sqlPiece.toString();
 
 		PreparedStatement statement = connection.prepareStatement(sql);
-		int i=0;
+		int i=1;
 		for(int id : saleId){
 			statement.setInt(i++, id);
 		}

@@ -116,7 +116,8 @@
 	<!-- slider -->
 	<!-- 広告 -->
 	<ul id="poster">
-	<li><a href="<s:url action='AdvertizeAction' ><s:param name="sort" value="sale" /></s:url>"><img src="./public/sale.jpg"></a></li>
+	<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg"></a></li>
+
 	<li></li>
 	<li></li>
 	</ul>

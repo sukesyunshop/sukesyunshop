@@ -18,6 +18,9 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 	private ArrayList<CatalogDTO> randomList;
 	public Map<String, Object> session;
 
+	private String sale = "sale";
+	private String anime = "anime";
+
 	public String execute() {
 
 		// TODO 今後ホームに何を表示するかによって取得する値を変更します
@@ -57,5 +60,21 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 
 	public void setRandomList(ArrayList<CatalogDTO> randomList) {
 		this.randomList = randomList;
+	}
+
+	public String getSale() {
+		return sale;
+	}
+
+	public void setSale(String sale) {
+		this.sale = sale;
+	}
+
+	public String getAnime() {
+		return anime;
+	}
+
+	public void setAnime(String anime) {
+		this.anime = anime;
 	}
 }

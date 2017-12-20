@@ -24,17 +24,19 @@ public class AdvertizeAction extends ActionSupport implements SessionAware {
 
 	public String execute(){
 		SearchDAO dao = new SearchDAO();
-		int[] id;
+		int[] id = null;
 		if(sort.equals("sale")){
 			id = new int[]{1, 5, 6, 7, 12, 15, 19, 28, 34, 35, 36, 43, 45};
 		}else if(sort.equals("anime")){
 			id = new int[]{12, 14, 15, 17, 19, 20};
-		}else{
-			id = new int[]{0};
 		}
 		try {
 			list=dao.getSaleCatalogList(id);
-			listSize = id.length/9;
+			if(id != null){
+				listSize = id.length/9;
+			}else{
+				listSize = 0;
+			}
 			if(list.size() == 0){
 				emptyMessage = "検索結果がありません";
 			}
@@ -42,7 +44,6 @@ public class AdvertizeAction extends ActionSupport implements SessionAware {
 
 			return SUCCESS;
 		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
 		return ERROR;
@@ -94,8 +95,7 @@ public class AdvertizeAction extends ActionSupport implements SessionAware {
 
 	@Override
 	public void setSession(Map<String, Object> session) {
-		// TODO 自動生成されたメソッド・スタブ
-
+		this.session = session;
 	}
 
 }
