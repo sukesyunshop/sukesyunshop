@@ -45,6 +45,43 @@
 	<div id="main">
 		<div id="top"></div>
 		以下の情報を登録してよろしいですか？
+		<table>
+			<tbody>
+				<tr>
+					<th>姓</th>
+					<td><s:property value="familyName" />
+				</tr>
+				<tr>
+					<th>名</th>
+					<td><s:property value="firstName" />
+				</tr>
+				<tr>
+					<th>姓かな</th>
+					<td><s:property value="familyNameKana" />
+				</tr>
+				<tr>
+					<th>名かな</th>
+					<td><s:property value="firstNameKana" />
+				</tr>
+				<tr>
+					<th>姓別</th>
+					<td><s:property value="sexStr" />
+				</tr>
+				<tr>
+					<th>メールアドレス</th>
+					<td><s:property value="email" />
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><s:property value="telNumber" />
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td><s:property value="userAddress" />
+				</tr>
+
+			</tbody>
+		</table>
 		<s:form action="CompleteDestAction">
 			<input name="familyName" type="hidden"
 				value="<s:property value='familyName' />" />
@@ -54,45 +91,14 @@
 				value="<s:property value='familyNameKana' />" />
 			<input name="firstNameKana" type="hidden"
 				value="<s:property value='firstNameKana' />" />
+			<input name="sex" type="hidden" value="<s:property value='sex' />" />
 			<input name="email" type="hidden"
 				value="<s:property value='email' />" />
 			<input name="telNumber" type="hidden"
 				value="<s:property value='telNumber' />" />
 			<input name="userAddress" type="hidden"
 				value="<s:property value='userAddress' />" />
-
-			<table>
-				<tbody>
-					<tr>
-						<td><label>姓：</label></td>
-						<td></td>
-						<td><label>名：</label></td>
-						<td><input type="text" name="firstName"
-							value="<s:property value="firstName" />" disabled></td>
-						<td><label>姓かな：</label></td>
-						<td><input type="text" name="familyNameKana"
-							value="<s:property value="familyNameKana" />" disabled></td>
-						<td><label>名かな：</label></td>
-						<td><input type="text" name="firstNameKana"
-							value="<s:property value="firstNameKana" />" disabled></td>
-						<td><label>メールアドレス：</label></td>
-						<td><input type="text" name="email"
-							value="<s:property value="email" />" disabled></td>
-						<td><label>電話番号：</label></td>
-						<td><input type="text" name="telNumber"
-							value="<s:property value="telNumber" />" disabled></td>
-						<td><label>住所：</label></td>
-						<td><input type="text" name="userAddress"
-							value="<s:property value="userAddress" />" disabled></td>
-					</tr>
-					<tr>
-						<td></td>
-					</tr>
-					<tr>
-						<td><s:submit class="button" value="完了" /></td>
-					</tr>
-				</tbody>
-			</table>
+			<button class="button4">登録完了</button>
 		</s:form>
 	</div>
 </body>
