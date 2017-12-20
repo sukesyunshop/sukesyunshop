@@ -13,6 +13,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class AdvertizeAction extends ActionSupport implements SessionAware {
 
+	private String sort;
+
 	private ArrayList<CatalogDTO> list;
 	private ArrayList<CategoryDTO> cateList;
 	private int listSize;
@@ -22,10 +24,17 @@ public class AdvertizeAction extends ActionSupport implements SessionAware {
 
 	public String execute(){
 		SearchDAO dao = new SearchDAO();
-		int[] saleId = {1, 5, 6, 7, 12, 15, 19, 28, 34, 35, 36, 43, 45};
+		int[] id;
+		if(sort.equals("sale")){
+			id = new int[]{1, 5, 6, 7, 12, 15, 19, 28, 34, 35, 36, 43, 45};
+		}else if(sort.equals("anime")){
+			id = new int[]{12, 14, 15, 17, 19, 20};
+		}else{
+			id = new int[]{0};
+		}
 		try {
-			list=dao.getSaleCatalogList(saleId);
-			listSize = saleId.length/9;
+			list=dao.getSaleCatalogList(id);
+			listSize = id.length/9;
 			if(list.size() == 0){
 				emptyMessage = "検索結果がありません";
 			}
@@ -37,6 +46,14 @@ public class AdvertizeAction extends ActionSupport implements SessionAware {
 			e.printStackTrace();
 		}
 		return ERROR;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 
 	public ArrayList<CatalogDTO> getList() {

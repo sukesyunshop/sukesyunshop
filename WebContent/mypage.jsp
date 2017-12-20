@@ -45,22 +45,21 @@
 
 
 	<p>☆マイページฅ(´-ω-`)ฅ☆</p><br>
-	<p1><s:property value="dto.getFamilyName()" />
+	<div id="div1"><s:property value="dto.getFamilyName()" />
 	<s:property value="dto.getFirstName()" />
 	<s:property value="dto.getUsername" />
-	さん、ようこそ！</p1><br>
+	さん、ようこそ！<br></div>
 
-		<p2>姓：<s:property value="dto.getFamilyName()" /></p2><br>
-		<p3>名：<s:property value="dto.getFirstName()" /></p3><br>
-		<p4>ふりがな：<s:property value="dto.getFamilyNameKana()" />
-			<s:property value="dto.getFirstNameKana()" /></p4><br>
-		<p5>性別：<s:property value="dto.getSex()" /></p5><br>
-		<p6>メールアドレス：<s:property value="dto.getEmail()" /></p6><br>
+	<div id="div2">姓：<s:property value="dto.getFamilyName()" /><br></div>
+	<div id="div3">名：<s:property value="dto.getFirstName()" /><br></div>
+	<div id="div4">ふりがな：<s:property value="dto.getFamilyNameKana()" />
+			<s:property value="dto.getFirstNameKana()" /><br></div>
+	<div id="div5">性別：<s:property value="dto.getSex()" /><br></div>
+	<div id="div6">メールアドレス：<s:property value="dto.getEmail()" /><br></div>
 
 
-	<div id="HOME"><a href="<s:url action="GoHomeAction" />">HOMEへ</a>
-	<br>
-	<a href="<s:url action="ItemHistoryAction" />">購入履歴へ</a></div>
+	<div id="div7"><a href="<s:url action="GoHomeAction" />">HOMEへ</a><br></div>
+	<div id="div8"><a href="<s:url action="ItemHistoryAction" />">購入履歴へ</a></div>
 
 
 </body>

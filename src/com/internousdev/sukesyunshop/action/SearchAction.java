@@ -46,6 +46,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		return searchText;
 	}
 
+	
 	public void setSearchText(String searchText) {
 		this.searchText = searchText;
 	}
