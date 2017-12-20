@@ -36,6 +36,11 @@
 			<result name="success">catalog.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<!-- AdvertizeAction -->
+		<action name="AdvertizeAction" class="com.internousdev.sukesyunshop.action.AdvertizeAction" method="execute">
+			<result name="success">catalog.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 		<!-- EmptyAction's children -->
 		<action name="MoveLoginAction" class="com.internousdev.sukesyunshop.action.MoveLoginAction" method="execute">
 			<result name="success">login.jsp</result>

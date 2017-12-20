@@ -153,4 +153,41 @@ public class SearchDAO {
 		}
 		return list;
 	}
+
+	public ArrayList<CatalogDTO> getSaleCatalogList(int[] saleId) throws SQLException{
+		ArrayList<CatalogDTO> list = new ArrayList<CatalogDTO>();
+		StringBuilder sqlPiece = new StringBuilder();
+		for(int i=1; i < saleId.length; i++){
+			sqlPiece.append("OR product_id = ? ");
+		}
+		String sql = ""
+				+ "SELECT * "
+				+ "FROM product_info "
+				+ "WHERE product_id = 0 "
+				+ sqlPiece.toString();
+
+		PreparedStatement statement = connection.prepareStatement(sql);
+		int i=0;
+		for(int id : saleId){
+			statement.setInt(i++, id);
+		}
+		ResultSet resultSet = statement.executeQuery();
+
+		while(resultSet.next()){
+			CatalogDTO dto = new CatalogDTO();
+			dto.setId(resultSet.getInt("id"));
+			dto.setCategoryId(resultSet.getInt("category_id"));
+			dto.setProductId(resultSet.getInt("product_id"));
+			dto.setProductName(resultSet.getString("product_name"));
+			dto.setProductNameKana(resultSet.getString("product_name_kana"));
+			dto.setImageFilePath(resultSet.getString("image_file_path"));
+			dto.setImageFileName(resultSet.getString("image_file_name"));
+			dto.setPrice(resultSet.getInt("price"));
+			dto.setReleaseDate (resultSet.getString("release_date"));
+			dto.setReleaseCompany(resultSet.getString("release_company"));
+			list.add(dto);
+		}
+
+		return list;
+	}
 }
