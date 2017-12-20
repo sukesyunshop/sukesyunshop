@@ -65,7 +65,7 @@ public class DestinationDAO {
 		String sql = "INSERT INTO destination_info(user_id,family_name, "
 				+ "first_name, family_name_kana, first_name_kana, sex,"
 				+ "email,tel_number,user_address , insert_date , update_date) "
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

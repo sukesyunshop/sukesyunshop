@@ -17,6 +17,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 	private String familyNameKana;
 	private String firstNameKana;
 	private int sex;
+	private String sexStr;
 	private String email;
 	private String telNumber;
 	private String userAddress;
@@ -116,14 +117,14 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		}
 
 		/*------- 性別選択 -------*/
-		if(sex == 0) {
+		if (sex == 0) {
 			System.out.println("akasatana");
-			//返り値＝＝男
+			sexStr = "男性";
 		}
 
-		if(sex == 1) {
+		if (sex == 1) {
 			System.out.println("aiueo");
-			//返り値＝＝オンナ
+			sexStr = "女性";
 		}
 
 		/*------- 住所のエラー処理 ------*/
@@ -137,7 +138,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 			addressMessage = "住所は15文字以上50文字以下で入力してください。";
 			return ERROR;
 		}
-		if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))){
+		if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))) {
 			System.out.println(userAddress + "15");
 			addressMessage = "住所は半角英数字and漢字and半角記号or全角カタカナで入力してください";
 			return ERROR;
@@ -217,6 +218,22 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 
 	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
+	}
+
+	public int getSex() {
+		return sex;
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+
+	public String getSexStr() {
+		return sexStr;
+	}
+
+	public void setSexStr(String sexStr) {
+		this.sexStr = sexStr;
 	}
 
 	public String getEmail() {

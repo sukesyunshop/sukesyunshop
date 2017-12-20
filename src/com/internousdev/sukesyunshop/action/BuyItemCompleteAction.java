@@ -27,7 +27,6 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 * 宛先情報DAO&宛先情報DTOをインスタンス化
 	 */
 	private DestinationDAO destDAO = new DestinationDAO();
-	private DestinationDTO destDTO = new DestinationDTO();
 
 	/**
 	 * 商品購入完了DAO＆商品情報DTOをインスタンス化
@@ -51,16 +50,14 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 * ------------ 実行メソッド------------
 	 */
 	public String execute() {
+		List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
 
 		// 宛先情報の参照
 		userId = session.get(SessionName.getUserId()).toString();
 
 		try {
-			destDAO.destSelect(userId);
-			if (this.userId.equals(destDTO.getUserId())) {
-				destDAO.destSelect(userId);
-
-			} else {
+			destDTOList = destDAO.destSelect(userId);
+			if (destDTOList.size() == 0) {
 				return "lack";
 			}
 		} catch (SQLException e) {
@@ -112,8 +109,6 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
-
-
 
 	@Override
 	public void setSession(Map<String, Object> session) {
