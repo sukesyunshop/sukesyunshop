@@ -48,6 +48,14 @@ public class AdvertizeAction extends ActionSupport implements SessionAware {
 		return ERROR;
 	}
 
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
 	public ArrayList<CatalogDTO> getList() {
 		return list;
 	}
