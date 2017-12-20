@@ -14,6 +14,25 @@
 	<title>Home</title>
 
   <script>
+  <!--広告-->
+  $(document).ready(function(){
+      $('.poster').bxSlider({
+        auto: true,
+    	  speed: 500,
+    	  pause:  3000,
+    	  pager: true,
+    	  controls: true,
+    	  minSlides: 7,
+    	  maxSlides: 7,
+    	  slideWidth: 600,
+    	  slideMargin: 15,
+    	  moveSlides: 1,
+    	  startSlide: 0,
+    	  autoHover: false,
+      });
+    });
+
+  <!--pickup-->
     $(document).ready(function(){
       $('.pickup').bxSlider({
     	  auto: true,
@@ -31,6 +50,7 @@
       });
     });
 
+    <!----
     $(document).ready(function(){
         $('.sale').bxSlider({
       	  auto: true,
@@ -47,6 +67,9 @@
       	  autoHover: false,
         });
       });
+    ---->
+
+
   </script>
 </head>
 <body>
@@ -90,8 +113,14 @@
 
 <!--------メインコンテンツ--------->
 	<div id="main">
+	<!-- slider -->
+	<!-- 広告 -->
+	<ul id="poster">
+	<li><img src="./public/sale.jpg"></li>
+	<li></li>
+	<li></li>
+	</ul>
 
-<!-- slider -->
 <!-- pickup -->
 	<div id="pickup-wrap">
 		<div id="pickup-wrap-inner">
@@ -102,7 +131,7 @@
 			</ul>
 		</div>
 	</div>
-<!-- sale -->
+<!-- sale
 	<div id="sale-wrap">
 		<div id="sale-wrap-inner">
 			<ul class="sale">
@@ -123,6 +152,8 @@
 			</ul>
 		</div>
 	</div>
+	-->
+
 
 
 
