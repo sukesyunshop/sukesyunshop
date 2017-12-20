@@ -41,6 +41,12 @@
 		</s:form>
 	</div>
 </div>
+	<!-- 性別 -->
+
+	<s:if test="#session.sex = '0'">
+			<s:property value="男性"/>
+	</s:if>
+
 
 
 
