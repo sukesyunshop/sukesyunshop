@@ -18,17 +18,15 @@ public class BuyItemCompleteDAO {
 
 	private DateUtil dateUtil = new DateUtil();
 
-	//アイテム情報のDTO
+	// アイテム情報のDTO
 	public List<BuyItemDTO> buyItemDTOList = new ArrayList<BuyItemDTO>();
 
-	//カート情報を参照
+	// カート情報を参照
 	public List<BuyItemDTO> itemSelect() throws SQLException {
 		try {
 
-			String sql = "SELECT * FROM"
-	                  + " cart_info INNER JOIN product_info"
-			          + " ON cart_info.product_id = product_info.product_id"
-	                  + " WHERE product_id=?";
+			String sql = "SELECT * FROM" + " cart_info INNER JOIN product_info"
+					+ " ON cart_info.product_id = product_info.product_id" + " WHERE product_id=?";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -63,7 +61,7 @@ public class BuyItemCompleteDAO {
 		return buyItemDTOList;
 	}
 
-	//カート情報を購入履歴に追加
+	// カート情報を購入履歴に追加
 	public int itemInsert(List<Integer> list, String userId) throws SQLException {
 
 		int insertCount = 0;
@@ -71,18 +69,20 @@ public class BuyItemCompleteDAO {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
+		System.out.println(list.get(0));
+		System.out.println(userId);
 		String sql = "INSERT INTO purchase_history_info(user_id , product_id , insert_date , update_date)"
 				+ " VALUES(?,?,?,?)";
 
 		try {
-			for(int i =0 ; list.size() > i ; i++ ){
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userId);
-			ps.setInt(2, list.get(i));
-			ps.setString(3,dateUtil.getDate());
-			ps.setString(4,dateUtil.getDate());
+			for (int i = 0; list.size() > i; i++) {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, userId);
+				ps.setInt(2, list.get(i));
+				ps.setString(3, dateUtil.getDate());
+				ps.setString(4, dateUtil.getDate());
 
-			insertCount = ps.executeUpdate();
+				insertCount = ps.executeUpdate();
 			}
 
 		} catch (SQLException e) {
@@ -97,29 +97,29 @@ public class BuyItemCompleteDAO {
 
 	}
 
-    //カート情報を削除
-	public void itemDelete(int itemId) throws SQLException {
+	// カート情報を削除
+	public void itemDelete(String userId) throws SQLException {
 
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
-		String sql = "DELETE FROM cart_info WHERE item_id=?";
+		String sql = "DELETE FROM cart_info WHERE user_id=?";
 
-		try{
+		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, itemId);
+			ps.setString(1, userId);
 
-			 ps.executeUpdate();
-		}catch(SQLException e){
+			ps.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		try{
+		try {
 			con.close();
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return ;
+		return;
 
 	}
 

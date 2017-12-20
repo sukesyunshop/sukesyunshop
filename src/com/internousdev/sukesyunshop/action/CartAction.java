@@ -18,7 +18,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 	private int productId;
 	public Map<String, Object> session;
 	private CartDAO cartDAO;
-	private ArrayList<CartDTO> cartList;
+	private ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
 	private ArrayList<CategoryDTO> cateList;
 
 private String result = ERROR;

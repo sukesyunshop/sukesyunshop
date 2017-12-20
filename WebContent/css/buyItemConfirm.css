@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+#content{
+	margin-top:200px;
+	margin-left:600px;
+}
+
+h3{
+
+}
+.confirmPassword{
+	font-size:20px;
+	margin:15px 0px 15px 20px;
+}
+.button{
+	width:150px;
+	height:40px;
+	font-size:20px;
+	margin:0px 0px 15px 30px;
+	border-radius: 3px;
+	background-color:#4682b4;
+	color:#fff;
+}
+
+#back{
+	margin-left:30px;
+}

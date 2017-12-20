@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/template.css">
+<link rel="stylesheet" type="text/css" href="./css/buyItemConfirm.css">
 <title>決済確認画面</title>
 </head>
 <body>
@@ -43,86 +44,81 @@
 	</div>
 
 
-	<div id="main">
-		<div id="top"></div>
-		宛先を選択してください。
-		<s:form method="post" action="BuyItemCompleteAction">
-			<table>
-				<tbody>
-					<tr>
-						<td><span>宛先を選択してください。</span></td>
-						<td><input type="radio" name="userId" value="1"
-							checked="checked"> <span>宛先1</span></td>
-						<td></td>
-						<td><input type="radio" name="userId" value="2"> <span>宛先2</span></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><span>宛先が未作成の場合は<a
-								href='<s:url action="InputDestAction"/>'>新規宛先作成へ</a></span></td>
-					</tr>
-					<tr>
-						<td><input type="submit" value="購入"></td>
-					</tr>
-				</tbody>
-			</table>
 
+	<div id="top">決済確認</div>
+	<s:form method="post" action="BuyItemCompleteAction">
+		<div id="content">
+
+			<span>宛先1</span> <input type="radio" name="" value="1"> <span>宛先2</span>
+			<span>宛先が未作成の場合は<a href='<s:url action="InputDestAction"/>'>新規宛先作成へ</a></span>
+
+		</div>
+
+		<div id="pr">
 			<p>以下の情報で購入しますか？</p>
+		</div>
 
-			<table>
-				<tbody>
-					<s:iterator value="cartList">
-						<tr>
-							<td><label><span>商品名：</span></label></td>
+		<table>
+			<tbody>
+				<s:iterator value="cartList">
+					<tr>
+						<td><label><span>商品名：</span></label></td>
 
-							<td><label><s:property value="getProductNameKana()" /></label></td>
-							<td><label><s:property value="getProductName()" /><br></label></td>
-							<td><label><s:property value="getImageFilePath()" /></label></td>
-							<td><label><s:property value="getImageFileName()" /></label></td>
-							<td><label><span>値段</span></label></td>
-							<td><label><s:property value="getPrice()" /></label></td>
-							<td><label><span>円</span></label></td>
-							<td><label><span>発売会社名</span></label></td>
-							<td><label><s:property value="getReleaseDate()" /></label></td>
-							<td><label><span>発売年月日</span></label></td>
-							<td><label><s:property value="getReleaseCompany()" /></label></td>
-						</tr>
-					</s:iterator>
-				</tbody>
-			</table>
-			<table>
-				<tbody>
+						<td><label><s:property value="getProductNameKana()" /></label></td>
+						<td><label><s:property value="getProductName()" /><br></label></td>
+						<td><label><s:property value="getImageFilePath()" /></label></td>
+						<td><label><s:property value="getImageFileName()" /></label></td>
+						<td><label><span>値段</span></label></td>
+						<td><label><s:property value="getPrice()" /></label></td>
+						<td><label><span>円</span></label></td>
+						<td><label><span>発売会社名</span></label></td>
+						<td><label><s:property value="getReleaseDate()" /></label></td>
+						<td><label><span>発売年月日</span></label></td>
+						<td><label><s:property value="getReleaseCompany()" /></label></td>
+					</tr>
+				</s:iterator>
+			</tbody>
+		</table>
+
+		<br>
+
+		<table>
+			<tbody>
+				<s:iterator value="destDTOList">
 					<tr>
 						<td><label><span>宛先情報：</span></label></td>
 
-						<td><label><s:property value="#session.familyName"
+						<td><label><s:property value="getFamilyName()"
 									escape="false" /></label></td>
 
-						<td><label><s:property
-									value="#session.familyNameKana" escape="false" /></label></td>
-
-						<td><label><s:property value="#session.firstName"
+						<td><label><s:property value="getFamilyNameKana()"
 									escape="false" /></label></td>
 
-						<td><label><s:property value="#session.firstNameKana"
+						<td><label><s:property value="getFirstName()"
 									escape="false" /></label></td>
 
-						<td><label><s:property value="#session.email"
+						<td><label><s:property value="getFirstNameKana()"
 									escape="false" /></label></td>
 
-						<td><label><s:property value="#session.telNumber()"
+						<td><label><s:property value="getEmail()"
 									escape="false" /></label></td>
 
-						<td><label><s:property value="#session.userAddress()"
+						<td><label><s:property value="getTelNumber()"
 									escape="false" /></label></td>
+
+						<td><label><s:property value="getUserAddress()"
+									escape="false" /></label></td>
+						<td><input type="radio" name="" value="" /></td>
 					</tr>
-				</tbody>
-			</table>
-		</s:form>
-
-		<br> カート一覧に戻るには<a href='<s:url action="CartAction"/>'>Cartへ</a>
-
-	</div>
-
+				</s:iterator>
+			</tbody>
+		</table>
+		<div class="button">
+			<p>
+				<button class="button2">購入</button>
+			</p>
+			カート一覧に戻るには<a href='<s:url action="CartAction"/>'>Cartへ</a>
+		</div>
+	</s:form>
 </body>
 </html>
