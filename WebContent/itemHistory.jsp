@@ -62,9 +62,12 @@
 			<li>商品画像<br><img src="<s:property value="getImageFilePath()" />"></li>
 		</s:iterator>
 	</ul>
-
-	<a href="<s:url action="GoHomeAction"/>">ホームに戻る</a>
+<div id="home">
+	<a href="<s:url action="GoHomeAction"/>">ホームに戻る</a><br>
+</div>
+<div id="delete">
 	<a href="<s:url action="ItemHistoryDeleteAction"/>">購入履歴一覧削除</a>
+</div>
 
 </body>
 </html>
