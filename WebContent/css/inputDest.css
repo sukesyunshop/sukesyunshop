@@ -1,0 +1,140 @@
+@CHARSET "UTF-8";
+
+#main{
+	margin: 0 auto;
+}
+
+#top {
+	padding-left: 710px;
+	margin-top: 20px;
+}
+
+#form {
+	margin-top: 250px;
+	margin-left: 600px;
+}
+
+
+table {
+	margin: 0 auto;
+}
+
+ table tr #name {
+	width: 800px;
+
+}
+
+ table td .familyName {
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 3px;
+
+	text-align: center;
+}
+
+ table td .firstName {
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 3px;
+
+	text-align: center;
+}
+
+ table tr #nameKana {
+	width: 800px;
+
+}
+
+ table td .familyNameKana {
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 3px;
+
+	text-align: center;
+}
+
+ table td .firstNameKana {
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 3px;
+
+	text-align: center;
+}
+
+ table tr #email {
+	width: 800px;
+
+}
+
+ table td .email {
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 3px;
+
+	text-align: center;
+}
+
+ table tr #telNumber {
+	width: 800px;
+
+}
+
+ table td .telNumber {
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 3px;
+
+	text-align: center;
+}
+
+ table tr #userAddress {
+	width: 800px;
+
+}
+
+ table td .userAddress {
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 3px;
+	text-align: center;
+}
+
+ table tr #sex {
+	width: 800px;
+
+}
+
+ table td .sex {
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 3px;
+
+}
+
+#Button {
+	margin-top: 15px;
+	padding-right: 560px;
+}
+
+.button {
+	width: 300px;
+	height: 40px;
+	border-radius: 3px;
+	background-color: #4682b4;
+	color: #fff;
+		margin: 0 auto;
+}
+
+#goMyPage {
+	font-size: 14px;
+	padding-left: 710px;
+	margin-top: 20px;
+}

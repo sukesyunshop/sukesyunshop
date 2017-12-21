@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/template.css">
+<link rel="stylesheet" type="text/css" href="./css/inputDest.css">
 <title>購入情報入力画面</title>
 </head>
 <body>
@@ -44,51 +45,77 @@
 
 
 	<div id="main">
-		<div id="top"></div>
-		<h3>宛先を入力してください。</h3>
-		<s:form action="ConfirmDestAction">
+		<div id="top">
+			<h3>宛先を入力してください。</h3>
+		</div>
 
-	<!-- 宛先情報入力フォーム -->
+		<div class="form">
+			<s:form action="ConfirmDestAction">
+					<table>
+						<tbody>
+							<!-- 宛先情報入力フォーム -->
 
-			<span style="color: #FF0000"><s:property value="familyMessage" /></span>
-			姓：<input type="text" name="familyName" value="">
-			<br />
+							<tr id="name">
+								<th>お名前 :</th>
+								<td class="familyName"><input type="text" name="familyName"
+									value="" placeholder="姓"></td>
+								<td class="firstName"><input type="text" name="firstName"
+									value="" placeholder="名"></td>
+							</tr>
+							<tr id="nameKana">
+								<th>フリガナ：</th>
+								<td class="familyNameKana"><input type="text"
+									name="familyNameKana" value="" placeholder="セイ"></td>
+								<td class="firstNameKana"><input type="text"
+									name="firstNameKana" value="" placeholder="メイ"></td>
+							</tr>
+							<tr id="email">
+								<th>メールアドレス：</th>
+								<td class="email"><input type="text" name="email" value=""></td>
+							</tr>
 
-			<span style="color: #FF0000"><s:property value="firstMessage" /></span>
-			名：<input type="text" name="firstName" value="">
-			<br />
+							<tr id="telNumber">
+								<th>電話番号：</th>
+								<td class="telNumber"><input type="text" name="telNumber"
+									value=""></td>
+							</tr>
 
-			<span style="color: #FF0000"><s:property
-					value="familyKanaMessage" /></span>
-			姓かな：<input type="text" name="familyNameKana" value="">
-			<br />
+							<tr id="userAddress">
+								<th>住所：</th>
+								<td class="userAddess"><input type="text"
+									name="userAddress" value=""></td>
+							</tr>
 
-			<span style="color: #FF0000"><s:property
-					value="firstKanaMessage" /></span>
-			名かな：<input type="text" name="firstNameKana" value="">
-			<br />
-			<!-- 性別ラジオボタン -->
-			性別：<input type="radio" name="sex" value="0" checked="checked"><span>男性</span>
-				<input type="radio" name="sex" value="1" ><span>女性</span>
+							<!-- 性別ラジオボタン -->
+							<tr id="sex">
+								<th>性別：</th>
+								<td class="sex"><input type="radio" name="sex" value="0"
+									checked="checked"><span>男性</span></td>
 
-			<span style="color: #FF0000"><s:property value="emailMessage" /></span>
-			メールアドレス：<input type="text" name="email" value="">
-			<br />
+								<td class="sex"><input type="radio" name="sex" value="1"><span>女性</span></td>
+							</tr>
+						</tbody>
+					</table>
 
-			<span style="color: #FF0000"><s:property
-					value="telNumberMessage" /></span>
-			電話番号：<input type="text" name="telNumber" value="">
-			<br />
-
-			<span style="color: #FF0000"><s:property
-					value="addressMessage" /></span>
-			住所：<input type="text" name="userAddress" value="">
-
-			<br />
-			<s:submit class="button" value="確認画面へ" />
-		</s:form>
-
-		MyPageへ戻るには<a href="myPage.jsp">MyPageへ</a>
+				<!-- エラーメッセージ群 -->
+				<span style="color: #FF0000"><s:property
+						value="familyMessage" /></span>
+				<span style="color: #FF0000"><s:property value="firstMessage" /></span>
+				<span style="color: #FF0000"><s:property
+						value="firstKanaMessage" /></span>
+				<span style="color: #FF0000"><s:property value="emailMessage" /></span>
+				<span style="color: #FF0000"><s:property
+						value="telNumberMessage" /></span>
+				<span style="color: #FF0000"><s:property
+						value="addressMessage" /></span>
+				<div id="Button">
+					<s:submit class="button" value="確認画面へ" />
+				</div>
+			</s:form>
+		</div>
+		<div id="goMyPage">
+			MyPageへ戻るには<a href="myPage.jsp">MyPageへ</a>
+		</div>
 	</div>
 
 
