@@ -58,8 +58,8 @@
 	</ul>
 
 	<div class="moveWrapper">
-		<a href="<s:url action="GoHomeAction" />" class="moveItem">HOMEへ</a>
-		<a href="<s:url action="ItemHistoryAction" />" class="moveItem">購入履歴へ</a>
+		<a href="<s:url action="GoHomeAction" />" class="moveItem"><input type="submit" value="HOMEへ" id="submitArea"></a>
+		<a href="<s:url action="ItemHistoryAction" />" class="moveItem"><input type="submit" value="購入履歴へ" id="submitArea"></a>
 	</div>
 
 

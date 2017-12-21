@@ -47,8 +47,13 @@ h2{
 	color: inherit;
 	padding: 20px 30px;
 	/* TODO ボタン色統一 */
-	background-color: green;
 	margin: 20px 30px;
 }
 
-
+#submitArea{
+	width: 300px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #4682b4;
+    color: #fff;
+}

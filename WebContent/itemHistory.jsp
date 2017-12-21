@@ -63,8 +63,8 @@
 	</ul>
 </s:else>
 <div class="moveWrapper">
-		<a href="<s:url action="GoHomeAction" />" class="moveItem">HOMEへ</a>
-		<a href="<s:url action="ItemHistoryDeleteAction" />" class="moveItem">購入履歴一覧削除へ</a>
+		<a href="<s:url action="GoHomeAction" />" class="moveItem"><input type="submit" value="HOMEへ" id="submitArea"></a>
+		<a href="<s:url action="ItemHistoryDeleteAction" />" class="moveItem"><input type="submit" value="購入履歴一覧削除" id="submitArea"></a>
 </div>
 </body>
 </html>
