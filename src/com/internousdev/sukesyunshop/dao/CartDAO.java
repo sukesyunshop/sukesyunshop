@@ -15,13 +15,16 @@ public class CartDAO {
 	private Connection con = db.getConnection();
 
 
-//productdetailにcatalogで指定した値を送る
-	public CartDTO getId(int productId){
-		CartDTO getId=new CartDTO();
+	//TODO いらなそうなメソッドをコメントアウトしています。
+	//productdetail.jspにcatalog.jspで指定した値(商品のID)を送る
+	/*public CartDTO getId(int productId){
+		CartDTO dto = new CartDTO();
 		String sql=""
 				+"SELECT id"
-				+"FROM product_info"
-				+"where product_id=?";
+				+"FROM product_info "
+				+"INNER JOIN m_category "
+				+"ON product_info.category_id = m_category.category_id "
+				+"WHERE product_id=?";
 
 		try{
 			PreparedStatement preparedStatement = con.prepareStatement(sql);
@@ -29,16 +32,26 @@ public class CartDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()){
-				getId.setId(resultSet.getInt("id"));
+				dto.setId(resultSet.getInt("product_info.id"));
+				dto.setProductId(resultSet.getInt("product_id"));
+				dto.setProductName(resultSet.getString("product_name"));
+				dto.setProductNameKana(resultSet.getString("product_name_kana"));
+				dto.setProductDetail(resultSet.getString("product_detail"));
+				dto.setCategory(resultSet.getString("category_name"));
+				dto.setPrice(resultSet.getInt("price"));
+				dto.setImageFilePath(resultSet.getString("image_file_path"));
+				dto.setImageFileName(resultSet.getString("image_file_name"));
+				dto.setReleaseDate (resultSet.getString("release_date"));
+				dto.setReleaseCompany(resultSet.getString("release_company"));
 			}
 			} catch(Exception e){
 				e.printStackTrace();
 			}
-			return getId;
-	}
+			return dto;
+	}*/
 
 
-//カートの中身を指定
+	//カートの中身を指定
 	public ArrayList<CartDTO> getCartList(String userId, boolean loginFlag){
 		ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
 		String sql;
@@ -46,15 +59,19 @@ public class CartDAO {
 			sql = ""
 					+"SELECT *  "
 					+"FROM cart_info "
-					+ "INNER JOIN product_info "
-					+ "ON cart_info.product_id = product_info.product_id "
+					+"INNER JOIN product_info "
+					+"ON cart_info.product_id = product_info.product_id "
+					+"INNER JOIN m_category "
+					+"ON product_info.category_id = m_category.category_id "
 					+"WHERE user_id=?";
 		}else{
 			sql = ""
 					+"SELECT *  "
 					+"FROM cart_info "
-					+ "INNER JOIN product_info "
-					+ "ON cart_info.product_id = product_info.product_id "
+					+"INNER JOIN product_info "
+					+"ON cart_info.product_id = product_info.product_id "
+					+"INNER JOIN m_category "
+					+"ON product_info.category_id = m_category.category_id "
 					+"WHERE temp_user_id=?";
 		}
 		try{
@@ -64,17 +81,19 @@ public class CartDAO {
 
 			while(resultSet.next()){
 				CartDTO cartdto = new CartDTO();
-				cartdto.setId(resultSet.getInt("id"));
-				cartdto.setUserId(resultSet.getString("user_id"));
-				cartdto.setProductId(resultSet.getInt("product_info.product_id"));
-				cartdto.setProductNameKana(resultSet.getString("product_info.product_name_kana"));
-				cartdto.setProductName(resultSet.getString("product_info.product_name"));
+				cartdto.setId(resultSet.getInt("product_info.id"));
+				cartdto.setProductId(resultSet.getInt("product_id"));
+				cartdto.setProductName(resultSet.getString("product_name"));
+				cartdto.setProductNameKana(resultSet.getString("product_name_kana"));
+				cartdto.setProductDetail(resultSet.getString("product_detail"));
 				cartdto.setCategoryId(resultSet.getInt("product_info.category_id"));
-				cartdto.setPrice(resultSet.getInt("product_info.price"));
-				cartdto.setImageFilePath(resultSet.getString("product_info.image_file_path"));
-				cartdto.setImageFileName(resultSet.getString("product_info.image_file_name"));
-				cartdto.setReleaseDate(resultSet.getString("product_info.release_date")); // データ型が？
-				cartdto.setReleaseCompany(resultSet.getString("product_info.release_company"));
+				cartdto.setCategoryName(resultSet.getString("category_name"));
+				cartdto.setCategoryDescription(resultSet.getString("category_description"));
+				cartdto.setPrice(resultSet.getInt("price"));
+				cartdto.setImageFilePath(resultSet.getString("image_file_path"));
+				cartdto.setImageFileName(resultSet.getString("image_file_name"));
+				cartdto.setReleaseDate (resultSet.getString("release_date"));
+				cartdto.setReleaseCompany(resultSet.getString("release_company"));
 				cartList.add(cartdto);
 			}
 		}catch(Exception e){

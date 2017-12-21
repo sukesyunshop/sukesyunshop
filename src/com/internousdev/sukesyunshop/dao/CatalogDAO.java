@@ -19,9 +19,11 @@ public class CatalogDAO {
 	public CatalogDTO getItem(int productId){
 		CatalogDTO getItem=new CatalogDTO();
 		String sql=""
-				+ "SELECT  id, category_id,product_id, product_name,product_name_kana,image_file_path,image_file_name, price,release_date,release_company "
-				+ " FROM product_info "
-				+ "where product_id=?";
+				+ "SELECT  * "
+				+ "FROM product_info "
+				+ "INNER JOIN m_category "
+				+ "ON product_info.category_id = m_category.category_id "
+				+ "where product_id = ?";
 
 			try{
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -29,17 +31,19 @@ public class CatalogDAO {
 				ResultSet resultSet = preparedStatement.executeQuery();
 
 				if(resultSet.next()){
-					getItem.setId(resultSet.getInt("id"));
-					getItem.setCategoryId(resultSet.getInt("category_id"));
+					getItem.setId(resultSet.getInt("product_info.id"));
 					getItem.setProductId(resultSet.getInt("product_id"));
 					getItem.setProductName(resultSet.getString("product_name"));
 					getItem.setProductNameKana(resultSet.getString("product_name_kana"));
+					getItem.setProductDetail(resultSet.getString("product_detail"));
+					getItem.setCategoryId(resultSet.getInt("product_info.category_id"));
+					getItem.setCategoryName(resultSet.getString("category_name"));
+					getItem.setCategoryDescription(resultSet.getString("category_description"));
+					getItem.setPrice(resultSet.getInt("price"));
 					getItem.setImageFilePath(resultSet.getString("image_file_path"));
 					getItem.setImageFileName(resultSet.getString("image_file_name"));
-					getItem.setPrice(resultSet.getInt("price"));
 					getItem.setReleaseDate (resultSet.getString("release_date"));
 					getItem.setReleaseCompany(resultSet.getString("release_company"));
-					System.out.println(getItem.getProductName());
 				}
 			} catch(Exception e){
 				e.printStackTrace();
@@ -52,8 +56,10 @@ public class CatalogDAO {
 	public ArrayList<CatalogDTO> getCatalogList(int page) throws SQLException{
 		ArrayList<CatalogDTO> list = new ArrayList<CatalogDTO>();
 		String sql = ""
-				+ "SELECT  id, category_id,product_id, product_name,product_name_kana, image_file_path,image_file_name,price "
+				+ "SELECT  * "
 				+ "FROM product_info "
+				+ "INNER JOIN m_category "
+				+ "ON product_info.category_id = m_category.category_id "
 				+ "LIMIT ?, ?";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -62,16 +68,21 @@ public class CatalogDAO {
 		ResultSet resultSet = preparedStatement.executeQuery();
 
 		while(resultSet.next()){
-			CatalogDTO catalogdto = new CatalogDTO();
-			catalogdto.setId(resultSet.getInt("id"));
-			catalogdto.setCategoryId(resultSet.getInt("category_id"));
-			catalogdto.setProductId(resultSet.getInt("product_id"));
-			catalogdto.setProductName(resultSet.getString("product_name"));
-			catalogdto.setProductNameKana(resultSet.getString("product_name_kana"));
-			catalogdto.setImageFilePath(resultSet.getString("image_file_path"));
-			catalogdto.setImageFileName(resultSet.getString("image_file_name"));
-			catalogdto.setPrice(resultSet.getInt("price"));
-			list.add(catalogdto);
+			CatalogDTO catalogDto = new CatalogDTO();
+			catalogDto.setId(resultSet.getInt("product_info.id"));
+			catalogDto.setProductId(resultSet.getInt("product_id"));
+			catalogDto.setProductName(resultSet.getString("product_name"));
+			catalogDto.setProductNameKana(resultSet.getString("product_name_kana"));
+			catalogDto.setProductDetail(resultSet.getString("product_detail"));
+			catalogDto.setCategoryId(resultSet.getInt("product_info.category_id"));
+			catalogDto.setCategoryName(resultSet.getString("category_name"));
+			catalogDto.setCategoryDescription(resultSet.getString("category_description"));
+			catalogDto.setPrice(resultSet.getInt("price"));
+			catalogDto.setImageFilePath(resultSet.getString("image_file_path"));
+			catalogDto.setImageFileName(resultSet.getString("image_file_name"));
+			catalogDto.setReleaseDate (resultSet.getString("release_date"));
+			catalogDto.setReleaseCompany(resultSet.getString("release_company"));
+			list.add(catalogDto);
 		}
 		return list;
 	}
@@ -81,9 +92,11 @@ public class CatalogDAO {
 	public ArrayList<CatalogDTO> miniList(int categoryId, int removeId) throws SQLException{
 		ArrayList<CatalogDTO> miniList = new ArrayList<CatalogDTO>();
 		String sql = ""
-				+ "SELECT id, category_id, product_id, product_name, product_name_kana, image_file_path "
+				+ "SELECT * "
 				+ "FROM product_info "
-				+ "WHERE category_id=? "
+				+ "INNER JOIN m_category "
+				+ "ON product_info.category_id = m_category.category_id "
+				+ "WHERE product_info.category_id=? "
 				+ "AND id != ? "
 				+ "LIMIT 4 ";
 
@@ -95,13 +108,19 @@ public class CatalogDAO {
 		while(resultSet.next()){
 
 			CatalogDTO sub = new CatalogDTO();
-			sub.setId(resultSet.getInt("id"));
-			sub.setCategoryId(resultSet.getInt("category_id"));
+			sub.setId(resultSet.getInt("product_info.id"));
 			sub.setProductId(resultSet.getInt("product_id"));
 			sub.setProductName(resultSet.getString("product_name"));
 			sub.setProductNameKana(resultSet.getString("product_name_kana"));
+			sub.setProductDetail(resultSet.getString("product_detail"));
+			sub.setCategoryId(resultSet.getInt("product_info.category_id"));
+			sub.setCategoryName(resultSet.getString("category_name"));
+			sub.setCategoryDescription(resultSet.getString("category_description"));
+			sub.setPrice(resultSet.getInt("price"));
 			sub.setImageFilePath(resultSet.getString("image_file_path"));
-
+			sub.setImageFileName(resultSet.getString("image_file_name"));
+			sub.setReleaseDate (resultSet.getString("release_date"));
+			sub.setReleaseCompany(resultSet.getString("release_company"));
 			miniList.add(sub);
 		}
 		return miniList;
@@ -125,6 +144,8 @@ public class CatalogDAO {
 		String sql = ""
 				+ "SELECT * "
 				+ "FROM product_info "
+				+ "INNER JOIN m_category "
+				+ "ON product_info.category_id = m_category.category_id "
 				+ "ORDER BY RAND() "
 				+ "LIMIT 10 ";
 
@@ -133,14 +154,17 @@ public class CatalogDAO {
 
 		while(resultSet.next()){
 			CatalogDTO dto = new CatalogDTO();
-			dto.setId(resultSet.getInt("id"));
-			dto.setProductId(resultSet.getInt("product_id"));
+			dto.setId(resultSet.getInt("product_info.id"));
 			dto.setProductId(resultSet.getInt("product_id"));
 			dto.setProductName(resultSet.getString("product_name"));
 			dto.setProductNameKana(resultSet.getString("product_name_kana"));
+			dto.setProductDetail(resultSet.getString("product_detail"));
+			dto.setCategoryId(resultSet.getInt("product_info.category_id"));
+			dto.setCategoryName(resultSet.getString("category_name"));
+			dto.setCategoryDescription(resultSet.getString("category_description"));
+			dto.setPrice(resultSet.getInt("price"));
 			dto.setImageFilePath(resultSet.getString("image_file_path"));
 			dto.setImageFileName(resultSet.getString("image_file_name"));
-			dto.setPrice(resultSet.getInt("price"));
 			dto.setReleaseDate (resultSet.getString("release_date"));
 			dto.setReleaseCompany(resultSet.getString("release_company"));
 			list.add(dto);

@@ -46,7 +46,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		return searchText;
 	}
 
-	
+
 	public void setSearchText(String searchText) {
 		this.searchText = searchText;
 	}
@@ -65,14 +65,6 @@ public class SearchAction extends ActionSupport implements SessionAware {
 
 	public void setList(ArrayList<CatalogDTO> list) {
 		this.list = list;
-	}
-
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
-	}
-
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
 	}
 
 	public int getListSize() {
@@ -106,6 +98,14 @@ public class SearchAction extends ActionSupport implements SessionAware {
 
 	public Map<String, Object> getSession() {
 		return session;
+	}
+
+	public ArrayList<CategoryDTO> getCateList() {
+		return cateList;
+	}
+
+	public void setCateList(ArrayList<CategoryDTO> cateList) {
+		this.cateList = cateList;
 	}
 
 }

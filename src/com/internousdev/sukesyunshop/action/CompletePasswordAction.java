@@ -1,14 +1,10 @@
 package com.internousdev.sukesyunshop.action;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.ResetPasswordDAO;
-import com.internousdev.sukesyunshop.dao.SearchDAO;
-import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.dto.ResetPasswordDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -23,9 +19,6 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 		/*ログインID入力エラーメッセージ*/
 		private String userIdMessage;
 
-		/*検索バー用のカテゴリーのリスト*/
-		private ArrayList<CategoryDTO> cateList;
-
 		public Map<String,Object> session;
 
 		private ResetPasswordDAO resetPasswordDAO = new ResetPasswordDAO();
@@ -36,14 +29,6 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 
 		/*------実行メソッド-----*/
 		public String execute(){
-
-			try{
-				SearchDAO searchDAO = new SearchDAO();
-				setCateList(searchDAO.getCategory());
-			}catch(SQLException e){
-				e.printStackTrace();
-			}
-
 
 			loginPassword=session.get("loginPassword").toString();
 			loginId=session.get("loginId").toString();
@@ -79,16 +64,6 @@ public class CompletePasswordAction extends ActionSupport implements SessionAwar
 		public void setLoginId(String loginId) {
 				this.loginId = loginId;
 			}
-
-		public ArrayList<CategoryDTO> getCateList() {
-			return cateList;
-		}
-
-
-		public void setCateList(ArrayList<CategoryDTO> cateList) {
-			this.cateList = cateList;
-		}
-
 
 		/*セッション*/
 		public Map<String, Object> getSession() {

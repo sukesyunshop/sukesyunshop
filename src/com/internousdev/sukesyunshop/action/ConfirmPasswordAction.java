@@ -1,14 +1,10 @@
 package com.internousdev.sukesyunshop.action;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.ResetPasswordDAO;
-import com.internousdev.sukesyunshop.dao.SearchDAO;
-import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.dto.ResetPasswordDTO;
 import com.internousdev.sukesyunshop.util.Validation;
 import com.opensymphony.xwork2.ActionSupport;
@@ -30,9 +26,6 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 	/*新規パスワード入力についてのエラーメッセージ*/
 	private String passwordMessage;
 
-	/*検索バー用のカテゴリーのリスト*/
-	private ArrayList<CategoryDTO> cateList;
-
 	/*Validationクラスをインスタンス化*/
 	public Validation validation = new Validation();
 
@@ -43,13 +36,6 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 
 	/*---------実行メソッド-----------*/
 	public String execute(){
-
-		try{
-			SearchDAO searchDAO = new SearchDAO();
-			setCateList(searchDAO.getCategory());
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
 
 		/*パスワードが未入力*/
 		if(validation.emptyValid(loginPassword)){
@@ -113,17 +99,6 @@ public class ConfirmPasswordAction extends ActionSupport implements SessionAware
 		public void setPasswordMessage(String passwordMessage) {
 			this.passwordMessage = passwordMessage;
 		}
-
-
-		public ArrayList<CategoryDTO> getCateList() {
-			return cateList;
-		}
-
-
-		public void setCateList(ArrayList<CategoryDTO> cateList) {
-			this.cateList = cateList;
-		}
-
 
 		/*セッション*/
 		public Map<String, Object> getSession() {

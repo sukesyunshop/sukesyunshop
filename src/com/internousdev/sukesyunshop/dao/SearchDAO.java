@@ -26,6 +26,8 @@ public class SearchDAO {
 			sql = ""
 				+ "SELECT * "
 				+ "FROM product_info "
+				+ "INNER JOIN m_category "
+				+ "ON product_info.category_id = m_category.category_id "
 				+ "LIMIT ?, ?";
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, (page-1)*9);
@@ -35,6 +37,8 @@ public class SearchDAO {
 			sql = ""
 					+ "SELECT * "
 					+ "FROM product_info "
+					+ "INNER JOIN m_category "
+					+ "ON product_info.category_id = m_category.category_id "
 					+ "WHERE ( product_name LIKE ? "
 					+ "OR product_name_kana LIKE ? ) "
 					+ "LIMIT ?, ?";
@@ -47,6 +51,8 @@ public class SearchDAO {
 			sql = ""
 					+ "SELECT * "
 					+ "FROM product_info "
+					+ "INNER JOIN m_category "
+					+ "ON product_info.category_id = m_category.category_id "
 					+ "WHERE category_id = ? "
 					+ "LIMIT ?, ?";
 			statement = connection.prepareStatement(sql);
@@ -57,6 +63,8 @@ public class SearchDAO {
 			sql = ""
 					+ "SELECT * "
 					+ "FROM product_info "
+					+ "INNER JOIN m_category "
+					+ "ON product_info.category_id = m_category.category_id "
 					+ "WHERE category_id = ? "
 					+ "AND ( product_name LIKE ? "
 					+ "OR product_name_kana LIKE ? ) "
@@ -73,14 +81,17 @@ public class SearchDAO {
 
 		while(resultSet.next()){
 			CatalogDTO dto = new CatalogDTO();
-			dto.setId(resultSet.getInt("id"));
-			dto.setCategoryId(resultSet.getInt("category_id"));
+			dto.setId(resultSet.getInt("product_info.id"));
 			dto.setProductId(resultSet.getInt("product_id"));
 			dto.setProductName(resultSet.getString("product_name"));
 			dto.setProductNameKana(resultSet.getString("product_name_kana"));
+			dto.setProductDetail(resultSet.getString("product_detail"));
+			dto.setCategoryId(resultSet.getInt("product_info.category_id"));
+			dto.setCategoryName(resultSet.getString("category_name"));
+			dto.setCategoryDescription(resultSet.getString("category_description"));
+			dto.setPrice(resultSet.getInt("price"));
 			dto.setImageFilePath(resultSet.getString("image_file_path"));
 			dto.setImageFileName(resultSet.getString("image_file_name"));
-			dto.setPrice(resultSet.getInt("price"));
 			dto.setReleaseDate (resultSet.getString("release_date"));
 			dto.setReleaseCompany(resultSet.getString("release_company"));
 			list.add(dto);
@@ -164,6 +175,8 @@ public class SearchDAO {
 		String sql = ""
 				+ "SELECT * "
 				+ "FROM product_info "
+				+ "INNER JOIN m_category "
+				+ "ON product_info.category_id = m_category.category_id "
 				+ "WHERE false "
 				+ sqlPiece.toString();
 
@@ -176,14 +189,17 @@ public class SearchDAO {
 
 		while(resultSet.next()){
 			CatalogDTO dto = new CatalogDTO();
-			dto.setId(resultSet.getInt("id"));
-			dto.setCategoryId(resultSet.getInt("category_id"));
+			dto.setId(resultSet.getInt("product_info.id"));
 			dto.setProductId(resultSet.getInt("product_id"));
 			dto.setProductName(resultSet.getString("product_name"));
 			dto.setProductNameKana(resultSet.getString("product_name_kana"));
+			dto.setProductDetail(resultSet.getString("product_detail"));
+			dto.setCategoryId(resultSet.getInt("product_info.category_id"));
+			dto.setCategoryName(resultSet.getString("category_name"));
+			dto.setCategoryDescription(resultSet.getString("category_description"));
+			dto.setPrice(resultSet.getInt("price"));
 			dto.setImageFilePath(resultSet.getString("image_file_path"));
 			dto.setImageFileName(resultSet.getString("image_file_name"));
-			dto.setPrice(resultSet.getInt("price"));
 			dto.setReleaseDate (resultSet.getString("release_date"));
 			dto.setReleaseCompany(resultSet.getString("release_company"));
 			list.add(dto);
@@ -197,6 +213,8 @@ public class SearchDAO {
 		String sql = ""
 				+ "SELECT * "
 				+ "FROM product_info "
+				+ "INNER JOIN m_category "
+				+ "ON product_info.category_id = m_category.category_id "
 				+ "ORDER BY release_date DESC "
 				+ "LIMIT 5 ";
 
@@ -204,15 +222,17 @@ public class SearchDAO {
 		ResultSet resultSet = statement.executeQuery();
 		while(resultSet.next()){
 			CatalogDTO dto = new CatalogDTO();
-			dto.setId(resultSet.getInt("id"));
-			dto.setCategoryId(resultSet.getInt("category_id"));
+			dto.setId(resultSet.getInt("product_info.id"));
 			dto.setProductId(resultSet.getInt("product_id"));
 			dto.setProductName(resultSet.getString("product_name"));
-			System.out.println(resultSet.getString("product_name"));
 			dto.setProductNameKana(resultSet.getString("product_name_kana"));
+			dto.setProductDetail(resultSet.getString("product_detail"));
+			dto.setCategoryId(resultSet.getInt("product_info.category_id"));
+			dto.setCategoryName(resultSet.getString("category_name"));
+			dto.setCategoryDescription(resultSet.getString("category_description"));
+			dto.setPrice(resultSet.getInt("price"));
 			dto.setImageFilePath(resultSet.getString("image_file_path"));
 			dto.setImageFileName(resultSet.getString("image_file_name"));
-			dto.setPrice(resultSet.getInt("price"));
 			dto.setReleaseDate (resultSet.getString("release_date"));
 			dto.setReleaseCompany(resultSet.getString("release_company"));
 			list.add(dto);

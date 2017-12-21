@@ -41,15 +41,6 @@
 			<result name="success">catalog.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<!-- EmptyAction's children -->
-		<action name="MoveLoginAction" class="com.internousdev.sukesyunshop.action.MoveLoginAction" method="execute">
-			<result name="success">login.jsp</result>
-			<result name="error">error.jsp</result>
-		</action>
-		<action name="MoveResetPasswordAction" class="com.internousdev.sukesyunshop.action.MoveResetPasswordAction" method="execute">
-			<result name="success">resetPassword.jsp</result>
-			<result name="error">error.jsp</result>
-		</action>
 		<!-- 担当：金子 -->
 		<!-- GoMyPageAction -->
 		<action name="GoMyPageAction" class="com.internousdev.sukesyunshop.action.GoMyPageAction" method="execute">

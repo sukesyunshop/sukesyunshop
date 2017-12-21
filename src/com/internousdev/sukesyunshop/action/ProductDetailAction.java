@@ -18,7 +18,7 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 	public CatalogDTO dto;
 	public Map<String, Object> session;
 	public ArrayList<CatalogDTO> miniList;
-	private ArrayList<CategoryDTO> cateList;
+	public ArrayList<CategoryDTO> cateList;
 	public CatalogDAO catalogdao = new CatalogDAO();
 
 
@@ -29,8 +29,8 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 			dto=catalogdao.getItem(productId);
 			miniList=catalogdao.miniList(dto.getCategoryId(), dto.getId());
 
-			SearchDAO searchDAO = new SearchDAO();
-			setCateList(searchDAO.getCategory());
+			SearchDAO dao = new SearchDAO();
+			cateList = dao.getCategory();
 
 			result=SUCCESS;
 			}catch(SQLException e){
@@ -65,16 +65,4 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 			this.miniList = miniList;
 		}
 
-
-		public ArrayList<CategoryDTO> getCateList() {
-			return cateList;
-		}
-
-
-		public void setCateList(ArrayList<CategoryDTO> cateList) {
-			this.cateList = cateList;
-		}
-
 }
-
-

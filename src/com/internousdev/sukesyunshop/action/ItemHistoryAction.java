@@ -6,10 +6,8 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.sukesyunshop.dao.ItemHistoryDAO;
-import com.internousdev.sukesyunshop.dao.SearchDAO;
-import com.internousdev.sukesyunshop.dto.CategoryDTO;
-import com.internousdev.sukesyunshop.dto.ItemHistoryDTO;
+import com.internousdev.sukesyunshop.dao.MyPageDAO;
+import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,10 +15,7 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 
 	public Map<String,Object> session;
 
-	public ArrayList<ItemHistoryDTO>  list ;
-	private ArrayList<CategoryDTO> cateList;
-
-
+	public ArrayList<CatalogDTO>  list ;
 
 	/**
 	 * 商品購入情報取得メソッド
@@ -28,14 +23,11 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 	 * @author internous
 	 */
 	public String execute() {
-		ItemHistoryDAO dao =new ItemHistoryDAO ();
+		MyPageDAO dao =new MyPageDAO ();
 		String userId = session.get(SessionName.getUserId()).toString();
 
 		try {
 			list =dao.getItemHistoryList(userId);
-
-			SearchDAO searchDAO = new SearchDAO();
-			setCateList(searchDAO.getCategory());
 
 			return SUCCESS;
 		} catch (SQLException e) {
@@ -47,14 +39,14 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 	/**
 	 * @return list
 	 */
-	public ArrayList<ItemHistoryDTO> getList() {
+	public ArrayList<CatalogDTO> getList() {
 		return list;
 	}
 
 	/**
 	 * @param list セットする list
 	 */
-	public void setList(ArrayList<ItemHistoryDTO> list) {
+	public void setList(ArrayList<CatalogDTO> list) {
 		this.list = list;
 	}
 
@@ -63,11 +55,4 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 		this.session = session;
 	}
 
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
-	}
-
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
-	}
 }

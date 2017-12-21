@@ -1,18 +1,17 @@
 package com.internousdev.sukesyunshop.dto;
 
-public class CatalogDTO {
+public class CatalogDTO extends CategoryDTO {
 
 	private int id;
 	private int productId;
 	private String productName;
 	private String productNameKana;
+	private String productDetail;
 	private int price;
 	private String imageFilePath;
 	private String imageFileName;
-	private int categoryId;
 	private String releaseDate;
 	private String releaseCompany;
-
 	public int getId() {
 		return id;
 	}
@@ -36,6 +35,12 @@ public class CatalogDTO {
 	}
 	public void setProductNameKana(String productNameKana) {
 		this.productNameKana = productNameKana;
+	}
+	public String getProductDetail() {
+		return productDetail;
+	}
+	public void setProductDetail(String productDetail) {
+		this.productDetail = productDetail;
 	}
 	public int getPrice() {
 		return price;
@@ -66,12 +71,6 @@ public class CatalogDTO {
 	}
 	public void setReleaseCompany(String releaseCompany) {
 		this.releaseCompany = releaseCompany;
-	}
-	public int getCategoryId() {
-		return categoryId;
-	}
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
 	}
 
 }

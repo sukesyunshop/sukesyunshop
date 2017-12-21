@@ -7,10 +7,10 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.sukesyunshop.dao.BuyItemCompleteDAO;
+import com.internousdev.sukesyunshop.dao.BuyItemDAO;
 import com.internousdev.sukesyunshop.dao.CartDAO;
 import com.internousdev.sukesyunshop.dao.DestinationDAO;
-import com.internousdev.sukesyunshop.dto.BuyItemDTO;
+import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.internousdev.sukesyunshop.dto.CartDTO;
 import com.internousdev.sukesyunshop.dto.DestinationDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
@@ -35,8 +35,8 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 * 商品購入完了DAO＆商品情報DTOをインスタンス化
 	 *
 	 */
-	public List<BuyItemDTO> buyItemDTOList = new ArrayList<BuyItemDTO>();
-	private BuyItemCompleteDAO buyItemDAO = new BuyItemCompleteDAO();
+	public List<CatalogDTO> CatalogDTOList = new ArrayList<CatalogDTO>();
+	private BuyItemDAO buyItemDAO = new BuyItemDAO();
 	public ArrayList<CartDTO> cartDTO;
 	private CartDAO cartDAO = new CartDAO();
 
@@ -130,12 +130,12 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 		this.destNum = destNum;
 	}
 
-	public List<BuyItemDTO> getBuyItemDTOList() {
-		return buyItemDTOList;
+	public List<CatalogDTO> getCatalogDTOList() {
+		return CatalogDTOList;
 	}
 
-	public void setBuyItemDTOList(List<BuyItemDTO> buyItemDTOList) {
-		this.buyItemDTOList = buyItemDTOList;
+	public void setCatalogDTOList(List<CatalogDTO> CatalogDTOList) {
+		this.CatalogDTOList = CatalogDTOList;
 	}
 
 	public Map<String, Object> getSession() {
