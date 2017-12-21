@@ -22,7 +22,7 @@ public class ItemHistoryDAO {
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1,userId);
 
-		statement.executeUpdate(sql);
+		statement.executeUpdate();
 
 	}
 
