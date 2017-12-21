@@ -3,7 +3,7 @@
 
 #form{
 	margin-top:150px;
-	margin-left:600px;
+	text-align: center;
 }
 
 #loginArea{
@@ -27,7 +27,6 @@
 
 #submit{
 	margin-top:15px;
-	padding-right:400px;
 }
 
 #submitArea{
@@ -40,6 +39,5 @@
 
 #forgotPass{
 	font-size:14px;
-	padding-left:60px;
 	margin-top:20px;
 }

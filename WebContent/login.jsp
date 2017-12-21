@@ -64,9 +64,10 @@
 				</div>
 
 				<div id="submit">
-					<s:submit value="ログイン" id="submitArea" />
+					<s:submit value="ログイン" id="submitArea" /><br>
 					<label>
 						<input type="checkbox" name="saveId" value="true">
+						ログインIDを保存する
 					</label>
 				</div>
 			</s:form>
