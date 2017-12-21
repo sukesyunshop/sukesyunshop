@@ -50,25 +50,28 @@
 
 
 <div id="main">
-	<p>商品詳細</p>
+	<h1 class="a">商</h1><h1 class="b">品</h1><h1 class="c">詳</h1><h1 class="d">細</h1>
 </div>
 
 <!-- 商品詳細 -->
-<div class="list">
-		<span>商品名</span>
-			<s:property value="dto.getProductNameKana()" /><br>
-			<s:property value="dto.getProductName()"/><br>
+<ul class="list">
+		<li class="image">
 			<img src="<s:property value="dto.getImageFilePath()"/>"><br>
+		</li>
+		<li class="moji">
+			<span>商品名</span>
+			<s:property value="dto.getProductNameKana()" />
+			<s:property value="dto.getProductName()"/><br>
 		<span>値段</span>
-			<s:property value="dto.getPrice()" />
-			<span>円</span><br>
+			<s:property value="dto.getPrice()" />円<br>
 		<span>発売会社名</span>
 			<s:property value="dto.getReleaseDate()"/><br>
 		<span>発売年月日</span>
 			<s:property value="dto.getReleaseCompany()" />
 		<a href="<s:url action="CartAction"><s:param name="productId" value="dto.getProductId()"/></s:url>">カートへ</a>
 		<a href="<s:url action="CatalogAction" /> ">戻る</a>
-</div>
+	</li>
+</ul>
 
 <!-- 同じカテゴリーの商品 -->
 <ul class="minilist">
