@@ -16,6 +16,7 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 
 	private ArrayList<CategoryDTO> cateList;
 	private ArrayList<CatalogDTO> randomList;
+	private ArrayList<CatalogDTO> newArriveList;
 	public Map<String, Object> session;
 
 	private String sale = "sale";
@@ -30,6 +31,8 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 		try {
 			setCateList(searchDAO.getCategory());
 			setRandomList(catalogDAO.getRandomItem());
+			setNewArriveList(searchDAO.getNewArriveList());
+			System.out.println(newArriveList);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -60,6 +63,14 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 
 	public void setRandomList(ArrayList<CatalogDTO> randomList) {
 		this.randomList = randomList;
+	}
+
+	public ArrayList<CatalogDTO> getNewArriveList() {
+		return newArriveList;
+	}
+
+	public void setNewArriveList(ArrayList<CatalogDTO> newArriveList) {
+		this.newArriveList = newArriveList;
 	}
 
 	public String getSale() {

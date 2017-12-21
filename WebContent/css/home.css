@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+#main{
+	width: 1200px;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+}
+
+.mainContainer{
+	width: 700px;
+	margin-left: 20px;
+}
+
+.sideContainer{
+	width: 300px;
+}
+
+.mainContainer #poster img{
+	width: 650px;
+}
+
+.sideContainer .itemImage{
+	width: 200px;
+}
+
+#omikuji{
+	width: 650px;
+	height: 200px;
+}

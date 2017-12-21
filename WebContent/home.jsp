@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./css/template.css">
+	<link rel="stylesheet" type="text/css" href="./css/home.css">
 
 	<link rel="stylesheet" type="text/css" href="./css/slider.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -41,9 +42,9 @@
     	  pause:  3000,
     	  pager: true,
     	  controls: true,
-    	  minSlides: 7,
-    	  maxSlides: 7,
-    	  slideWidth: 800,
+    	  minSlides: 1,
+    	  maxSlides: 4,
+    	  slideWidth: 200,
     	  slideMargin: 15,
     	  moveSlides: 1,
     	  startSlide: 0,
@@ -94,56 +95,50 @@
 
 <!--------メインコンテンツ--------->
 	<div id="main">
-	<!-- slider -->
-	<!-- 広告 -->
-	<ul id="poster">
-	<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg"></a></li>
+		<div class="mainContainer">
 
-	<li></li>
-	<li></li>
-	</ul>
+			<!-- slider -->
 
-<!-- pickup -->
-	<div id="pickup-wrap">
-		<div id="pickup-wrap-inner">
-			<ul class="pickup">
-				<s:iterator value="randomList">
-					<li><a href="<s:url action="ProductDetailAction" ><s:param name="productId" value="getProductId()" /></s:url>"><img src="<s:property value="getImageFilePath()"/>"></a></li>
+			<!-- 広告 -->
+			<ul id="poster">
+				<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg"></a></li>
+				<li></li>
+				<li></li>
+			</ul>
+
+			<!-- pickup -->
+			<div id="pickup-wrap">
+				<div id="pickup-wrap-inner">
+					<ul class="pickup">
+						<s:iterator value="randomList">
+							<li><a href="<s:url action="ProductDetailAction" ><s:param name="productId" value="getProductId()" /></s:url>"><img src="<s:property value="getImageFilePath()"/>"></a></li>
+						</s:iterator>
+					</ul>
+				</div>
+			</div>
+
+			<img src="./images/start.png" onClick="omikuji();" id="omikuji" class="start">
+		</div>
+		<div class="sideContainer">
+		<h3>新着</h3>
+			<ul class="rankingList">
+				<s:iterator value="newArriveList">
+					<li class="rankingItem">
+						<a href="<s:url action="ProductDetailAction" ><s:param name="productId" value="getProductId()" /></s:url>">
+						<img class="itemImage" alt="image" src="<s:property value="getImageFilePath()"/>">
+						<ul class="itemInfoList">
+								<li class="itemInfo"><s:property value="getProductName()"/></li>
+								<li class="itemInfo"><s:property value="getPrice()"/></li>
+								<li class="itemInfo"><s:property value=""/></li>
+								<li class="itemInfo"><s:property value=""/></li>
+						</ul>
+						</a>
+					</li>
 				</s:iterator>
 			</ul>
 		</div>
-	</div>
-<!-- sale
-	<div id="sale-wrap">
-		<div id="sale-wrap-inner">
-			<ul class="sale">
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/23.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/22.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/21.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/14.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/15.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/16.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/17.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/18.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/19.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/24.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/25.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/26.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/27.jpg"></a></li>
-			<li><a href="<s:url action="ProductDetailAction" />"><img src="./public/28.jpg"></a></li>
-			</ul>
-		</div>
-	</div>
-	-->
-
-
-
-
-
 
 	</div>
-
-	<img src="./images/start.png" onClick="omikuji();" id="omikuji" class="start">
 
 	<div id="footer">
 	</div>
