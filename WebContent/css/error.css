@@ -1,15 +1,12 @@
-CHARSET "UTF-8";
+@CHARSET "UTF-8";
 
 .box {
     position: relative;
     padding: 0.5em 0.7em;
-    margin:80px 0px 0px 400px;
-    background: #ffeaea;
-    color: #dc143c;
+    margin: 2em 0;
+    background: #e6f4ff;
+    color: #5c98d4;
     font-weight: bold;
-    width:700px;
-    height:300px;
-    font-size:60px;
 }
 .box:after {
     position: absolute;
@@ -17,7 +14,7 @@ CHARSET "UTF-8";
     top: 100%;
     left: 30px;
     border: 15px solid transparent;
-    border-top: 15px solid #ffeaea;
+    border-top: 15px solid #e6f4ff;
     width: 0;
     height: 0;
 }

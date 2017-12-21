@@ -18,16 +18,16 @@
   <script>
   <!--広告-->
   $(document).ready(function(){
-      $('.poster').bxSlider({
-        auto: true,
+      $('#poster').bxSlider({
+    	  auto: false,
     	  speed: 500,
     	  pause:  3000,
     	  pager: true,
     	  controls: true,
-    	  minSlides: 7,
-    	  maxSlides: 7,
-    	  slideWidth: 600,
-    	  slideMargin: 15,
+    	  minSlides: 2,
+    	  maxSlides: 1,
+    	  slideWidth: 800,
+    	  slideMargin: 10,
     	  moveSlides: 1,
     	  startSlide: 0,
     	  autoHover: false,
@@ -75,7 +75,7 @@
 				<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
 			</s:if>
 			<s:else>
-				<li><a href="<s:url action='MoveLoginAction'/>"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
+				<li><a href="./login.jsp"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
 			</s:else>
 		<li>
 			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
@@ -100,11 +100,12 @@
 			<!-- slider -->
 
 			<!-- 広告 -->
-			<ul id="poster">
-				<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg"></a></li>
-				<li></li>
-				<li></li>
-			</ul>
+			<div id="poster-wrap">
+				<ul id="poster">
+					<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg" class="pic1"></a></li>
+					<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getAnime()" /></s:url>'><img src="./public/anime.jpg" class="pic2"></a></li>
+				</ul>
+			</div>
 
 			<!-- pickup -->
 			<div id="pickup-wrap">
