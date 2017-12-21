@@ -1,64 +1,42 @@
 @CHARSET "UTF-8";
+.title{
+	font-size:25px;
+	margin-left:400px;
+	margin-bottom:60px;
+}
 
-p{
+.welcome{
 	font-size:30px;
 	margin-top: 30px;
 	text-align:center;
 	margin-bottom:80px;
 	color:#FFA500;
 	font-weight:bold;
-
 }
 
+.moveItem{
+	display: block;
+	text-decolation: none;
+	color: inherit;
+	padding: 20px 30px;
+	/* TODO ボタン色統一 */
+	background-color: blue;
+	margin: 20px 30px;
+}
 
-#div1{
+.userList{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	margin-left: 400px;
+}
+
+.userItem{
 	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-
+	height: 60px;
 }
 
-#div2{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
+.moveWrapper{
+	display: flex;
+	justify-content: center;
 }
-
-#div3{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-}
-
-#div4{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-}
-
-#div5{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-}
-
-#div6{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-}
-
-#div7{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-	color:blue;
-}
-
-#div8{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-	color:green;
-}
-

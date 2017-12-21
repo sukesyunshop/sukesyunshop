@@ -1,80 +1,37 @@
 @CHARSET "UTF-8";
 
-p{
-	font-size:30px;
-	margin-top: 30px;
-	text-align:center;
-	margin-bottom:80px;
-	color:#32CD32;
-	font-weight:bold;
-}
-
-#KH{
-	margin-top: 150px;
-
-}
-
-
-
-#div1{
+.title{
 	font-size:25px;
 	margin-left:400px;
 	margin-bottom:60px;
 }
 
-#div2{
-	font-size:25px;
+h2{
+	font-size:20px;
 	margin-left:400px;
 	margin-bottom:60px;
 }
 
-#div3{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
+.purchaseHistoryList{
+	margin: 0 auto;
+	width: 800px;
+	padding: 0;
 }
 
-#div4{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
+.purchaseHistoryList .purchaseHistoryItem{
+	display: flex;
+	margin: 10px 0;
+
 }
 
-#div5{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-	width:100px;
-	height:80px;
+.itemImage{
+	width: 200px;
+	height: 200px;
 }
 
-
-#div6{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
+.itemInfoList{
+	margin-top:30px;
 }
-
-#div7{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-}
-
-ul{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-}
-
-#home{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
-}
-
-#delete{
-	font-size:25px;
-	margin-left:400px;
-	margin-bottom:60px;
+.itemInfoList .itemInfo{
+	font-size:18px;
 }

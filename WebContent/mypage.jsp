@@ -11,61 +11,56 @@
 </head>
 <body>
 
-<div id="header">
-	<h1><span>す</span>け<span>し</span>ゅん<span>S</span>H<span>O</span>P</h1>
+	<!---------------ヘッダー -------------->
+	<div id="header">
+		<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
 
-<!-- メニューリスト-->
-	<ul id="menu">
-		<li>
-			<s:if test="#session.loginFlag == 'true'">
-				<a href="<s:url action='LogoutAction' />">ログアウト</a>
-				<a href="<s:url action='GoMyPageAction' />">マイページ</a>
+		<!-- 検索バー -->
+		<div class="bar">
+			<s:form action="SearchAction">
+					<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+					<s:submit class="submit" value="検索"/>
+			</s:form>
+		</div>
+
+		<!-- メニューリスト-->
+		<ul id="menu">
+				<s:if test="#session.loginFlag == 'true'">
+					<li><a href="<s:url action='LogoutAction' />"><img src="./images/logout.png" alt="logout" border="0" class="template"></a></li>
+					<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
+				</s:if>
+				<s:else>
+					<li><a href="<s:url action='MoveLoginAction'/>"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
+				</s:else>
+			<li>
+				<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
+			</li>
+		</ul>
+
+	</div>
+	<!------------ヘッダーここまで ------------>
+
+	<h1 class="title">☆マイページฅ(´-ω-`)ฅ☆</h1>
+	<h2 class="welcome"><s:property value="dto.getFamilyName()" /><s:property value="dto.getFirstName()" />さん、ようこそ！</h2>
+
+	<ul class="userList">
+		<li class="userItem">名前：<s:property value="dto.getFamilyName()" />　<s:property value="dto.getFirstName()" /></li>
+		<li class="userItem">ふりがな：<s:property value="dto.getFamilyNameKana()" />　<s:property value="dto.getFirstNameKana()" /></li>
+		<li class="userItem">性別：
+			<s:if test="dto.getSex() == 0">
+				男性
 			</s:if>
 			<s:else>
-				<a href="<s:url action='MoveLoginAction'/>"><img src="./public/login.jpg" alt="login" border="0" class="template"></a>
+				女性
 			</s:else>
 		</li>
-		<li>
-			<a href="CartAction"> <img src="./public/cart.jpg" alt="cart" border="0" class="template"></a>
-		</li>
+		<li class="userItem">メールアドレス：<s:property value="dto.getEmail()" /></li>
 	</ul>
 
-	<!-- 検索バー -->
-
-	<div class="bar">
-		<s:form action="SearchAction">
-				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-
-				<s:submit class="submit" value="検索"/>
-
-		</s:form>
+	<div class="moveWrapper">
+		<a href="<s:url action="GoHomeAction" />" class="moveItem">HOMEへ</a>
+		<a href="<s:url action="ItemHistoryAction" />" class="moveItem">購入履歴へ</a>
 	</div>
-</div>
-
-	<p>☆マイページฅ(´-ω-`)ฅ☆</p><br>
-	<div id="div1"><s:property value="dto.getFamilyName()" />
-	<s:property value="dto.getFirstName()" />
-	<s:property value="dto.getUsername" />
-	さん、ようこそ！<br></div>
-
-	<div id="div2">姓：<s:property value="dto.getFamilyName()" /><br></div>
-	<div id="div3">名：<s:property value="dto.getFirstName()" /><br></div>
-	<div id="div4">ふりがな：<s:property value="dto.getFamilyNameKana()" />
-			<s:property value="dto.getFirstNameKana()" /><br></div>
-	<div id="div5">性別：
-		<s:if test="dto.getSex() == 0">
-			男性
-		</s:if>
-		<s:else>
-			女性
-		</s:else>
-		<br>
-	</div>
-	<div id="div6">メールアドレス：<s:property value="dto.getEmail()" /><br></div>
-
-
-	<div id="div7"><a href="<s:url action="GoHomeAction" />">HOMEへ</a><br></div>
-	<div id="div8"><a href="<s:url action="ItemHistoryAction" />">購入履歴へ</a></div>
 
 
 </body>
