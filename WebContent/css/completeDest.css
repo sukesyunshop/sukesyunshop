@@ -1,5 +1,4 @@
 @CHARSET "UTF-8";
-
 .content{
 	margin-top:100px;
 	margin-left:475px;
@@ -10,7 +9,7 @@
 	border-radius: 3px;
 }
 
-.confirm{
+.complete{
   padding:20px 15px;
   border-bottom:1px solid #0080c0;
   border-left:8px solid #0080c0;
@@ -19,21 +18,11 @@
   height:20px;
 }
 
-.confirmPassword{
+.message{
 	font-size:20px;
-	margin:30px 0px 15px 50px;
+    margin:30px 0px 15px 40px;
 }
-.button{
-	width:150px;
-	height:40px;
-	font-size:20px;
-	margin:20px 0px 15px 100px;
-	border-radius: 3px;
-	background-color:#4682b4;
-	color:#fff;
-}
-
 #back{
-	margin-top:20px;
-	margin-left:90px;
+	margin-top:60px;
+	margin-left:120px;
 }

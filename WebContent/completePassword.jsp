@@ -16,41 +16,40 @@
 
 </head>
 <body>
+<div id="header">
+	<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
 
-	<div id="header">
+	<!-- 検索バー -->
+	<div class="bar">
+		<s:form action="SearchAction">
+				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+				<s:submit class="submit" value="検索"/>
+		</s:form>
+	</div>
 
-	<h1><span>す</span>け<span>し</span>ゅん<span>S</span>H<span>O</span>P</h1>
-
-
+	<!-- メニューリスト-->
 	<ul id="menu">
-		<li>
 			<s:if test="#session.loginFlag == 'true'">
-				<a href="<s:url action='LogoutAction' />">ログアウト</a>
-				<a href="<s:url action='GoMyPageAction' />">マイページ</a>
+				<li><a href="<s:url action='LogoutAction' />"><img src="./images/logout.png" alt="logout" border="0" class="template"></a></li>
+				<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
 			</s:if>
 			<s:else>
-				<a href="<s:url action='MoveLoginAction'/>"><img src="./public/login.jpg" alt="login" border="0" class="template"></a>
+				<li><a href="<s:url action='MoveLoginAction'/>"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
 			</s:else>
-		</li>
 		<li>
-			<a href="CartAction"><img src="./public/cart.jpg" alt="cart" border="0" class="template"></a>
+			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
 		</li>
 	</ul>
 
-	<div class="bar">
-		<s:form action="SearchAction">
-			<input class="input" type="search" name="searchText" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-			<s:submit class="submit" value="検索"/>
-		</s:form>
-	</div>
 </div>
 
-<div class="content">
-	<h2>おめでとうございます！</h2>
-	<h3>パスワードの再設定が完了致しましたよ！</h3>
-		<div id="back">
-			<span>Login画面へ</span><a href="<s:url action='MoveLoginAction'/>">戻る</a>
-		</div>
+<!-- パスワード変更完了 -->
+	<div class="content">
+		<h2 class="complete">パスワード変更完了</h2>
+			<h3 class="message">おめでとうございます!<br>パスワードの再設定が完了致しました！</h3>
+				<div id="back">
+					<span>Login画面へ</span><a href="<s:url action='MoveLoginAction'/>">戻る</a>
+				</div>
 	</div>
 </body>
 </html>
