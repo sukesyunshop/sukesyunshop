@@ -63,7 +63,12 @@
 			<result name="login">login.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-
+		<!--  ItemHistoryDeleteAction -->
+		<action name="ItemHistoryDeleteAction" class="com.internousdev.sukesyunshop.action.ItemHistoryDeleteAction" method="execute">
+			<result name="success">itemHistory.jsp</result>
+			<result name="login">login.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 		<!-- 担当：百瀬 -->
 		<!-- CartAction -->
 		<action name="CartAction" class="com.internousdev.sukesyunshop.action.CartAction" method="execute">

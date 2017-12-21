@@ -55,7 +55,7 @@
 				<ul class="itemInfoList">
 					<li class="itemInfo">商品名:<s:property value="getProductName()" /></li>
 					<li class="itemInfo">値段:<s:property value="getPrice()" /></li>
-					<li class="itemInfo">発売会社名:<s:property value="getCompanyName()" /></li>
+					<li class="itemInfo">発売会社名:<s:property value="getReleaseCompany()" /></li>
 					<li class="itemInfo">発売年月日:<s:property value="getReleaseDate()" /></li>
 				</ul>
 			</li>
