@@ -11,114 +11,70 @@
 </head>
 <body>
 
-	<div id="header">
-		<h1>
-			<span>す</span>け<span>し</span>ゅん<span>S</span>H<span>O</span>P
-		</h1>
+<!---------------ヘッダー -------------->
+<div id="header">
+	<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
 
-		<!-- メニューリスト-->
-		<ul id="menu">
-			<li><s:if test="#session.loginFlag == 'true'">
-					<a href="<s:url action='LogoutAction' />">ログアウト</a>
-					<a href="<s:url action='GoMyPageAction' />">マイページ</a>
-				</s:if> <s:else>
-					<a href="<s:url action='MoveLoginAction'/>"><img
-						src="./public/login.jpg" alt="login" border="0" class="template"></a>
-				</s:else></li>
-			<li><a href="CartAction"> <img src="./public/cart.jpg"
-					alt="cart" border="0" class="template"></a></li>
-		</ul>
-
-		<!-- 検索バー -->
-
-		<div class="bar">
-			<s:form action="SearchAction">
-				<input class="input" type="search" name="searchText"
-					placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$"
-					title="半角英数　ひらがな　漢字" maxlength="16">
-
-				<s:submit class="submit" value="検索" />
-
-			</s:form>
-		</div>
+	<!-- 検索バー -->
+	<div class="bar">
+		<s:form action="SearchAction">
+				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+				<s:submit class="submit" value="検索"/>
+		</s:form>
 	</div>
 
+	<!-- メニューリスト-->
+	<ul id="menu">
+			<s:if test="#session.loginFlag == 'true'">
+				<li><a href="<s:url action='LogoutAction' />"><img src="./images/logout.png" alt="logout" border="0" class="template"></a></li>
+				<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
+			</s:if>
+			<s:else>
+				<li><a href="<s:url action='MoveLoginAction'/>"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
+			</s:else>
+		<li>
+			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
+		</li>
+	</ul>
 
+</div>
+<!------------ヘッダーここまで ------------>
 
-	<div id="top">決済確認</div>
+<div class="main">
+	<h1 id="title">決済確認</h1>
 	<s:form method="post" action="BuyItemCompleteAction">
-		<div id="content">
-
-			<span>宛先1</span> <input type="radio" name="" value="1"> <span>宛先2</span>
-			<span>宛先が未作成の場合は<a href='<s:url action="InputDestAction"/>'>新規宛先作成へ</a></span>
-
+		<div class="destList">
+			<s:iterator value="destDTOList" status="list">
+				<input type="radio" name="destNum" value="<s:property value="#list.index"/>" id="<s:property value="#list.index"/>">
+				<label for="<s:property value="#list.index"/>">
+					名前：<s:property value="getFamilyName()" escape="false" /><s:property value="getFirstName()" escape="false" /><br>
+					ふりがな：<s:property value="getFamilyNameKana()" escape="false" /><s:property value="getFirstNameKana()" escape="false" /><br>
+					アドレス：<s:property value="getEmail()" escape="false" /><br>
+					連絡先：<s:property value="getTelNumber()" escape="false" /><br>
+					送り先：<s:property value="getUserAddress()" escape="false" />
+				</label>
+			</s:iterator>
 		</div>
+		<p>宛先が未作成の場合は<a href='<s:url action="InputDestAction"/>'>新規宛先作成へ</a></p>
 
-		<div id="pr">
-			<p>以下の情報で購入しますか？</p>
-		</div>
+		<p>以下の情報で購入しますか？</p>
 
-		<table>
-			<tbody>
-				<s:iterator value="cartList">
-					<tr>
-						<td><label><span>商品名：</span></label></td>
+		<ul class="cartList">
+			<s:iterator value="cartList">
+				<li class="cartItem">
+					<img class="itemImage" alt="image" src="<s:property value="getImageFilePath()" />">
+					<ul class="cartItemInfoList">
+						<li class="itemInfo">商品名：<s:property value="getProductName()" /></li>
+						<li class="itemInfo">値段：<s:property value="getPrice()" />円</li>
+						<li class="itemInfo">発売会社名:<s:property value="getReleaseDate()" /></li>
+						<li class="itemInfo">発売年月日:<s:property value="getReleaseCompany()" /></li>
+					</ul>
+			</s:iterator>
+		</ul>
 
-						<td><label><s:property value="getProductNameKana()" /></label></td>
-						<td><label><s:property value="getProductName()" /><br></label></td>
-						<td><label><s:property value="getImageFilePath()" /></label></td>
-						<td><label><s:property value="getImageFileName()" /></label></td>
-						<td><label><span>値段</span></label></td>
-						<td><label><s:property value="getPrice()" /></label></td>
-						<td><label><span>円</span></label></td>
-						<td><label><span>発売会社名</span></label></td>
-						<td><label><s:property value="getReleaseDate()" /></label></td>
-						<td><label><span>発売年月日</span></label></td>
-						<td><label><s:property value="getReleaseCompany()" /></label></td>
-					</tr>
-				</s:iterator>
-			</tbody>
-		</table>
-
-		<br>
-
-		<table>
-			<tbody>
-				<s:iterator value="destDTOList">
-					<tr>
-						<td><label><span>宛先情報：</span></label></td>
-
-						<td><label><s:property value="getFamilyName()"
-									escape="false" /></label></td>
-
-						<td><label><s:property value="getFamilyNameKana()"
-									escape="false" /></label></td>
-
-						<td><label><s:property value="getFirstName()"
-									escape="false" /></label></td>
-
-						<td><label><s:property value="getFirstNameKana()"
-									escape="false" /></label></td>
-
-						<td><label><s:property value="getEmail()"
-									escape="false" /></label></td>
-
-						<td><label><s:property value="getTelNumber()"
-									escape="false" /></label></td>
-
-						<td><label><s:property value="getUserAddress()"
-									escape="false" /></label></td>
-						<td><input type="radio" name="" value="" /></td>
-					</tr>
-				</s:iterator>
-			</tbody>
-		</table>
-		<div class="button">
-			<p>
-				<button class="button2">購入</button>
-			</p>
-			カート一覧に戻るには<a href='<s:url action="CartAction"/>'>Cartへ</a>
-		</div>
+			<s:submit class="submit" value="購入"></s:submit>
+			<a href='<s:url action="CartAction"/>'>カート一覧に戻る場合はこちら</a>
 	</s:form>
+</div>
 </body>
 </html>

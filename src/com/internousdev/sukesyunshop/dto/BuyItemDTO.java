@@ -3,25 +3,15 @@ package com.internousdev.sukesyunshop.dto;
 public class BuyItemDTO extends UserInfoDTO {
 
 	private int itemId;
-
 	private String itemName;
-
 	private String itemNameKana;
-
 	private String itemDescription;
-
 	private int categoryId;
-
 	private int price;
-
 	private String imageFilePath;
-
 	private String imageFileName;
-
 	private String releaseDate;
-
 	private String releaseCompany;
-
 	private int status;
 
 

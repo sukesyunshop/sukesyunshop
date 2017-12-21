@@ -28,6 +28,8 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	 */
 	private DestinationDAO destDAO = new DestinationDAO();
 	private List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
+	//TODO あて先情報のリストのインデックスを取得したものの使う先がない。
+	private int destNum;
 
 	/**
 	 * 商品購入完了DAO＆商品情報DTOをインスタンス化
@@ -77,14 +79,9 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 			System.out.println("aaaaaaaaaaa");
 			int cc = buyItemDAO.itemInsert(productIdList, userId);
 			System.out.println(cc);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		// カート情報の削除ができないです。
-		try {
 			buyItemDAO.itemDelete(userId);
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
 
@@ -123,6 +120,30 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public int getDestNum() {
+		return destNum;
+	}
+
+	public void setDestNum(int destNum) {
+		this.destNum = destNum;
+	}
+
+	public List<BuyItemDTO> getBuyItemDTOList() {
+		return buyItemDTOList;
+	}
+
+	public void setBuyItemDTOList(List<BuyItemDTO> buyItemDTOList) {
+		this.buyItemDTOList = buyItemDTOList;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setDestDTOList(List<DestinationDTO> destDTOList) {
+		this.destDTOList = destDTOList;
 	}
 
 }
