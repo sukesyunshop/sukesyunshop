@@ -5,9 +5,13 @@
 <html>
 <head>
 	<meta charset=UTF-8>
-	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="./css/error.css">
+	<title>Error</title>
+	<meta http-equiv="refresh" content="5;URL=<s:url action='GoHomeAction'/>">
 </head>
 <body>
-
+ <div class="box">
+	<p>エラーが起こりました!<br>5秒後に<br>HOME画面に戻ります!!</p>
+</div>
 </body>
 </html>

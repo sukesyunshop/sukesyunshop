@@ -14,16 +14,6 @@
 	font-weight:bold;
 }
 
-.moveItem{
-	display: block;
-	text-decolation: none;
-	color: inherit;
-	padding: 20px 30px;
-	/* TODO ボタン色統一 */
-	background-color: blue;
-	margin: 20px 30px;
-}
-
 .userList{
 	margin: 0;
 	padding: 0;
@@ -39,4 +29,23 @@
 .moveWrapper{
 	display: flex;
 	justify-content: center;
+
+}
+
+.moveItem{
+	display: block;
+	text-decolation: none;
+	color: inherit;
+	padding: 20px 30px;
+	/* TODO ボタン色統一 */
+	margin: 20px 30px;
+
+	}
+#submitArea{
+	width: 300px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #4682b4;
+    color: #fff;
+
 }
