@@ -10,32 +10,27 @@ var kekkaPath = ["./images/daikichi.png", "./images/kichi.png", "./images/kyou.p
 
 
 function omikuji(){
-	console.log('1');
 	if(document.getElementById("omikuji").className == start){
-		console.log('start');
 		document.getElementById("omikuji").src = gifPath;
 		sleep(2, function(){
-			var random = Math.floor(Math.random() * 3 + 1);
-			document.getElementById("omikuji").src = kekkaPath[random];
+			var random = Math.floor(Math.random() * 9 + 1);
+			console.log(random);
+			document.getElementById("omikuji").src = kekkaPath[random%3];
 			document.getElementById("omikuji").className = end;
 		})
 	}else if(document.getElementById("omikuji").className == end){
-		console.log('end');
 		document.getElementById("omikuji").src = startPath;
 		document.getElementById("omikuji").className = start;
 	}
 }
 
 function sleep(waitSec, callbackFunc){
-	console.log('sleep');
 	var spanedSec = 0;
 
 	var waitFunc = function(){
 		spanedSec++;
 		if (spanedSec >= waitSec) {
-			console.log('plus');
             if (callbackFunc) {
-            	console.log('func');
                 callbackFunc();
             }
             return;
