@@ -62,13 +62,9 @@
 		</s:iterator>
 	</ul>
 </s:else>
-
-<div id="home">
-	<a href="<s:url action="GoHomeAction"/>">ホームに戻る</a><br>
+<div class="moveWrapper">
+		<a href="<s:url action="GoHomeAction" />" class="moveItem">HOMEへ</a>
+		<a href="<s:url action="ItemHistoryDeleteAction" />" class="moveItem">購入履歴一覧削除へ</a>
 </div>
-<div id="delete">
-	<a href="<s:url action="ItemHistoryDeleteAction"/>">購入履歴一覧削除</a>
-</div>
-
 </body>
 </html>

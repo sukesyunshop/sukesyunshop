@@ -35,3 +35,20 @@ h2{
 .itemInfoList .itemInfo{
 	font-size:18px;
 }
+
+.moveWrapper{
+	display: flex;
+	justify-content: center;
+}
+
+.moveItem{
+	display: block;
+	text-decolation: none;
+	color: inherit;
+	padding: 20px 30px;
+	/* TODO ボタン色統一 */
+	background-color: green;
+	margin: 20px 30px;
+}
+
+
