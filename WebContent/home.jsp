@@ -9,6 +9,7 @@
 
 	<link rel="stylesheet" type="text/css" href="./css/slider.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+	<script type="text/javascript" src="./javascript/omikuji.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 	<title>Home</title>
@@ -49,26 +50,6 @@
     	  autoHover: false,
       });
     });
-
-    <!----
-    $(document).ready(function(){
-        $('.sale').bxSlider({
-      	  auto: true,
-      	  speed: 500,
-      	  pause:  3000,
-      	  pager: true,
-      	  controls: true,
-      	  minSlides: 7,
-      	  maxSlides: 7,
-      	  slideWidth: 800,
-      	  slideMargin: 15,
-      	  moveSlides: 1,
-      	  startSlide: 0,
-      	  autoHover: false,
-        });
-      });
-    ---->
-
 
   </script>
 </head>
@@ -162,6 +143,7 @@
 
 	</div>
 
+	<img src="./images/start.png" onClick="omikuji();" id="omikuji" class="start">
 
 	<div id="footer">
 	</div>
