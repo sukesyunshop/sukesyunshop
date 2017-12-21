@@ -15,46 +15,53 @@
 <title>購入情報確認画面</title>
 </head>
 <body>
-<div id="header">
-	<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
+	<div id="header">
+		<a href="<s:url action="GoHomeAction"/>"><img
+			src="./images/logo.png"></a>
 
-	<!-- 検索バー -->
-	<div class="bar">
-		<s:form action="SearchAction">
-				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-				<s:submit class="submit" value="検索"/>
-		</s:form>
-	</div>
+		<!-- 検索バー -->
+		<div class="bar">
+			<s:form action="SearchAction">
+				<input class="input" type="search" name="searchText"
+					placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$"
+					title="半角英数　ひらがな　漢字" maxlength="16">
+				<s:submit class="submit" value="検索" />
+			</s:form>
+		</div>
 
-	<!-- メニューリスト-->
-	<ul id="menu">
+		<!-- メニューリスト-->
+		<ul id="menu">
 			<s:if test="#session.loginFlag == 'true'">
-				<li><a href="<s:url action='LogoutAction' />"><img src="./images/logout.png" alt="logout" border="0" class="template"></a></li>
-				<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
+				<li><a href="<s:url action='LogoutAction' />"><img
+						src="./images/logout.png" alt="logout" border="0" class="template"></a></li>
+				<li><a href="<s:url action='GoMyPageAction' />"><img
+						src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
 			</s:if>
 			<s:else>
-				<li><a href="<s:url action='MoveLoginAction'/>"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
+				<li><a href="<s:url action='MoveLoginAction'/>"><img
+						src="./images/login.png" alt="login" border="0" class="template"></a></li>
 			</s:else>
-		<li>
-			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
-		</li>
-	</ul>
+			<li><a href="CartAction"> <img src="./images/cart.png"
+					alt="cart" border="0" class="template"></a></li>
+		</ul>
 
-</div>
+	</div>
 
-<!------宛先入力確認 ------->
+	<!------宛先入力確認 ------->
 	<div class="content">
 		<h2 class="confirm">宛先確認</h2>
-			<h3 class="message">以下の宛先を登録してよろしいですか？</h3>
+		<h3 class="message">以下の宛先を登録してよろしいですか？</h3>
 		<table>
 			<tbody>
 				<tr>
 					<th>お名前</th>
-					<td><s:property value="familyName" /> <s:property value="firstName" />
+					<td><s:property value="familyName" /> <s:property
+							value="firstName" />
 				</tr>
 				<tr>
 					<th>ふりがな</th>
-					<td><s:property value="familyNameKana" /> <s:property value="firstNameKana" />
+					<td><s:property value="familyNameKana" /> <s:property
+							value="firstNameKana" />
 				</tr>
 				<tr>
 					<th>メールアドレス</th>
@@ -71,7 +78,7 @@
 				<tr>
 					<th>性別</th>
 					<td><s:property value="sexStr" />
-				</tr>
+
 			</tbody>
 		</table>
 		<s:form action="CompleteDestAction">
@@ -89,9 +96,10 @@
 				value="<s:property value='telNumber' />" />
 			<input name="userAddress" type="hidden"
 				value="<s:property value='userAddress' />" />
-			<input name="sex" type="hidden"
-				value="<s:property value='sex' />" />
-			<button class="button">登録完了</button>
+			<input name="sex" type="hidden" value="<s:property value='sex' />" />
+			<div id="Button">
+			<s:submit class="button" value= "登録完了"/>
+			</div>
 		</s:form>
 	</div>
 </body>
