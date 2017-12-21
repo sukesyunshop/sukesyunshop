@@ -15,25 +15,7 @@
 
 <!---------------ヘッダー -------------->
 <div id="header">
-	<h1><span>す</span>け<span>し</span>ゅん<span>S</span>H<span>O</span>P</h1>
-	<!-- メニューリスト-->
-	<ul id="menu">
-		<li>
-			<s:if test="#session.loginFlag == 'true'">
-				<a href="<s:url action='LogoutAction' />">ログアウト</a>
-				<a href="<s:url action='GoMyPageAction' />">マイページ</a>
-			</s:if>
-			<s:else>
-				<a href="<s:url action='MoveLoginAction'/>"><img src="./public/login.jpg" alt="login" border="0" class="template"></a>
-			</s:else>
-		</li>
-		<li>
-			<a href="CartAction"> <img src="./public/cart.jpg" alt="cart" border="0" class="template"></a>
-		</li>
-	</ul>
-
-<!------------ヘッダーここまで ------------>
-
+	<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
 
 	<!-- 検索バー -->
 	<div class="bar">
@@ -42,7 +24,22 @@
 				<s:submit class="submit" value="検索"/>
 		</s:form>
 	</div>
-	</div>
+
+	<!-- メニューリスト-->
+	<ul id="menu">
+			<s:if test="#session.loginFlag == 'true'">
+				<li><a href="<s:url action='LogoutAction' />"><img src="./images/logout.png" alt="logout" border="0" class="template"></a></li>
+				<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
+			</s:if>
+			<s:else>
+				<li><a href="<s:url action='MoveLoginAction'/>"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
+			</s:else>
+		<li>
+			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
+		</li>
+	</ul>
+
+</div>
 
 
 
