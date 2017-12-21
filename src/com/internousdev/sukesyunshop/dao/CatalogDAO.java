@@ -97,7 +97,7 @@ public class CatalogDAO {
 				+ "INNER JOIN m_category "
 				+ "ON product_info.category_id = m_category.category_id "
 				+ "WHERE product_info.category_id=? "
-				+ "AND id != ? "
+				+ "AND product_info.id != ? "
 				+ "LIMIT 4 ";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);

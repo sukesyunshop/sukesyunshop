@@ -53,7 +53,7 @@ public class SearchDAO {
 					+ "FROM product_info "
 					+ "INNER JOIN m_category "
 					+ "ON product_info.category_id = m_category.category_id "
-					+ "WHERE category_id = ? "
+					+ "WHERE product_info.category_id = ? "
 					+ "LIMIT ?, ?";
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, category);
@@ -65,7 +65,7 @@ public class SearchDAO {
 					+ "FROM product_info "
 					+ "INNER JOIN m_category "
 					+ "ON product_info.category_id = m_category.category_id "
-					+ "WHERE category_id = ? "
+					+ "WHERE product_info.category_id = ? "
 					+ "AND ( product_name LIKE ? "
 					+ "OR product_name_kana LIKE ? ) "
 					+ "LIMIT ?, ?";
