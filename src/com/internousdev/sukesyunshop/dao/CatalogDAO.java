@@ -35,7 +35,7 @@ public class CatalogDAO {
 					getItem.setProductId(resultSet.getInt("product_id"));
 					getItem.setProductName(resultSet.getString("product_name"));
 					getItem.setProductNameKana(resultSet.getString("product_name_kana"));
-					getItem.setProductDetail(resultSet.getString("product_detail"));
+					getItem.setProductDescription(resultSet.getString("product_description"));
 					getItem.setCategoryId(resultSet.getInt("product_info.category_id"));
 					getItem.setCategoryName(resultSet.getString("category_name"));
 					getItem.setCategoryDescription(resultSet.getString("category_description"));
@@ -73,7 +73,7 @@ public class CatalogDAO {
 			catalogDto.setProductId(resultSet.getInt("product_id"));
 			catalogDto.setProductName(resultSet.getString("product_name"));
 			catalogDto.setProductNameKana(resultSet.getString("product_name_kana"));
-			catalogDto.setProductDetail(resultSet.getString("product_detail"));
+			catalogDto.setProductDescription(resultSet.getString("product_description"));
 			catalogDto.setCategoryId(resultSet.getInt("product_info.category_id"));
 			catalogDto.setCategoryName(resultSet.getString("category_name"));
 			catalogDto.setCategoryDescription(resultSet.getString("category_description"));
@@ -112,7 +112,7 @@ public class CatalogDAO {
 			sub.setProductId(resultSet.getInt("product_id"));
 			sub.setProductName(resultSet.getString("product_name"));
 			sub.setProductNameKana(resultSet.getString("product_name_kana"));
-			sub.setProductDetail(resultSet.getString("product_detail"));
+			sub.setProductDescription(resultSet.getString("product_description"));
 			sub.setCategoryId(resultSet.getInt("product_info.category_id"));
 			sub.setCategoryName(resultSet.getString("category_name"));
 			sub.setCategoryDescription(resultSet.getString("category_description"));
@@ -158,7 +158,7 @@ public class CatalogDAO {
 			dto.setProductId(resultSet.getInt("product_id"));
 			dto.setProductName(resultSet.getString("product_name"));
 			dto.setProductNameKana(resultSet.getString("product_name_kana"));
-			dto.setProductDetail(resultSet.getString("product_detail"));
+			dto.setProductDescription(resultSet.getString("product_description"));
 			dto.setCategoryId(resultSet.getInt("product_info.category_id"));
 			dto.setCategoryName(resultSet.getString("category_name"));
 			dto.setCategoryDescription(resultSet.getString("category_description"));

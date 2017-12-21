@@ -36,7 +36,7 @@ public class CartDAO {
 				dto.setProductId(resultSet.getInt("product_id"));
 				dto.setProductName(resultSet.getString("product_name"));
 				dto.setProductNameKana(resultSet.getString("product_name_kana"));
-				dto.setProductDetail(resultSet.getString("product_detail"));
+				dto.setProductDescription(resultSet.getString("product_description"));
 				dto.setCategory(resultSet.getString("category_name"));
 				dto.setPrice(resultSet.getInt("price"));
 				dto.setImageFilePath(resultSet.getString("image_file_path"));
@@ -85,7 +85,7 @@ public class CartDAO {
 				cartdto.setProductId(resultSet.getInt("product_id"));
 				cartdto.setProductName(resultSet.getString("product_name"));
 				cartdto.setProductNameKana(resultSet.getString("product_name_kana"));
-				cartdto.setProductDetail(resultSet.getString("product_detail"));
+				cartdto.setProductDescription(resultSet.getString("product_description"));
 				cartdto.setCategoryId(resultSet.getInt("product_info.category_id"));
 				cartdto.setCategoryName(resultSet.getString("category_name"));
 				cartdto.setCategoryDescription(resultSet.getString("category_description"));

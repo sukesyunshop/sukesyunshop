@@ -85,7 +85,7 @@ public class SearchDAO {
 			dto.setProductId(resultSet.getInt("product_id"));
 			dto.setProductName(resultSet.getString("product_name"));
 			dto.setProductNameKana(resultSet.getString("product_name_kana"));
-			dto.setProductDetail(resultSet.getString("product_detail"));
+			dto.setProductDescription(resultSet.getString("product_description"));
 			dto.setCategoryId(resultSet.getInt("product_info.category_id"));
 			dto.setCategoryName(resultSet.getString("category_name"));
 			dto.setCategoryDescription(resultSet.getString("category_description"));
@@ -193,7 +193,7 @@ public class SearchDAO {
 			dto.setProductId(resultSet.getInt("product_id"));
 			dto.setProductName(resultSet.getString("product_name"));
 			dto.setProductNameKana(resultSet.getString("product_name_kana"));
-			dto.setProductDetail(resultSet.getString("product_detail"));
+			dto.setProductDescription(resultSet.getString("product_description"));
 			dto.setCategoryId(resultSet.getInt("product_info.category_id"));
 			dto.setCategoryName(resultSet.getString("category_name"));
 			dto.setCategoryDescription(resultSet.getString("category_description"));
@@ -226,7 +226,7 @@ public class SearchDAO {
 			dto.setProductId(resultSet.getInt("product_id"));
 			dto.setProductName(resultSet.getString("product_name"));
 			dto.setProductNameKana(resultSet.getString("product_name_kana"));
-			dto.setProductDetail(resultSet.getString("product_detail"));
+			dto.setProductDescription(resultSet.getString("product_description"));
 			dto.setCategoryId(resultSet.getInt("product_info.category_id"));
 			dto.setCategoryName(resultSet.getString("category_name"));
 			dto.setCategoryDescription(resultSet.getString("category_description"));

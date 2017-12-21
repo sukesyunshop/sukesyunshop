@@ -46,7 +46,7 @@ public class BuyItemDAO {
 				dto.setProductId(rs.getInt("product_id"));
 				dto.setProductName(rs.getString("product_name"));
 				dto.setProductNameKana(rs.getString("product_name_kana"));
-				dto.setProductDetail(rs.getString("product_detail"));
+				dto.setProductDescription(rs.getString("product_description"));
 				dto.setCategoryId(rs.getInt("product_info.category_id"));
 				dto.setCategoryName(rs.getString("category_name"));
 				dto.setCategoryDescription(rs.getString("category_description"));

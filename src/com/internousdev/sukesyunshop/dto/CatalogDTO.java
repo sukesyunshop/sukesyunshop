@@ -6,7 +6,7 @@ public class CatalogDTO extends CategoryDTO {
 	private int productId;
 	private String productName;
 	private String productNameKana;
-	private String productDetail;
+	private String productDescription;
 	private int price;
 	private String imageFilePath;
 	private String imageFileName;
@@ -36,11 +36,11 @@ public class CatalogDTO extends CategoryDTO {
 	public void setProductNameKana(String productNameKana) {
 		this.productNameKana = productNameKana;
 	}
-	public String getProductDetail() {
-		return productDetail;
+	public String getProductDescription() {
+		return productDescription;
 	}
-	public void setProductDetail(String productDetail) {
-		this.productDetail = productDetail;
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
 	}
 	public int getPrice() {
 		return price;
