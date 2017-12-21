@@ -1,14 +1,49 @@
 
 
-.logo{
-     width: 100px;
-     height:80px;
-     position:relative;
-     animation:myfirst 5s;
-	}
-.cart{
-	font-color:pink;
-	font-size:70px;
-	margin:5px;
-	line-height:5px;
+
+.logo
+{
+width:100px;
+height:100px;
+background:#fffff4;
+position:relative;
+animation:myfirst 5s;
+-webkit-animation:myfirst 5s;
+}
+
+.logo p{
+	color:red;
+
+}
+
+@-webkit-keyframes myfirst
+{
+0%   {background:#fffff4; left:0px; top:0px;}
+25%  {background:#fffff4; left:400px; top:0px;}
+50%  {background:#fffff4; left:300px; top:0px;}
+75%  {background:#fffff4; left:200px; top:0px;}
+100% {background:#fffff4; left:0px; top:0px;}
+}
+
+
+.menu {
+  -webkit-align-content: stretch;
+  align-content:  space-around;
+  justify-content: space-around;
+  display:flex;
+  flex-flow: row wrap;
+}
+
+
+.itemImage{
+	width:300px;
+	height:300px;
+}
+
+.sub{
+	 -webkit-align-content: stretch;
+  align-content:  space-around;
+  justify-content: space-around;
+  display:flex;
+  flex-flow: row wrap;
 }

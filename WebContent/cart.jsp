@@ -6,42 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/template.css">
-<!--  <link rel="stylesheet" type="text/css" href="./css/cart.css">-->
+<link rel="stylesheet" type="text/css" href="./css/cart.css">
 <title>Cart</title>
-<style type="text/css">
-.logo
-{
-width:100px;
-height:100px;
-background:red;
-position:relative;
-animation:myfirst 5s;
--webkit-animation:myfirst 5s; /*Safari and Chrome */
-}
 
-.logo p{
-	color:red;
-
-}
-
-@keyframes myfirst
-{
-0%   {background:red; left:0px; top:0px;}
-25%  {background:yellow; left:200px; top:0px;}
-50%  {background:blue; left:200px; top:200px;}
-75%  {background:green; left:0px; top:200px;}
-100% {background:red; left:0px; top:0px;}
-}
-
-@-webkit-keyframes myfirst /*Safari and Chrome */
-{
-0%   {background:red; left:0px; top:0px;}
-25%  {background:yellow; left:200px; top:0px;}
-50%  {background:blue; left:200px; top:200px;}
-75%  {background:green; left:0px; top:200px;}
-100% {background:red; left:0px; top:0px;}
-}
-</style>
 
 </head>
 <body>
@@ -83,7 +50,10 @@ animation:myfirst 5s;
 <p>CART</p>
 </div>
 
+
+
  <s:if test="cartList.size() != 0">
+ <a href="<s:url action="BuyItemConfirmAction"></s:url>">購入</a>
  <ul class="menu">
   	<s:iterator value="cartList">
   		<li>
@@ -92,7 +62,7 @@ animation:myfirst 5s;
   				<span>商品名</span>
 					<s:property value="getProductNameKana()" /><br>
 					<s:property value="getProductName()"/><br>
-					<img src="<s:property value="getImageFilePath()"/>">
+					<img src="<s:property value="getImageFilePath()"/>" class="itemImage">
 				<span>値段</span>
 					<s:property value="getPrice()" />
 					<span>円</span><br>
@@ -101,15 +71,18 @@ animation:myfirst 5s;
 				<span>発売年月日</span>
 					<s:property value="getReleaseCompany()" />
 				<a href="<s:url action="CartDeleteAction"><s:param name="productId" value="productId" /></s:url>">削除</a>
+
+
+
   		</li>
 	</s:iterator>
  </ul>
 
- <a href="<s:url action="BuyItemConfirmAction"></s:url>">購入</a>
-	</s:if>
+ </s:if>
 	<s:else>
-		<a href="<s:url action="GoHomeAction" />">HOMEへ</a>
+		<a class="sub" href="<s:url action="GoHomeAction" />">HOMEへ</a>
 	</s:else>
+
 
 </body>
 </html>
