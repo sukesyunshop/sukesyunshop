@@ -63,11 +63,11 @@
 									value="" placeholder="名"></td>
 							</tr>
 							<tr id="nameKana">
-								<th>フリガナ：</th>
+								<th>ふりがな：</th>
 								<td class="familyNameKana"><input type="text"
-									name="familyNameKana" value="" placeholder="セイ"></td>
+									name="familyNameKana" value="" placeholder="せい"></td>
 								<td class="firstNameKana"><input type="text"
-									name="firstNameKana" value="" placeholder="メイ"></td>
+									name="firstNameKana" value="" placeholder="めい"></td>
 							</tr>
 							<tr id="email">
 								<th>メールアドレス：</th>
