@@ -73,14 +73,14 @@
 						</tr>
 						<tr id="email">
 							<th>メールアドレス：</th>
-							<td class="email"><input type="text" name="email" value=""
+							<td class="email"><input type="email" name="email" value=""
 								placeholder="メールアドレス"></td>
 						</tr>
 
 						<tr id="telNumber">
 							<th>電話番号：</th>
 							<td class="telNumber"><input type="text" name="telNumber"
-								value="" placeholder="000000000000"></td>
+								value="" placeholder="電話番号"></td>
 						</tr>
 
 						<tr id="userAddress">
