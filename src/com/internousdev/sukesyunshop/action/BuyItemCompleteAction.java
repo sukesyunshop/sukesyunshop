@@ -76,7 +76,7 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 			productIdList.add(cartList.get(i).getProductId());
 		}
 		try {
-			int cc = buyItemDAO.itemInsert(productIdList, userId);
+			buyItemDAO.itemInsert(productIdList, userId);
 		// カート情報の削除ができないです。
 			buyItemDAO.itemDelete(userId);
 		} catch (SQLException e) {
