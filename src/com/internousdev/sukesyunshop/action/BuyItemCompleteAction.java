@@ -10,8 +10,10 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.sukesyunshop.dao.BuyItemDAO;
 import com.internousdev.sukesyunshop.dao.CartDAO;
 import com.internousdev.sukesyunshop.dao.DestinationDAO;
+import com.internousdev.sukesyunshop.dao.SearchDAO;
 import com.internousdev.sukesyunshop.dto.CartDTO;
 import com.internousdev.sukesyunshop.dto.CatalogDTO;
+import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.dto.DestinationDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,6 +24,7 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	private int productId;
 
 	public Map<String, Object> session;
+	private ArrayList<CategoryDTO> cateList;
 
 	/**
 	 * 宛先情報DAO&宛先情報DTOをインスタンス化
@@ -60,6 +63,9 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 		ArrayList<CartDTO> cartList = cartDAO.getCartList(userId, true);
 
 		try {
+			SearchDAO searchDAO = new SearchDAO();
+			setCateList(searchDAO.getCategory());
+
 			destDTOList = destDAO.destSelect(userId);
 			if (destDTOList.size() == 0) {
 				return "lack";
@@ -142,6 +148,14 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 
 	public void setDestDTOList(List<DestinationDTO> destDTOList) {
 		this.destDTOList = destDTOList;
+	}
+
+	public ArrayList<CategoryDTO> getCateList() {
+		return cateList;
+	}
+
+	public void setCateList(ArrayList<CategoryDTO> cateList) {
+		this.cateList = cateList;
 	}
 
 }

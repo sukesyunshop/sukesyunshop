@@ -18,7 +18,8 @@
 
 	<!-- 検索バー -->
 	<div class="bar">
-		<s:form action="SearchAction">
+		<s:form action="SearchAction" theme="simple">
+				<s:select class="category" name="categoryId" list="cateList" listKey="categoryId" listValue="categoryName" />
 				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
 				<s:submit class="submit" value="検索"/>
 		</s:form>

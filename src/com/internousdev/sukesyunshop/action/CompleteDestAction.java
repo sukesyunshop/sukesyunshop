@@ -1,11 +1,14 @@
 package com.internousdev.sukesyunshop.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.DestinationDAO;
+import com.internousdev.sukesyunshop.dao.SearchDAO;
+import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.dto.DestinationDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
@@ -23,13 +26,14 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 	private String telNumber;
 	private String userAddress;
 	public Map<String, Object> session;
+	private ArrayList<CategoryDTO> cateList;
 
 	/*----必要な機能をインスタンス化-----*/
 	DestinationDAO destDAO = new DestinationDAO();
 	DestinationDTO destDTO = new DestinationDTO();
 
 	/*-----------実行メソッド-----------*/
-	public String execute() throws SQLException {
+	public String execute() {
 		String result = ERROR;
 
 		userId = session.get(SessionName.getUserId()).toString();
@@ -39,20 +43,17 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 		destDTO = setPrameters(destDTO);
 
 		// 登録処理
-		int insertCount = 0;
-		if(destDAO.existDest(destDTO)){
-			result = SUCCESS;
-		}else{
-			// 登録判定
-			// insertCountが0である場合 => 登録失敗
-			// insertCountが1である場合 => 登録成功
-			insertCount = destDAO.destInsert(destDTO);
-		}
-
-		// 登録が失敗したい場合はそのままERROR
-		// 登録が成功した場合はSUCCESS
-		if (insertCount != 0) {
-			result = SUCCESS;
+		try {
+			if(destDAO.destInsert(destDTO) != 0 && destDAO.existDest(destDTO)){
+				SearchDAO searchDAO = new SearchDAO();
+				setCateList(searchDAO.getCategory());
+				// 登録判定
+				// insertCountが0である場合 => 登録失敗
+				// insertCountが1である場合 => 登録成功
+				result = SUCCESS;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
 		return result;
@@ -155,5 +156,17 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public ArrayList<CategoryDTO> getCateList() {
+		return cateList;
+	}
+
+	public void setCateList(ArrayList<CategoryDTO> cateList) {
+		this.cateList = cateList;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
 	}
 }

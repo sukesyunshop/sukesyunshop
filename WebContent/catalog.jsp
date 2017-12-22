@@ -17,7 +17,8 @@
 
 	<!-- 検索バー -->
 	<div class="bar">
-		<s:form action="SearchAction">
+		<s:form action="SearchAction" theme="simple">
+				<s:select class="category" name="categoryId" list="cateList" listKey="categoryId" listValue="categoryName" />
 				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
 				<s:submit class="submit" value="検索"/>
 		</s:form>
@@ -58,17 +59,17 @@
 <ul class="menu">
 	<s:iterator value="list">
 		<li>
-				<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">
-				<img src="<s:property value="getImageFilePath()" />" class="itemImage" ></a><br>
-				<span>カテゴリー</span>
-					<s:property value="getCategoryName()" /><br>
-				<span>商品名</span>
-					<s:property value="getProductNameKana()" /><br>
-					<s:property value="getProductName()"/>
-				<span>値段</span>
-					<s:property value="getPrice()" />
-					<span>円</span>
-				<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">商品詳細</a>
+			<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">
+				<img src="<s:property value="getImageFilePath()" />" class="itemImage" >
+			</a><br>
+			<span>カテゴリー</span>
+			<s:property value="getCategoryName()" /><br>
+			<span>商品名</span><br>
+			<s:property value="getProductNameKana()" /><br>
+			<s:property value="getProductName()"/><br>
+			<span>値段</span>
+			<s:property value="getPrice()" /><span>円</span><br>
+			<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">商品詳細</a>
 		</li>
 	</s:iterator>
 </ul>

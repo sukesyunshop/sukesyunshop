@@ -128,7 +128,8 @@ font-size:60px;
 	background-color:#FFFF99;
 }
 .moji span{
-	margin:30px;
+	margin-left:-15px;
+	display: block;
 }
 
 .border{

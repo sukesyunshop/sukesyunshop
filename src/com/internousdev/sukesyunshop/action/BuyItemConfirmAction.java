@@ -10,6 +10,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.sukesyunshop.dao.CartDAO;
 import com.internousdev.sukesyunshop.dao.DestinationDAO;
 import com.internousdev.sukesyunshop.dto.CartDTO;
+import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.dto.DestinationDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,6 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class BuyItemConfirmAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
+	private ArrayList<CategoryDTO> cateList;
 	private List<CartDTO> cartList = new ArrayList<CartDTO>();
 	private CartDAO cartDAO = new CartDAO();
 
@@ -59,5 +61,17 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware 
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public ArrayList<CategoryDTO> getCateList() {
+		return cateList;
+	}
+
+	public void setCateList(ArrayList<CategoryDTO> cateList) {
+		this.cateList = cateList;
+	}
+
+	public void setCartList(List<CartDTO> cartList) {
+		this.cartList = cartList;
 	}
 }
