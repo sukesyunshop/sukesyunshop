@@ -1,19 +1,4 @@
 
-
-
-.a
-{
-width:100px;
-height:100px;
-background:#fffff4;
-position:relative;
--webkit-animation:a 5s;
-display: inline-block;
-font-size:60px;
-color:red;
-}
-
-
 @-webkit-keyframes a
 {
 0%   {background:#fffff4; left:0px; top:0px;}
@@ -23,18 +8,27 @@ color:red;
 100% {background:#fffff4; left:0px; top:0px;}
 }
 
+@keyframes a
+{
+0%   {background:#fffff4; left:0px; top:0px;}
+25%  {background:#fffff4; left:0px; top:0px;}
+50%  {background:#fffff4; left:300px; top:0px;}
+75%  {background:#fffff4; left:0px; top:0px;}
+100% {background:#fffff4; left:0px; top:0px;}
+}
 
-.b
+.a
 {
 width:100px;
 height:100px;
 background:#fffff4;
 position:relative;
--webkit-animation:b 5s;
+-webkit-animation:a 5s;
+animation: a 5s;
 display: inline-block;
 font-size:60px;
+color:red;
 }
-
 
 @-webkit-keyframes b
 {
@@ -45,18 +39,26 @@ font-size:60px;
 100% {background:#fffff4; left:0px; top:0px;}
 }
 
+@keyframes b
+{
+0%   {background:#fffff4; left:0px; top:0px;}
+25%  {background:#fffff4; left:600px; top:0px;}
+50%  {background:#fffff4; left:300px; top:0px;}
+75%  {background:#fffff4; left:200px; top:0px;}
+100% {background:#fffff4; left:0px; top:0px;}
+}
 
-.c
+.b
 {
 width:100px;
 height:100px;
 background:#fffff4;
 position:relative;
--webkit-animation:c 5s;
+-webkit-animation:b 5s;
+animation: b 5s;
 display: inline-block;
 font-size:60px;
 }
-
 
 @-webkit-keyframes c
 {
@@ -66,6 +68,27 @@ font-size:60px;
 75%  {background:#fffff4; left:100px; top:0px;}
 100% {background:#fffff4; left:0px; top:0px;}
 }
+@keyframes c
+{
+0%   {background:#fffff4; left:0px; top:0px;}
+25%  {background:#fffff4; left:900px; top:0px;}
+50%  {background:#fffff4; left:400px; top:0px;}
+75%  {background:#fffff4; left:100px; top:0px;}
+100% {background:#fffff4; left:0px; top:0px;}
+}
+
+.c
+{
+width:100px;
+height:100px;
+background:#fffff4;
+position:relative;
+-webkit-animation:c 5s;
+animation: c 5s;
+display: inline-block;
+font-size:60px;
+}
+
 
 .menu {
   -webkit-align-content: stretch;
