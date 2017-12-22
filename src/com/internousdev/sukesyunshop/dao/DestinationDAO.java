@@ -96,4 +96,34 @@ public class DestinationDAO {
 		return insertCount;
 	}
 
+
+	public boolean existDest(DestinationDTO dto) throws SQLException{
+		String sql =""
+				+ "SELECT * "
+				+ "FROM destination_info "
+				+ "WHERE user_id = ? "
+				+ "AND family_name = ? "
+				+ "AND first_name =? "
+				+ "AND family_name_kana = ? "
+				+ "AND first_name_kana = ? "
+				+ "AND sex = ? "
+				+ "AND email = ? "
+				+ "AND tel_number = ? "
+				+ "AND user_address = ? ";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+
+		ps.setString(1, dto.getUserId());
+		ps.setString(2, dto.getFamilyName());
+		ps.setString(3, dto.getFirstName());
+		ps.setString(4, dto.getFamilyNameKana());
+		ps.setString(5, dto.getFirstNameKana());
+		ps.setInt(6, dto.getSex());
+		ps.setString(7, dto.getEmail());
+		ps.setString(8, dto.getTelNumber());
+		ps.setString(9, dto.getUserAddress());
+
+		ResultSet resultSet = ps.executeQuery();
+		return resultSet.next();
 	}
+}

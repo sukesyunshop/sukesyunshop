@@ -14,43 +14,6 @@ public class CartDAO {
 	private DBConnector db =  new DBConnector();
 	private Connection con = db.getConnection();
 
-
-	//TODO いらなそうなメソッドをコメントアウトしています。
-	//productdetail.jspにcatalog.jspで指定した値(商品のID)を送る
-	/*public CartDTO getId(int productId){
-		CartDTO dto = new CartDTO();
-		String sql=""
-				+"SELECT id"
-				+"FROM product_info "
-				+"INNER JOIN m_category "
-				+"ON product_info.category_id = m_category.category_id "
-				+"WHERE product_id=?";
-
-		try{
-			PreparedStatement preparedStatement = con.prepareStatement(sql);
-			preparedStatement.setInt(1,productId);
-			ResultSet resultSet = preparedStatement.executeQuery();
-
-			if(resultSet.next()){
-				dto.setId(resultSet.getInt("product_info.id"));
-				dto.setProductId(resultSet.getInt("product_id"));
-				dto.setProductName(resultSet.getString("product_name"));
-				dto.setProductNameKana(resultSet.getString("product_name_kana"));
-				dto.setProductDescription(resultSet.getString("product_description"));
-				dto.setCategory(resultSet.getString("category_name"));
-				dto.setPrice(resultSet.getInt("price"));
-				dto.setImageFilePath(resultSet.getString("image_file_path"));
-				dto.setImageFileName(resultSet.getString("image_file_name"));
-				dto.setReleaseDate (resultSet.getString("release_date"));
-				dto.setReleaseCompany(resultSet.getString("release_company"));
-			}
-			} catch(Exception e){
-				e.printStackTrace();
-			}
-			return dto;
-	}*/
-
-
 	//カートの中身を指定
 	public ArrayList<CartDTO> getCartList(String userId, boolean loginFlag){
 		ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
@@ -147,18 +110,42 @@ public class CartDAO {
 					+ "AND product_id = ?";
 		}
 
-			try {
-				PreparedStatement preparedStatement = con.prepareStatement(sql);
-				preparedStatement.setString(1,userId);
-				preparedStatement.setInt(2,productId);
-				preparedStatement.executeUpdate();
-				return true;
+		try {
+			PreparedStatement preparedStatement = con.prepareStatement(sql);
+			preparedStatement.setString(1,userId);
+			preparedStatement.setInt(2,productId);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	 }
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return false;
-			}
+	 public boolean searchCart(String userId, int productId, boolean loginFlag) throws SQLException{
+		 String sql;
+		 if(loginFlag){
+		 	sql = ""
+		 		+ "SELECT *"
+		 		+ "FROM cart_info "
+		 		+ "WHERE user_id = ? "
+		 		+ "AND product_id = ?";
+		 }else{
+			 sql=""
+				+ "SELECT *"
+				+ "FROM cart_info "
+				+ "WHERE temp_user_id = ? "
+				+ "AND product_id = ?";
 		 }
+
+		 PreparedStatement statement = con.prepareStatement(sql);
+		 statement.setString(1, userId);
+		 statement.setInt(2, productId);
+
+		 ResultSet resultSet = statement.executeQuery();
+
+		 return resultSet.next();
+	 }
 
 }
 

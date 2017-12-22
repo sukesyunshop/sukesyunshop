@@ -13,7 +13,7 @@
 </head>
 <body>
 
-
+<!---------------ヘッダー -------------->
 <div id="header">
 	<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
 
@@ -32,7 +32,7 @@
 				<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
 			</s:if>
 			<s:else>
-				<li><a href="<s:url action='MoveLoginAction'/>"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
+				<li><a href="./login.jsp"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
 			</s:else>
 		<li>
 			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
@@ -40,6 +40,8 @@
 	</ul>
 
 </div>
+<!------------ヘッダーここまで ------------>
+
 <!--------- カテゴリーリスト --------->
 		<ul id="category">
 			<s:iterator value="cateList">
@@ -47,15 +49,13 @@
 			</s:iterator>
 		</ul>
 
-
 <div class="logo">
-<p>CART</p>
+
+<p class="a">カ</p><p class="b">ー</p><p class="c">ト</p>
 </div>
 
-
-
  <s:if test="cartList.size() != 0">
- <a href="<s:url action="BuyItemConfirmAction"></s:url>">購入</a>
+ <a class="button" href="<s:url action="BuyItemConfirmAction"></s:url>">購入</a>
  <ul class="menu">
   	<s:iterator value="cartList">
   		<li>
@@ -72,17 +72,14 @@
 					<s:property value="getReleaseDate()"/>
 				<span>発売年月日</span>
 					<s:property value="getReleaseCompany()" />
-				<a href="<s:url action="CartDeleteAction"><s:param name="productId" value="productId" /></s:url>">削除</a>
-
-
-
   		</li>
 	</s:iterator>
  </ul>
+<a class="button" href="<s:url action="CartDeleteAction"><s:param name="productId" value="productId" /></s:url>">削除</a>
 
  </s:if>
 	<s:else>
-		<a class="sub" href="<s:url action="GoHomeAction" />">HOMEへ</a>
+		<a class="button" class="sub" href="<s:url action="GoHomeAction" />">HOMEへ</a>
 	</s:else>
 
 

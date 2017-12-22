@@ -34,7 +34,7 @@ private String result = ERROR;
 			userId = session.get(SessionName.getTempUserId()).toString();
 		}
 		try{
-			if(productId != 0){
+			if(productId != 0 && !cartDAO.searchCart(userId, productId, loginFlag)){
 				cartDAO.addCart(userId, productId, loginFlag);
 			}
 			cartList = cartDAO.getCartList(userId,loginFlag);

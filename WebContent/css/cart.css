@@ -1,30 +1,71 @@
 
 
 
-.logo
+.a
 {
 width:100px;
 height:100px;
 background:#fffff4;
 position:relative;
-animation:myfirst 5s;
--webkit-animation:myfirst 5s;
+-webkit-animation:a 5s;
+display: inline-block;
+font-size:60px;
+color:red;
 }
 
-.logo p{
-	color:red;
 
-}
-
-@-webkit-keyframes myfirst
+@-webkit-keyframes a
 {
 0%   {background:#fffff4; left:0px; top:0px;}
-25%  {background:#fffff4; left:400px; top:0px;}
+25%  {background:#fffff4; left:0px; top:0px;}
+50%  {background:#fffff4; left:300px; top:0px;}
+75%  {background:#fffff4; left:0px; top:0px;}
+100% {background:#fffff4; left:0px; top:0px;}
+}
+
+
+.b
+{
+width:100px;
+height:100px;
+background:#fffff4;
+position:relative;
+-webkit-animation:b 5s;
+display: inline-block;
+font-size:60px;
+}
+
+
+@-webkit-keyframes b
+{
+0%   {background:#fffff4; left:0px; top:0px;}
+25%  {background:#fffff4; left:600px; top:0px;}
 50%  {background:#fffff4; left:300px; top:0px;}
 75%  {background:#fffff4; left:200px; top:0px;}
 100% {background:#fffff4; left:0px; top:0px;}
 }
 
+
+.c
+{
+width:100px;
+height:100px;
+background:#fffff4;
+position:relative;
+-webkit-animation:c 5s;
+display: inline-block;
+font-size:60px;
+}
+
+
+@-webkit-keyframes c
+{
+0%   {background:#fffff4; left:0px; top:0px;}
+25%  {background:#fffff4; left:900px; top:0px;}
+50%  {background:#fffff4; left:400px; top:0px;}
+75%  {background:#fffff4; left:100px; top:0px;}
+100% {background:#fffff4; left:0px; top:0px;}
+}
 
 .menu {
   -webkit-align-content: stretch;
@@ -46,4 +87,18 @@ animation:myfirst 5s;
   justify-content: space-around;
   display:flex;
   flex-flow: row wrap;
+}
+
+.button{
+	text-decoration: none;
+	display: block;
+	padding: 20px 30px;
+	margin: 20px auto;
+	width: 300px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #4682b4;
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
 }

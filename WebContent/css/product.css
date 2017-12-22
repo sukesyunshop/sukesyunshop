@@ -1,0 +1,144 @@
+
+#main .a{
+
+width:100px;
+height:100px;
+background:#fffff4;
+position:relative;
+-webkit-animation: a 5s;
+display: inline-block;
+color:red;
+font-size:60px;
+}
+@-webkit-keyframes a
+{
+0%   {background:#fffff4; left:0px; top:0px;}
+25%  {background:#fffff4; left:400px; top:0px;}
+50%  {background:#fffff4; left:300px; top:0px;}
+75%  {background:#fffff4; left:200px; top:0px;}
+100% {background:#fffff4; left:0px; top:0px;}
+}
+#main .b{
+
+width:100px;
+height:100px;
+background:#fffff4;
+position:relative;
+-webkit-animation: b 5s;
+display: inline-block;
+font-size:60px;
+}
+@-webkit-keyframes b
+{
+0%   {background:#fffff4; left:0px; top:0px;}
+25%  {background:#fffff4; left:300px; top:0px;}
+50%  {background:#fffff4; left:400px; top:0px;}
+75%  {background:#fffff4; left:300px; top:0px;}
+100% {background:#fffff4; left:0px; top:0px;}
+}
+#main .c{
+
+width:100px;
+height:100px;
+background:#fffff4;
+position:relative;
+-webkit-animation: c 5s;
+display: inline-block;
+font-size:60px;
+}
+@-webkit-keyframes c
+{
+0%   {background:#fffff4; left:0px; top:0px;}
+25%  {background:#fffff4; left:200px; top:0px;}
+50%  {background:#fffff4; left:100px; top:0px;}
+75%  {background:#fffff4; left:100px; top:0px;}
+100% {background:#fffff4; left:0px; top:0px;}
+}
+#main .d{
+
+width:100px;
+height:100px;
+background:#fffff4;
+position:relative;
+-webkit-animation: d 5s;
+display: inline-block;
+font-size:60px;
+}
+@-webkit-keyframes d
+{
+0%   {background:#fffff4; left:0px; top:0px;}
+25%  {background:#fffff4; left:100px; top:0px;}
+50%  {background:#fffff4; left:200px; top:0px;}
+75%  {background:#fffff4; left:200px; top:0px;}
+100% {background:#fffff4; left:0px; top:0px;}
+}
+
+.list{
+	-webkit-align-content: stretch;
+	align-content:	center;
+	justify-content: center;
+	display: flex;
+	flex-flow: row wrap;
+	margin-top:50px;
+
+
+}
+
+.moji{
+	margin-top:100px;
+	margin-left:50px;
+	padding: 50px;
+	height: max-content;
+	background-color:#FFFF99;
+}
+.moji span{
+	margin:30px;
+}
+
+.border{
+	border:solid 1px #000;
+}
+
+.moveWrapper{
+	display: flex;
+	justify-content: center;
+}
+
+.moveItem{
+	display: block;
+	text-decoration: none;
+	color: inherit;
+	padding: 20px 30px;
+	margin: 20px 30px 0;
+    border-radius: 3px;
+    background-color: #4682b4;
+    color: #fff;
+}
+
+h3{
+	margin: 100px;
+	margin-bottom: 0px;
+}
+
+.minilist{
+
+	-webkit-align-content: stretch;
+	align-content:	space-around;
+	justify-content: space-around;
+	display: flex;
+	flex-flow: row wrap;
+
+}
+.minilist li{
+}
+
+.itemImage{
+	width:200px;
+	height:200px;
+}
+
+
+span{
+	color:#000;
+	font-size:1.2em;
+}

@@ -11,8 +11,6 @@
 </head>
 <body>
 
-
-
 <!---------------ヘッダー -------------->
 <div id="header">
 	<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
@@ -32,7 +30,7 @@
 				<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
 			</s:if>
 			<s:else>
-				<li><a href="<s:url action='MoveLoginAction'/>"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
+				<li><a href="./login.jsp"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
 			</s:else>
 		<li>
 			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
@@ -40,7 +38,7 @@
 	</ul>
 
 </div>
-
+<!------------ヘッダーここまで ------------>
 
 
 <!--------- カテゴリーリスト --------->
@@ -60,7 +58,8 @@
 <ul class="menu">
 	<s:iterator value="list">
 		<li>
-				<img src="<s:property value="getImageFilePath()" />" class="itemImage" ><br>
+				<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">
+				<img src="<s:property value="getImageFilePath()" />" class="itemImage" ></a><br>
 				<span>カテゴリー</span>
 					<s:property value="getCategoryId()" /><br>
 				<span>商品名</span>

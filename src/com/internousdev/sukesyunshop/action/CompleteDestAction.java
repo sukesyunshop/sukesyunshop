@@ -30,6 +30,7 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 
 	/*-----------実行メソッド-----------*/
 	public String execute() throws SQLException {
+		String result = ERROR;
 
 		userId = session.get(SessionName.getUserId()).toString();
 
@@ -38,12 +39,15 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 		destDTO = setPrameters(destDTO);
 
 		// 登録処理
-		int insertCount = destDAO.destInsert(destDTO);
-
-		// 登録判定
-		// insertCountが0である場合 => 登録失敗
-		// insertCountが1である場合 => 登録成功
-		String result = ERROR;
+		int insertCount = 0;
+		if(destDAO.existDest(destDTO)){
+			result = SUCCESS;
+		}else{
+			// 登録判定
+			// insertCountが0である場合 => 登録失敗
+			// insertCountが1である場合 => 登録成功
+			insertCount = destDAO.destInsert(destDTO);
+		}
 
 		// 登録が失敗したい場合はそのままERROR
 		// 登録が成功した場合はSUCCESS

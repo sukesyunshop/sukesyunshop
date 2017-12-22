@@ -11,7 +11,6 @@
 </head>
 <body>
 
-
 <!---------------ヘッダー -------------->
 <div id="header">
 	<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
@@ -31,7 +30,7 @@
 				<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
 			</s:if>
 			<s:else>
-				<li><a href="<s:url action='MoveLoginAction'/>"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
+				<li><a href="./login.jsp"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
 			</s:else>
 		<li>
 			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
@@ -55,36 +54,39 @@
 
 <!-- 商品詳細 -->
 <ul class="list">
-		<li class="image">
-			<img src="<s:property value="dto.getImageFilePath()"/>"><br>
-		</li>
-		<li class="moji">
-			<span>商品名</span>
-			<s:property value="dto.getProductNameKana()" />
-			<s:property value="dto.getProductName()"/><br>
+	<li class="image">
+		<img src="<s:property value="dto.getImageFilePath()"/>"><br>
+	</li>
+	<li class="moji">
+		<span>商品名</span>
+		<s:property value="dto.getProductName()"/><br>
+		<span>商品詳細</span>
+		<s:property value="dto.getProductDescription()"/><br>
 		<span>値段</span>
-			<s:property value="dto.getPrice()" />円<br>
+		<s:property value="dto.getPrice()" />円<br>
 		<span>発売会社名</span>
-			<s:property value="dto.getReleaseDate()"/><br>
+		<s:property value="dto.getReleaseDate()"/><br>
 		<span>発売年月日</span>
-			<s:property value="dto.getReleaseCompany()" />
-		<a href="<s:url action="CartAction"><s:param name="productId" value="dto.getProductId()"/></s:url>">カートへ</a>
-		<a href="<s:url action="CatalogAction" /> ">戻る</a>
+		<s:property value="dto.getReleaseCompany()" /><br>
+		<div class="moveWrapper">
+			<a class="moveItem" href="<s:url action="CartAction"><s:param name="productId" value="dto.getProductId()"/></s:url>">カート</a>
+			<a class="moveItem" href="<s:url action="CatalogAction" /> ">戻る</a>
+		</div>
 	</li>
 </ul>
 
 <!-- 同じカテゴリーの商品 -->
+<h3>同じカテゴリーの商品<s:property value="getCategoryName()"/></h3>
 <ul class="minilist">
 	<s:iterator value="miniList">
 		<li>
-				<span>同じカテゴリーの商品</span>
-  				<s:property value="getCategoryId()"/><br>
-  				<span>商品名</span>
-				<s:property value="getProductNameKana()" /><br>
-				<s:property value="getProductName()"/><br>
-				<img src="<s:property value="getImageFilePath()"/>" class="itemImage">
+			<span>商品名</span><br>
+			<s:property value="getProductName()"/><br>
+			<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">
+				<img src="<s:property value="getImageFilePath()"/>" class="itemImage border">
+			</a><br>
 
-				<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">商品詳細</a>
+			<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">商品詳細</a>
 		</li>
 	</s:iterator>
 </ul>

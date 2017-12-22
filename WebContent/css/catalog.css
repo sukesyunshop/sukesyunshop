@@ -4,13 +4,16 @@
   justify-content: space-around;
   display:flex;
   flex-flow: row wrap;
-  margin-top:50px;
-
+  margin: 50px auto 0;
+  padding: 0;
+  width: 1100px;
 }
 
 .menu li{
 	margin-top:50px;
+	width: 300px;
 }
+
 .itemImage{
 	width:300px;
 	height:300px;
@@ -18,8 +21,8 @@
 
 .br{
 	display:flex;
-	 flex-flow: row wrap;
-	 justify-content: center;
+	flex-flow: row wrap;
+	justify-content: center;
 }
 
 .br li{
