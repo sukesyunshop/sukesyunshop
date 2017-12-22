@@ -86,8 +86,8 @@
 						</ul>
 				</s:iterator>
 			</ul>
-			<div class="button">
-				<s:submit class="submit" value="購入"></s:submit>
+			<div class="Button">
+				<s:submit class="button" value="購入"></s:submit>
 			</div>
 			<div id="goCart">
 				<a href='<s:url action="CartAction"/>'>カート一覧に戻る場合はこちら</a>
