@@ -54,7 +54,7 @@
 				<s:iterator value="destDTOList" status="list">
 					<input type="radio" name="destNum"
 						value="<s:property value="#list.index"/>"
-						id="<s:property value="#list.index"/>">
+						id="<s:property value="#list.index"/>" checked>
 					<label for="<s:property value="#list.index"/>"> 名前：<s:property
 							value="getFamilyName()" escape="false" /> <s:property
 							value="getFirstName()" escape="false" /><br> ふりがな：<s:property
@@ -90,7 +90,7 @@
 			</ul>
 			<!-- 購入ボタン -->
 			<div class="Button">
-				<s:submit class="button" value="購入"></s:submit>
+				<s:submit class="button" value="購入" />
 			</div>
 			<div id="goCart">
 				<a href='<s:url action="CartAction"/>'>カート一覧に戻る場合はこちら</a>
