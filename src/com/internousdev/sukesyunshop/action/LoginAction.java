@@ -42,6 +42,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				}else{
 					session.put(SessionName.getSaveId(), SessionName.getFalse());
 				}
+				String tempUserId = session.get(SessionName.getTempUserId()).toString();
+
+				loginDAO.switchId(userId, tempUserId);
 
 				if(session.get(SessionName.getBuying()) == null){
 					return SUCCESS;

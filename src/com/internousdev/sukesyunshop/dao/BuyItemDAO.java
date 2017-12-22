@@ -16,19 +16,6 @@ public class BuyItemDAO {
 	Connection connection = connector.getConnection();
 	private DateUtil dateUtil = new DateUtil();
 
-	public void convertId(String userId, String tempUserId) throws SQLException{
-		String sql = ""
-				+ "UPDATE cart_info "
-				+ "SET user_id = ? "
-				+ "WHERE temp_user_id = ? ";
-
-		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setString(1, userId);
-		statement.setString(2, tempUserId);
-		statement.executeUpdate();
-	}
-
-
 	// カート情報を参照
 	public List<CatalogDTO> itemSelect() throws SQLException {
 		List<CatalogDTO> CatalogDTOList = new ArrayList<CatalogDTO>();
