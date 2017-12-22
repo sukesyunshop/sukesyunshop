@@ -44,6 +44,7 @@
 	</div>
 	<!------------ヘッダーここまで ------------>
 
+<!-- ここから内容 -->
 
 	<!------宛先入力確認 ------->
 	<div class="content">
@@ -79,6 +80,7 @@
 
 			</tbody>
 		</table>
+		<!-- 宛先の値を保持 -->
 		<s:form action="CompleteDestAction">
 			<input name="familyName" type="hidden"
 				value="<s:property value='familyName' />" />
@@ -95,6 +97,8 @@
 			<input name="userAddress" type="hidden"
 				value="<s:property value='userAddress' />" />
 			<input name="sex" type="hidden" value="<s:property value='sex' />" />
+
+			<!-- 登録完了ボタン -->
 			<div id="Button">
 			<s:submit class="button" value= "登録完了"/>
 			</div>

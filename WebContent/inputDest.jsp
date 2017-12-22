@@ -45,7 +45,7 @@
 	</div>
 	<!------------ヘッダーここまで ------------>
 
-
+<!-- ここから内容 -->
 	<div id="main">
 		<div id="top">
 			<h3>宛先を入力してください。</h3>
@@ -111,6 +111,8 @@
 						value="telNumberMessage" /></span>
 				<span style="color: #FF0000"><s:property
 						value="addressMessage" /></span>
+
+				<!-- 購入ボタン -->
 				<div id="Button">
 					<s:submit class="button" value="確認画面へ" />
 				</div>
