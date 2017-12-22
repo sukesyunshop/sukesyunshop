@@ -8,7 +8,7 @@
 }
 
 .mainContainer{
-	width: 700px;
+	width: 800px;
 	margin-left: 20px;
 }
 
@@ -17,7 +17,8 @@
 }
 
 .mainContainer #poster img{
-	width: 650px;
+	width: 800px;
+	height:300px;
 }
 
 .sideContainer .itemImage{

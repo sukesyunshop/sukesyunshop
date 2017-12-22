@@ -1,11 +1,13 @@
 #pickup-wrap{
-padding-top:150px;
+padding-top:100px;
+padding-bottom:50px;
 }
 #sale-wrap{
 	padding-top:0px;
 }
 #poster-wrap{
-
-	margin-top:100px;
-	margin-left:50px;
+	width:1000px;
+	height:300px;
+	margin-top:50px;
 }
+
