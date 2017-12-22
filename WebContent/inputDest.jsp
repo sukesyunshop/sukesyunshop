@@ -119,7 +119,7 @@
 			</s:form>
 		</div>
 		<div id="goMyPage">
-			MyPageへ戻るには<a href="myPage.jsp">MyPageへ</a>
+			MyPageへ戻るには<a href="<s:url action="GoMyPageAction"/>">MyPageへ</a>
 		</div>
 	</div>
 
