@@ -5,16 +5,11 @@ padding-bottom:20px;
 #sale-wrap{
 	padding-top:0px;
 }
+
+
 #poster-wrap{
 	width:1000px;
 	height:300px;
 	margin-top:50px;
-}
 
-.bx-wrapper {
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	border:none;
-	background-color:transparent;
 }

@@ -28,7 +28,6 @@
     	  maxSlides: 1,
     	  slideWidth: 800,
     	  slideheight:300,
-    	  slideMargin: 10,
     	  moveSlides: 1,
     	  startSlide: 0,
     	  autoHover: true,
@@ -103,10 +102,10 @@
 			<!-- 広告 -->
 			<div id="poster-wrap">
 				<h2 class="a1">期間限定</h2>
-					<ul id="poster">
-						<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg"></a></li>
-						<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getAnime()" /></s:url>'><img src="./public/anime.jpg"></a></li>
-					</ul>
+					<div id="poster">
+						<div><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg"></a></div>
+						<div><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getAnime()" /></s:url>'><img src="./public/anime.jpg"></a></div>
+					</div>
 			</div>
 
 
