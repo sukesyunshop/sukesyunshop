@@ -5,11 +5,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="./css/template.css">
-	<link rel="stylesheet" type="text/css" href="./css/home.css">
 
 	<link rel="stylesheet" type="text/css" href="./css/slider.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+	<link rel="stylesheet" type="text/css" href="./css/template.css">
+	<link rel="stylesheet" type="text/css" href="./css/home.css">
+
 	<script type="text/javascript" src="./javascript/omikuji.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
@@ -24,13 +25,10 @@
     	  pause:  5000,
     	  pager: true,
     	  controls: true,
-    	  minSlides: 2,
-    	  maxSlides: 1,
     	  slideWidth: 800,
     	  slideheight:300,
-    	  moveSlides: 1,
-    	  startSlide: 0,
     	  autoHover: true,
+    	  mode: 'fade',
       });
     });
 

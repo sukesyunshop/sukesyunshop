@@ -110,3 +110,10 @@ ul{
 	height:50px;
 }
 
+.bx-wrapper .bx-next{
+	background: url(../images/start.png) no-repeat -43px -32px;
+}
+.bx-wrapper .bx-prev{
+	background: url(../images/start.png) no-repeat -43px -32px;
+}
+
