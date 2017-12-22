@@ -19,15 +19,11 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private String userIdMessage;
 	private String passwordMessage;
 
-	private final String NAME_USER_ID ="ユーザーID";
-	private final String NAME_PASSWORD ="パスワード";
-
-
 	Validation valid = new Validation();
 
 	public String execute(){
-		userIdMessage = validation(userId, NAME_USER_ID, 1, 8);
-		passwordMessage = validation(password, NAME_PASSWORD, 1, 16);
+		userIdMessage = validation(userId, "ユーザーID", 1, 8);
+		passwordMessage = validation(password, "パスワード", 1, 16);
 
 		if(!userIdMessage.equals("") || !passwordMessage.equals("")) return "back";
 		LoginAuthDAO loginDAO = new LoginAuthDAO();
@@ -47,8 +43,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				loginDAO.switchId(userId, tempUserId);
 
 				if(session.get(SessionName.getBuying()) == null){
+					session.remove(SessionName.getBuying());
 					return SUCCESS;
 				}else{
+					session.remove(SessionName.getBuying());
 					return "buy";
 				}
 			}else{
