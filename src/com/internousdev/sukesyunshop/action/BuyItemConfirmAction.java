@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.CartDAO;
 import com.internousdev.sukesyunshop.dao.DestinationDAO;
+import com.internousdev.sukesyunshop.dao.SearchDAO;
 import com.internousdev.sukesyunshop.dto.CartDTO;
 import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.dto.DestinationDTO;
@@ -32,6 +33,9 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware 
 		if (loginFlag) {
 			String userId = session.get(SessionName.getUserId()).toString();
 			try {
+				SearchDAO searchDAO = new SearchDAO();
+				setCateList(searchDAO.getCategory());
+
 				cartList = cartDAO.getCartList(userId, true);
 				destDTOList = destDAO.destSelect(userId);
 			} catch (SQLException e) {
