@@ -19,18 +19,19 @@
   <!--広告-->
   $(document).ready(function(){
       $('#poster').bxSlider({
-    	  auto: false,
-    	  speed: 500,
-    	  pause:  3000,
+    	  auto: true,
+    	  speed: 1500,
+    	  pause:  5000,
     	  pager: true,
-    	  controls: true,
+    	  controls: false,
     	  minSlides: 2,
     	  maxSlides: 1,
     	  slideWidth: 800,
+    	  slideheight:300,
     	  slideMargin: 10,
     	  moveSlides: 1,
     	  startSlide: 0,
-    	  autoHover: false,
+    	  autoHover: true,
       });
     });
 
@@ -41,7 +42,7 @@
     	  speed: 500,
     	  pause:  3000,
     	  pager: true,
-    	  controls: true,
+    	  controls: false,
     	  minSlides: 1,
     	  maxSlides: 4,
     	  slideWidth: 200,
@@ -102,8 +103,8 @@
 			<!-- 広告 -->
 			<div id="poster-wrap">
 				<ul id="poster">
-					<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg" class="pic1"></a></li>
-					<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getAnime()" /></s:url>'><img src="./public/anime.jpg" class="pic2"></a></li>
+					<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg"></a></li>
+					<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getAnime()" /></s:url>'><img src="./public/anime.jpg"></a></li>
 				</ul>
 			</div>
 

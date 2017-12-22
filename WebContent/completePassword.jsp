@@ -51,7 +51,7 @@
 		<h2 class="complete">パスワード変更完了</h2>
 			<h3 class="message">おめでとうございます!<br>パスワードの再設定が完了致しました！</h3>
 				<div id="back">
-					<span>Login画面へ</span><a href="<s:url action='MoveLoginAction'/>">戻る</a>
+					<span>Login画面へ</span><a href="./login.jsp">戻る</a>
 				</div>
 	</div>
 </body>
