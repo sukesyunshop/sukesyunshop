@@ -23,7 +23,7 @@
     	  speed: 1500,
     	  pause:  5000,
     	  pager: true,
-    	  controls: false,
+    	  controls: true,
     	  minSlides: 2,
     	  maxSlides: 1,
     	  slideWidth: 800,
@@ -42,7 +42,7 @@
     	  speed: 500,
     	  pause:  3000,
     	  pager: true,
-    	  controls: false,
+    	  controls: true,
     	  minSlides: 1,
     	  maxSlides: 4,
     	  slideWidth: 200,
@@ -102,23 +102,27 @@
 
 			<!-- 広告 -->
 			<div id="poster-wrap">
-				<ul id="poster">
-					<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg"></a></li>
-					<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getAnime()" /></s:url>'><img src="./public/anime.jpg"></a></li>
-				</ul>
+				<h2 class="a1">期間限定</h2>
+					<ul id="poster">
+						<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getSale()" /></s:url>'><img src="./public/sale.jpg"></a></li>
+						<li><a href='<s:url action="AdvertizeAction" ><s:param name="sort" value="getAnime()" /></s:url>'><img src="./public/anime.jpg"></a></li>
+					</ul>
 			</div>
+
 
 			<!-- pickup -->
 			<div id="pickup-wrap">
-				<div id="pickup-wrap-inner">
-					<ul class="pickup">
-						<s:iterator value="randomList">
-							<li><a href="<s:url action="ProductDetailAction" ><s:param name="productId" value="getProductId()" /></s:url>"><img src="<s:property value="getImageFilePath()"/>"></a></li>
-						</s:iterator>
-					</ul>
-				</div>
+				<h2 class="a2">ピックアップコーナー</h2>
+					<div id="pickup-wrap-inner">
+						<ul class="pickup">
+							<s:iterator value="randomList">
+								<li><a href="<s:url action="ProductDetailAction" ><s:param name="productId" value="getProductId()" /></s:url>"><img src="<s:property value="getImageFilePath()"/>"></a></li>
+							</s:iterator>
+						</ul>
+					</div>
 			</div>
 
+		<h2 class="a3">☆運だめし☆</h2>
 			<img src="./images/start.png" onClick="omikuji();" id="omikuji" class="start">
 		</div>
 		<div class="sideContainer">

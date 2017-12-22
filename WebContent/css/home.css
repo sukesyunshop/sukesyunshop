@@ -18,7 +18,7 @@
 
 .mainContainer #poster img{
 	width: 800px;
-	height:300px;
+	height: 300px;
 }
 
 .sideContainer .itemImage{
@@ -28,4 +28,25 @@
 #omikuji{
 	width: 650px;
 	height: 200px;
+	margin-bottom: 50px;
+}
+
+.a1{
+	border-bottom: solid 2px #ff6347;
+	
+	width:100px;
+}
+
+.a2{
+	border-bottom: solid 2px #ff6347;
+	width:208px;
+}
+
+.a3{
+	border-bottom: solid 2px #ff6347;
+	width:135px;
+}
+
+h3{
+	margin-left:120px;
 }
