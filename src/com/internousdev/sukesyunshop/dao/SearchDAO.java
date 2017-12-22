@@ -148,6 +148,13 @@ public class SearchDAO {
 
 	public ArrayList<CategoryDTO> getCategory() throws SQLException{
 		ArrayList<CategoryDTO> list = new ArrayList<>();
+
+		CategoryDTO allDto = new CategoryDTO();
+		allDto.setCategoryId(0);
+		allDto.setCategoryName("すべてのカテゴリー");
+		allDto.setCategoryDescription("すべてのカテゴリーです");
+		list.add(allDto);
+
 		String sql = ""
 				+ "SELECT * "
 				+ "FROM m_category ";
