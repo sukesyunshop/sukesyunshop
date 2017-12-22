@@ -31,7 +31,7 @@
 				<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
 			</s:if>
 			<s:else>
-				<li><a href="<s:url action='MoveLoginAction'/>"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
+				<li><a href="./login.jsp"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
 			</s:else>
 		<li>
 			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
