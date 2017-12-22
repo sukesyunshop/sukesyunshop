@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-#main{
+#main {
 	margin: 0 auto;
 }
 
@@ -14,91 +14,67 @@
 	margin-left: 600px;
 }
 
-
 table {
 	margin: 0 auto;
 }
 
- table tr #name {
+table tr {
+	border-spacing: 150px, 250px;
+}
+
+table tr #name {
 	width: 800px;
-
+	border-spacing: 150px, 250px;
 }
 
- table td .familyName {
+table tr .errorMessage {
+	margin: 0 auto;
+	border-spacing: 150px, 250px;
+}
+
+table td .familyName {
 	width: 300px;
 	height: 40px;
 	font-size: 18px;
 	border-radius: 3px;
-
 	text-align: center;
 }
 
- table td .firstName {
+table td .firstName {
 	width: 300px;
 	height: 40px;
 	font-size: 18px;
 	border-radius: 3px;
-
 	text-align: center;
 }
 
- table tr #nameKana {
+table tr #nameKana {
 	width: 800px;
-
+	border-spacing: 50px, 250px;
 }
 
- table td .familyNameKana {
+table td .familyNameKana {
 	width: 300px;
 	height: 40px;
 	font-size: 18px;
 	border-radius: 3px;
-
 	text-align: center;
 }
 
- table td .firstNameKana {
+table td .firstNameKana {
 	width: 300px;
 	height: 40px;
 	font-size: 18px;
 	border-radius: 3px;
-
 	text-align: center;
 }
 
- table tr #email {
+table tr #email {
 	width: 800px;
-
+	border-spacing: 50px, 250px;
 }
 
- table td .email {
-	width: 300px;
-	height: 40px;
-	font-size: 18px;
-	border-radius: 3px;
-
-	text-align: center;
-}
-
- table tr #telNumber {
-	width: 800px;
-
-}
-
- table td .telNumber {
-	width: 300px;
-	height: 40px;
-	font-size: 18px;
-	border-radius: 3px;
-
-	text-align: center;
-}
-
- table tr #userAddress {
-	width: 800px;
-
-}
-
- table td .userAddress {
+table td .email {
 	width: 300px;
 	height: 40px;
 	font-size: 18px;
@@ -106,17 +82,42 @@ table {
 	text-align: center;
 }
 
- table tr #sex {
+table tr #telNumber {
 	width: 800px;
-
+	border-spacing: 50px, 250px;
 }
 
- table td .sex {
+table td .telNumber {
 	width: 300px;
 	height: 40px;
 	font-size: 18px;
 	border-radius: 3px;
+	text-align: center;
+}
 
+table tr #userAddress {
+	width: 800px;
+	border-spacing: 50px, 250px;
+}
+
+table td .userAddress {
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 3px;
+	text-align: center;
+}
+
+table tr #sex {
+	width: 800px;
+	border-spacing: 50px, 250px;
+}
+
+table td .sex {
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 3px;
 }
 
 #Button {

@@ -104,15 +104,15 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 
 		/*------- 名ふりがなのエラー処理 ------*/
 		if (validation.emptyValid(firstNameKana)) {
-			firstKanaMessage = "姓ふりがなが未入力です";
+			firstKanaMessage = "名ふりがなが未入力です";
 			return ERROR;
 		}
 		if (validation.overUnderValid(firstNameKana, 1, 16)) {
-			firstKanaMessage = "姓ふりがなは1文字以上16文字以下で入力してください。";
+			firstKanaMessage = "名ふりがなは1文字以上16文字以下で入力してください。";
 			return ERROR;
 		}
 		if (validation.hiraganaValid(firstNameKana)) {
-			firstKanaMessage = "姓ふりがなはひらがなで入力してください";
+			firstKanaMessage = "名ふりがなはひらがなで入力してください";
 			return ERROR;
 		}
 
@@ -135,7 +135,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 			return ERROR;
 		}
 		if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))) {
-			addressMessage = "住所は半角英数字and漢字and半角記号or全角カタカナで入力してください";
+			addressMessage = "住所は半角英数字漢字and半角記号or全角カタカナで入力してください";
 			return ERROR;
 		}
 

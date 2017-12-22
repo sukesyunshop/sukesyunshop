@@ -11,37 +11,43 @@
 </head>
 <body>
 
-<!---------------ヘッダー -------------->
-<div id="header">
-	<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
+	<!---------------ヘッダー -------------->
+	<div id="header">
+		<a href="<s:url action="GoHomeAction"/>"><img
+			src="./images/logo.png"></a>
 
-	<!-- 検索バー -->
-	<div class="bar">
-		<s:form action="SearchAction" theme="simple">
-				<s:select class="category" name="categoryId" list="cateList" listKey="categoryId" listValue="categoryName" />
-				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-				<s:submit class="submit" value="検索"/>
-		</s:form>
-	</div>
+		<!-- 検索バー -->
+		<div class="bar">
+			<s:form action="SearchAction" theme="simple">
+				<s:select class="category" name="categoryId" list="cateList"
+					listKey="categoryId" listValue="categoryName" />
+				<input class="input" type="search" name="searchText"
+					placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$"
+					title="半角英数　ひらがな　漢字" maxlength="16">
+				<s:submit class="submit" value="検索" />
+			</s:form>
+		</div>
 
-	<!-- メニューリスト-->
-	<ul id="menu">
+		<!-- メニューリスト-->
+		<ul id="menu">
 			<s:if test="#session.loginFlag == 'true'">
-				<li><a href="<s:url action='LogoutAction' />"><img src="./images/logout.png" alt="logout" border="0" class="template"></a></li>
-				<li><a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
+				<li><a href="<s:url action='LogoutAction' />"><img
+						src="./images/logout.png" alt="logout" border="0" class="template"></a></li>
+				<li><a href="<s:url action='GoMyPageAction' />"><img
+						src="./images/login.png" alt="mypage" border="0" class="template"></a></li>
 			</s:if>
 			<s:else>
-				<li><a href="./login.jsp"><img src="./images/login.png" alt="login" border="0" class="template"></a></li>
+				<li><a href="./login.jsp"><img src="./images/login.png"
+						alt="login" border="0" class="template"></a></li>
 			</s:else>
-		<li>
-			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
-		</li>
-	</ul>
+			<li><a href="CartAction"> <img src="./images/cart.png"
+					alt="cart" border="0" class="template"></a></li>
+		</ul>
 
-</div>
-<!------------ヘッダーここまで ------------>
+	</div>
+	<!------------ヘッダーここまで ------------>
 
-<!-- ここから内容 -->
+	<!-- ここから内容 -->
 	<div id="main">
 		<div id="top">
 			<h3>宛先を入力してください。</h3>
@@ -53,6 +59,23 @@
 					<tbody>
 						<!-- 宛先情報入力フォーム -->
 
+						<!-- エラーメッセージ群 -->
+						<tr class="errorMessage">
+							<td><span style="color: #FF0000"><s:property
+										value="familyMessage" /></span> <span style="color: #FF0000"><s:property
+										value="firstMessage" /></span></td>
+							<td><span style="color: #FF0000"><s:property
+										value="familyKanaMessage" /></span><span style="color: #FF0000"><s:property
+										value="firstKanaMessage" /></span></td>
+							<td><span style="color: #FF0000"><s:property
+										value="emailMessage" /></span></td>
+							<td><span style="color: #FF0000"><s:property
+										value="telNumberMessage" /></span></td>
+							<td><span style="color: #FF0000"><s:property
+										value="addressMessage" /></span></td>
+						</tr>
+
+						<!-- 名前 -->
 						<tr id="name">
 							<th>お名前 :</th>
 							<td class="familyName"><input type="text" name="familyName"
@@ -60,6 +83,9 @@
 							<td class="firstName"><input type="text" name="firstName"
 								value="" placeholder="名"></td>
 						</tr>
+
+
+						<!-- かな -->
 						<tr id="nameKana">
 							<th>ふりがな：</th>
 							<td class="familyNameKana"><input type="text"
@@ -67,18 +93,24 @@
 							<td class="firstNameKana"><input type="text"
 								name="firstNameKana" value="" placeholder="めい"></td>
 						</tr>
+
+
+						<!-- メールアドレス -->
 						<tr id="email">
 							<th>メールアドレス：</th>
 							<td class="email"><input type="email" name="email" value=""
 								placeholder="メールアドレス"></td>
 						</tr>
 
+						<!-- 電話番号 -->
 						<tr id="telNumber">
 							<th>電話番号：</th>
 							<td class="telNumber"><input type="text" name="telNumber"
 								value="" placeholder="電話番号"></td>
 						</tr>
 
+
+						<!-- 住所 -->
 						<tr id="userAddress">
 							<th>住所：</th>
 							<td class="userAddess"><input type="text" name="userAddress"
@@ -96,17 +128,6 @@
 					</tbody>
 				</table>
 
-				<!-- エラーメッセージ群 -->
-				<span style="color: #FF0000"><s:property
-						value="familyMessage" /></span>
-				<span style="color: #FF0000"><s:property value="firstMessage" /></span>
-				<span style="color: #FF0000"><s:property
-						value="firstKanaMessage" /></span>
-				<span style="color: #FF0000"><s:property value="emailMessage" /></span>
-				<span style="color: #FF0000"><s:property
-						value="telNumberMessage" /></span>
-				<span style="color: #FF0000"><s:property
-						value="addressMessage" /></span>
 
 				<!-- 購入ボタン -->
 				<div id="Button">

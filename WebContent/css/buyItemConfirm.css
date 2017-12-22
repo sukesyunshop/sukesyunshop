@@ -48,7 +48,7 @@ h1 {
 
 }
 
-div #Button {
+#Button {
 	margin-top: 25px;
 	padding-right: 560px;
 }
@@ -64,14 +64,3 @@ div #Button {
 	margin: 0 auto;
 }
 
-.button :hover {
-	background: #fff;
-	color: #333;
-	border: solid 1px #333;
-	transition: all 0.5s;
-}
-
-.button :active {
-	background: #c00;
-	color: #fff;
-}
