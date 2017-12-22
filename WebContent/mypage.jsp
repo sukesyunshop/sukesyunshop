@@ -39,7 +39,6 @@
 
 	</div>
 	<!------------ヘッダーここまで ------------>
-
 	<h1 class="title">☆マイページฅ(´-ω-`)ฅ☆</h1>
 	<h2 class="welcome"><s:property value="dto.getFamilyName()" /><s:property value="dto.getFirstName()" />さん、ようこそ！</h2>
 
