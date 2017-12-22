@@ -33,8 +33,6 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 
 		userId = session.get(SessionName.getUserId()).toString();
 
-		System.out.println("yamazaki" + familyName);
-
 		// HTML側から送られてきた入力値を登録用のDTOへまとめます。
 
 		destDTO = setPrameters(destDTO);

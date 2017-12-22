@@ -18,7 +18,7 @@ public class CartAction extends ActionSupport implements SessionAware{
 	private int productId;
 	public Map<String, Object> session;
 	private CartDAO cartDAO;
-	private ArrayList<CartDTO> cartList = new ArrayList<CartDTO>();
+	private ArrayList<CartDTO> cartList;
 	private ArrayList<CategoryDTO> cateList;
 
 private String result = ERROR;
@@ -29,7 +29,7 @@ private String result = ERROR;
 		String userId;
 		boolean loginFlag = session.get(SessionName.getLoginFlag()).equals(SessionName.getTrue());
 		if(loginFlag){
-			userId	 = session.get(SessionName.getUserId()).toString();
+			userId = session.get(SessionName.getUserId()).toString();
 		}else{
 			userId = session.get(SessionName.getTempUserId()).toString();
 		}
@@ -38,7 +38,6 @@ private String result = ERROR;
 				cartDAO.addCart(userId, productId, loginFlag);
 			}
 			cartList = cartDAO.getCartList(userId,loginFlag);
-
 
 			SearchDAO searchDAO = new SearchDAO();
 			setCateList(searchDAO.getCategory());
@@ -49,8 +48,6 @@ private String result = ERROR;
 		}
 		return result;
 		}
-
-
 
 		public int getProductId() {
 			return productId;

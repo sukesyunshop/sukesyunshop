@@ -32,7 +32,6 @@ public class SearchDAO {
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, (page-1)*9);
 			statement.setInt(2, 9);
-			System.out.println(page+"foo");
 		}else if(category == 0){
 			sql = ""
 					+ "SELECT * "

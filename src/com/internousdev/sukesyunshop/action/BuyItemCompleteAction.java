@@ -10,8 +10,8 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.internousdev.sukesyunshop.dao.BuyItemDAO;
 import com.internousdev.sukesyunshop.dao.CartDAO;
 import com.internousdev.sukesyunshop.dao.DestinationDAO;
-import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.internousdev.sukesyunshop.dto.CartDTO;
+import com.internousdev.sukesyunshop.dto.CatalogDTO;
 import com.internousdev.sukesyunshop.dto.DestinationDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
@@ -76,9 +76,7 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 			productIdList.add(cartList.get(i).getProductId());
 		}
 		try {
-			System.out.println("aaaaaaaaaaa");
 			int cc = buyItemDAO.itemInsert(productIdList, userId);
-			System.out.println(cc);
 		// カート情報の削除ができないです。
 			buyItemDAO.itemDelete(userId);
 		} catch (SQLException e) {

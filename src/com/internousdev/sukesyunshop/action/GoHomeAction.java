@@ -32,7 +32,6 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 			setCateList(searchDAO.getCategory());
 			setRandomList(catalogDAO.getRandomItem());
 			setNewArriveList(searchDAO.getNewArriveList());
-			System.out.println(newArriveList);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
