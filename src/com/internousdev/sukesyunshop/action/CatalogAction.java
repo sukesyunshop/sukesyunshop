@@ -32,7 +32,6 @@ public class CatalogAction extends ActionSupport implements SessionAware {
 					emptyMessage = "検索結果がありません";
 				}
 			listSize = catalogDAO.getCatalogCount()/9;
-			System.out.println(listSize);
 			SearchDAO searchDAO = new SearchDAO();
 			setCateList(searchDAO.getCategory());
 			result = SUCCESS;
