@@ -61,7 +61,7 @@
 				<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">
 				<img src="<s:property value="getImageFilePath()" />" class="itemImage" ></a><br>
 				<span>カテゴリー</span>
-					<s:property value="getCategoryId()" /><br>
+					<s:property value="getCategoryName()" /><br>
 				<span>商品名</span>
 					<s:property value="getProductNameKana()" /><br>
 					<s:property value="getProductName()"/>

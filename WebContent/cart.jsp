@@ -60,22 +60,21 @@
   	<s:iterator value="cartList">
   		<li>
   				<span>カテゴリ</span>
-  					<s:property value="getCategoryId()"/><br>
+  					<s:property value="getCategoryName()"/><br>
   				<span>商品名</span>
-					<s:property value="getProductNameKana()" /><br>
 					<s:property value="getProductName()"/><br>
-					<img src="<s:property value="getImageFilePath()"/>" class="itemImage">
+					<img src="<s:property value="getImageFilePath()"/>" class="itemImage"><br>
 				<span>値段</span>
 					<s:property value="getPrice()" />
 					<span>円</span><br>
 				<span>発売会社名</span>
-					<s:property value="getReleaseDate()"/>
+					<s:property value="getReleaseDate()"/><br>
 				<span>発売年月日</span>
-					<s:property value="getReleaseCompany()" />
+					<s:property value="getReleaseCompany()" /><br>
+				<a class="delete" href="<s:url action="CartDeleteAction"><s:param name="productId" value="getProductId()" /></s:url>">削除</a>
   		</li>
 	</s:iterator>
  </ul>
-<a class="button" href="<s:url action="CartDeleteAction"><s:param name="productId" value="productId" /></s:url>">削除</a>
 
  </s:if>
 	<s:else>

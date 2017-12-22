@@ -125,3 +125,16 @@ font-size:60px;
     font-size: 25px;
     text-align: center;
 }
+
+.delete{
+	text-decoration: none;
+	display: block;
+	padding: 10px 20px;
+	margin: 10px auto;
+    border-radius: 3px;
+    background-color: #4682b4;
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+	width: max-content;
+}

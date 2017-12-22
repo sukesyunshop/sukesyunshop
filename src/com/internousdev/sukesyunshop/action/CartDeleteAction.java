@@ -8,6 +8,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sukesyunshop.dao.CartDAO;
 import com.internousdev.sukesyunshop.dao.SearchDAO;
+import com.internousdev.sukesyunshop.dto.CartDTO;
 import com.internousdev.sukesyunshop.dto.CategoryDTO;
 import com.internousdev.sukesyunshop.util.SessionName;
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,6 +18,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	private CartDAO cartDAO;
 	public Map<String, Object> session;
 	private int productId;
+	private ArrayList<CartDTO> cartList;
 	private ArrayList<CategoryDTO> cateList;
 	public String result = ERROR;
 
@@ -32,6 +34,9 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 
 		try{
 			cartDAO.deleteCart(userId, productId, loginFlag);
+
+			cartList = cartDAO.getCartList(userId, loginFlag);
+
 			SearchDAO searchDAO = new SearchDAO();
 			setCateList(searchDAO.getCategory());
 			result = SUCCESS;
@@ -64,6 +69,18 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+
+	public ArrayList<CartDTO> getCartList() {
+		return cartList;
+	}
+
+
+
+	public void setCartList(ArrayList<CartDTO> cartList) {
+		this.cartList = cartList;
+	}
+
+
 
 	public ArrayList<CategoryDTO> getCateList() {
 		return cateList;
