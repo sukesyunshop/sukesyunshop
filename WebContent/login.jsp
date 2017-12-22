@@ -74,10 +74,10 @@
 				</div>
 			</s:form>
 
-		<div id="forgotPass">
-			<a href="./resetPassword.jsp">パスワードを忘れた方はこちら</a>
-		</div>
-	</div>
+			<div id="forgotPass">
+				<a href="./resetPassword.jsp">パスワードを忘れた方はこちら</a>
+			</div>
 
+	</div>
 </body>
 </html>

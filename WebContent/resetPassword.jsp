@@ -48,31 +48,19 @@
 
 
 	<div id="form">
-			<s:form action="ConfirmPasswordAction">
-				<div id="login">
-						<label>
-								<input id="loginArea" type="text" name="loginId" value="" placeholder="ログインID">
-						</label>
-				</div>
-				<div id="password">
-						<label>
-								<input id="passwordArea" type="text" name="loginPassword" value="" placeholder="新しいパスワード">
-						</label>
-				</div>
-				<div id="confirmPassword">
-						<label>
-								<input id="confirmArea" type="password" name="confirmPassword" value="" placeholder="確認用パスワード">
-						</label>
-				</div>
-						<p><span style="color:#FF0000"><s:property value="userIdMessage" /></span></p>
-						<p><span style="color:#FF0000"><s:property value="passwordMessage"/></span></p>
-				<s:submit value="登録" id="submitArea"/>
+			<s:form action="ConfirmPasswordAction" theme="simple">
+					<input class="passwordInput" type="text" name="loginId" value="" placeholder="ログインID">
+					<input class="passwordInput" type="text" name="loginPassword" value="" placeholder="新しいパスワード">
+					<input class="passwordInput" type="password" name="confirmPassword" value="" placeholder="確認用パスワード">
+					<p><span style="color:#FF0000"><s:property value="userIdMessage" /></span></p>
+					<p><span style="color:#FF0000"><s:property value="passwordMessage"/></span></p>
+					<s:submit value="登録" id="submitArea"/>
 			</s:form>
+
+		<div id="goHome">
+			<span>Login画面に戻る場合は</span><a href="./login.jsp">こちら</a>
+		</div>
+
 	</div>
-<div>
-	<div id="goHome">
-		<span>Login画面に戻る場合は</span><a href="./login.jsp">こちら</a>
-	</div>
-</div>
 </body>
 </html>
