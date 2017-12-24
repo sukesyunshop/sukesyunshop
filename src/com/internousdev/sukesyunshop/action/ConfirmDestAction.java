@@ -69,7 +69,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		}
 		if (validation.hiraganaValid(familyName) && validation.harfEnglishValied(familyName)
 				&& validation.kanjiValid(familyName)) {
-			familyMessage = "姓は半角英語or漢字orひらがなで入力してください";
+			familyMessage = "姓は半角英語または漢字またはひらがなで入力してください";
 			return ERROR;
 		}
 
@@ -83,7 +83,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		}
 		if (validation.harfEnglishValied(firstName) && validation.kanjiValid(firstName)
 				&& validation.hiraganaValid(firstName)) {
-			firstMessage = "名は半角英語or漢字orひらがなで入力してください";
+			firstMessage = "名は半角英語または漢字またはひらがなで入力してください";
 			return ERROR;
 		}
 
@@ -135,7 +135,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 			return ERROR;
 		}
 		if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))) {
-			addressMessage = "住所は半角英数字漢字and半角記号or全角カタカナで入力してください";
+			addressMessage = "住所は半角英数字漢字または半角記号または全角カタカナで入力してください";
 			return ERROR;
 		}
 
