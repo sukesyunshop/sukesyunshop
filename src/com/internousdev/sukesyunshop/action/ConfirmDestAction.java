@@ -217,7 +217,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		this.sex = sex;
 	}
 
-	public String getsexString() {
+	public String getSexString() {
 		return sexString;
 	}
 
