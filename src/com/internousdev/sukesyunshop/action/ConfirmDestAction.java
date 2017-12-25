@@ -21,7 +21,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 	private String familyNameKana;
 	private String firstNameKana;
 	private int sex;
-	private String sexStr;
+	private String sexString;
 	private String email;
 	private String telNumber;
 	private String userAddress;
@@ -118,11 +118,11 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 
 		/*------- 性別選択 -------*/
 		if (sex == 0) {
-			sexStr = "男性";
+			sexString = "男性";
 		}
 
 		if (sex == 1) {
-			sexStr = "女性";
+			sexString = "女性";
 		}
 
 		/*------- 住所のエラー処理 ------*/
@@ -217,12 +217,12 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		this.sex = sex;
 	}
 
-	public String getSexStr() {
-		return sexStr;
+	public String getsexString() {
+		return sexString;
 	}
 
-	public void setSexStr(String sexStr) {
-		this.sexStr = sexStr;
+	public void setSexString(String sexString) {
+		this.sexString = sexString;
 	}
 
 	public String getEmail() {
