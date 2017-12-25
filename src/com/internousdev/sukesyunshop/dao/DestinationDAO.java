@@ -21,37 +21,29 @@ public class DestinationDAO {
 	// 宛先のDTO
 	public List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
 
-//宛先の情報を参照メゾット
+	// 宛先の情報を参照メゾット
 	public List<DestinationDTO> destSelect(String userId) throws SQLException {
 
-		try {
-			String sql = "SELECT * FROM destination_info WHERE user_id=?";
+		String sql = "SELECT * FROM destination_info WHERE user_id=?";
 
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userId);
-			ResultSet rs = ps.executeQuery();
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, userId);
+		ResultSet rs = ps.executeQuery();
 
-			while (rs.next()) {
-				DestinationDTO dto = new DestinationDTO();
-				dto.setUserId(rs.getString("user_id"));
-				dto.setFamilyName(rs.getString("family_name"));
-				dto.setFirstName(rs.getString("first_name"));
-				dto.setFamilyNameKana(rs.getString("family_name_kana"));
-				dto.setFirstNameKana(rs.getString("first_name_kana"));
-				dto.setEmail(rs.getString("email"));
-				dto.setTelNumber(rs.getString("tel_number"));
-				dto.setUserAddress(rs.getString("user_address"));
+		while (rs.next()) {
+			DestinationDTO dto = new DestinationDTO();
+			dto.setUserId(rs.getString("user_id"));
+			dto.setFamilyName(rs.getString("family_name"));
+			dto.setFirstName(rs.getString("first_name"));
+			dto.setFamilyNameKana(rs.getString("family_name_kana"));
+			dto.setFirstNameKana(rs.getString("first_name_kana"));
+			dto.setEmail(rs.getString("email"));
+			dto.setTelNumber(rs.getString("tel_number"));
+			dto.setUserAddress(rs.getString("user_address"));
 
-				destDTOList.add(dto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			destDTOList.add(dto);
 		}
-		try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+
 		return destDTOList;
 	}
 	/*
@@ -64,52 +56,31 @@ public class DestinationDAO {
 
 		String sql = "INSERT INTO destination_info(user_id,family_name, "
 				+ "first_name, family_name_kana, first_name_kana, sex,"
-				+ "email,tel_number,user_address , insert_date , update_date) "
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+				+ "email,tel_number,user_address , insert_date , update_date) " + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
-		try {
-			PreparedStatement ps = con.prepareStatement(sql);
+		PreparedStatement ps = con.prepareStatement(sql);
 
-			ps.setString(1, dto.getUserId());
-			ps.setString(2, dto.getFamilyName());
-			ps.setString(3, dto.getFirstName());
-			ps.setString(4, dto.getFamilyNameKana());
-			ps.setString(5, dto.getFirstNameKana());
-			ps.setInt(6, dto.getSex());
-			ps.setString(7, dto.getEmail());
-			ps.setString(8, dto.getTelNumber());
-			ps.setString(9, dto.getUserAddress());
-			ps.setString(10, dateUtil.getDate());
-			ps.setString(11, dateUtil.getDate());
+		ps.setString(1, dto.getUserId());
+		ps.setString(2, dto.getFamilyName());
+		ps.setString(3, dto.getFirstName());
+		ps.setString(4, dto.getFamilyNameKana());
+		ps.setString(5, dto.getFirstNameKana());
+		ps.setInt(6, dto.getSex());
+		ps.setString(7, dto.getEmail());
+		ps.setString(8, dto.getTelNumber());
+		ps.setString(9, dto.getUserAddress());
+		ps.setString(10, dateUtil.getDate());
+		ps.setString(11, dateUtil.getDate());
 
-			insertCount = ps.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		insertCount = ps.executeUpdate();
 
 		return insertCount;
 	}
 
-
-	public boolean existDest(DestinationDTO dto) throws SQLException{
-		String sql =""
-				+ "SELECT * "
-				+ "FROM destination_info "
-				+ "WHERE user_id = ? "
-				+ "AND family_name = ? "
-				+ "AND first_name =? "
-				+ "AND family_name_kana = ? "
-				+ "AND first_name_kana = ? "
-				+ "AND sex = ? "
-				+ "AND email = ? "
-				+ "AND tel_number = ? "
-				+ "AND user_address = ? ";
+	public boolean existDest(DestinationDTO dto) throws SQLException {
+		String sql = "" + "SELECT * " + "FROM destination_info " + "WHERE user_id = ? " + "AND family_name = ? "
+				+ "AND first_name =? " + "AND family_name_kana = ? " + "AND first_name_kana = ? " + "AND sex = ? "
+				+ "AND email = ? " + "AND tel_number = ? " + "AND user_address = ? ";
 
 		PreparedStatement ps = con.prepareStatement(sql);
 
