@@ -125,17 +125,20 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 			sexString = "女性";
 		}
 
-		/*------- 住所のエラー処理 ------*/
-		if (validation.emptyValid(userAddress)) {
-			addressMessage = "住所が未入力です";
+		/*------- メールアドレスのエラー処理 ------*/
+		if (validation.emptyValid(email)) {
+
+			emailMessage = "メールアドレスが未入力です";
 			return ERROR;
 		}
-		if (validation.overUnderValid(userAddress, 15, 50)) {
-			addressMessage = "住所は15文字以上50文字以下で入力してください。";
+		if (validation.overUnderValid(email, 18, 32)) {
+
+			emailMessage = "メールアドレスは18文字以上32文字以下で入力してください。";
 			return ERROR;
 		}
-		if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))) {
-			addressMessage = "住所は半角英数字漢字または半角記号または全角カタカナで入力してください";
+		if (validation.emailAddressValid(email)) {
+
+			emailMessage = "メールアドレスは半角英数字・半角記号で入力してください";
 			return ERROR;
 		}
 
@@ -155,22 +158,22 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 			return ERROR;
 		}
 
-		/*------- メールアドレスのエラー処理 ------*/
-		if (validation.emptyValid(email)) {
-
-			emailMessage = "メールアドレスが未入力です";
+		/*------- 住所のエラー処理 ------*/
+		if (validation.emptyValid(userAddress)) {
+			addressMessage = "住所が未入力です";
 			return ERROR;
 		}
-		if (validation.overUnderValid(email, 18, 32)) {
-
-			emailMessage = "メールアドレスは18文字以上32文字以下で入力してください。";
+		if (validation.overUnderValid(userAddress, 15, 50)) {
+			addressMessage = "住所は15文字以上50文字以下で入力してください。";
 			return ERROR;
 		}
-		if (validation.emailAddressValid(email)) {
-
-			emailMessage = "メールアドレスは半角英数字・半角記号で入力してください";
+		if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))) {
+			addressMessage = "住所は半角英数字漢字または半角記号または全角カタカナで入力してください";
 			return ERROR;
 		}
+
+
+
 		/*-------成功処理 処理 ------*/
 		return SUCCESS;
 

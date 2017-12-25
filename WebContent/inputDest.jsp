@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/template.css">
 <link rel="stylesheet" type="text/css" href="./css/inputDest.css">
+
+	<script type="text/javascript" src="./javascript/buyItemComplete.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <title>購入情報入力画面</title>
 </head>
 <body>
@@ -79,9 +83,9 @@
 						<tr id="name">
 							<th>お名前 :</th>
 							<td class="familyName"><input type="text" name="familyName"
-								value="" placeholder="姓"></td>
+								value='<s:property value="getFamilyName()"/>' placeholder="姓"></td>
 							<td class="firstName"><input type="text" name="firstName"
-								value="" placeholder="名"></td>
+								value='<s:property value="getFirstName()"/>' placeholder="名"></td>
 						</tr>
 
 
@@ -89,16 +93,16 @@
 						<tr id="nameKana">
 							<th>ふりがな：</th>
 							<td class="familyNameKana"><input type="text"
-								name="familyNameKana" value="" placeholder="せい"></td>
+								name="familyNameKana" value='<s:property value="getFamilyNameKana()"/>'placeholder="せい"></td>
 							<td class="firstNameKana"><input type="text"
-								name="firstNameKana" value="" placeholder="めい"></td>
+								name="firstNameKana" value='<s:property value="getFirstNameKana()"/>' placeholder="めい"></td>
 						</tr>
 
 
 						<!-- メールアドレス -->
 						<tr id="email">
 							<th>メールアドレス：</th>
-							<td class="email"><input type="email" name="email" value=""
+							<td class="email"><input type="email" name="email" value='<s:property value="getEmail()"/>'
 								placeholder="メールアドレス"></td>
 						</tr>
 
@@ -106,7 +110,7 @@
 						<tr id="telNumber">
 							<th>電話番号：</th>
 							<td class="telNumber"><input type="text" name="telNumber"
-								value="" placeholder="電話番号"></td>
+								value='<s:property value="getTelNumber()"/>' placeholder="電話番号"></td>
 						</tr>
 
 
@@ -114,7 +118,7 @@
 						<tr id="userAddress">
 							<th>住所：</th>
 							<td class="userAddess"><input type="text" name="userAddress"
-								value="" placeholder="住所"></td>
+								value='<s:property value="getUserAddess()"/>' placeholder="住所"></td>
 						</tr>
 
 						<!-- 性別ラジオボタン -->
