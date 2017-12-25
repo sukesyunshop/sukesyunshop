@@ -77,7 +77,7 @@
 				</tr>
 				<tr>
 					<th>性別</th>
-					<td><s:property value="sexStr" />
+					<td><s:property value="sexString" />
 
 			</tbody>
 		</table>
