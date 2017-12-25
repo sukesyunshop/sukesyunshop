@@ -20,7 +20,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
 	private ArrayList<CategoryDTO> cateList;
 	private int listSize;
 	private int page;
-	private String emptyMessage;
+	private String emptyMessage = "";
 
 	private Map<String, Object> session;
 
