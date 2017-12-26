@@ -15,79 +15,108 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CartAction extends ActionSupport implements SessionAware{
 
+	/*
+	 * 挿入するproduct_infoのproduct_idを保管
+	 */
 	private int productId;
+
+	/*
+	 * セッション情報を格納するマップ
+	 */
 	public Map<String, Object> session;
-	private CartDAO cartDAO;
+
+	/*
+	 * 挿入後のカート情報を保管する
+	 */
 	private ArrayList<CartDTO> cartList;
-	private ArrayList<CategoryDTO> cateList;
 
-private String result = ERROR;
+	/*
+	 * カテゴリ一覧のリスト
+	 */
+	private ArrayList<CategoryDTO> categoryList;
+
 	public String execute(){
-
-		cartDAO = new CartDAO();
-
+		String result = SUCCESS;
+		CartDAO cartDAO = new CartDAO();
+		SearchDAO searchDAO = new SearchDAO();
 		String userId;
 		boolean loginFlag = session.get(SessionName.getLoginFlag()).equals(SessionName.getTrue());
-		if(loginFlag){
+
+		if(loginFlag) {
 			userId = session.get(SessionName.getUserId()).toString();
-		}else{
+		} else {
 			userId = session.get(SessionName.getTempUserId()).toString();
 		}
-		try{
-			if(productId != 0 && !cartDAO.searchCart(userId, productId, loginFlag)){
+
+		try {
+
+			if(productId != 0 && !cartDAO.searchCart(userId, productId, loginFlag)) {
 				cartDAO.addCart(userId, productId, loginFlag);
 			}
-			cartList = cartDAO.getCartList(userId,loginFlag);
 
-			SearchDAO searchDAO = new SearchDAO();
-			setCateList(searchDAO.getCategory());
-
-			result = SUCCESS;
+			setCartList(cartDAO.getCartList(userId,loginFlag));
+			setCategoryList(searchDAO.getCategory());
 		}catch(SQLException e){
 			e.printStackTrace();
+			result = ERROR;
 		}
 		return result;
-		}
+	}
 
-		public int getProductId() {
-			return productId;
-		}
-		public void setProductId(int productId) {
-			this.productId = productId;
-		}
+	/**
+	 * @return productId
+	 */
+	public int getProductId() {
+		return productId;
+	}
 
-		public Map<String, Object> getSession() {
-			return session;
-		}
-		public void setSession(Map<String, Object> session) {
-			this.session = session;
-		}
+	/**
+	 * @param productId セットする productId
+	 */
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
 
-		public CartDAO getCartDAO() {
-			return cartDAO;
-		}
-		public void setCartDAO(CartDAO cartDAO) {
-			this.cartDAO = cartDAO;
-		}
+	/**
+	 * @return session
+	 */
+	public Map<String, Object> getSession() {
+		return session;
+	}
 
-		public ArrayList<CartDTO> getCartList() {
-			return cartList;
-		}
-		public void setCartList(ArrayList<CartDTO> cartList) {
-			this.cartList = cartList;
-		}
+	/**
+	 * @param session セットする session
+	 */
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
 
+	/**
+	 * @return cartList
+	 */
+	public ArrayList<CartDTO> getCartList() {
+		return cartList;
+	}
 
+	/**
+	 * @param cartList セットする cartList
+	 */
+	public void setCartList(ArrayList<CartDTO> cartList) {
+		this.cartList = cartList;
+	}
 
-		public ArrayList<CategoryDTO> getCateList() {
-			return cateList;
-		}
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
 
-
-
-		public void setCateList(ArrayList<CategoryDTO> cateList) {
-			this.cateList = cateList;
-		}
-
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
+	}
 
 }

@@ -13,99 +13,183 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class SearchAction extends ActionSupport implements SessionAware {
 
+	/*
+	 * 検索テキストを保管する変数
+	 */
 	private String searchText;
+
+	/*
+	 * 検索カテゴリを保管する変数
+	 */
 	private int categoryId;
 
-	private ArrayList<CatalogDTO> list;
-	private ArrayList<CategoryDTO> cateList;
+	/*
+	 * 検索結果のDTOを保管するリスト
+	 * CatalogActionと同名にする必要あり
+	 */
+	private ArrayList<CatalogDTO> catalogDTOList;
+
+	/*
+	 * カテゴリ一覧のリスト
+	 */
+	private ArrayList<CategoryDTO> categoryList;
+
+	/*
+	 * 検索結果のDTOを保管するリスト（catalogDTOList）のサイズを保管するリスト
+	 * CatalogActionと同名にする必要あり
+	 */
 	private int listSize;
-	private int page;
+
+	/*
+	 * 検索結果を何ページにするかを保管する変数
+	 * CatalogActionと同名にする必要あり
+	 */
+	private int page = 1;
+
+	/*
+	 * 検索結果が何もなかった場合にエラーを出す変数
+	 * CatalogActionと同名にする必要あり
+	 */
 	private String emptyMessage = "";
 
+	/*
+	 * セッション情報を格納するマップ
+	 */
 	private Map<String, Object> session;
 
 	public String execute(){
+		String result = SUCCESS;
 		SearchDAO searchDAO = new SearchDAO();
-		if(page==0) page=1;
+
 		try {
-			list = searchDAO.searchCatalog(categoryId, searchText, page);
-			listSize = searchDAO.getCatalogCount(categoryId, searchText, page)/9+1;
-			if(list.size() == 0){
+			setCatalogDTOList(searchDAO.searchCatalog(categoryId, searchText, page));
+			setListSize(searchDAO.getCatalogCount(categoryId, searchText, page) / 9 + 1);
+
+			if(catalogDTOList.size() == 0) {
 				emptyMessage = "検索結果がありません";
 			}
-			setCateList(searchDAO.getCategory());
 
-			return SUCCESS;
+			setCategoryList(searchDAO.getCategory());
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return ERROR;
+			result = ERROR;
 		}
+
+		return result;
 	}
 
+	/**
+	 * @return searchText
+	 */
 	public String getSearchText() {
 		return searchText;
 	}
 
-
+	/**
+	 * @param searchText セットする searchText
+	 */
 	public void setSearchText(String searchText) {
 		this.searchText = searchText;
 	}
 
+	/**
+	 * @return categoryId
+	 */
 	public int getCategoryId() {
 		return categoryId;
 	}
 
+	/**
+	 * @param categoryId セットする categoryId
+	 */
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 
-	public ArrayList<CatalogDTO> getList() {
-		return list;
+	/**
+	 * @return catalogDTOList
+	 */
+	public ArrayList<CatalogDTO> getCatalogDTOList() {
+		return catalogDTOList;
 	}
 
-	public void setList(ArrayList<CatalogDTO> list) {
-		this.list = list;
+	/**
+	 * @param catalogDTOList セットする catalogDTOList
+	 */
+	public void setCatalogDTOList(ArrayList<CatalogDTO> catalogDTOList) {
+		this.catalogDTOList = catalogDTOList;
 	}
 
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
+
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
+	}
+
+	/**
+	 * @return listSize
+	 */
 	public int getListSize() {
 		return listSize;
 	}
 
+	/**
+	 * @param listSize セットする listSize
+	 */
 	public void setListSize(int listSize) {
 		this.listSize = listSize;
 	}
 
+	/**
+	 * @return page
+	 */
 	public int getPage() {
 		return page;
 	}
 
+	/**
+	 * @param page セットする page
+	 */
 	public void setPage(int page) {
 		this.page = page;
 	}
 
+	/**
+	 * @return emptyMessage
+	 */
 	public String getEmptyMessage() {
 		return emptyMessage;
 	}
 
+	/**
+	 * @param emptyMessage セットする emptyMessage
+	 */
 	public void setEmptyMessage(String emptyMessage) {
 		this.emptyMessage = emptyMessage;
 	}
 
+	/**
+	 * @return session
+	 */
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	/**
+	 * @param session セットする session
+	 */
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
-	public Map<String, Object> getSession() {
-		return session;
-	}
-
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
-	}
-
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
-	}
 
 }

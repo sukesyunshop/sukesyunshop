@@ -14,55 +14,158 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ProductDetailAction extends ActionSupport implements SessionAware {
 
-	public int productId;
-	public CatalogDTO dto;
-	public Map<String, Object> session;
-	public ArrayList<CatalogDTO> miniList;
-	public ArrayList<CategoryDTO> cateList;
-	public CatalogDAO catalogdao = new CatalogDAO();
+	/*
+	 * 戻るに対応するため検索テキストを保管する変数
+	 */
+	private String searchText;
 
+	/*
+	 * 戻るに対応するため検索カテゴリを保管する変数
+	 */
+	private int categoryId;
 
-	private String result = ERROR;
-	public String execute(){
+	/*
+	 * product_infoのproduct_idを保管する
+	 */
+	private int productId;
 
-		try{
-			dto=catalogdao.getItem(productId);
-			miniList=catalogdao.miniList(dto.getCategoryId(), dto.getId());
+	/*
+	 * 商品詳細に表示するdtoを保管する
+	 */
+	private CatalogDTO catalogDTO;
 
-			SearchDAO dao = new SearchDAO();
-			cateList = dao.getCategory();
+	/*
+	 * セッション情報を格納するマップ
+	 */
+	private Map<String, Object> session;
 
-			result=SUCCESS;
-			}catch(SQLException e){
-				e.printStackTrace();
-			}
-			return result;
+	/*
+	 * 商品情報を表示した際同じカテゴリの商品を4件表示するためのリスト
+	 */
+	private ArrayList<CatalogDTO> miniList;
 
+	/*
+	 * カテゴリ一覧のリスト
+	 */
+	private ArrayList<CategoryDTO> categoryList;
+
+	public String execute() {
+		String result = SUCCESS;
+
+		try {
+			CatalogDAO catalogDAO = new CatalogDAO();
+			SearchDAO searchDAO = new SearchDAO();
+
+			setCatalogDTO(catalogDAO.getItem(productId));
+			setMiniList(catalogDAO.miniList(catalogDTO.getCategoryId(), catalogDTO.getId()));
+			setCategoryList(searchDAO.getCategory());
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+			result = ERROR;
 		}
+		return result;
 
+	}
 
-		public int getProductId() {
-			return productId;
-		}
-		public void setProductId(int productId) {
-			this.productId = productId;
-		}
+	/**
+	 * @return productId
+	 */
+	public int getProductId() {
+		return productId;
+	}
 
-		public Map<String,Object> getSession () {
-			return session;
-		}
-		public void setSession(Map<String, Object> arg0) {
-				this.session = arg0;
-		}
+	/**
+	 * @param productId セットする productId
+	 */
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
 
+	/**
+	 * @return catalogDTO
+	 */
+	public CatalogDTO getCatalogDTO() {
+		return catalogDTO;
+	}
 
-		public ArrayList<CatalogDTO> getMiniList() {
-			return miniList;
-		}
+	/**
+	 * @param catalogDTO セットする catalogDTO
+	 */
+	public void setCatalogDTO(CatalogDTO catalogDTO) {
+		this.catalogDTO = catalogDTO;
+	}
 
+	/**
+	 * @return session
+	 */
+	public Map<String, Object> getSession() {
+		return session;
+	}
 
-		public void setMiniList(ArrayList<CatalogDTO> miniList) {
-			this.miniList = miniList;
-		}
+	/**
+	 * @param session セットする session
+	 */
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	/**
+	 * @return miniList
+	 */
+	public ArrayList<CatalogDTO> getMiniList() {
+		return miniList;
+	}
+
+	/**
+	 * @param miniList セットする miniList
+	 */
+	public void setMiniList(ArrayList<CatalogDTO> miniList) {
+		this.miniList = miniList;
+	}
+
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
+
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
+	}
+
+	/**
+	 * @return searchText
+	 */
+	public String getSearchText() {
+		return searchText;
+	}
+
+	/**
+	 * @param searchText セットする searchText
+	 */
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
+
+	/**
+	 * @return categoryId
+	 */
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	/**
+	 * @param categoryId セットする categoryId
+	 */
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
 
 }

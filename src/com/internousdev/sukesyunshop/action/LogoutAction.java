@@ -10,30 +10,40 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class LogoutAction extends ActionSupport implements SessionAware {
 
+	/*
+	 * セッション情報を格納するマップ
+	 */
 	private Map<String, Object> session;
 
-	public String execute(){
+	public String execute() {
 		LoginAuthDAO dao = new LoginAuthDAO();
 		String userId = session.get(SessionName.getUserId()).toString();
 		String password = session.get(SessionName.getUserPassword()).toString();
 		boolean saveId = session.get(SessionName.getSaveId()).equals(SessionName.getTrue());
-		dao.logout(userId, password);
 
+		dao.logout(userId, password);
 		session.clear();
-		if(saveId){
+
+		if(saveId) {
 			session.put(SessionName.getUserId(), userId);
 		}
+
 		return SUCCESS;
 	}
 
+	/**
+	 * @return session
+	 */
 	public Map<String, Object> getSession() {
 		return session;
 	}
 
+	/**
+	 * @param session セットする session
+	 */
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-
 	}
 
 }

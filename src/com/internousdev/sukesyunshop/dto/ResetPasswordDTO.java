@@ -2,16 +2,24 @@ package com.internousdev.sukesyunshop.dto;
 
 public class ResetPasswordDTO {
 
-	/*ログインID*/
+	/*
+	 ログインID
+	 */
 	private String loginId;
 
-	/*新規パスワード*/
+	/*
+	 新規パスワード
+	 */
 	private String loginPassword;
 
-	/*確認用パスワード*/
+	/*
+	 確認用パスワード
+	 */
 	private String confirmPassword;
 
-	/*ログインIDのゲッターセッター*/
+	/*
+	 ログインIDのゲッターセッター
+	 */
 	public String getLoginId() {
 		return loginId;
 	}
@@ -19,7 +27,9 @@ public class ResetPasswordDTO {
 		this.loginId = loginId;
 	}
 
-	/*新規パスワードのゲッターセッター*/
+	/*
+	 新規パスワードのゲッターセッター
+	 */
 	public String getLoginPassword() {
 		return loginPassword;
 	}
@@ -27,7 +37,9 @@ public class ResetPasswordDTO {
 		this.loginPassword = loginPassword;
 	}
 
-	/*確認用のパスワードのゲッターセッター*/
+	/*
+	 確認用のパスワードのゲッターセッター
+	 */
 	public String getConfirmPassword() {
 		return confirmPassword;
 	}

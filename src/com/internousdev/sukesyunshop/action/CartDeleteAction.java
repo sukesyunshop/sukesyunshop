@@ -15,92 +15,105 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CartDeleteAction extends ActionSupport implements SessionAware{
 
-	private CartDAO cartDAO;
-	public Map<String, Object> session;
-	private int productId;
-	private ArrayList<CartDTO> cartList;
-	private ArrayList<CategoryDTO> cateList;
-	public String result = ERROR;
+	/*
+	 * セッション情報を格納するマップ
+	 */
+	private Map<String, Object> session;
 
-	public String execute(){
-		cartDAO = new CartDAO();
-		String userId;
+	/*
+	 * 削除するproduct_infoのproduct_idを保管
+	 */
+	private int productId;
+
+	/*
+	 * 削除後のカート情報を保管する
+	 */
+	private ArrayList<CartDTO> cartList;
+
+	/*
+	 * カテゴリ一覧のリスト
+	 */
+	private ArrayList<CategoryDTO> categoryList;
+
+	public String execute() {
+		String result = ERROR;
+		CartDAO cartDAO = new CartDAO();
+		SearchDAO searchDAO = new SearchDAO();
 		boolean loginFlag = session.get(SessionName.getLoginFlag()).equals(SessionName.getTrue());
-		if(loginFlag){
+		String userId;
+
+		if(loginFlag) {
 			userId = session.get(SessionName.getUserId()).toString();
-		}else{
+		} else {
 			userId = session.get(SessionName.getTempUserId()).toString();
 		}
 
-		try{
+		try {
 			cartDAO.deleteCart(userId, productId, loginFlag);
-
-			cartList = cartDAO.getCartList(userId, loginFlag);
-
-			SearchDAO searchDAO = new SearchDAO();
-			setCateList(searchDAO.getCategory());
-			result = SUCCESS;
-		}catch(SQLException e){
+			setCartList(cartDAO.getCartList(userId, loginFlag));
+			setCategoryList(searchDAO.getCategory());
+		} catch(SQLException e) {
 			e.printStackTrace();
+			result = ERROR;
 		}
+
 		return result;
-
 	}
 
-
-
-	public CartDAO getCartDAO() {
-		return cartDAO;
-	}
-	public void setCartDAO(CartDAO cartDAO) {
-		this.cartDAO = cartDAO;
-	}
-
+	/**
+	 * @return session
+	 */
 	public Map<String, Object> getSession() {
 		return session;
 	}
+
+	/**
+	 * @param session セットする session
+	 */
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
+	/**
+	 * @return productId
+	 */
 	public int getProductId() {
 		return productId;
 	}
+
+	/**
+	 * @param productId セットする productId
+	 */
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 
+	/**
+	 * @return cartList
+	 */
 	public ArrayList<CartDTO> getCartList() {
 		return cartList;
 	}
 
-
-
+	/**
+	 * @param cartList セットする cartList
+	 */
 	public void setCartList(ArrayList<CartDTO> cartList) {
 		this.cartList = cartList;
 	}
 
-
-
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
 	}
 
-
-
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
-	}
-
-
-
-	public String getResult() {
-		return result;
-	}
-	public void setResult(String result) {
-		this.result = result;
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
 	}
 
 }
-
-

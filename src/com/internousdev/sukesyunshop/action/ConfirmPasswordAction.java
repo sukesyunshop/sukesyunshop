@@ -11,103 +11,136 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ConfirmPasswordAction extends ActionSupport implements SessionAware {
 
-	/*ログインID*/
+	/*
+	 ログインID
+	 */
 	private String loginId;
 
-	/*新規パスワード*/
+	/*
+	 新規パスワード
+	 */
 	private String loginPassword;
 
-	/*確認用パスワード*/
+	/*
+	 確認用パスワード
+	 */
 	private String confirmPassword;
 
-	/*ログインIDと新規パスワードを格納*/
+	/*
+	 ログインIDと新規パスワードを格納
+	 */
 	public Map<String,Object> session;
 
-	/*新規パスワード入力についてのエラーメッセージ*/
+	/*
+	 新規パスワード入力についてのエラーメッセージ
+	 */
 	private String passwordMessage;
 
-	/*Validationクラスをインスタンス化*/
+	/*
+	 Validationクラスをインスタンス化
+	 */
 	public Validation validation = new Validation();
 
-	public ResetPasswordDAO resetPasswordDAO=new ResetPasswordDAO();
+	public ResetPasswordDAO resetPasswordDAO = new ResetPasswordDAO();
 
-	public ResetPasswordDTO resetPasswordDTO=new ResetPasswordDTO();
+	public ResetPasswordDTO resetPasswordDTO = new ResetPasswordDTO();
 
 
-	/*---------実行メソッド-----------*/
-	public String execute(){
-
-		/*パスワードが未入力*/
-		if(validation.emptyValid(loginPassword)){
-			passwordMessage="パスワードを入力してください。";
+	/*
+	 実行メソッド
+	 */
+	public String execute() {
+		
+		/*
+		 パスワードが未入力
+		 */
+		if(validation.emptyValid(loginPassword)) {
+			passwordMessage = "パスワードを入力してください。";
 			return ERROR;
 		}
 
-		/*パスワードの桁数*/
-		if(validation.overUnderValid(loginPassword,1,16)){
-			passwordMessage="パスワードは1文字以上16文字以下で入力してください。";
+		/*
+		 パスワードの桁数
+		 */
+		if(validation.overUnderValid(loginPassword,1,16)) {
+			passwordMessage = "パスワードは1文字以上16文字以下で入力してください。";
 			return ERROR;
 		}
 
-		/*パスワードの文字種*/
-		if(validation.harfEngNumValied(loginPassword)){
-			passwordMessage="パスワードは半角英数字で入力してください。";
+		/*
+		 パスワードの文字種
+		 */
+		if(validation.harfEngNumValied(loginPassword)) {
+			passwordMessage = "パスワードは半角英数字で入力してください。";
 			return ERROR;
 		}
 
-		/*新規パスワードと確認パスワードを比べる*/
-		if(loginPassword.equals(confirmPassword)){
+		/*
+		 新規パスワードと確認パスワードを比べる
+		 */
+		if(loginPassword.equals(confirmPassword)) {
 			session.put("loginId",loginId);
 			session.put("loginPassword", loginPassword);
 			return SUCCESS;
+
 		}else{
-			passwordMessage="入力されたパスワードが異なります。";
+			passwordMessage = "入力されたパスワードが異なります。";
 			return ERROR;
 		}
 	}
 
 
-		/*新規パスワードのゲッターセッター*/
-		public String getLoginPassword() {
-			return loginPassword;
-		}
+	/*
+		 新規パスワードのゲッターセッター
+	 */
+	public String getLoginPassword() {
+		return loginPassword;
+	}
 
-		public void setLoginPassword(String loginPassword) {
-			this.loginPassword = loginPassword;
-		}
+	public void setLoginPassword(String loginPassword) {
+		this.loginPassword = loginPassword;
+	}
 
-		/*ログインIDのゲッターセッター*/
-		public String getLoginId() {
-			return loginId;
-		}
-		public void setLoginId(String loginId) {
-			this.loginId = loginId;
-		}
+	/*
+		 ログインIDのゲッターセッター
+	 */
+	public String getLoginId() {
+		return loginId;
+	}
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
 
-		/*確認用パスワードのゲッターセッター*/
-		public String getConfirmPassword(){
-			return confirmPassword;
-		}
-		public void setConfirmPassword(String confirmPassword){
-			this.confirmPassword=confirmPassword;
-		}
+	/*
+		 確認用パスワードのゲッターセッター
+	 */
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 
-		/*パスワード入力エラーメッセージのゲッターセッター*/
-		public String getPasswordMessage() {
-			return passwordMessage;
-		}
-		public void setPasswordMessage(String passwordMessage) {
-			this.passwordMessage = passwordMessage;
-		}
+	/*
+		 パスワード入力エラーメッセージのゲッターセッター
+	 */
+	public String getPasswordMessage() {
+		return passwordMessage;
+	}
+	public void setPasswordMessage(String passwordMessage) {
+		this.passwordMessage = passwordMessage;
+	}
 
-		/*セッション*/
-		public Map<String, Object> getSession() {
-			return session;
-		}
-		@Override
-		public void setSession(Map<String, Object> session) {
-			this.session = session;
-		}
+	/*
+		 セッション
+	 */
+	public Map<String, Object> getSession() {
+		return session;
+	}
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
 }
 
 
