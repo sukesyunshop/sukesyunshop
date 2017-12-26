@@ -19,7 +19,8 @@ public class AdvertizeAction extends ActionSupport implements SessionAware {
 	private String sort;
 
 	/*
-	 * 取得結果を表示するためのDTOをいれたリスト
+	 * 検索結果のDTOを保管するリスト
+	 * CatalogActionと同名にする必要あり
 	 */
 	private ArrayList<CatalogDTO> catalogDTOList;
 
@@ -36,7 +37,7 @@ public class AdvertizeAction extends ActionSupport implements SessionAware {
 	/*
 	 * 取得結果がなかった場合のエラー用メッセージ
 	 */
-	private String emptyMessage;
+	private String emptyMessage="";
 
 	/*
 	 * セッション情報を格納する
@@ -55,10 +56,11 @@ public class AdvertizeAction extends ActionSupport implements SessionAware {
 		}
 
 		try {
-			catalogDTOList = dao.getSaleCatalogList(id);
+			setCatalogDTOList(dao.getSaleCatalogList(id));
+			System.out.println(catalogDTOList.get(1).getCategoryName());
 
 			if(id != null) {
-				listSize = id.length/9;
+				listSize = id.length / 9;
 			} else {
 				listSize = 0;
 			}

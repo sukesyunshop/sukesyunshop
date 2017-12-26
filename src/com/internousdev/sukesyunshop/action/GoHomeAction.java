@@ -38,12 +38,12 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 	/*
 	 * AdvertizeActionに情報にどのグループ情報かを伝える定数
 	 */
-	private static final String SALE = "sale";
+	private final String SALE = "sale";
 
 	/*
 	 * AdvertizeActionに情報にどのグループ情報かを伝える定数
 	 */
-	private static final String ANIME = "anime";
+	private final String ANIME = "anime";
 
 	public String execute() {
 		String result = SUCCESS;
@@ -122,14 +122,14 @@ public class GoHomeAction extends ActionSupport implements SessionAware {
 	/**
 	 * @return sale
 	 */
-	public static String getSale() {
+	public String getSale() {
 		return SALE;
 	}
 
 	/**
 	 * @return anime
 	 */
-	public static String getAnime() {
+	public String getAnime() {
 		return ANIME;
 	}
 
