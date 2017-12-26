@@ -16,42 +16,31 @@
 
 .InputDestination {
 	display: inline-block;
-	margin: 0 auto;
+	text-align: left;
 	width: 300px;
 	height: 40px;
 	font-size: 18px;
 	border-radius: 3px;
-	text-align: center;
 }
 
 .name {
-	margin: 0 auto;
-	width: 300px;
-	height: 40px;
+
 }
 
 .nameKana {
-	margin: 0 auto;
-	width: 300px;
-	height: 40px;
+
 }
 
 .email {
-	margin: 0 auto;
-	width: 300px;
-	height: 40px;
+
 }
 
 .telNumber {
-	margin: 0 auto;
-	width: 300px;
-	height: 40px;
+
 }
 
 .userAddress {
-	margin: 0 auto;
-	width: 300px;
-	height: 40px;
+
 }
 
 #Button {
