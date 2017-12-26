@@ -54,51 +54,48 @@
 </head>
 <body>
 
-<!---------------ヘッダー -------------->
-<div id="header">
-	<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
+	<!---------------ヘッダー -------------->
+	<div id="header">
+		<a href="<s:url action="GoHomeAction"/>"><img src="./images/logo.png"></a>
 
-	<!-- 検索バー -->
-	<div class="bar">
-		<s:form action="SearchAction" theme="simple">
+		<!-- 検索バー -->
+		<div class="bar">
+			<s:form action="SearchAction" theme="simple">
 				<s:select class="selectCategory" name="categoryId" list="categoryList" listKey="categoryId" listValue="categoryName" />
-				<input class="input"  type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
-				<s:submit class="submit" value="検索"/>
-		</s:form>
-	</div>
+				<input class="input" type="search" name="searchText" placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$" title="半角英数　ひらがな　漢字" maxlength="16">
+				<s:submit class="submit" value="検索" />
+			</s:form>
+		</div>
 
-	<!-- メニューリスト-->
-	<ul id="menu">
+		<!-- メニューリスト-->
+		<ul id="menu">
 			<s:if test="#session.loginFlag == 'true'">
 				<li>
-					<a href="<s:url action='LogoutAction' />">
-						<img src="./images/logout.png" alt="logout" border="0" class="template"></a>
+					<a href="<s:url action='LogoutAction' />"><img src="./images/logout.png" alt="logout" border="0" class="template"></a>
 				</li>
 				<li>
-					<a href="<s:url action='GoMyPageAction' />">
-						<img src="./images/login.png" alt="mypage" border="0" class="template"></a>
+					<a href="<s:url action='GoMyPageAction' />"><img src="./images/login.png" alt="mypage" border="0" class="template"></a>
 				</li>
 			</s:if>
 			<s:else>
 				<li>
-					<a href="./login.jsp">
-						<img src="./images/login.png" alt="login" border="0" class="template"></a>
+					<a href="./login.jsp"><img src="./images/login.png"alt="login" border="0" class="template"></a>
 				</li>
 			</s:else>
-		<li>
-			<a href="CartAction"> <img src="./images/cart.png" alt="cart" border="0" class="template"></a>
-		</li>
-	</ul>
+			<li>
+				<a href="CartAction"> <img src="./images/cart.png"alt="cart" border="0" class="template"></a>
+			</li>
+		</ul>
 
-</div>
-<!------------ヘッダーここまで ------------>
+	</div>
+	<!------------ヘッダーここまで ------------>
+
 
 <!--------- カテゴリーリスト --------->
 		<ul id="category">
-			<s:iterator value="cateList">
+			<s:iterator value="categoryList">
 				<li>
-					<a href="<s:url action='SearchAction'><s:param name="categoryId" value="getCategoryId()"/></s:url>">
-						<s:property value="getCategoryName()" /></a>
+					<a href="<s:url action='SearchAction'><s:param name="categoryId" value="getCategoryId()"/></s:url>"><s:property value="getCategoryName()" /></a>
 				</li>
 			</s:iterator>
 		</ul>
@@ -131,8 +128,7 @@
 						<ul class="pickup">
 							<s:iterator value="randomList">
 								<li>
-									<a href="<s:url action="ProductDetailAction" ><s:param name="productId" value="getProductId()" /></s:url>">
-										<img src="<s:property value="getImageFilePath()"/>"></a>
+									<a href="<s:url action="ProductDetailAction" ><s:param name="productId" value="getProductId()" /></s:url>"><img src="<s:property value="getImageFilePath()"/>"></a>
 								</li>
 							</s:iterator>
 						</ul>
@@ -147,11 +143,14 @@
 			<ul class="rankingList">
 				<s:iterator value="newArriveList">
 					<li class="rankingItem">
-						<a href="<s:url action="ProductDetailAction" ><s:param name="productId" value="getProductId()" /></s:url>">
-						<img class="itemImage" alt="image" src="<s:property value="getImageFilePath()"/>">
+						<a href="<s:url action="ProductDetailAction" ><s:param name="productId" value="getProductId()" /></s:url>"><img class="itemImage" alt="image" src="<s:property value="getImageFilePath()"/>">
 						<ul class="itemInfoList">
-								<li class="itemInfo"><s:property value="getProductName()"/></li>
-								<li class="itemInfo"><s:property value="getPrice()"/>円</li>
+								<li class="itemInfo">
+									<s:property value="getProductName()"/>
+								</li>
+								<li class="itemInfo">
+									<s:property value="getPrice()"/>円
+								</li>
 						</ul>
 						</a>
 					</li>
