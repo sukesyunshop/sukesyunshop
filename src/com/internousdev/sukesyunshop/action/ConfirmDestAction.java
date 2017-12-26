@@ -39,7 +39,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 
 	// 宛先情報を格納
 	public Map<String, Object> session;
-	private ArrayList<CategoryDTO> cateList;
+	private ArrayList<CategoryDTO> categoryList;
 
 	// 各機能が外部クラスに存在しているのでインスタンス化
 
@@ -69,10 +69,9 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		SearchDAO searchDAO = new SearchDAO();
 
 		try {
-			setCateList(searchDAO.getCategory());
-		}
-
-		catch (SQLException e) {
+			setCategoryList(searchDAO.getCategory());
+			System.out.println(categoryList.get(1));
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return ERROR;
 		}
@@ -189,7 +188,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		}
 
 		/*------- 住所のエラー処理 ------*/
-		if (validation.emptyValid(userAddress)) {
+		/*if (validation.emptyValid(userAddress)) {
 			addressMessage = "住所が未入力です";
 			errorChecker = true;
 		}
@@ -200,7 +199,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		else if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))) {
 			addressMessage = "住所は半角英数字漢字または半角記号または全角カタカナで入力してください";
 			errorChecker = true;
-		}
+		}*/
 
 		/**
 		 * エラー検知
@@ -350,16 +349,64 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		this.session = session;
 	}
 
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
-	}
-
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
-	}
-
 	public Map<String, Object> getSession() {
 		return session;
+	}
+
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
+
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
+	}
+
+	/**
+	 * @return validation
+	 */
+	public Validation getValidation() {
+		return validation;
+	}
+
+	/**
+	 * @param validation セットする validation
+	 */
+	public void setValidation(Validation validation) {
+		this.validation = validation;
+	}
+
+	/**
+	 * @return destDAO
+	 */
+	public DestinationDAO getDestDAO() {
+		return destDAO;
+	}
+
+	/**
+	 * @param destDAO セットする destDAO
+	 */
+	public void setDestDAO(DestinationDAO destDAO) {
+		this.destDAO = destDAO;
+	}
+
+	/**
+	 * @return destDTO
+	 */
+	public DestinationDTO getDestDTO() {
+		return destDTO;
+	}
+
+	/**
+	 * @param destDTO セットする destDTO
+	 */
+	public void setDestDTO(DestinationDTO destDTO) {
+		this.destDTO = destDTO;
 	}
 
 }

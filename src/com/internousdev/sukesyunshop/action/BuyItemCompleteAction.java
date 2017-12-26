@@ -24,7 +24,7 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 	private int productId;
 
 	public Map<String, Object> session;
-	private ArrayList<CategoryDTO> cateList;
+	private ArrayList<CategoryDTO> categoryList;
 
 	/**
 	 * 宛先情報DAO&宛先情報DTOをインスタンス化
@@ -64,7 +64,7 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 
 		try {
 			SearchDAO searchDAO = new SearchDAO();
-			setCateList(searchDAO.getCategory());
+			setCategoryList(searchDAO.getCategory());
 
 			destDTOList = destDAO.destSelect(userId);
 			if (destDTOList.size() == 0) {
@@ -150,12 +150,33 @@ public class BuyItemCompleteAction extends ActionSupport implements SessionAware
 		this.destDTOList = destDTOList;
 	}
 
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
 	}
 
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
 	}
+
+	/**
+	 * @return cartDTO
+	 */
+	public ArrayList<CartDTO> getCartDTO() {
+		return cartDTO;
+	}
+
+	/**
+	 * @param cartDTO セットする cartDTO
+	 */
+	public void setCartDTO(ArrayList<CartDTO> cartDTO) {
+		this.cartDTO = cartDTO;
+	}
+
 
 }

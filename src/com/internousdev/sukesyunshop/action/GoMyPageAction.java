@@ -16,7 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class GoMyPageAction extends ActionSupport implements SessionAware{
 
 	public Map<String,Object> session;
-	private ArrayList<CategoryDTO> cateList;
+	private ArrayList<CategoryDTO> categoryList;
 	public UserInfoDTO dto;
 
 	public String execute(){
@@ -28,7 +28,7 @@ public class GoMyPageAction extends ActionSupport implements SessionAware{
 			dto=dao.GoMyPageList(userId);
 
 			SearchDAO searchDAO = new SearchDAO();
-			setCateList(searchDAO.getCategory());
+			setCategoryList(searchDAO.getCategory());
 
 			return SUCCESS;
 		}catch (SQLException e){
@@ -37,39 +37,46 @@ public class GoMyPageAction extends ActionSupport implements SessionAware{
 		}
 	}
 
-/**
- * @return session
- */
-public Map<String, Object> getSession() {
-	return session;
-}
+	/**
+	 * @return session
+	 */
+	public Map<String, Object> getSession() {
+		return session;
+	}
 
-/**
- * @param session セットする session
- */
-public void setSession(Map<String, Object> session) {
-	this.session = session;
-}
+	/**
+	 * @param session セットする session
+	 */
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
 
-/**
- * @return dto
- */
-public UserInfoDTO getDto() {
-	return dto;
-}
+	/**
+	 * @return dto
+	 */
+	public UserInfoDTO getDto() {
+		return dto;
+	}
 
-/**
- * @param dto セットする dto
- */
-public void setDto(UserInfoDTO dto) {
-	this.dto = dto;
-}
+	/**
+	 * @param dto セットする dto
+	 */
+	public void setDto(UserInfoDTO dto) {
+		this.dto = dto;
+	}
 
-public ArrayList<CategoryDTO> getCateList() {
-	return cateList;
-}
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
 
-public void setCateList(ArrayList<CategoryDTO> cateList) {
-	this.cateList = cateList;
-}
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
+	}
+
 }

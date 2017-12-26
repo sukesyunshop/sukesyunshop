@@ -18,7 +18,7 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 	public Map<String,Object> session;
 
 	public ArrayList<CatalogDTO>  list ;
-	private ArrayList<CategoryDTO> cateList;
+	private ArrayList<CategoryDTO> categoryList;
 
 	/**
 	 * 商品購入情報取得メソッド
@@ -31,7 +31,7 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 
 		try {
 			SearchDAO searchDAO = new SearchDAO();
-			setCateList(searchDAO.getCategory());
+			setCategoryList(searchDAO.getCategory());
 
 			list =dao.getItemHistoryList(userId);
 
@@ -40,6 +40,20 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 			e.printStackTrace();
 			return ERROR;
 		}
+	}
+
+	/**
+	 * @return session
+	 */
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	/**
+	 * @param session セットする session
+	 */
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 
 	/**
@@ -56,21 +70,19 @@ public class ItemHistoryAction extends ActionSupport implements SessionAware{
 		this.list = list;
 	}
 
-	@Override
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
 	}
 
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
 	}
 
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
-	}
-
-	public Map<String, Object> getSession() {
-		return session;
-	}
 
 }

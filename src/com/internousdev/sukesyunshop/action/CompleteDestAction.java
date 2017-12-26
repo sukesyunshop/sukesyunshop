@@ -26,7 +26,7 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 	private String telNumber;
 	private String userAddress;
 	public Map<String, Object> session;
-	private ArrayList<CategoryDTO> cateList;
+	private ArrayList<CategoryDTO> categoryList;
 
 	/*----必要な機能をインスタンス化-----*/
 	DestinationDAO destDAO = new DestinationDAO();
@@ -46,7 +46,7 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 		try {
 			if(destDAO.destInsert(destDTO) != 0 && destDAO.existDest(destDTO)){
 				SearchDAO searchDAO = new SearchDAO();
-				setCateList(searchDAO.getCategory());
+				setCategoryList(searchDAO.getCategory());
 				// 登録判定
 				// insertCountが0である場合 => 登録失敗
 				// insertCountが1である場合 => 登録成功
@@ -158,15 +158,21 @@ public class CompleteDestAction extends ActionSupport implements SessionAware {
 		this.session = session;
 	}
 
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
-	}
-
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
-	}
-
 	public Map<String, Object> getSession() {
 		return session;
+	}
+
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
+
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
 	}
 }

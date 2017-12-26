@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ItemHistoryDeleteAction extends ActionSupport implements SessionAware{
 
 	public Map<String,Object> session;
-	private ArrayList<CategoryDTO> cateList;
+	private ArrayList<CategoryDTO> categoryList;
 
 	public String execute(){
 		MyPageDAO deleteMyPageDAO= new MyPageDAO();
@@ -23,7 +23,7 @@ public class ItemHistoryDeleteAction extends ActionSupport implements SessionAwa
 		try {
 
 			SearchDAO searchDAO = new SearchDAO();
-			setCateList(searchDAO.getCategory());
+			setCategoryList(searchDAO.getCategory());
 
 			deleteMyPageDAO.deleteItemHistory(userId);
 
@@ -35,21 +35,31 @@ public class ItemHistoryDeleteAction extends ActionSupport implements SessionAwa
 
 	}
 
+	/**
+	 * @return session
+	 */
 	public Map<String, Object> getSession() {
 		return session;
 	}
 
-	@Override
+	/**
+	 * @param session セットする session
+	 */
 	public void setSession(Map<String, Object> session) {
-		this.session=session;
-
+		this.session = session;
 	}
 
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
 	}
 
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
 	}
 }
