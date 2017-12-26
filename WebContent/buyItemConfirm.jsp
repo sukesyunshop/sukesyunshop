@@ -83,10 +83,10 @@
 								値段：<s:property value="getPrice()" />円
 							</li>
 							<li class="itemInfo">
-								発売会社名:<s:property value="getReleaseDate()" />
+								発売会社名:<s:property value="getReleaseCompany()" />
 							</li>
 							<li class="itemInfo">
-								発売年月日:<s:property value="getReleaseCompany()" />
+								発売年月日:<s:property value="getReleaseDate()" />
 							</li>
 						</ul>
 				</s:iterator>

@@ -8,11 +8,6 @@
 <link rel="stylesheet" type="text/css" href="./css/template.css">
 <link rel="stylesheet" type="text/css" href="./css/inputDest.css">
 
-<script type="text/javascript" src="./javascript/buyItemComplete.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <title>購入情報入力画面</title>
 </head>
 <body>
@@ -53,11 +48,7 @@
 		<div class="form">
 			<s:form action="ConfirmDestAction">
 				<div class="InputDestination">
-					<!-- エラーメッセージ群 -->
-					<div class="errorMessage"></div>
-
 					<!-- 宛先情報入力フォーム -->
-
 					<!-- 名前 -->
 					<div class="name">
 						お名前 : <span style="color: #FF0000"><s:property
@@ -78,9 +69,7 @@
 							value='<s:property value="getFamilyNameKana()"/>'
 							placeholder="せい"> <input type="text" name="firstNameKana"
 							value='<s:property value="getFirstNameKana()"/>' placeholder="めい">
-
 					</div>
-
 
 					<!-- メールアドレス -->
 					<div class="email">
@@ -89,15 +78,12 @@
 							value='<s:property value="getEmail()"/>' placeholder="メールアドレス">
 					</div>
 
-
 					<!-- 電話番号 -->
 					<div class="telNumber">
 						電話番号： <span style="color: #FF0000"><s:property
 								value="telNumberMessage" /></span><input type="text" name="telNumber"
 							value='<s:property value="getTelNumber()"/>' placeholder="電話番号">
 					</div>
-
-
 
 					<!-- 住所 -->
 					<div class="userAddress">
@@ -106,14 +92,12 @@
 							value='<s:property value="getUserAddess()"/>' placeholder="住所">
 					</div>
 
-
 					<!-- 性別ラジオボタン -->
 					<div class="sex">
 						性別： <input type="radio" name="sex" value="0" checked="checked">
 						<span>男性</span> <input type="radio" name="sex" value="1">
 						<span>女性</span>
 					</div>
-
 
 					<!-- 購入ボタン -->
 					<div id="Button">
@@ -127,8 +111,6 @@
 			MyPageへ戻るには<a href="<s:url action="GoMyPageAction"/>">MyPageへ</a>
 		</div>
 	</div>
-
-
 
 </body>
 </html>

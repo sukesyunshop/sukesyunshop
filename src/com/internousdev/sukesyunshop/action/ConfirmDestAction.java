@@ -2,7 +2,6 @@ package com.internousdev.sukesyunshop.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -53,14 +52,6 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 	public String execute() {
 		String result = SUCCESS;
 
-		/**
-		 * ブラウザバックチェック
-		 * @param DestinationDTO
-		 */
-		List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
-		if(destDTOList.size() == 0){
-			return ERROR;
-		}
 
 		/**
 		 * エラーチェッカー
@@ -187,8 +178,8 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 			errorChecker = true;
 		}
 
-		/*------- 住所のエラー処理 ------*/
-		/*if (validation.emptyValid(userAddress)) {
+
+		if (validation.emptyValid(userAddress)) {
 			addressMessage = "住所が未入力です";
 			errorChecker = true;
 		}
@@ -199,7 +190,7 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		else if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))) {
 			addressMessage = "住所は半角英数字漢字または半角記号または全角カタカナで入力してください";
 			errorChecker = true;
-		}*/
+		}
 
 		/**
 		 * エラー検知
