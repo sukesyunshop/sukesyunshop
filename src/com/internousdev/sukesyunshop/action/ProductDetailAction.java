@@ -15,6 +15,16 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ProductDetailAction extends ActionSupport implements SessionAware {
 
 	/*
+	 * 戻るに対応するため検索テキストを保管する変数
+	 */
+	private String searchText;
+
+	/*
+	 * 戻るに対応するため検索カテゴリを保管する変数
+	 */
+	private int categoryId;
+
+	/*
 	 * product_infoのproduct_idを保管する
 	 */
 	private int productId;
@@ -127,6 +137,34 @@ public class ProductDetailAction extends ActionSupport implements SessionAware {
 	 */
 	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
 		this.categoryList = categoryList;
+	}
+
+	/**
+	 * @return searchText
+	 */
+	public String getSearchText() {
+		return searchText;
+	}
+
+	/**
+	 * @param searchText セットする searchText
+	 */
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
+
+	/**
+	 * @return categoryId
+	 */
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	/**
+	 * @param categoryId セットする categoryId
+	 */
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
 
