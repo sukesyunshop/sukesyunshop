@@ -66,23 +66,23 @@
 	<!-- 商品詳細 -->
 	<ul class="list">
 		<li class="image">
-			<img src="<s:property value="dto.getImageFilePath()"/>"><br>
+			<img src="<s:property value="catalogDTO.getImageFilePath()"/>"><br>
 		</li>
 		<li class="moji">
 			<span>商品名</span>
-			<s:property value="dto.getProductNameKana()" /><br>
-			<s:property value="dto.getProductName()"/><br>
+			<s:property value="catalogDTO.getProductNameKana()" /><br>
+			<s:property value="catalogDTO.getProductName()"/><br>
 			<span>商品詳細</span>
-			<s:property value="dto.getProductDescription()"/><br>
+			<s:property value="catalogDTO.getProductDescription()"/><br>
 			<span>値段</span>
-			<s:property value="dto.getPrice()" />円<br>
+			<s:property value="catalogDTO.getPrice()" />円<br>
 			<span>発売会社名</span>
-			<s:property value="dto.getReleaseCompany()"/><br>
+			<s:property value="catalogDTO.getReleaseCompany()"/><br>
 			<span>発売年月日</span>
-			<s:property value="dto.getReleaseDate()"/><br>
+			<s:property value="catalogDTO.getReleaseDate()"/><br>
 			<div class="moveWrapper">
-				<a class="moveItem" href="<s:url action="CartAction"><s:param name="productId" value="dto.getProductId()"/></s:url>">カート</a>
-				<a class="moveItem" href="<s:url action="CatalogAction" /> ">戻る</a>
+				<a class="moveItem" href="<s:url action="CartAction"><s:param name="productId" value="catalogDTO.getProductId()"/></s:url>">カート</a>
+				<a class="moveItem" href="<s:url action="SearchAction" ><s:param name="searchText" value="searchText"/><s:param name="categoryId" value="categoryId"/></s:url> ">戻る</a>
 			</div>
 		</li>
 	</ul>

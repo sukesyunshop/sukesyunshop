@@ -66,11 +66,19 @@
 		<ul class="menu">
 			<s:iterator value="catalogDTOList">
 				<li>
-					<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>"> <img src="<s:property value="getImageFilePath()" />" class="itemImage"></a>
-						<br> <span>カテゴリー</span> <s:property value="getCategoryName()" /><br>
-						<span>商品名</span><br> <s:property value="getProductNameKana()" /><br>
-						<s:property value="getProductName()" /><br> <span>値段</span> <s:property value="getPrice()" /><span>円</span><br>
-						<a href="<s:url action="ProductDetailAction"><s:param name="productId" value="getProductId()"/></s:url>">商品詳細</a>
+					<a href="<s:url action="ProductDetailAction">
+							<s:param name="searchText" value="searchText"/>
+							<s:param name="categoryId" value="categoryId"/>
+							<s:param name="productId" value="getProductId()"/>
+						</s:url>"><img src="<s:property value="getImageFilePath()" />" class="itemImage"></a><br>
+					<span>カテゴリー</span> <s:property value="getCategoryName()" /><br>
+					<span>商品名</span><br> <s:property value="getProductNameKana()" /><br>
+					<s:property value="getProductName()" /><br> <span>値段</span> <s:property value="getPrice()" /><span>円</span><br>
+					<a href="<s:url action="ProductDetailAction">
+							<s:param name="searchText" value="searchText"/>
+							<s:param name="categoryId" value="categoryId"/>
+							<s:param name="productId" value="getProductId()"/>
+						</s:url>">商品詳細</a>
 				</li>
 			</s:iterator>
 		</ul>
