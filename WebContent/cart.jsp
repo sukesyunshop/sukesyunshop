@@ -56,27 +56,28 @@
 </div>
 
  <s:if test="cartList.size() != 0">
- <a class="button" href="<s:url action="BuyItemConfirmAction"></s:url>">購入</a>
- <ul class="menu">
-  	<s:iterator value="cartList">
-  		<li>
-  				<span>カテゴリ</span>
-  					<s:property value="getCategoryName()"/><br>
-  				<span>商品名</span>
-					<s:property value="getProductName()"/><br>
-					<img src="<s:property value="getImageFilePath()"/>" class="itemImage"><br>
-				<span>値段</span>
-					<s:property value="getPrice()" />
-					<span>円</span><br>
-				<span>発売会社名</span>
-					<s:property value="getReleaseDate()"/><br>
-				<span>発売年月日</span>
-					<s:property value="getReleaseCompany()" /><br>
-				<a class="delete" href="<s:url action="CartDeleteAction"><s:param name="productId" value="getProductId()" /></s:url>">削除</a>
-  		</li>
-	</s:iterator>
- </ul>
 
+  	<s:iterator value="cartList">
+  		<table border=1>
+  			<tr>
+  				<th>カテゴリ</th>
+  				<th>商品名</th>
+  				<th>値段</th>
+  				<th>発売会社名</th>
+  				<th>発売年月日</th>
+  				<th>削除</th>
+  			</tr>
+  			<tr>
+  				<td><s:property value="getCategoryName()"/></td>
+  				<td><s:property value="getProductName()"/>
+					<img src="<s:property value="getImageFilePath()"/>" class="itemImage"></td>
+				<td><s:property value="getPrice()" />円</td>
+				<td><s:property value="getReleaseCompany()"/></td>
+				<td><s:property value= "getReleaseDate()"/></td>
+				<td><a class="delete" href="<s:url action="CartDeleteAction"><s:param name="productId" value="getProductId()" /></s:url>">削除</a></td>
+  		</table>
+	</s:iterator>
+		<a class="button" href="<s:url action="BuyItemConfirmAction"></s:url>">購入</a>
  </s:if>
 	<s:else>
 		<a class="button" class="sub" href="<s:url action="GoHomeAction" />">HOMEへ</a>

@@ -68,9 +68,9 @@
 		<span>値段</span>
 		<s:property value="dto.getPrice()" />円<br>
 		<span>発売会社名</span>
-		<s:property value="dto.getReleaseDate()"/><br>
+		<s:property value="dto.getReleaseCompany()"/><br>
 		<span>発売年月日</span>
-		<s:property value="dto.getReleaseCompany()" /><br>
+		<s:property value="dto.getReleaseDate()"/><br>
 		<div class="moveWrapper">
 			<a class="moveItem" href="<s:url action="CartAction"><s:param name="productId" value="dto.getProductId()"/></s:url>">カート</a>
 			<a class="moveItem" href="<s:url action="CatalogAction" /> ">戻る</a>
