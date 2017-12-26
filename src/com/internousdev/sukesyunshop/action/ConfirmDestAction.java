@@ -2,6 +2,7 @@ package com.internousdev.sukesyunshop.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -50,10 +51,28 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 
 	/*------実行メソッド-------*/
 	public String execute() {
+		String result = SUCCESS;
+
+		/**
+		 * ブラウザバックチェック
+		 * @param DestinationDTO
+		 */
+		List<DestinationDTO> destDTOList = new ArrayList<DestinationDTO>();
+		if(destDTOList.size() == 0){
+			return ERROR;
+		}
+
+		/**
+		 * エラーチェッカー
+		 */
+		boolean errorChecker = false;
 		SearchDAO searchDAO = new SearchDAO();
+
 		try {
 			setCateList(searchDAO.getCategory());
-		} catch (SQLException e) {
+		}
+
+		catch (SQLException e) {
 			e.printStackTrace();
 			return ERROR;
 		}
@@ -61,59 +80,68 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 		/*------- 姓のエラー処理 ------*/
 		if (validation.emptyValid(familyName)) {
 			familyMessage = "姓が未入力です";
-			return ERROR;
+			errorChecker = true;
 		}
-		if (validation.overUnderValid(familyName, 1, 16)) {
+
+		else if (validation.overUnderValid(familyName, 1, 16)) {
 			familyMessage = "姓は1文字以上16文字以下で入力してください。";
-			return ERROR;
+			errorChecker = true;
 		}
-		if (validation.hiraganaValid(familyName) && validation.harfEnglishValied(familyName)
+
+		else if (validation.hiraganaValid(familyName) && validation.harfEnglishValied(familyName)
 				&& validation.kanjiValid(familyName)) {
 			familyMessage = "姓は半角英語または漢字またはひらがなで入力してください";
-			return ERROR;
+			errorChecker = true;
 		}
 
 		/*------- 名のエラー処理 ------*/
 		if (validation.emptyValid(firstName)) {
 			firstMessage = "名が未入力です";
-			return ERROR;
+			errorChecker = true;
 		}
-		if (validation.overUnderValid(firstName, 1, 16)) {
+
+		else if (validation.overUnderValid(firstName, 1, 16)) {
 			firstMessage = "名は1文字以上16文字以下で入力してください。";
+			errorChecker = true;
 		}
-		if (validation.harfEnglishValied(firstName) && validation.kanjiValid(firstName)
+
+		else if (validation.harfEnglishValied(firstName) && validation.kanjiValid(firstName)
 				&& validation.hiraganaValid(firstName)) {
 			firstMessage = "名は半角英語または漢字またはひらがなで入力してください";
-			return ERROR;
+			errorChecker = true;
 		}
 
 		/*------- 姓ふりがなのエラー処理 ------*/
 		if (validation.emptyValid(familyNameKana)) {
 			familyKanaMessage = "姓ふりがなが未入力です";
-			return ERROR;
+			errorChecker = true;
 		}
-		if (validation.overUnderValid(familyNameKana, 1, 16)) {
+
+		else if (validation.overUnderValid(familyNameKana, 1, 16)) {
 			familyKanaMessage = "姓ふりがなは1文字以上16文字以下で入力してください。";
-			return ERROR;
+			errorChecker = true;
 		}
-		if (validation.hiraganaValid(familyNameKana)) {
+
+		else if (validation.hiraganaValid(familyNameKana)) {
 			familyKanaMessage = "姓ふりがなはひらがなで入力してください";
-			return ERROR;
+			errorChecker = true;
 
 		}
 
 		/*------- 名ふりがなのエラー処理 ------*/
 		if (validation.emptyValid(firstNameKana)) {
 			firstKanaMessage = "名ふりがなが未入力です";
-			return ERROR;
+			errorChecker = true;
 		}
-		if (validation.overUnderValid(firstNameKana, 1, 16)) {
+
+		else if (validation.overUnderValid(firstNameKana, 1, 16)) {
 			firstKanaMessage = "名ふりがなは1文字以上16文字以下で入力してください。";
-			return ERROR;
+			errorChecker = true;
 		}
-		if (validation.hiraganaValid(firstNameKana)) {
+
+		else if (validation.hiraganaValid(firstNameKana)) {
 			firstKanaMessage = "名ふりがなはひらがなで入力してください";
-			return ERROR;
+			errorChecker = true;
 		}
 
 		/*------- 性別選択 -------*/
@@ -121,61 +149,67 @@ public class ConfirmDestAction extends ActionSupport implements SessionAware {
 			sexString = "男性";
 		}
 
-		if (sex == 1) {
+		else if (sex == 1) {
 			sexString = "女性";
+
+		} else {
+			errorChecker = true;
 		}
 
 		/*------- メールアドレスのエラー処理 ------*/
 		if (validation.emptyValid(email)) {
 
 			emailMessage = "メールアドレスが未入力です";
-			return ERROR;
-		}
-		if (validation.overUnderValid(email, 18, 32)) {
+			errorChecker = true;
+
+		} else if (validation.overUnderValid(email, 18, 32)) {
 
 			emailMessage = "メールアドレスは18文字以上32文字以下で入力してください。";
-			return ERROR;
-		}
-		if (validation.emailAddressValid(email)) {
+			errorChecker = true;
+
+		} else if (validation.emailAddressValid(email)) {
 
 			emailMessage = "メールアドレスは半角英数字・半角記号で入力してください";
-			return ERROR;
+			errorChecker = true;
 		}
 
 		/*------- 電話番号のエラー処理 ------*/
 		if (validation.emptyValid(telNumber)) {
 			telNumberMessage = "電話番号が未入力です";
-			return ERROR;
-		}
-		if (validation.overUnderValid(telNumber, 11, 13)) {
+			errorChecker = true;
+
+		} else if (validation.overUnderValid(telNumber, 11, 13)) {
 
 			telNumberMessage = "電話番号は11文字以上13文字以下で入力してください。";
-			return ERROR;
-		}
-		if (validation.harfEngNumValied(telNumber)) {
+			errorChecker = true;
+		} else if (validation.harfEngNumValied(telNumber)) {
 
 			telNumberMessage = "電話番号は半角数字で入力してください";
-			return ERROR;
+			errorChecker = true;
 		}
 
 		/*------- 住所のエラー処理 ------*/
 		if (validation.emptyValid(userAddress)) {
 			addressMessage = "住所が未入力です";
-			return ERROR;
+			errorChecker = true;
 		}
-		if (validation.overUnderValid(userAddress, 15, 50)) {
+		else if (validation.overUnderValid(userAddress, 15, 50)) {
 			addressMessage = "住所は15文字以上50文字以下で入力してください。";
-			return ERROR;
+			errorChecker = true;
 		}
-		if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))) {
+		else if (!(validation.harfEnglishValied(userAddress) && validation.hiraganaValid(userAddress))) {
 			addressMessage = "住所は半角英数字漢字または半角記号または全角カタカナで入力してください";
-			return ERROR;
+			errorChecker = true;
 		}
 
+		/**
+		 * エラー検知
+		 */
+		if(errorChecker == true){
+			result = ERROR;
+		}
 
-
-		/*-------成功処理 処理 ------*/
-		return SUCCESS;
+		return result;
 
 	}
 

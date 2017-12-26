@@ -8,9 +8,11 @@
 <link rel="stylesheet" type="text/css" href="./css/template.css">
 <link rel="stylesheet" type="text/css" href="./css/inputDest.css">
 
-	<script type="text/javascript" src="./javascript/buyItemComplete.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="./javascript/buyItemComplete.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <title>購入情報入力画面</title>
 </head>
 <body>
@@ -59,85 +61,76 @@
 
 		<div class="form">
 			<s:form action="ConfirmDestAction">
-				<table>
-					<tbody>
-						<!-- 宛先情報入力フォーム -->
+				<div class="InputDestination">
+					<!-- エラーメッセージ群 -->
+					<div class="errorMessage"></div>
 
-						<!-- エラーメッセージ群 -->
-						<tr class="errorMessage">
-							<td><span style="color: #FF0000"><s:property
-										value="familyMessage" /></span> <span style="color: #FF0000"><s:property
-										value="firstMessage" /></span></td>
-							<td><span style="color: #FF0000"><s:property
-										value="familyKanaMessage" /></span><span style="color: #FF0000"><s:property
-										value="firstKanaMessage" /></span></td>
-							<td><span style="color: #FF0000"><s:property
-										value="emailMessage" /></span></td>
-							<td><span style="color: #FF0000"><s:property
-										value="telNumberMessage" /></span></td>
-							<td><span style="color: #FF0000"><s:property
-										value="addressMessage" /></span></td>
-						</tr>
+					<!-- 宛先情報入力フォーム -->
 
-						<!-- 名前 -->
-						<tr id="name">
-							<th>お名前 :</th>
-							<td class="familyName"><input type="text" name="familyName"
-								value='<s:property value="getFamilyName()"/>' placeholder="姓"></td>
-							<td class="firstName"><input type="text" name="firstName"
-								value='<s:property value="getFirstName()"/>' placeholder="名"></td>
-						</tr>
+					<!-- 名前 -->
+					<div class="name">
+						お名前 : <span style="color: #FF0000"><s:property
+								value="familyMessage" /></span> <span style="color: #FF0000"><s:property
+								value="firstMessage" /></span><input type="text" name="familyName"
+							value='<s:property value="getFamilyName()"/>' placeholder="姓">
+						<input type="text" name="firstName"
+							value='<s:property value="getFirstName()"/>' placeholder="名">
+					</div>
 
 
-						<!-- かな -->
-						<tr id="nameKana">
-							<th>ふりがな：</th>
-							<td class="familyNameKana"><input type="text"
-								name="familyNameKana" value='<s:property value="getFamilyNameKana()"/>'placeholder="せい"></td>
-							<td class="firstNameKana"><input type="text"
-								name="firstNameKana" value='<s:property value="getFirstNameKana()"/>' placeholder="めい"></td>
-						</tr>
+					<!-- かな -->
+					<div class="nameKana">
+						ふりがな： <span style="color: #FF0000"><s:property
+								value="familyKanaMessage" /></span><span style="color: #FF0000"><s:property
+								value="firstKanaMessage" /></span> <input type="text"
+							name="familyNameKana"
+							value='<s:property value="getFamilyNameKana()"/>'
+							placeholder="せい"> <input type="text" name="firstNameKana"
+							value='<s:property value="getFirstNameKana()"/>' placeholder="めい">
+
+					</div>
 
 
-						<!-- メールアドレス -->
-						<tr id="email">
-							<th>メールアドレス：</th>
-							<td class="email"><input type="email" name="email" value='<s:property value="getEmail()"/>'
-								placeholder="メールアドレス"></td>
-						</tr>
-
-						<!-- 電話番号 -->
-						<tr id="telNumber">
-							<th>電話番号：</th>
-							<td class="telNumber"><input type="text" name="telNumber"
-								value='<s:property value="getTelNumber()"/>' placeholder="電話番号"></td>
-						</tr>
+					<!-- メールアドレス -->
+					<div class="email">
+						メールアドレス： <span style="color: #FF0000"><s:property
+								value="emailMessage" /></span> <input type="email" name="email"
+							value='<s:property value="getEmail()"/>' placeholder="メールアドレス">
+					</div>
 
 
-						<!-- 住所 -->
-						<tr id="userAddress">
-							<th>住所：</th>
-							<td class="userAddess"><input type="text" name="userAddress"
-								value='<s:property value="getUserAddess()"/>' placeholder="住所"></td>
-						</tr>
-
-						<!-- 性別ラジオボタン -->
-						<tr id="sex">
-							<th>性別：</th>
-							<td class="sex"><input type="radio" name="sex" value="0"
-								checked="checked"><span>男性</span></td>
-
-							<td class="sex"><input type="radio" name="sex" value="1"><span>女性</span></td>
-						</tr>
-					</tbody>
-				</table>
+					<!-- 電話番号 -->
+					<div class="telNumber">
+						電話番号： <span style="color: #FF0000"><s:property
+								value="telNumberMessage" /></span><input type="text" name="telNumber"
+							value='<s:property value="getTelNumber()"/>' placeholder="電話番号">
+					</div>
 
 
-				<!-- 購入ボタン -->
-				<div id="Button">
-					<s:submit class="button" value="確認画面へ" />
+
+					<!-- 住所 -->
+					<div class="userAddress">
+						住所： <span style="color: #FF0000"><s:property
+								value="addressMessage" /></span><input type="text" name="userAddress"
+							value='<s:property value="getUserAddess()"/>' placeholder="住所">
+					</div>
+
+
+					<!-- 性別ラジオボタン -->
+					<div class="sex">
+						性別： <input type="radio" name="sex" value="0" checked="checked">
+						<span>男性</span> <input type="radio" name="sex" value="1">
+						<span>女性</span>
+					</div>
+
+
+					<!-- 購入ボタン -->
+					<div id="Button">
+						<s:submit class="button" value="確認画面へ" />
+					</div>
 				</div>
 			</s:form>
+
 		</div>
 		<div id="goMyPage">
 			MyPageへ戻るには<a href="<s:url action="GoMyPageAction"/>">MyPageへ</a>

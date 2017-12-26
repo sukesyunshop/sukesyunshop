@@ -1,14 +1,14 @@
-/**
- *
- */
-
-
-
-$(function(){
-    // 自身のページを履歴に追加
-    history.pushState(null, null, null);
-    // ページ戻り時にも自身のページを履歴に追加
-    $(window).on("popstate", function(){
-        history.pushState(null, null, null);
-    });
-});
+// History API が使えるブラウザかどうかをチェック
+if( window.history && window.history.pushState ){
+  //. ブラウザ履歴に１つ追加
+  history.pushState( "nohb", null, "" );
+  $(window).on( "popstate", function(event){
+    //. このページで「戻る」を実行
+    if( !event.originalEvent.state ){
+      //. もう一度履歴を操作して終了
+      history.pushState( "nohb", null, "" );
+      location.href = "http://localhost:8080/sukesyunshop/BuyItemConfirmAction";
+      return;
+    }
+  });
+}

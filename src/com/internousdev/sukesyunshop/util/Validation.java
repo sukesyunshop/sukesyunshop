@@ -38,7 +38,7 @@ public class Validation {
 
 	//漢字でなかった場合true
 	public boolean kanjiValid(String target){
-		return !Pattern.matches("^[亜-龠]*$", target);
+		return !Pattern.matches("^[亜-龠-中]*$", target);
 	}
 
 	//ひらがなでなかった場合true

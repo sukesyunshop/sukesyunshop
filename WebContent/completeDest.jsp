@@ -12,6 +12,12 @@
 <meta name="keywords" content="" />
 <link rel="stylesheet" type="text/css" href="./css/template.css">
 <link rel="stylesheet" type="text/css" href="./css/completeDest.css">
+
+<script type="text/javascript" src="./javascript/completeDest.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <title>宛先情報入力完了画面</title>
 </head>
 <body>

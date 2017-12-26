@@ -37,6 +37,9 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware 
 				setCateList(searchDAO.getCategory());
 
 				cartList = cartDAO.getCartList(userId, true);
+				if(cartList.size() == 0) {
+					return ERROR;
+				}
 				destDTOList = destDAO.destSelect(userId);
 			} catch (SQLException e) {
 				e.printStackTrace();
