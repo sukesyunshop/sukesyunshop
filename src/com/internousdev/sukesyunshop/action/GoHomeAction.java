@@ -14,77 +14,123 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class GoHomeAction extends ActionSupport implements SessionAware {
 
-	private ArrayList<CategoryDTO> cateList;
-	private ArrayList<CatalogDTO> randomList;
-	private ArrayList<CatalogDTO> newArriveList;
-	public Map<String, Object> session;
 
-	private String sale = "sale";
-	private String anime = "anime";
+	/*
+	 * カテゴリーのDTOをいれるリスト
+	 */
+	private ArrayList<CategoryDTO> categoryList;
+
+	/*
+	 * pickup商品のDTOをいれるリスト
+	 */
+	private ArrayList<CatalogDTO> randomList;
+
+	/*
+	 * 新着商品のDTOをいれるリスト
+	 */
+	private ArrayList<CatalogDTO> newArriveList;
+
+	/*
+	 * セッション情報を格納するマップ
+	 */
+	private Map<String, Object> session;
+
+	/*
+	 * AdvertizeActionに情報にどのグループ情報かを伝える定数
+	 */
+	private static final String SALE = "sale";
+
+	/*
+	 * AdvertizeActionに情報にどのグループ情報かを伝える定数
+	 */
+	private static final String ANIME = "anime";
 
 	public String execute() {
-
-		// TODO 今後ホームに何を表示するかによって取得する値を変更します
-
+		String result = SUCCESS;
 		SearchDAO searchDAO = new SearchDAO();
 		CatalogDAO catalogDAO = new CatalogDAO();
+
 		try {
-			setCateList(searchDAO.getCategory());
+			setCategoryList(searchDAO.getCategory());
 			setRandomList(catalogDAO.getRandomItem());
 			setNewArriveList(searchDAO.getNewArriveList());
 		} catch (SQLException e) {
 			e.printStackTrace();
+			result = ERROR;
 		}
 
-		return SUCCESS;
+		return result;
 	}
 
+	/**
+	 * @return categoryList
+	 */
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
+	}
+
+	/**
+	 * @param categoryList セットする categoryList
+	 */
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
+	}
+
+	/**
+	 * @return randomList
+	 */
+	public ArrayList<CatalogDTO> getRandomList() {
+		return randomList;
+	}
+
+	/**
+	 * @param randomList セットする randomList
+	 */
+	public void setRandomList(ArrayList<CatalogDTO> randomList) {
+		this.randomList = randomList;
+	}
+
+	/**
+	 * @return newArriveList
+	 */
+	public ArrayList<CatalogDTO> getNewArriveList() {
+		return newArriveList;
+	}
+
+	/**
+	 * @param newArriveList セットする newArriveList
+	 */
+	public void setNewArriveList(ArrayList<CatalogDTO> newArriveList) {
+		this.newArriveList = newArriveList;
+	}
+
+	/**
+	 * @return session
+	 */
 	public Map<String, Object> getSession() {
-		return this.session;
+		return session;
 	}
 
+	/**
+	 * @param session セットする session
+	 */
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
+	/**
+	 * @return sale
+	 */
+	public static String getSale() {
+		return SALE;
 	}
 
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
+	/**
+	 * @return anime
+	 */
+	public static String getAnime() {
+		return ANIME;
 	}
 
-	public ArrayList<CatalogDTO> getRandomList() {
-		return randomList;
-	}
-
-	public void setRandomList(ArrayList<CatalogDTO> randomList) {
-		this.randomList = randomList;
-	}
-
-	public ArrayList<CatalogDTO> getNewArriveList() {
-		return newArriveList;
-	}
-
-	public void setNewArriveList(ArrayList<CatalogDTO> newArriveList) {
-		this.newArriveList = newArriveList;
-	}
-
-	public String getSale() {
-		return sale;
-	}
-
-	public void setSale(String sale) {
-		this.sale = sale;
-	}
-
-	public String getAnime() {
-		return anime;
-	}
-
-	public void setAnime(String anime) {
-		this.anime = anime;
-	}
 }
