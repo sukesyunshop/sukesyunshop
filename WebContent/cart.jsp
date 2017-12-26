@@ -19,7 +19,7 @@
 		<!-- 検索バー -->
 		<div class="bar">
 			<s:form action="SearchAction" theme="simple">
-				<s:select class="category" name="categoryId" list="cateList"
+				<s:select class="category" name="categoryId" list="categoryList"
 					listKey="categoryId" listValue="categoryName" />
 				<input class="input" type="search" name="searchText"
 					placeholder="商品名など" pattern="^[a-zA-Z0-9亜-龠あ-んが-ぼぁ-ょゎっー]*$"
@@ -52,7 +52,7 @@
 
 	<!--------- カテゴリーリスト --------->
 	<ul id="category">
-		<s:iterator value="cateList">
+		<s:iterator value="categoryList">
 			<li>
 				<a href="
 					<s:url action='SearchAction'><s:param name="categoryId" value="getCategoryId()"/></s:url>
