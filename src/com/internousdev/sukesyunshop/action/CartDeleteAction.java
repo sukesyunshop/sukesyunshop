@@ -36,7 +36,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware{
 	private ArrayList<CategoryDTO> categoryList;
 
 	public String execute() {
-		String result = ERROR;
+		String result = SUCCESS;
 		CartDAO cartDAO = new CartDAO();
 		SearchDAO searchDAO = new SearchDAO();
 		boolean loginFlag = session.get(SessionName.getLoginFlag()).equals(SessionName.getTrue());

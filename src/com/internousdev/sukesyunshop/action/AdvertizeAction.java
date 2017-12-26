@@ -57,7 +57,6 @@ public class AdvertizeAction extends ActionSupport implements SessionAware {
 
 		try {
 			setCatalogDTOList(dao.getSaleCatalogList(id));
-			System.out.println(catalogDTOList.get(1).getCategoryName());
 
 			if(id != null) {
 				listSize = id.length / 9;

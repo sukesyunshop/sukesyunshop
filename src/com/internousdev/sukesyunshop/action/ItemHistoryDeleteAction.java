@@ -41,7 +41,6 @@ public class ItemHistoryDeleteAction extends ActionSupport implements SessionAwa
 
 	@Override
 	public void setSession(Map<String, Object> session) {
-		// TODO 自動生成されたメソッド・スタブ
 		this.session=session;
 
 	}
