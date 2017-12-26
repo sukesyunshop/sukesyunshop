@@ -19,7 +19,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class BuyItemConfirmAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
-	private ArrayList<CategoryDTO> cateList;
+	private ArrayList<CategoryDTO> categoryList;
 	private List<CartDTO> cartList = new ArrayList<CartDTO>();
 	private CartDAO cartDAO = new CartDAO();
 
@@ -34,7 +34,7 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware 
 			String userId = session.get(SessionName.getUserId()).toString();
 			try {
 				SearchDAO searchDAO = new SearchDAO();
-				setCateList(searchDAO.getCategory());
+				setCategoryList(searchDAO.getCategory());
 
 				cartList = cartDAO.getCartList(userId, true);
 				if(cartList.size() == 0) {
@@ -57,6 +57,10 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware 
 		return cartList;
 	}
 
+	public void setCartList(List<CartDTO> cartList) {
+		this.cartList = cartList;
+	}
+
 	public Map<String, Object> getSession() {
 		return session;
 	}
@@ -70,15 +74,14 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware 
 		this.session = session;
 	}
 
-	public ArrayList<CategoryDTO> getCateList() {
-		return cateList;
+	public ArrayList<CategoryDTO> getCategoryList() {
+		return categoryList;
 	}
 
-	public void setCateList(ArrayList<CategoryDTO> cateList) {
-		this.cateList = cateList;
+	public void setCategoryList(ArrayList<CategoryDTO> categoryList) {
+		this.categoryList = categoryList;
 	}
 
-	public void setCartList(List<CartDTO> cartList) {
-		this.cartList = cartList;
-	}
+
+
 }
